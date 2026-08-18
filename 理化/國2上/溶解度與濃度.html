@@ -110,8 +110,8 @@
     </p>
     <p>
       當全校位子（教室數 × 每間座位數）還沒坐滿，這時是<b>未飽和溶液</b>
-      （溶解量 &lt; 溶解度換算出的全校總容量）；學生剛好坐滿全校最後一個位子，
-      一個都不多不少，是<b>恰飽和溶液</b>（溶解量 = 全校總容量）；
+      （溶解量 &lt; 溶解度換算出的全校最大溶解量）；學生剛好坐滿全校最後一個位子，
+      一個都不多不少，是<b>恰飽和溶液</b>（溶解量 = 全校最大溶解量）；
       如果你硬把更多學生塞進來，多出來的人只能站在校門外（也就是燒杯底部的白色固體沒有溶解），
       校內仍然是滿的，這整杯就叫<b>飽和溶液</b>，站在外面的就是「未溶解的沉澱」。
     </p>
@@ -216,7 +216,7 @@
     </table>
     <p class="note">
       關鍵在於「位子數（溶解度）有沒有變少」：加水、加熱都是讓位子變多或不變，所以未飽和、恰飽和都不會擠出沉澱；
-      蒸發、降溫則是讓位子變少（水變少或容量下降），恰飽和的學生原本剛好坐滿，位子一少就會有人被擠出來（出現沉澱）。
+      蒸發、降溫則是讓位子變少（水變少或最大溶解量下降），恰飽和的學生原本剛好坐滿，位子一少就會有人被擠出來（出現沉澱）。
       未飽和因為本來就還有空位，稍微減少位子通常還不至於擠出人，所以維持無沉澱；
       而已經飽和（本來就有沉澱）的溶液，不管做哪一種操作，全校教室內都還是滿的，校門外自然仍站著沉澱。
     </p>
@@ -229,38 +229,38 @@
       <span class="note" style="margin:0;">（全校還有空位，沒有沉澱）</span></p>
     <table>
       <thead>
-        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+        <tr><th>操作</th><th>溶解量</th><th>溶解度</th><th>溶劑量</th><th>濃度</th><th>狀態變化</th></tr>
       </thead>
       <tbody>
         <tr>
           <td class="op">加水</td>
-          <td class="up">增加</td>
-          <td class="same">不變</td>
           <td class="same">不變（沒有多餘固體可溶）</td>
+          <td class="same">不變</td>
+          <td class="up">增加</td>
           <td class="down">降低</td>
           <td>仍未飽和（更空曠）</td>
         </tr>
         <tr>
-          <td class="op">蒸發（減少水）</td>
-          <td class="down">減少</td>
-          <td class="same">不變</td>
+          <td class="op">蒸發(無沉澱)（減少水）</td>
           <td class="same">不變（還沒到飽和前不會析出）</td>
+          <td class="same">不變</td>
+          <td class="down">減少</td>
           <td class="up">增加</td>
           <td>仍未飽和，但逐漸接近飽和</td>
         </tr>
         <tr>
           <td class="op">加熱（升溫）</td>
-          <td class="same">不變（假設水未蒸發）</td>
-          <td class="up">增加（多數固體）</td>
           <td class="same">不變（沒有多餘固體可溶）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="same">不變（假設水未蒸發）</td>
           <td class="same">不變</td>
           <td>仍未飽和（位子更多了）</td>
         </tr>
         <tr>
-          <td class="op">降溫</td>
-          <td class="same">不變</td>
-          <td class="down">減少（多數固體）</td>
+          <td class="op">降溫(無沉澱)</td>
           <td class="same">不變（還沒到飽和前不會析出）</td>
+          <td class="down">減少（多數固體）</td>
+          <td class="same">不變</td>
           <td class="same">不變</td>
           <td>仍未飽和，但逐漸接近飽和</td>
         </tr>
@@ -273,38 +273,38 @@
       <span class="note" style="margin:0;">（剛好坐滿，還沒有沉澱）</span></p>
     <table>
       <thead>
-        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+        <tr><th>操作</th><th>溶解量</th><th>溶解度</th><th>溶劑量</th><th>濃度</th><th>狀態變化</th></tr>
       </thead>
       <tbody>
         <tr>
           <td class="op">加水</td>
-          <td class="up">增加</td>
-          <td class="same">不變</td>
           <td class="same">不變（沒有固體可溶）</td>
+          <td class="same">不變</td>
+          <td class="up">增加</td>
           <td class="down">降低</td>
           <td>恰飽和 → 變未飽和</td>
         </tr>
         <tr>
-          <td class="op">蒸發（減少水）</td>
-          <td class="down">減少</td>
+          <td class="op">蒸發(有沉澱)（減少水）</td>
+          <td class="down">減少（超出最大溶解量的部分析出）</td>
           <td class="same">不變</td>
-          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="down">減少</td>
           <td class="same">不變（維持該溫度的飽和濃度）</td>
           <td>恰飽和 → 變飽和（出現沉澱）</td>
         </tr>
         <tr>
           <td class="op">加熱（升溫）</td>
-          <td class="same">不變（假設水未蒸發）</td>
-          <td class="up">增加（多數固體）</td>
           <td class="same">不變（沒有固體可溶）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="same">不變（假設水未蒸發）</td>
           <td class="same">不變</td>
           <td>恰飽和 → 變未飽和</td>
         </tr>
         <tr>
-          <td class="op">降溫</td>
-          <td class="same">不變</td>
+          <td class="op">降溫(有沉澱)</td>
+          <td class="down">減少（超出最大溶解量的部分析出）</td>
           <td class="down">減少（多數固體）</td>
-          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="same">不變</td>
           <td class="down">降低</td>
           <td>恰飽和 → 變飽和（出現沉澱）</td>
         </tr>
@@ -317,38 +317,38 @@
       <span class="note" style="margin:0;">（全校滿了，校門外已站著沉澱）</span></p>
     <table>
       <thead>
-        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+        <tr><th>操作</th><th>溶解量</th><th>溶解度</th><th>溶劑量</th><th>濃度</th><th>狀態變化</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td class="op">加水</td>
-          <td class="up">增加</td>
-          <td class="same">不變</td>
+          <td class="op">加水(有沉澱)</td>
           <td class="up">增加（沉澱有機會再溶解一些）</td>
+          <td class="same">不變</td>
+          <td class="up">增加</td>
           <td class="down">降低</td>
           <td>飽和 → 可能變未飽和</td>
         </tr>
         <tr>
-          <td class="op">蒸發（減少水）</td>
-          <td class="down">減少</td>
-          <td class="same">不變</td>
+          <td class="op">蒸發(有沉澱)（減少水）</td>
           <td class="down">減少（析出更多結晶）</td>
+          <td class="same">不變</td>
+          <td class="down">減少</td>
           <td class="same">不變（仍飽和，濃度已達上限）</td>
           <td>持續飽和，沉澱變多</td>
         </tr>
         <tr>
-          <td class="op">加熱（升溫）</td>
-          <td class="same">不變（假設水未蒸發）</td>
-          <td class="up">增加（多數固體）</td>
+          <td class="op">加熱(有沉澱)（升溫）</td>
           <td class="up">增加（沉澱可再溶解）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="same">不變（假設水未蒸發）</td>
           <td class="up">增加（若沉澱溶解，溶質變多）</td>
           <td>飽和 → 可能變未飽和</td>
         </tr>
         <tr>
-          <td class="op">降溫</td>
-          <td class="same">不變</td>
+          <td class="op">降溫(有沉澱)</td>
+          <td class="down">減少（超出最大溶解量的部分析出）</td>
           <td class="down">減少（多數固體）</td>
-          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="same">不變</td>
           <td class="down">降低（析出結晶帶走溶質）</td>
           <td>持續飽和，沉澱變多</td>
         </tr>
