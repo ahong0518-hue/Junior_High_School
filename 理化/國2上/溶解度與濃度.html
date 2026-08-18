@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>溶解度與濃度 — 生活化預習筆記</title>
+<style>
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 16px 60px;
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.9;
+  }
+  .wrap{max-width:880px; margin:0 auto;}
+  h1{
+    font-size:1.6rem; margin:0 0 4px; color:var(--accent);
+    border-bottom:3px solid var(--accent); padding-bottom:10px;
+  }
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:28px;}
+  h2{
+    font-size:1.15rem; margin:36px 0 12px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  h2::before{content:""; width:6px; height:20px; background:var(--accent); border-radius:3px; display:inline-block;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; box-shadow:0 2px 8px rgba(0,0,0,0.03);
+  }
+  p{margin:0 0 12px;}
+  .analogy{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px; margin-top:16px;
+  }
+  .achip{
+    background:#fdf6f0; border:1px solid #f0ddc9; border-radius:12px;
+    padding:14px 16px;
+  }
+  .achip .term{font-weight:700; color:var(--accent); margin-bottom:6px; font-size:1rem;}
+  .achip .desc{color:var(--ink); font-size:0.92rem;}
+
+  table{
+    width:100%; border-collapse:collapse; margin-top:14px; font-size:0.92rem;
+    background:var(--card);
+  }
+  caption{text-align:left; color:var(--sub); font-size:0.85rem; margin-bottom:8px;}
+  th, td{
+    border:1px solid var(--line); padding:10px 12px; text-align:center; vertical-align:middle;
+  }
+  th{background:#f3ede3; color:var(--ink); font-weight:700;}
+  td.op{
+    font-weight:700; background:#faf7f2;
+  }
+  .up{color:#b0442e; font-weight:700;}
+  .down{color:#2e6b5a; font-weight:700;}
+  .same{color:var(--sub);}
+  .note{
+    margin-top:10px; font-size:0.85rem; color:var(--sub);
+  }
+
+  .state-table td.state{font-weight:700;}
+  .state-未飽和{color:var(--accent3);}
+  .state-恰飽和{color:var(--accent2);}
+  .state-飽和{color:var(--accent);}
+
+  .mnemonic{
+    background:#f0f6f2; border:1px solid #cfe4d6; border-radius:12px;
+    padding:16px 20px; margin-top:16px;
+  }
+  .mnemonic .line{margin-bottom:8px; font-size:0.98rem;}
+  .mnemonic .line b{color:var(--accent2);}
+
+  .formula-box{
+    background:#f7f4ee; border:1px solid var(--line); border-radius:12px;
+    padding:14px 18px; margin-bottom:14px;
+  }
+  .formula-box:last-child{margin-bottom:0;}
+  .formula-box .fname{font-weight:700; color:var(--accent2); margin-bottom:6px;}
+  .formula-box .fexpr{
+    font-family:"Courier New",monospace; background:#ffffff; border:1px dashed var(--line);
+    border-radius:8px; padding:8px 12px; margin-bottom:8px; font-size:0.92rem; color:var(--ink);
+  }
+  .formula-box .frel{margin:0; font-size:0.92rem; color:var(--sub); line-height:1.8;}
+
+  .tag{
+    display:inline-block; font-size:0.75rem; padding:2px 8px; border-radius:999px;
+    background:#eee3d5; color:#7a5c3a; margin-left:6px;
+  }
+  footer{margin-top:40px; text-align:center; color:var(--sub); font-size:0.82rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>溶解度與濃度：教室座位比喻</h1>
+  <div class="subtitle">本週預習範圍：八上 2-2 溶液與濃度（未飽和 / 恰飽和 / 飽和、溶解度、濃度）</div>
+
+  <h2>生活化比喻</h2>
+  <div class="card">
+    <p>
+      把水想像成一整排<b>一模一樣的教室</b>：每 <b>100 公克的水，就是一間教室</b>。
+      能溶解的溶質就是<b>學生</b>。在某個溫度下，<b>每一間教室能坐幾個人是固定的，
+      這就是「溶解度」</b>——它只由溫度決定，跟你蓋了幾間教室（水多水少）完全無關。
+      而<b>「全校目前已經坐進去的學生總數」就是「溶解量」</b>——這會隨你加了多少糖、
+      蓋了幾間教室而變動。
+    </p>
+    <p>
+      當全校位子（教室數 × 每間座位數）還沒坐滿，這時是<b>未飽和溶液</b>
+      （溶解量 &lt; 溶解度換算出的全校總容量）；學生剛好坐滿全校最後一個位子，
+      一個都不多不少，是<b>恰飽和溶液</b>（溶解量 = 全校總容量）；
+      如果你硬把更多學生塞進來，多出來的人只能站在校門外（也就是燒杯底部的白色固體沒有溶解），
+      校內仍然是滿的，這整杯就叫<b>飽和溶液</b>，站在外面的就是「未溶解的沉澱」。
+    </p>
+    <p>
+      而<b>「濃度」就是全校「擠不擠」</b>——不是看蓋了幾間教室（溶劑量）或每間座位數
+      （溶解度），而是看目前坐進去的學生，佔「全校總空間（教室＋學生）」的比例有多高
+      （重量百分濃度＝溶質重量 ÷ 溶液重量 × 100%）。同樣坐 10 個學生，只蓋 1 間教室
+      就很擠、濃度高；蓋了 5 間教室分散坐就沒那麼擠、濃度低。
+    </p>
+    <p>
+      最後，<b>溫度就是「校長臨時決定每間教室能不能加開座位」</b>：大部分固體
+      （如蔗糖、食鹽）溫度愈高，每間教室位子愈多（溶解度增加）；但像氣體
+      （如汽水中的二氧化碳）剛好相反，天氣一熱，每間位子反而變少，氣體就從水裡
+      「跑出教室」（逸散）。<b>加水／蒸發改變的是「教室間數」，加熱／降溫改變的是
+      「每間教室的座位數」</b>——這是兩件完全不同的事，不要混在一起。
+    </p>
+  </div>
+
+  <div class="analogy">
+    <div class="achip"><div class="term">溶劑（水）</div><div class="desc">一整排相同教室（每 100g 水＝一間）</div></div>
+    <div class="achip"><div class="term">溶質</div><div class="desc">要坐進教室的學生</div></div>
+    <div class="achip"><div class="term">溶解度</div><div class="desc">每間教室的座位數（由溫度決定）</div></div>
+    <div class="achip"><div class="term">溶解量</div><div class="desc">全校目前實際坐進去的學生數</div></div>
+    <div class="achip"><div class="term">濃度</div><div class="desc">全校擠不擠（學生佔全校空間的比例）</div></div>
+    <div class="achip"><div class="term">沉澱</div><div class="desc">站在校門外、擠不進任何教室的學生</div></div>
+  </div>
+
+  <h2>未飽和 · 恰飽和 · 飽和 對照表</h2>
+  <div class="card">
+    <table class="state-table">
+      <thead>
+        <tr><th>狀態</th><th>溶解量 vs 溶解度</th><th>教室比喻</th><th>加更多溶質會怎樣</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="state state-未飽和">未飽和</td>
+          <td>溶解量 &lt; 溶解度</td>
+          <td>全校還有空位</td>
+          <td>可以繼續溶解，變得更濃</td>
+        </tr>
+        <tr>
+          <td class="state state-恰飽和">恰飽和</td>
+          <td>溶解量 ＝ 溶解度</td>
+          <td>剛好坐滿最後一位</td>
+          <td>再加就會開始出現沉澱</td>
+        </tr>
+        <tr>
+          <td class="state state-飽和">飽和（含過量）</td>
+          <td>溶解量 ＝ 溶解度，且有剩餘固體</td>
+          <td>全校滿了，多的人站在校門外</td>
+          <td>再加只會增加沉澱，不會再溶解</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>公式與正比反比關係</h2>
+  <div class="card">
+    <div class="formula-box">
+      <div class="fname">① 可溶解總量（全校位子總數）</div>
+      <div class="fexpr">可溶解總量（g）＝ 溶解度（g／100g水） × 溶劑重量（g） ÷ 100</div>
+      <p class="frel">溫度固定（溶解度不變）時，可溶解總量與<b>「溶劑重量」成正比</b>：
+        水越多，位子總數就等比例變多。這就是加水能把恰飽和「稀釋」成未飽和、
+        蒸發會讓恰飽和「擠出」沉澱的根本原因——水量一變，位子總數跟著同方向（加水）或反方向（蒸發）變動。</p>
+    </div>
+    <div class="formula-box">
+      <div class="fname">② 溫度與溶解度</div>
+      <div class="fexpr">多數固體：溫度 ↑ → 溶解度 ↑（正比）　｜　氣體、氫氧化鈣等：溫度 ↑ → 溶解度 ↓（反比）</div>
+      <p class="frel">這是唯二要特別記的「反比」例外：<b>氣體</b>（如汽水中的 CO₂）和<b>氫氧化鈣</b>，
+        溫度愈高、能溶的反而愈少。其餘大部分固體溶質都是溫度愈高、溶解度愈大（正比）。</p>
+    </div>
+    <div class="formula-box">
+      <div class="fname">③ 重量百分濃度</div>
+      <div class="fexpr">濃度（%）＝ 溶質重量 ÷（溶質重量＋溶劑重量） × 100%</div>
+      <p class="frel">若<b>溶質重量固定</b>，濃度與「溶劑（水）重量」成<b>反比</b>：
+        水越多，濃度越低（加水稀釋）；水越少，濃度越高（蒸發變濃）。
+        但一旦溶液已經飽和（開始出現沉澱），濃度會被鎖在該溫度的「飽和濃度」
+        （＝溶解度 ÷（溶解度＋100）×100%），不再隨溶劑量變動，因為多餘的溶質只會析出、不會讓濃度繼續升高。</p>
+    </div>
+  </div>
+
+  <h2>加水 / 蒸發 / 加熱 / 降溫：會不會出現沉澱？</h2>
+  <div class="card">
+    <table class="state-table">
+      <thead>
+        <tr><th>起始狀態</th><th>加水</th><th>蒸發</th><th>加熱</th><th>降溫</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="state state-未飽和">未飽和<br><span class="note" style="margin:0;">（全校還有空位）</span></td>
+          <td>無沉澱</td><td>無沉澱</td><td>無沉澱</td><td>無沉澱</td>
+        </tr>
+        <tr>
+          <td class="state state-恰飽和">恰飽和<br><span class="note" style="margin:0;">（剛好坐滿）</span></td>
+          <td>無沉澱</td><td class="up">有沉澱</td><td>無沉澱</td><td class="up">有沉澱</td>
+        </tr>
+        <tr>
+          <td class="state state-飽和">飽和<br><span class="note" style="margin:0;">（已有沉澱）</span></td>
+          <td class="up">有沉澱</td><td class="up">有沉澱</td><td class="up">有沉澱</td><td class="up">有沉澱</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      關鍵在於「位子數（溶解度）有沒有變少」：加水、加熱都是讓位子變多或不變，所以未飽和、恰飽和都不會擠出沉澱；
+      蒸發、降溫則是讓位子變少（水變少或容量下降），恰飽和的學生原本剛好坐滿，位子一少就會有人被擠出來（出現沉澱）。
+      未飽和因為本來就還有空位，稍微減少位子通常還不至於擠出人，所以維持無沉澱；
+      而已經飽和（本來就有沉澱）的溶液，不管做哪一種操作，全校教室內都還是滿的，校門外自然仍站著沉澱。
+    </p>
+  </div>
+
+  <h2>操作方式對「溶解度 / 溶解量 / 濃度」的影響</h2>
+
+  <div class="card">
+    <p style="margin-bottom:10px;"><span class="state state-未飽和" style="font-weight:700;">① 起始狀態：未飽和</span>
+      <span class="note" style="margin:0;">（全校還有空位，沒有沉澱）</span></p>
+    <table>
+      <thead>
+        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="op">加水</td>
+          <td class="up">增加</td>
+          <td class="same">不變</td>
+          <td class="same">不變（沒有多餘固體可溶）</td>
+          <td class="down">降低</td>
+          <td>仍未飽和（更空曠）</td>
+        </tr>
+        <tr>
+          <td class="op">蒸發（減少水）</td>
+          <td class="down">減少</td>
+          <td class="same">不變</td>
+          <td class="same">不變（還沒到飽和前不會析出）</td>
+          <td class="up">增加</td>
+          <td>仍未飽和，但逐漸接近飽和</td>
+        </tr>
+        <tr>
+          <td class="op">加熱（升溫）</td>
+          <td class="same">不變（假設水未蒸發）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="same">不變（沒有多餘固體可溶）</td>
+          <td class="same">不變</td>
+          <td>仍未飽和（位子更多了）</td>
+        </tr>
+        <tr>
+          <td class="op">降溫</td>
+          <td class="same">不變</td>
+          <td class="down">減少（多數固體）</td>
+          <td class="same">不變（還沒到飽和前不會析出）</td>
+          <td class="same">不變</td>
+          <td>仍未飽和，但逐漸接近飽和</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <p style="margin-bottom:10px;"><span class="state state-恰飽和" style="font-weight:700;">② 起始狀態：恰飽和</span>
+      <span class="note" style="margin:0;">（剛好坐滿，還沒有沉澱）</span></p>
+    <table>
+      <thead>
+        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="op">加水</td>
+          <td class="up">增加</td>
+          <td class="same">不變</td>
+          <td class="same">不變（沒有固體可溶）</td>
+          <td class="down">降低</td>
+          <td>恰飽和 → 變未飽和</td>
+        </tr>
+        <tr>
+          <td class="op">蒸發（減少水）</td>
+          <td class="down">減少</td>
+          <td class="same">不變</td>
+          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="same">不變（維持該溫度的飽和濃度）</td>
+          <td>恰飽和 → 變飽和（出現沉澱）</td>
+        </tr>
+        <tr>
+          <td class="op">加熱（升溫）</td>
+          <td class="same">不變（假設水未蒸發）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="same">不變（沒有固體可溶）</td>
+          <td class="same">不變</td>
+          <td>恰飽和 → 變未飽和</td>
+        </tr>
+        <tr>
+          <td class="op">降溫</td>
+          <td class="same">不變</td>
+          <td class="down">減少（多數固體）</td>
+          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="down">降低</td>
+          <td>恰飽和 → 變飽和（出現沉澱）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <p style="margin-bottom:10px;"><span class="state state-飽和" style="font-weight:700;">③ 起始狀態：飽和（已有沉澱）</span>
+      <span class="note" style="margin:0;">（全校滿了，校門外已站著沉澱）</span></p>
+    <table>
+      <thead>
+        <tr><th>操作</th><th>溶劑量</th><th>溶解度</th><th>溶解量</th><th>濃度</th><th>狀態變化</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="op">加水</td>
+          <td class="up">增加</td>
+          <td class="same">不變</td>
+          <td class="up">增加（沉澱有機會再溶解一些）</td>
+          <td class="down">降低</td>
+          <td>飽和 → 可能變未飽和</td>
+        </tr>
+        <tr>
+          <td class="op">蒸發（減少水）</td>
+          <td class="down">減少</td>
+          <td class="same">不變</td>
+          <td class="down">減少（析出更多結晶）</td>
+          <td class="same">不變（仍飽和，濃度已達上限）</td>
+          <td>持續飽和，沉澱變多</td>
+        </tr>
+        <tr>
+          <td class="op">加熱（升溫）</td>
+          <td class="same">不變（假設水未蒸發）</td>
+          <td class="up">增加（多數固體）</td>
+          <td class="up">增加（沉澱可再溶解）</td>
+          <td class="up">增加（若沉澱溶解，溶質變多）</td>
+          <td>飽和 → 可能變未飽和</td>
+        </tr>
+        <tr>
+          <td class="op">降溫</td>
+          <td class="same">不變</td>
+          <td class="down">減少（多數固體）</td>
+          <td class="down">減少（超出容量的部分析出）</td>
+          <td class="down">降低（析出結晶帶走溶質）</td>
+          <td>持續飽和，沉澱變多</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">
+      ＊氣體（如二氧化碳）的溶解度規則相反：加熱使溶解度下降、氣體逸散；壓力增加則使氣體溶解度增加。
+      這就是為什麼汽水加熱會冒更多氣。
+    </p>
+  </div>
+
+  <h2>有效背誦口訣</h2>
+  <div class="mnemonic">
+    <div class="line">🏫 <b>溶解度＝位子數，溫度決定；溶解量＝目前坐幾人，會變動。</b></div>
+    <div class="line">🍬 <b>濃度是「擠不擠」的比例，跟位子多少（溶解度）是兩回事，不要混。</b></div>
+    <div class="line">💧 <b>加水稀釋、蒸發變濃</b>：水多則淡、水少則濃（前提：還沒到飽和）。</div>
+    <div class="line">🔥 <b>固體怕冷不怕熱</b>：多數固體「熱溶得多、冷析出結晶」；<b>氣體怕熱不怕冷</b>：氣體「熱易逸散、冷易溶」。</div>
+    <div class="line">🧊 <b>有沉澱＝一定飽和</b>；但「飽和」不一定看得到沉澱（恰飽和時剛好沒有多餘固體）。</div>
+  </div>
+
+  <footer>八上 2-2 溶液與濃度・預習筆記　|　依講義內容整理</footer>
+</div>
+</body>
+</html>
