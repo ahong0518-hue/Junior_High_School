@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>聲波與回聲應用題 — 精選詳解</title>
 <style>
+
   :root{
     --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
     --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
-    --card:#ffffff;
+    --card:#ffffff; --hard:#b0442e;
   }
   *{box-sizing:border-box;}
   body{
     margin:0; padding:32px 16px 60px;
     background:var(--bg); color:var(--ink);
-    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
     line-height:1.85;
   }
   .wrap{max-width:920px; margin:0 auto;}
@@ -22,82 +23,131 @@
     font-size:1.6rem; margin:0 0 4px; color:var(--accent);
     border-bottom:3px solid var(--accent); padding-bottom:10px;
   }
-  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:28px;}
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:20px;}
+
+  .filter-bar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg); padding:10px 0 16px; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .filter-btn{
+    border:1.5px solid var(--line); background:var(--card); color:var(--sub);
+    padding:6px 16px; border-radius:20px; font-size:0.88rem; cursor:pointer;
+    font-family:inherit;
+  }
+  .filter-btn.active{
+    border-color:var(--accent); color:#fff; background:var(--accent); font-weight:700;
+  }
+  .filter-btn.hard-filter.active{background:var(--hard); border-color:var(--hard);}
+  .filter-count{color:var(--sub); font-size:0.85rem; margin-left:auto;}
+
+  .toc-nav{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;}
+  .toc-nav a{
+    display:inline-block; min-width:30px; height:30px; line-height:30px; text-align:center;
+    padding:0 6px;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    color:var(--sub); text-decoration:none; font-size:0.85rem;
+  }
+  .toc-nav a:hover{border-color:var(--accent); color:var(--accent);}
+  .toc-nav a[hidden]{display:none;}
+  .toc-nav a.hard{border-color:var(--hard); color:#fff; background:var(--hard); font-weight:700;}
+
   h2{
-    font-size:1.2rem; margin:40px 0 14px; color:var(--ink);
+    font-size:1.2rem; margin:32px 0 14px; color:var(--ink);
     display:flex; align-items:center; gap:8px;
   }
   h2::before{content:""; width:6px; height:22px; background:var(--accent); border-radius:3px; display:inline-block;}
-  h3.qtitle{
-    font-size:1.02rem; margin:0; color:#fff; background:var(--accent3);
-    padding:10px 16px; border-radius:12px 12px 0 0;
-  }
+
   .qcard{
-    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:20px;
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:14px;
     background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.03);
   }
+  .qcard[data-hard="true"]{border-color:var(--hard);}
+  .qcard[hidden]{display:none;}
+
+  .qhead{
+    padding:5px 16px; display:flex; align-items:center; gap:10px;
+    background:var(--accent3); color:#fff; font-size:0.92rem; font-weight:700;
+  }
+  .qcard[data-hard="true"] .qhead{background:var(--hard);}
+  .hard-badge{
+    background:#fff; color:var(--hard); font-size:0.72rem; font-weight:700;
+    padding:2px 9px; border-radius:20px;
+  }
+  .badge{
+    display:inline-block; background:var(--accent2); color:#fff; font-size:0.78rem;
+    padding:2px 10px; border-radius:20px; margin-left:0; vertical-align:middle;
+  }
+
   .qbody{padding:16px 20px;}
   .qtext{
     background:#fdf6f0; border:1px solid #f0ddc9; border-radius:10px;
     padding:12px 14px; margin-bottom:12px; font-size:0.95rem;
   }
-  .calc-line{
-    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
-    padding:8px 14px; margin:8px 0; font-size:0.96rem;
-  }
-  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
-  .calc-line small{color:var(--sub); display:block; margin-top:4px;}
-  .answer{
-    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
-    padding:10px 16px; margin-top:12px; font-size:1rem; text-align:center;
-  }
-  .answer b{color:var(--accent); font-size:1.1rem;}
-  .warn-box{
-    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
-    padding:12px 16px; margin-top:10px; font-size:0.92rem;
-  }
-  .warn-box b{color:#b0442e;}
-  .note-box{
-    background:#f0f6f2; border:1px solid #cfe4d6; border-radius:10px;
-    padding:12px 16px; margin-top:10px; font-size:0.92rem;
-  }
-  .note-box b{color:var(--accent2);}
   table{
     width:100%; border-collapse:collapse; margin-top:10px; font-size:0.92rem;
     background:var(--card);
   }
-  caption{text-align:left; color:var(--sub); font-size:0.85rem; margin-bottom:8px;}
   th, td{
     border:1px solid var(--line); padding:9px 10px; text-align:center; vertical-align:middle;
   }
   th{background:#f3ede3; color:var(--ink); font-weight:700;}
-  .badge{
-    display:inline-block; background:var(--accent2); color:#fff; font-size:0.78rem;
-    padding:2px 10px; border-radius:20px; margin-left:8px; vertical-align:middle;
-  }
+
   .diagram-box{
     background:#fff; border:1px solid var(--line); border-radius:12px;
     padding:12px; margin:12px 0; overflow-x:auto;
   }
   .diagram-box svg{display:block; margin:0 auto;}
+  .diagram-box img{max-width:100%; display:inline-block; border-radius:6px;}
+  .diagram-box .cap{color:var(--sub); font-size:0.82rem; margin-top:6px; text-align:center;}
 
   .block{
-    border:1px solid var(--line); border-radius:12px; margin:14px 0; overflow:hidden;
+    border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
   }
-  .block-head{
-    padding:8px 14px; font-weight:700; font-size:0.92rem; color:#fff;
-  }
-  .block-body{padding:12px 16px; background:var(--card);}
+  .block-head{padding:7px 14px; font-weight:700; font-size:0.9rem; color:#fff;}
+  .block-body{padding:11px 15px; background:var(--card); font-size:0.93rem;}
   .b-think .block-head{background:var(--accent3);}
   .b-key .block-head{background:var(--accent2);}
   .b-step .block-head{background:var(--accent);}
   .b-mnemonic .block-head{background:#8a6bb0;}
   .b-unit .block-head{background:#b0442e;}
-  .toc{
-    background:var(--card); border:1px solid var(--line); border-radius:14px;
-    padding:16px 20px; margin-bottom:10px; font-size:0.9rem; color:var(--sub);
+  .calc-line{
+    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
+    padding:7px 12px; margin:6px 0; font-size:0.92rem;
   }
-  .toc b{color:var(--ink);}
+  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
+  .calc-line small{color:var(--sub); display:block; margin-top:4px;}
+  .warn-box{
+    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .warn-box b{color:#b0442e;}
+  .note-box{
+    background:#f0f6f2; border:1px solid #cfe4d6; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .note-box b{color:var(--accent2);}
+
+  .answer-box{
+    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
+    padding:9px 14px; margin-top:10px; font-size:0.96rem; text-align:center;
+  }
+  .answer-box b{color:var(--accent); font-size:1.05rem;}
+
+  details.solution{
+    margin-top:14px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  details.solution summary{
+    list-style:none; cursor:pointer; user-select:none;
+    padding:9px 14px; background:#f3ede3; color:var(--ink); font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.solution summary::-webkit-details-marker{display:none;}
+  details.solution summary .chev{margin-left:auto; transition:transform .15s; font-size:0.85rem; color:var(--sub);}
+  details.solution[open] summary .chev{transform:rotate(90deg);}
+  details.solution .sol-body{padding:14px 16px;}
+
 </style>
 </head>
 <body>
@@ -106,14 +156,18 @@
   <h1>聲波與回聲應用題 — 精選詳解</h1>
   <div class="subtitle">觀念辨別 × 回聲測距 × 相對運動 × 臨界安全距離 — 完整計算過程</div>
 
-  <div class="toc">
-    本篇整理了考卷中第 4、5、6、8、9、11、13、14、15、16、19、20、21、24 題，以及兩題課本練習（海豚超聲波、AB 兩種聲波比較），依題型分成五組講解。每題都會列出<b>解題過程</b>與<b>最終答案</b>，最後附<b>總結速查表</b>方便對答案。
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部題目</button>
+    <button class="filter-btn hard-filter" data-filter="hard">只看疑難題</button>
+    <span class="filter-count"></span>
   </div>
+
+  <div class="toc-nav"><a href="#q4">4</a><a href="#q5">5</a><a href="#q9">9</a><a href="#q11">11</a><a href="#q6">6</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q8">8</a><a href="#q13">13</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q24">24</a><a href="#q練習1">練習1</a><a href="#q練習2">練習2</a></div>
 
   <h2>一、觀念辨別題</h2>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 4 題 — 超聲波的應用</h3>
+<div class="qcard" data-hard="false" id="q4">
+    <div class="qhead">第 4 題 — 超聲波的應用</div>
     <div class="qbody">
       <div class="qtext">甲.漁船與潛艇作為偵測魚群位置和海底深度的聲納；乙.蝙蝠飛行；丙.醫院用於檢查人體內患病部位的儀器；丁.碟形對話筒。以上屬於利用超聲波或其回聲者有：</div>
       <table>
@@ -125,13 +179,18 @@
           <tr><td>丁</td><td>碟形對話筒（聚音器）</td><td style="color:#b0442e; font-weight:700;">✗ 否</td></tr>
         </tbody>
       </table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
       <div class="warn-box"><b>易混淆點：</b>碟形對話筒是利用「拋物面反射聚焦」的原理收集<u>人耳聽得到</u>的聲波，並不是超聲波，跟聲納、蝙蝠、醫療超音波用的頻率完全不同。</div>
-      <div class="answer">答案：<b>甲、乙、丙</b></div>
+      <div class="answer-box">答案：<b>甲、乙、丙</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 5 題 — 聲音傳播的敘述</h3>
+<div class="qcard" data-hard="false" id="q5">
+    <div class="qhead">第 5 題 — 聲音傳播的敘述</div>
     <div class="qbody">
       <div class="qtext">空氣中傳聲時，下列敘述正確者有哪些：甲.聲音越大，聲速越快；乙.音調越高，聲速越快；丙.振幅越大，音量越大；丁.在同一介質中，聲波的頻率改變，則波速亦改變；戊.溫度越高，聲速越快。</div>
       <table>
@@ -144,24 +203,34 @@
           <tr><td>戊</td><td>溫度越高，聲速越快</td><td style="color:var(--accent2); font-weight:700;">✓</td><td>空氣中聲速隨溫度升高而變快</td></tr>
         </tbody>
       </table>
-      <div class="answer">答案：<b>丙、戊</b></div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+      <div class="answer-box">答案：<b>丙、戊</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 9 題 — 音叉頻率與週期</h3>
+<div class="qcard" data-hard="false" id="q9">
+    <div class="qhead">第 9 題 — 音叉頻率與週期</div>
     <div class="qbody">
       <div class="qtext">將一頻率為 100 赫茲的振動中之音叉浸入水中，若空氣中聲速為 340 公尺/秒，水中聲速為 1500 公尺/秒，則聲音在水中的週期為多少秒？</div>
-      <div class="calc-line"><span class="idx">關鍵觀念</span>週期是由「聲源振動」決定的，只跟頻率有關：T = 1/f
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">關鍵觀念</span>週期是由「聲源振動」決定的，只跟頻率有關：T = 1/f
         <small>換到不同介質（水、空氣）時，聲速跟波長都會變，但頻率、週期不會變 — 這題給的兩個聲速數字是干擾項，完全不需要用到！</small>
       </div>
       <div class="calc-line"><span class="idx">計算</span>T = 1 ÷ 100 = 0.01 秒</div>
-      <div class="answer">答案：<b>0.01 秒</b></div>
+      <div class="answer-box">答案：<b>0.01 秒</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 11 題 — 振幅、頻率與聲速的關係</h3>
+<div class="qcard" data-hard="false" id="q11">
+    <div class="qhead">第 11 題 — 振幅、頻率與聲速的關係</div>
     <div class="qbody">
       <div class="qtext">敲擊音叉後，音叉的振幅及頻率的關係如表，則聲速最快的音叉是：</div>
       <table>
@@ -171,38 +240,54 @@
           <tr><td>頻率（赫）</td><td>200</td><td>300</td><td>400</td><td>500</td><td>200</td></tr>
         </tbody>
       </table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
       <div class="calc-line"><span class="idx">關鍵觀念</span>聲速只由「介質種類 + 溫度」決定，跟聲源本身的振幅、頻率完全無關</div>
       <div class="warn-box"><b>易錯提醒：</b>很多人看到丁的頻率最高（500赫）就直覺選丁，但頻率越高只代表音調越高，<u>不代表聲速越快</u>。只要五個音叉都在同一種介質、同溫度下被敲響，它們的聲速就完全相同。</div>
-      <div class="answer">答案：<b>五個音叉聲速皆相同</b>（甲＝乙＝丙＝丁＝戊，無法從表格判斷「誰最快」）</div>
+      <div class="answer-box">答案：<b>五個音叉聲速皆相同</b>（甲＝乙＝丙＝丁＝戊，無法從表格判斷「誰最快」）</div>
+        </div>
+      </details>
     </div>
   </div>
 
+
   <h2>二、回聲測距題（聲源與觀察者都靜止）</h2>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 6 題 — 枯井深度</h3>
+<div class="qcard" data-hard="false" id="q6">
+    <div class="qhead">第 6 題 — 枯井深度</div>
     <div class="qbody">
       <div class="qtext">已知聲音在 0°C 的空氣中傳播速率為 331 公尺/秒，溫度每升高 1°C，其速率增加 0.6 公尺/秒。曉研在井口向內喊話，經過 0.20 秒後聽到回聲，若當時井中氣溫維持在 15°C，則曉研測得的枯井深度為多少公尺？</div>
-      <div class="calc-line"><span class="idx">①</span>先求 15°C 時的聲速：v = 331 + 0.6×15 = 331 + 9 = <b>340 m/s</b></div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">①</span>先求 15°C 時的聲速：v = 331 + 0.6×15 = 331 + 9 = <b>340 m/s</b></div>
       <div class="calc-line"><span class="idx">②</span>0.20 秒是「喊話 → 聽到回聲」的<b>來回</b>時間，單程時間 = 0.20 ÷ 2 = 0.10 秒
         <small>回聲測距題的通用公式：距離 = 聲速 ×（總時間 ÷ 2）</small>
       </div>
       <div class="calc-line"><span class="idx">③</span>枯井深度 = 340 × 0.10 = 34 公尺</div>
-      <div class="answer">答案：<b>34 公尺</b></div>
+      <div class="answer-box">答案：<b>34 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 14 題 — 聽到回聲的最短距離</h3>
+<div class="qcard" data-hard="false" id="q14">
+    <div class="qhead">第 14 題 — 聽到回聲的最短距離</div>
     <div class="qbody">
       <div class="qtext">原聲與回聲至少要相隔 0.1 秒，人耳才能聽到回聲，則在氣溫 15°C 時（聲速為 340 公尺/秒），欲聽到回聲，聲源至少要距離障礙物多少公尺？</div>
-      <div class="calc-line"><span class="idx">計算</span>距離 = 聲速 ×（時間 ÷ 2）= 340 × (0.1 ÷ 2) = 340 × 0.05 = 17 公尺</div>
-      <div class="answer">答案：<b>17 公尺</b></div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">計算</span>距離 = 聲速 ×（時間 ÷ 2）= 340 × (0.1 ÷ 2) = 340 × 0.05 = 17 公尺</div>
+      <div class="answer-box">答案：<b>17 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 15 題 — 空氣與海水兩路徑的時間差</h3>
+<div class="qcard" data-hard="false" id="q15">
+    <div class="qhead">第 15 題 — 空氣與海水兩路徑的時間差</div>
     <div class="qbody">
       <div class="qtext">靜止在海面上的甲船發出聲波訊號，訊號同時由空氣及海水以直線傳至同樣靜止在海面上的乙船，如附圖所示。在空氣中的聲速為 340 m/s，在海水中的聲速為 1700 m/s，則乙船先後接收到上述兩個聲波訊號的時間差為多少秒？</div>
 
@@ -216,50 +301,45 @@
               <path d="M8,0 L0,4 L8,8 Z" fill="#6b6058"/>
             </marker>
           </defs>
-
-          <!-- 680m measurement -->
           <path d="M120,40 L560,40" stroke="#6b6058" stroke-width="1.5" marker-end="url(#dEnd)" marker-start="url(#dStart)"/>
           <text x="340" y="28" font-size="16" font-weight="700" text-anchor="middle" fill="#2b2420">680m</text>
-
-          <!-- sea surface line -->
           <line x1="20" y1="110" x2="660" y2="110" stroke="#2b2420" stroke-width="1.5"/>
-
-          <!-- boat 甲 -->
           <path d="M75,90 L165,90 L150,110 L90,110 Z" fill="#9a9a9a" stroke="#2b2420" stroke-width="1.5"/>
           <rect x="105" y="76" width="30" height="16" fill="#e4dcd0" stroke="#2b2420"/>
           <text x="120" y="70" font-size="16" font-weight="700" text-anchor="middle" fill="#2b2420">甲</text>
           <text x="120" y="135" font-size="15" text-anchor="middle" fill="#2b2420">發射器</text>
-
-          <!-- boat 乙 -->
           <path d="M515,90 L605,90 L590,110 L530,110 Z" fill="#9a9a9a" stroke="#2b2420" stroke-width="1.5"/>
           <rect x="545" y="76" width="30" height="16" fill="#e4dcd0" stroke="#2b2420"/>
           <text x="560" y="70" font-size="16" font-weight="700" text-anchor="middle" fill="#2b2420">乙</text>
           <text x="560" y="135" font-size="15" text-anchor="middle" fill="#2b2420">接收器</text>
-
-          <!-- 海水 label -->
           <text x="340" y="165" font-size="17" font-weight="700" text-anchor="middle" fill="#4a6b9a">海水</text>
         </svg>
       </div>
-
-      <div class="calc-line"><span class="idx">①</span>經空氣傳到的時間：t空 = 680 ÷ 340 = 2 秒</div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">①</span>經空氣傳到的時間：t空 = 680 ÷ 340 = 2 秒</div>
       <div class="calc-line"><span class="idx">②</span>經海水傳到的時間：t海 = 680 ÷ 1700 = 0.4 秒</div>
       <div class="calc-line"><span class="idx">③</span>時間差 = 2 − 0.4 = 1.6 秒
         <small>這題兩個訊號都是「單程直接傳播」，不是回聲，所以不用除以 2</small>
       </div>
-      <div class="answer">答案：<b>1.6 秒</b></div>
+      <div class="answer-box">答案：<b>1.6 秒</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 16 題 — 高空彈跳繩長</h3>
+<div class="qcard" data-hard="false" id="q16">
+    <div class="qhead">第 16 題 — 高空彈跳繩長</div>
     <div class="qbody">
       <div class="qtext">佐助和鳴人玩高空彈跳，橋距水面 70 公尺，佐助先跳，他到最低點時大叫一聲：沒碰到水啦！聲音經 0.2 秒傳至鳴人耳中。若鳴人想在跳下時接碰到水面，應將彈跳繩至少再調長多少公尺（當時聲速 340 公尺/秒）？</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">這題的「聲音」不是回聲，是佐助在最低點直接對著鳴人喊話，聲音只走「單程」。喊話傳到耳朵的距離，其實就是佐助當時離橋面（鳴人所在處）的距離，也就是佐助的繩長。算出佐助的繩長，就能跟橋高 70 公尺比較差多少。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -272,7 +352,6 @@
           </table>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -281,39 +360,46 @@
           <div class="calc-line"><span class="idx">③</span>鳴人想要碰到水面，繩長必須是 70 公尺，比佐助的 68 公尺再調長 2 公尺</div>
         </div>
       </div>
-
       <div class="block b-mnemonic">
         <div class="block-head">💡 記憶技巧</div>
         <div class="block-body">「聲音傳的距離＝聲源到耳朵的距離」— 只要是單程直接傳播（不是回聲），聲速×時間 算出來的就是兩者的直線距離，可以直接拿來跟題目給的其他長度比較。</div>
       </div>
-
-      <div class="answer">答案：<b>2 公尺</b></div>
+      <div class="answer-box">答案：<b>2 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
+
 
   <h2>三、移動觀察者／發射源的進階題</h2>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 8 題 — 已知時間求氣溫</h3>
+<div class="qcard" data-hard="false" id="q8">
+    <div class="qhead">第 8 題 — 已知時間求氣溫</div>
     <div class="qbody">
       <div class="qtext">若聲速每秒以 331＋0.6T（T 表示攝氏溫度）傳播，BABYMONSTER 對著另一個山頭的張大頭唱情歌，從開口到張大頭聽到剛好間隔兩秒，若兩山頭間隔 680 公尺，則當時的氣溫約為多少°C？</div>
-      <div class="calc-line"><span class="idx">關鍵</span>這是「單程」直接傳播（不是回聲），2 秒就是聲音走完 680 公尺的時間</div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">關鍵</span>這是「單程」直接傳播（不是回聲），2 秒就是聲音走完 680 公尺的時間</div>
       <div class="calc-line"><span class="idx">①</span>v = 680 ÷ 2 = 340 m/s</div>
       <div class="calc-line"><span class="idx">②</span>331 + 0.6T = 340 → 0.6T = 9 → T = 15</div>
-      <div class="answer">答案：<b>15°C</b></div>
+      <div class="answer-box">答案：<b>15°C</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 13 題 — 鐵軌與空氣的雙重傳聲</h3>
+<div class="qcard" data-hard="false" id="q13">
+    <div class="qhead">第 13 題 — 鐵軌與空氣的雙重傳聲</div>
     <div class="qbody">
       <div class="qtext">大頭將耳朵貼在鐵軌上，志玲由鐵軌的另外一端敲擊鐵軌。大頭共聽到兩次聲音，第一次由鐵軌傳來，第二次由空氣傳來。若兩次聲音的間隔相差 4 秒，大頭與志玲的距離為多少公尺？（空氣中聲速 350 m/s，鐵軌中聲速 2800 m/s）</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">同一次敲擊聲，同時往兩種介質（鐵軌、空氣）傳播，鐵軌傳得快、空氣傳得慢，所以大頭會先後聽到兩次。兩次抵達的時間差，就是「慢的時間」減「快的時間」，等於題目給的 4 秒。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -325,9 +411,35 @@
             </tbody>
           </table>
           <div class="warn-box"><b>易錯提醒：</b>距離 d 是同一個，兩條路徑走的是<u>同樣的直線距離</u>，只是介質不同、速度不同，不要誤以為要用不同的距離。</div>
+          <div class="diagram-box">
+            <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+              <defs>
+                <marker id="q13a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#4a7a6b"/></marker>
+                <marker id="q13b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#c0704a"/></marker>
+                <marker id="q13c" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M4,0 L4,8" stroke="#6b6058" stroke-width="1"/></marker>
+              </defs>
+              <text x="10" y="15" font-size="12" fill="#6b6058">敲擊時刻</text>
+              <line x1="20" y1="25" x2="20" y2="125" stroke="#6b6058" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <text x="20" y="140" font-size="12" text-anchor="middle" fill="#6b6058">t=0</text>
+
+              <!-- 鐵軌：先到，箭頭短 -->
+              <line x1="20" y1="55" x2="220" y2="55" stroke="#4a7a6b" stroke-width="4" marker-end="url(#q13a)"/>
+              <text x="120" y="45" font-size="13" text-anchor="middle" fill="#4a7a6b">鐵軌傳聲（快，先到）</text>
+              <text x="225" y="59" font-size="13" fill="#4a7a6b">t鐵</text>
+
+              <!-- 空氣：後到，箭頭長 -->
+              <line x1="20" y1="95" x2="560" y2="95" stroke="#c0704a" stroke-width="4" marker-end="url(#q13b)"/>
+              <text x="120" y="118" font-size="13" text-anchor="middle" fill="#c0704a">空氣傳聲（慢，後到）</text>
+              <text x="565" y="99" font-size="13" fill="#c0704a">t空</text>
+
+              <!-- 差距 4秒 -->
+              <line x1="220" y1="55" x2="220" y2="95" stroke="#6b6058" stroke-width="1" stroke-dasharray="2 3"/>
+              <path d="M230,55 L560,55" stroke="#6b6058" stroke-width="1" marker-start="url(#q13c)" marker-end="url(#q13c)"/>
+              <text x="395" y="70" font-size="13" font-weight="700" text-anchor="middle" fill="#2b2420">t空 − t鐵 ＝ 4 秒</text>
+            </svg>
+          </div>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -337,26 +449,27 @@
           <div class="calc-line"><span class="idx">④</span>d = 4 × 2800 ÷ 7 = 1600 公尺</div>
         </div>
       </div>
-
       <div class="block b-unit">
         <div class="block-head">⚠️ 單位提醒</div>
         <div class="block-body">通分時要小心找對「兩個分母的公倍數」（350 和 2800，2800 剛好是 350 的 8 倍），算錯公倍數整題就會錯。</div>
       </div>
-
-      <div class="answer">答案：<b>1600 公尺</b></div>
+      <div class="answer-box">答案：<b>1600 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 19 題 — 光、震動、聲音的三段式時間差</h3>
+<div class="qcard" data-hard="false" id="q19">
+    <div class="qhead">第 19 題 — 光、震動、聲音的三段式時間差</div>
     <div class="qbody">
       <div class="qtext">演習時，指揮官眼睛看到敵方陣地爆炸，經過一段時間後感覺到地面傳來振動，再經 8 秒鐘才聽到爆炸聲。聲速為 345 m/s，地面震動傳播速率為 3105 m/s，則指揮官與敵方陣地的距離約為多少公尺？</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">爆炸同時發出三種訊號：光、地面震動、聲音，三者速度差很多，所以指揮官會依序感覺到。光速遠遠大於另外兩者，幾乎是瞬間看到，時間可以直接忽略；真正要比較的是「地面震動」跟「聲音」誰先誰後、差了幾秒。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -368,9 +481,34 @@
               <tr><td>聲音</td><td>345 m/s</td><td>耳朵聽到</td><td>第 3 個（晚 8 秒）</td></tr>
             </tbody>
           </table>
+          <div class="diagram-box">
+            <svg viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+              <defs>
+                <marker id="q19s" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M4,0 L4,8" stroke="#2b2420" stroke-width="1"/></marker>
+                <marker id="q19e" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M4,0 L4,8" stroke="#2b2420" stroke-width="1"/></marker>
+              </defs>
+              <line x1="20" y1="70" x2="620" y2="70" stroke="#6b6058" stroke-width="1.5"/>
+              <path d="M620,70 L610,64 L610,76 Z" fill="#6b6058"/>
+              <text x="625" y="74" font-size="12" fill="#6b6058">時間</text>
+
+              <circle cx="40" cy="70" r="5" fill="#4a6b9a"/>
+              <text x="40" y="45" font-size="13" text-anchor="middle" fill="#4a6b9a">💡 光</text>
+              <text x="40" y="95" font-size="12" text-anchor="middle" fill="#6b6058">t≈0（幾乎瞬間）</text>
+
+              <circle cx="140" cy="70" r="5" fill="#4a7a6b"/>
+              <text x="140" y="45" font-size="13" text-anchor="middle" fill="#4a7a6b">〰️ 地面震動</text>
+              <text x="140" y="95" font-size="12" text-anchor="middle" fill="#6b6058">t震＝d/3105</text>
+
+              <circle cx="500" cy="70" r="5" fill="#c0704a"/>
+              <text x="500" y="45" font-size="13" text-anchor="middle" fill="#c0704a">🔊 聲音</text>
+              <text x="500" y="95" font-size="12" text-anchor="middle" fill="#6b6058">t聲＝d/345</text>
+
+              <path d="M140,105 L500,105" stroke="#2b2420" stroke-width="1" marker-start="url(#q19s)" marker-end="url(#q19e)"/>
+              <text x="320" y="122" font-size="13" font-weight="700" text-anchor="middle" fill="#2b2420">t聲 − t震 ＝ 8 秒</text>
+            </svg>
+          </div>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -380,26 +518,27 @@
           <div class="calc-line"><span class="idx">④</span>d = 3105 公尺</div>
         </div>
       </div>
-
       <div class="block b-mnemonic">
         <div class="block-head">💡 記憶技巧</div>
         <div class="block-body">遇到「光 / 地面震動 / 聲音」三段式題目，先判斷哪個可以忽略（通常是光），剩下兩個用「快的時間」減「慢的時間」＝題目給的秒數差，列式求解。</div>
       </div>
-
-      <div class="answer">答案：<b>3105 公尺</b></div>
+      <div class="answer-box">答案：<b>3105 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 20 題 — 船朝懸崖前進的回聲測距</h3>
+<div class="qcard" data-hard="false" id="q20">
+    <div class="qhead">第 20 題 — 船朝懸崖前進的回聲測距</div>
     <div class="qbody">
       <div class="qtext">某船以等速度 34 m/s 朝懸崖前進，在船上的人於鳴汽笛後經 6 秒，始聽到由懸崖反射之回聲，若當時聲音速度為 337 m/s，求在船上的人剛好鳴汽笛時，船與懸崖之距離多少公尺？</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">這是「移動中發出聲音、又移動中聽回聲」的題型，船跟聲波都在動，不能只算單程。最快的算法是不去拆成兩段時間，而是直接算「聲波在整段時間裡總共走了多遠」，再跟船移動的距離配對起來。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -411,9 +550,34 @@
               <tr><td>船的位置</td><td>改變</td><td>船朝懸崖前進，會越來越近</td></tr>
             </tbody>
           </table>
+          <div class="diagram-box">
+            <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+              <defs>
+                <marker id="q20a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#4a6b9a"/></marker>
+                <marker id="q20b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#c0704a"/></marker>
+              </defs>
+              <!-- 懸崖 -->
+              <rect x="580" y="20" width="16" height="110" fill="#2b2420"/>
+              <text x="588" y="14" font-size="12" text-anchor="middle" fill="#2b2420">懸崖</text>
+
+              <!-- t=0 船位置 -->
+              <circle cx="60" cy="55" r="6" fill="#4a6b9a"/>
+              <text x="60" y="40" font-size="12" text-anchor="middle" fill="#4a6b9a">鳴笛當下（t=0）</text>
+              <path d="M75,55 L575,55" stroke="#4a6b9a" stroke-width="2" marker-end="url(#q20a)"/>
+              <text x="325" y="70" font-size="13" font-weight="700" text-anchor="middle" fill="#4a6b9a">原始距離 d</text>
+
+              <!-- t=6 船位置（靠近了204m） -->
+              <circle cx="264" cy="105" r="6" fill="#c0704a"/>
+              <text x="264" y="145" font-size="12" text-anchor="middle" fill="#c0704a">6秒後（靠近 204m）</text>
+              <path d="M279,105 L575,105" stroke="#c0704a" stroke-width="2" marker-end="url(#q20b)"/>
+              <text x="425" y="120" font-size="13" font-weight="700" text-anchor="middle" fill="#c0704a">回程距離 d − 204</text>
+
+              <path d="M60,55 L264,105" stroke="#6b6058" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="140" y="90" font-size="11" fill="#6b6058">船前進 204m</text>
+            </svg>
+          </div>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -426,21 +590,23 @@
           <div class="calc-line"><span class="idx">⑤</span>2d = 2226　→　d = 1113 公尺</div>
         </div>
       </div>
-
-      <div class="answer">答案：<b>1113 公尺</b></div>
+      <div class="answer-box">答案：<b>1113 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 21 題 — 船遠離山壁的回聲測距 <span class="badge">對照第20題</span></h3>
+<div class="qcard" data-hard="false" id="q21">
+    <div class="qhead">第 21 題 — 船遠離山壁的回聲測距 <span class="badge">對照第20題</span></div>
     <div class="qbody">
       <div class="qtext">已知聲速 340 m/s，某船停於山壁前，今鳴放汽笛並同時以 15 m/s 的速度等速駛離山壁，6 秒後聽到山壁傳來的回聲。則船鳴放汽笛的位置與山壁間的距離為多少公尺？</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">跟第 20 題是同一套方法（聲波總路徑），差別只在船這次是「遠離」山壁，所以聲波回程時要追一段更長的路才追得上船。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -452,9 +618,34 @@
             </tbody>
           </table>
           <div class="warn-box"><b>易錯提醒：</b>船「靠近」障礙物時，回程距離要用「原始距離 − 船移動距離」；船「遠離」障礙物時，回程距離要用「原始距離 ＋ 船移動距離」。方向看錯，正負號就會錯，答案差很多。</div>
+          <div class="diagram-box">
+            <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+              <defs>
+                <marker id="q21a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#4a6b9a"/></marker>
+                <marker id="q21b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#c0704a"/></marker>
+              </defs>
+              <!-- 山壁 -->
+              <rect x="20" y="20" width="16" height="110" fill="#2b2420"/>
+              <text x="28" y="14" font-size="12" text-anchor="middle" fill="#2b2420">山壁</text>
+
+              <!-- t=0 船位置 -->
+              <circle cx="140" cy="55" r="6" fill="#4a6b9a"/>
+              <text x="140" y="40" font-size="12" text-anchor="middle" fill="#4a6b9a">鳴笛當下（t=0）</text>
+              <path d="M50,55 L133,55" stroke="#4a6b9a" stroke-width="2" marker-end="url(#q21a)"/>
+              <text x="90" y="70" font-size="12" font-weight="700" text-anchor="middle" fill="#4a6b9a">d</text>
+
+              <!-- t=6 船位置（遠離了90m） -->
+              <circle cx="330" cy="105" r="6" fill="#c0704a"/>
+              <text x="330" y="145" font-size="12" text-anchor="middle" fill="#c0704a">6秒後（遠離 90m）</text>
+              <path d="M50,105 L323,105" stroke="#c0704a" stroke-width="2" marker-end="url(#q21b)"/>
+              <text x="185" y="120" font-size="13" font-weight="700" text-anchor="middle" fill="#c0704a">回程距離 d ＋ 90</text>
+
+              <path d="M140,55 L330,105" stroke="#6b6058" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="245" y="90" font-size="11" fill="#6b6058">船後退 90m</text>
+            </svg>
+          </div>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -465,21 +656,23 @@
           <div class="calc-line"><span class="idx">⑤</span>2d = 1950　→　d = 975 公尺</div>
         </div>
       </div>
-
-      <div class="answer">答案：<b>975 公尺</b></div>
+      <div class="answer-box">答案：<b>975 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <div class="qcard">
-    <h3 class="qtitle">第 24 題 — 烏龍計時員</h3>
+<div class="qcard" data-hard="false" id="q24">
+    <div class="qhead">第 24 題 — 烏龍計時員</div>
     <div class="qbody">
       <div class="qtext">小明在學校運動會中，發現一個 120 公尺短跑的烏龍計時員。他竟然是聽到槍聲後，才按下馬錶，當時聲速約為 320 公尺/秒。請問：選手真正的跑步時間約【增加 or 減少】多少秒？（計時員站在終點、鳴槍者在起點）</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">計時員「開始計時」跟「停止計時」這兩個動作，一個有延遲、一個沒有延遲，先分別看這兩個時間點各是怎麼決定的，就能知道整段錶上時間跟真實時間差在哪裡。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -490,9 +683,39 @@
               <tr><td>按停馬錶（結束）</td><td>看到選手衝線</td><td>不延遲（用眼睛看，光速視為瞬間）</td></tr>
             </tbody>
           </table>
+          <div class="diagram-box">
+            <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" width="100%" height="auto">
+              <defs>
+                <marker id="q24s" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M4,0 L4,8" stroke="#2b2420" stroke-width="1"/></marker>
+                <marker id="q24e" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M4,0 L4,8" stroke="#2b2420" stroke-width="1"/></marker>
+              </defs>
+              <text x="10" y="15" font-size="12" fill="#6b6058">時間軸</text>
+              <line x1="20" y1="25" x2="620" y2="130" stroke="none"/>
+
+              <!-- 真實時間軸（上排） -->
+              <text x="20" y="35" font-size="12" fill="#6b6058">真實情況：</text>
+              <line x1="120" y1="45" x2="580" y2="45" stroke="#4a7a6b" stroke-width="4"/>
+              <circle cx="120" cy="45" r="5" fill="#4a7a6b"/>
+              <text x="120" y="30" font-size="12" text-anchor="middle" fill="#4a7a6b">真正開槍／起跑</text>
+              <circle cx="580" cy="45" r="5" fill="#4a7a6b"/>
+              <text x="580" y="30" font-size="12" text-anchor="middle" fill="#4a7a6b">選手真正抵達</text>
+
+              <!-- 計時員錶上時間軸（下排） -->
+              <text x="20" y="90" font-size="12" fill="#c0704a">計時員的錶：</text>
+              <line x1="170" y1="100" x2="580" y2="100" stroke="#c0704a" stroke-width="4"/>
+              <circle cx="170" cy="100" r="5" fill="#c0704a"/>
+              <text x="170" y="120" font-size="12" text-anchor="middle" fill="#c0704a">聽到槍聲才按下</text>
+              <circle cx="580" cy="100" r="5" fill="#c0704a"/>
+              <text x="580" y="120" font-size="12" text-anchor="middle" fill="#c0704a">看到衝線立刻按停</text>
+
+              <!-- 延遲標示 -->
+              <line x1="120" y1="45" x2="120" y2="100" stroke="#6b6058" stroke-width="1" stroke-dasharray="2 3"/>
+              <path d="M120,150 L170,150" stroke="#2b2420" stroke-width="1" marker-start="url(#q24s)" marker-end="url(#q24e)"/>
+              <text x="145" y="145" font-size="12" font-weight="700" text-anchor="middle" fill="#2b2420">延遲 0.375 秒</text>
+            </svg>
+          </div>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -502,28 +725,30 @@
           <div class="calc-line"><span class="idx">④</span>反過來說，選手真正的跑步時間要比錶上顯示的時間<b>增加</b> 0.375 秒</div>
         </div>
       </div>
-
       <div class="block b-mnemonic">
         <div class="block-head">💡 記憶技巧</div>
         <div class="block-body">「起點才有延遲，終點沒有延遲」— 只要計時的起點依賴「聽到」某個從遠處傳來的訊號，錶就會晚啟動；只要終點是用「看到」判斷，就幾乎沒有延遲。</div>
       </div>
-
-      <div class="answer">答案：<b>增加 0.375 秒</b></div>
+      <div class="answer-box">答案：<b>增加 0.375 秒</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
+
   <h2>四、臨界安全距離題（與蝙蝠題同類型）</h2>
 
-  <div class="qcard">
-    <h3 class="qtitle">課本練習 1 — 海豚超聲波避障</h3>
+<div class="qcard" data-hard="false" id="q練習1">
+    <div class="qhead">課本練習 1 — 海豚超聲波避障</div>
     <div class="qbody">
       <div class="qtext">海豚所發出的超聲波可能用來幫助它感覺四周環境和距離。若超聲波在水中傳播速率 1010 m/s，而海豚接收到反射波後反應時間為 0.1 秒，則當海豚發出超聲波，並以每秒 10 公尺等速度直線游泳時，必須與障礙物保持多少公尺才不會撞到？</div>
-
-      <div class="block b-think">
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-think">
         <div class="block-head">💭 解題思路</div>
         <div class="block-body">這題跟「蝙蝠超音波避障」是完全一樣的題型：海豚一邊發出超聲波一邊往前游，臨界（最小安全）情況下，海豚聽到回聲那一刻，離障礙物剩下的距離，必須剛好等於反應時間內牠會游的距離。</div>
       </div>
-
       <div class="block b-key">
         <div class="block-head">🔑 觀念釐清</div>
         <div class="block-body">
@@ -536,7 +761,6 @@
           </table>
         </div>
       </div>
-
       <div class="block b-step">
         <div class="block-head">📐 解題步驟</div>
         <div class="block-body">
@@ -546,61 +770,99 @@
           <div class="calc-line"><span class="idx">④</span>移項：1020 = 1000X　→　X = 1.02 公尺</div>
         </div>
       </div>
-
       <div class="block b-mnemonic">
         <div class="block-head">💡 記憶技巧</div>
         <div class="block-body">凡是「一邊發出聲波、一邊前進，求最小安全距離」的題型（蝙蝠、海豚都一樣），公式都長這樣：(X＋反應距離)/聲速 = (X−反應距離)/移動速度。</div>
       </div>
-
-      <div class="answer">答案：<b>1.02 公尺</b></div>
+      <div class="answer-box">答案：<b>1.02 公尺</b></div>
       <div class="note-box"><b>延伸連結：</b>完整的圖解版本可以參考另一份講義 <a href="蝙蝠超音波測距講義.html" style="color:var(--accent3); text-decoration:underline;">蝙蝠超音波測距講義.html</a>，裡面有時間軸示意圖，把「X+反應距離」「X−反應距離」的來由畫得很清楚。</div>
+        </div>
+      </details>
     </div>
   </div>
 
+
   <h2>五、雙介質聲速比較題</h2>
 
-  <div class="qcard">
-    <h3 class="qtitle">課本練習 2 — A、B 兩種聲波</h3>
+<div class="qcard" data-hard="false" id="q練習2">
+    <div class="qhead">課本練習 2 — A、B 兩種聲波</div>
     <div class="qbody">
       <div class="qtext">附表為 A、B 兩種聲波的傳播速率，若此兩種聲波分別從甲地傳到乙地，但 B 聲波比 A 聲波快一秒到達，則甲地跟乙地距離為多少公尺？</div>
       <table>
         <thead><tr><th>聲波</th><th>A</th><th>B</th></tr></thead>
         <tbody><tr><td>速率(m/s)</td><td>350</td><td>400</td></tr></tbody>
       </table>
-      <div class="calc-line"><span class="idx">設</span>甲地到乙地的距離為 d</div>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="calc-line"><span class="idx">設</span>甲地到乙地的距離為 d</div>
       <div class="calc-line"><span class="idx">①</span>A 波較慢，花的時間較長：t_A = d/350；B 波較快：t_B = d/400</div>
       <div class="calc-line"><span class="idx">②</span>列式：t_A − t_B = 1　→　d/350 − d/400 = 1</div>
       <div class="calc-line"><span class="idx">③</span>通分（2800 = 350×8 = 400×7）：8d/2800 − 7d/2800 = d/2800 = 1</div>
       <div class="calc-line"><span class="idx">④</span>d = 2800 公尺</div>
-      <div class="answer">答案：<b>2800 公尺</b></div>
+      <div class="answer-box">答案：<b>2800 公尺</b></div>
+        </div>
+      </details>
     </div>
   </div>
 
-  <h2>總結速查表</h2>
+
+  <h2>答案總覽</h2>
   <div class="qcard"><div class="qbody">
     <table>
-      <thead><tr><th>題號</th><th>題型</th><th>答案</th></tr></thead>
+      <thead><tr><th>題號</th><th>答案</th></tr></thead>
       <tbody>
-        <tr><td>4</td><td>超聲波應用辨別</td><td>甲、乙、丙</td></tr>
-        <tr><td>5</td><td>聲音敘述辨別</td><td>丙、戊</td></tr>
-        <tr><td>6</td><td>回聲測距（枯井）</td><td>34 公尺</td></tr>
-        <tr><td>8</td><td>單程傳播求溫度</td><td>15°C</td></tr>
-        <tr><td>9</td><td>週期與介質無關</td><td>0.01 秒</td></tr>
-        <tr><td>11</td><td>聲速與振幅頻率無關</td><td>五個音叉皆相同</td></tr>
-        <tr><td>13</td><td>雙介質傳聲時間差</td><td>1600 公尺</td></tr>
-        <tr><td>14</td><td>最短回聲距離</td><td>17 公尺</td></tr>
-        <tr><td>15</td><td>空氣海水傳聲時間差</td><td>1.6 秒</td></tr>
-        <tr><td>16</td><td>回聲求繩長差</td><td>2 公尺</td></tr>
-        <tr><td>19</td><td>光、震動、聲音三段時間差</td><td>3105 公尺</td></tr>
-        <tr><td>20</td><td>船靠近懸崖回聲測距</td><td>1113 公尺</td></tr>
-        <tr><td>21</td><td>船遠離山壁回聲測距</td><td>975 公尺</td></tr>
-        <tr><td>24</td><td>計時延遲問題</td><td>增加 0.375 秒</td></tr>
-        <tr><td>練習1</td><td>海豚臨界安全距離</td><td>1.02 公尺</td></tr>
-        <tr><td>練習2</td><td>雙聲速比較</td><td>2800 公尺</td></tr>
+        <tr><td>4</td><td>甲、乙、丙</td></tr>
+<tr><td>5</td><td>丙、戊</td></tr>
+<tr><td>6</td><td>34 公尺</td></tr>
+<tr><td>8</td><td>15°C</td></tr>
+<tr><td>9</td><td>0.01 秒</td></tr>
+<tr><td>11</td><td>五個音叉聲速皆相同</td></tr>
+<tr><td>13</td><td>1600 公尺</td></tr>
+<tr><td>14</td><td>17 公尺</td></tr>
+<tr><td>15</td><td>1.6 秒</td></tr>
+<tr><td>16</td><td>2 公尺</td></tr>
+<tr><td>19</td><td>3105 公尺</td></tr>
+<tr><td>20</td><td>1113 公尺</td></tr>
+<tr><td>21</td><td>975 公尺</td></tr>
+<tr><td>24</td><td>增加 0.375 秒</td></tr>
+<tr><td>練習1</td><td>1.02 公尺</td></tr>
+<tr><td>練習2</td><td>2800 公尺</td></tr>
       </tbody>
     </table>
   </div></div>
 
 </div>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.qcard[id]');
+  const navLinks = document.querySelectorAll('.toc-nav a');
+  const countEl = document.querySelector('.filter-count');
+
+  function updateCount(){
+    const total = cards.length;
+    const hard = document.querySelectorAll('.qcard[data-hard="true"]').length;
+    countEl.textContent = `共 ${total} 題，疑難題 ${hard} 題`;
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(mode==='all'){ c.hidden = false; }
+        else { c.hidden = c.dataset.hard !== 'true'; }
+      });
+      navLinks.forEach(a=>{
+        if(mode==='all'){ a.hidden = false; }
+        else { a.hidden = !a.classList.contains('hard'); }
+      });
+    });
+  });
+
+  updateCount();
+</script>
 </body>
 </html>
