@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多項式相除的商式和餘式 — 詳解</title>
+<style>
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
+    --card:#ffffff; --hard:#b0442e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 16px 60px;
+    background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
+    line-height:1.85;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  h1{
+    font-size:1.6rem; margin:0 0 4px; color:var(--accent);
+    border-bottom:3px solid var(--accent); padding-bottom:10px;
+  }
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:20px;}
+
+  .filter-bar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg); padding:10px 0 16px; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .filter-btn{
+    border:1.5px solid var(--line); background:var(--card); color:var(--sub);
+    padding:6px 16px; border-radius:20px; font-size:0.88rem; cursor:pointer;
+    font-family:inherit;
+  }
+  .filter-btn.active{
+    border-color:var(--accent); color:#fff; background:var(--accent); font-weight:700;
+  }
+  .filter-btn.hard-filter.active{background:var(--hard); border-color:var(--hard);}
+  .filter-count{color:var(--sub); font-size:0.85rem; margin-left:auto;}
+
+  .toc-nav{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;}
+  .toc-nav a{
+    display:inline-block; min-width:30px; height:30px; line-height:30px; text-align:center;
+    padding:0 6px;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    color:var(--sub); text-decoration:none; font-size:0.85rem;
+  }
+  .toc-nav a:hover{border-color:var(--accent); color:var(--accent);}
+  .toc-nav a[hidden]{display:none;}
+  .toc-nav a.hard{border-color:var(--hard); color:#fff; background:var(--hard); font-weight:700;}
+
+  h2{
+    font-size:1.2rem; margin:32px 0 14px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  h2::before{content:""; width:6px; height:22px; background:var(--accent); border-radius:3px; display:inline-block;}
+
+  .qcard{
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:14px;
+    background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.03);
+  }
+  .qcard[data-hard="true"]{border-color:var(--hard);}
+  .qcard[hidden]{display:none;}
+
+  .qhead{
+    padding:5px 16px; display:flex; align-items:center; gap:10px;
+    background:var(--accent3); color:#fff; font-size:0.92rem; font-weight:700;
+  }
+  .qcard[data-hard="true"] .qhead{background:var(--hard);}
+  .hard-badge{
+    background:#fff; color:var(--hard); font-size:0.72rem; font-weight:700;
+    padding:2px 9px; border-radius:20px;
+  }
+
+  .qbody{padding:16px 20px;}
+  .qtext{
+    background:#fdf6f0; border:1px solid #f0ddc9; border-radius:10px;
+    padding:12px 14px; margin-bottom:12px; font-size:0.95rem;
+  }
+
+  .block{
+    border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
+  }
+  .block-head{padding:7px 14px; font-weight:700; font-size:0.9rem; color:#fff;}
+  .block-body{padding:11px 15px; background:var(--card); font-size:0.93rem;}
+  .b-think .block-head{background:var(--accent3);}
+  .b-key .block-head{background:var(--accent2);}
+  .b-step .block-head{background:var(--accent);}
+  .calc-line{
+    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
+    padding:7px 12px; margin:6px 0; font-size:0.92rem;
+  }
+  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
+  .calc-line small{color:var(--sub); display:block; margin-top:4px;}
+  .warn-box{
+    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .warn-box b{color:#b0442e;}
+
+  .answer-box{
+    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
+    padding:9px 14px; margin-top:10px; font-size:0.96rem; text-align:center;
+  }
+  .answer-box b{color:var(--accent); font-size:1.05rem;}
+
+  details.solution{
+    margin-top:14px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  details.solution summary{
+    list-style:none; cursor:pointer; user-select:none;
+    padding:9px 14px; background:#f3ede3; color:var(--ink); font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.solution summary::-webkit-details-marker{display:none;}
+  details.solution summary .chev{margin-left:auto; transition:transform .15s; font-size:0.85rem; color:var(--sub);}
+  details.solution[open] summary .chev{transform:rotate(90deg);}
+  details.solution .sol-body{padding:14px 16px;}
+  table{width:100%; border-collapse:collapse; margin-top:10px; font-size:0.92rem; background:var(--card);}
+  th, td{border:1px solid var(--line); padding:9px 10px; text-align:center; vertical-align:middle;}
+  th{background:#f3ede3; color:var(--ink); font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>多項式相除的商式和餘式 — 詳解</h1>
+  <div class="subtitle">1-3節 P44　講解題①／演練題①</div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部題目</button>
+    <button class="filter-btn hard-filter" data-filter="hard">只看疑難題</button>
+    <span class="filter-count"></span>
+  </div>
+
+  <div class="toc-nav"><a href="#q1" class="hard">1</a><a href="#q2" class="hard">2</a></div>
+
+  <div class="qcard" data-hard="true" id="q1">
+    <div class="qhead">第 1 題 — 講解題①<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">已知 A、B 為多項式，若 A÷B 的商式為 2x−4，餘式為 −3，求 (5A)÷(3B) 的商式和餘式。</div>
+
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key">
+            <div class="block-head">&#128273; 核心觀念</div>
+            <div class="block-body">已知 A÷B 的商式與餘式（即 A=B×商式+餘式），要求 (mA)÷(nB) 的商式和餘式時，可以直接利用倍數關係，不需要真的把 A、B 展開成一長串多項式。</div>
+          </div>
+          <div class="block b-think">
+            <div class="block-head">&#128173; 思考邏輯</div>
+            <div class="block-body">先把已知的除法關係寫成等式 A=BQ+R，代入 5A 展開，再把式子湊成「3B×(某式)+常數」的形式，湊出來的「某式」就是新商式，常數就是新餘式。</div>
+          </div>
+          <div class="block b-step">
+            <div class="block-head">&#128209; 解題步驟</div>
+            <div class="block-body">
+              <div class="calc-line"><span class="idx">①</span>寫出除法關係式：A = B(2x−4) + (−3) = B(2x−4) − 3</div>
+              <div class="calc-line"><span class="idx">②</span>兩邊同乘 5：5A = 5B(2x−4) − 15</div>
+              <div class="calc-line"><span class="idx">③</span>把 5B(2x−4) 湊成「3B×某式」：5B(2x−4) = 3B × [5(2x−4)/3] = 3B × (10x−20)/3</div>
+              <div class="calc-line"><span class="idx">④</span>所以 5A = 3B × [(10/3)x − 20/3] − 15</div>
+              <div class="calc-line"><span class="idx">⑤</span>對照「5A = 3B×商式+餘式」，得到：商式 = (10/3)x − 20/3，餘式 = −15</div>
+            </div>
+          </div>
+          <div class="warn-box"><b>提醒：</b>商式的係數出現分數是正常的（因為 5÷3 除不盡），不要看到分數就懷疑算錯；但餘式 −15 一定要是「乘完之後」的整數，不會有分數。</div>
+          <div class="answer-box">答案：<b>商式 = 10/3 x − 20/3，餘式 = −15</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="qcard" data-hard="true" id="q2">
+    <div class="qhead">第 2 題 — 演練題①<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">已知 A、B 為多項式，若 A÷B 的商式為 −3x+1，餘式為 6，求 (7A)÷(4B) 的商式和餘式。</div>
+
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key">
+            <div class="block-head">&#128273; 核心觀念</div>
+            <div class="block-body">跟第1題同一套技巧：A=BQ+R時，(mA)÷(nB) 的商式 = (m/n)×Q，餘式 = m×R。</div>
+          </div>
+          <div class="block b-think">
+            <div class="block-head">&#128173; 思考邏輯</div>
+            <div class="block-body">同樣先寫出 A=BQ+R，代入 7A 展開，再湊成「4B×(某式)+常數」的形式。</div>
+          </div>
+          <div class="block b-step">
+            <div class="block-head">&#128209; 解題步驟</div>
+            <div class="block-body">
+              <div class="calc-line"><span class="idx">①</span>寫出除法關係式：A = B(−3x+1) + 6</div>
+              <div class="calc-line"><span class="idx">②</span>兩邊同乘 7：7A = 7B(−3x+1) + 42</div>
+              <div class="calc-line"><span class="idx">③</span>把 7B(−3x+1) 湊成「4B×某式」：7B(−3x+1) = 4B × [7(−3x+1)/4] = 4B × (−21x+7)/4</div>
+              <div class="calc-line"><span class="idx">④</span>所以 7A = 4B × [−(21/4)x + 7/4] + 42</div>
+              <div class="calc-line"><span class="idx">⑤</span>對照「7A = 4B×商式+餘式」，得到：商式 = −21/4 x + 7/4，餘式 = 42</div>
+            </div>
+          </div>
+          <div class="answer-box">答案：<b>商式 = −21/4 x + 7/4，餘式 = 42</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <h2>記憶技巧</h2>
+  <div class="qcard"><div class="qbody">
+    <div class="qtext">這類題目的萬用公式：若 A=BQ+R，則 (mA)÷(nB) 的商式 = (m/n)×Q，餘式 = m×R。記住「餘式只跟被除數的倍數 m 有關，跟除數的倍數 n 完全無關」——這是最容易搞混、也最常考的陷阱點。</div>
+  </div></div>
+
+  <h2>答案總覽</h2>
+  <div class="qcard"><div class="qbody">
+    <table>
+      <thead><tr><th>題號</th><th>答案</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>商式=10/3x−20/3，餘式=−15</td></tr>
+        <tr><td>2</td><td>商式=−21/4x+7/4，餘式=42</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.qcard[id]');
+  const navLinks = document.querySelectorAll('.toc-nav a');
+  const countEl = document.querySelector('.filter-count');
+
+  function updateCount(){
+    const total = cards.length;
+    const hard = document.querySelectorAll('.qcard[data-hard="true"]').length;
+    countEl.textContent = `共 ${total} 題，疑難題 ${hard} 題`;
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(mode==='all'){ c.hidden = false; }
+        else { c.hidden = c.dataset.hard !== 'true'; }
+      });
+      navLinks.forEach(a=>{
+        if(mode==='all'){ a.hidden = false; }
+        else { a.hidden = !a.classList.contains('hard'); }
+      });
+    });
+  });
+
+  updateCount();
+</script>
+</body>
+</html>
