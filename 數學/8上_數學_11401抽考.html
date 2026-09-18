@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8上數學114抽考</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%93%90%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#555; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a; --hard:#b0442e;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; padding:24px 16px 60px; background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif; line-height:1.8;}
+  .wrap{max-width:960px; margin:0 auto;}
+  h1{font-size:1.65rem; margin:0 0 4px; color:var(--accent); border-bottom:3px solid var(--accent); padding-bottom:10px;}
+  .subtitle{color:var(--sub); font-size:0.9rem; margin-bottom:20px;}
+  h2{font-size:1.15rem; margin:0 0 12px; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  h2::before{content:""; width:6px; height:20px; background:var(--accent); border-radius:3px; display:inline-block;}
+
+  .warn-banner{background:#fdf1ea; border:1px solid #f0d9c5; border-radius:10px; padding:12px 16px; margin-bottom:18px; font-size:0.88rem; color:#8a4a26;}
+
+  .stat-block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,0.03);}
+  .stat-row{display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  .stat-label{width:150px; flex-shrink:0; font-size:0.88rem;}
+  .stat-bar-track{flex:1; background:#f0ece3; border-radius:6px; height:16px; overflow:hidden;}
+  .stat-bar-fill{height:100%; background:var(--accent3); border-radius:6px;}
+  .stat-num{width:60px; flex-shrink:0; font-size:0.82rem; color:var(--sub); text-align:right;}
+
+  .filter-bar{position:sticky; top:0; z-index:10; background:var(--bg); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+  .filter-group{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .filter-group-label{font-size:0.82rem; color:var(--sub); margin-right:2px;}
+  .filter-btn{padding:6px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:0.85rem; cursor:pointer; color:var(--ink); font-family:inherit;}
+  .filter-btn.active{background:var(--accent3); color:#fff; border-color:var(--accent3);}
+  .filter-btn.diff-A.active{background:#4a7a6b; border-color:#4a7a6b;}
+  .filter-btn.diff-B.active{background:#4a6b9a; border-color:#4a6b9a;}
+  .filter-btn.diff-C.active{background:#b0442e; border-color:#b0442e;}
+  .filter-btn.trap-btn.active{background:var(--accent); border-color:var(--accent);}
+  select.chapter-select{padding:6px 10px; border-radius:8px; border:1px solid var(--line); font-family:inherit; font-size:0.85rem;}
+  .filter-count{margin-left:auto; font-size:0.85rem; color:var(--sub); font-weight:700;}
+
+  .progress-summary{font-size:0.85rem; color:var(--sub); margin:-2px 0 14px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
+  .progress-summary b{color:var(--ink);}
+  .clear-all-btn{margin-left:auto; background:none; border:none; color:var(--hard); text-decoration:underline; cursor:pointer; font-size:0.82rem; font-family:inherit;}
+
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.03);}
+  .qcard[data-wrong="1"]{border-color:#e0a394;}
+  .qcard[data-hardmark="1"]{border-color:#d9a84a;}
+  .qhead{background:#f5efe4; padding:8px 16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .badge{display:inline-block; padding:3px 10px; border-radius:999px; font-size:0.78rem; font-weight:700; color:#fff;}
+  .badge-no{background:#8a8175;}
+  .badge-type{background:#8a6d3e;}
+  .badge-ch{background:var(--accent3);}
+  .badge-diff.diff-A{background:#4a7a6b;}
+  .badge-diff.diff-B{background:#4a6b9a;}
+  .badge-diff.diff-C{background:#b0442e;}
+  .badge-trap{background:var(--accent);}
+  .badge-wrong{background:var(--hard);}
+  .badge-hardmark{background:#c99a2e;}
+  .qbody{padding:14px 18px;}
+  .qtext{font-size:1rem; margin-bottom:10px; white-space:pre-wrap;}
+  .opts{display:flex; flex-direction:column; gap:6px; margin-bottom:10px;}
+  .opt{font-size:0.92rem; border:1px solid var(--line); border-radius:8px; padding:8px 12px; cursor:pointer; display:flex; align-items:center; gap:2px; background:#fff;}
+  .opt:hover{background:#faf3ea;}
+  .opt-letter{color:var(--accent); font-weight:700; margin-right:4px;}
+  .opt-mark{margin-left:auto; font-weight:700; font-size:0.95rem;}
+  .qcard.answered .opt{cursor:default;}
+  .qcard.answered .opt:hover{background:#fff;}
+  .opt.is-correct-answer{background:#eef5f0; border-color:#8fbf9f;}
+  .opt.is-selected-wrong{background:#fbeae6; border-color:#e0a394;}
+  .opt.is-selected-wrong .opt-mark::after{content:"✗"; color:var(--hard);}
+  .opt.is-correct-answer .opt-mark::after{content:"✓"; color:#2f7a4a;}
+  .fillrow{display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;}
+  .fill-input{flex:1; min-width:180px; padding:8px 12px; border-radius:8px; border:1px solid var(--line); font-family:inherit; font-size:0.95rem;}
+  .fill-input.marked-correct{border-color:#8fbf9f; background:#f4faf6;}
+  .fill-input.marked-wrong{border-color:#e0a394; background:#fdf4f2;}
+
+  .qtoolbar{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;}
+  .tool-btn{padding:5px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:0.8rem; cursor:pointer; color:var(--sub); font-family:inherit;}
+  .tool-btn:hover{background:#f5f0e8;}
+  .hardmark-btn.active{background:#c99a2e; color:#fff; border-color:#c99a2e;}
+  .check-btn{background:var(--accent3); color:#fff; border-color:var(--accent3);}
+
+  .reveal{margin-top:8px;}
+  .answer-box{background:#eef5f0; border:1px solid #cfe3d6; border-radius:8px; padding:8px 14px; font-size:0.95rem; margin-bottom:6px;}
+  .judge-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:0.85rem; color:var(--sub); margin-bottom:8px;}
+  .judge-btn{padding:5px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; font-family:inherit; font-size:0.82rem;}
+  .judge-btn.judge-correct.active{background:#4a7a6b; color:#fff; border-color:#4a7a6b;}
+  .judge-btn.judge-wrong.active{background:var(--hard); color:#fff; border-color:var(--hard);}
+  .trap-reason{background:#fdf1ea; border:1px solid #f0d9c5; border-radius:8px; padding:8px 14px; font-size:0.85rem; color:#8a4a26; margin-bottom:6px;}
+  details.solution-detail summary{cursor:pointer; color:var(--accent3); font-weight:700; font-size:0.9rem; list-style:none;}
+  details.solution-detail summary::-webkit-details-marker{display:none;}
+  details.solution-detail[open] .chev{transform:rotate(90deg);}
+  .chev{display:inline-block; transition:transform 0.15s;}
+  .solution-body{background:#f7f4ee; border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin-top:6px; font-size:0.9rem; line-height:1.75; color:#3a332c;}
+
+  [hidden]{display:none!important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>8上數學 114學年度第1次抽考</h1>
+  <div class="subtitle">新北市南山中學 114學年度國二上第1次抽考數學（命題範圍第三冊1-2~2-1，命題教師：李清鴻），共 23 題。</div>
+
+  <div class="warn-banner">⚠️ 這是「抽考」不是正式段考，原始試卷沒有附官方答案。以下所有答案跟詳解都是 AI 實際解題後得出的結果，並非老師公布的正式解答——建議還是要以老師公布的答案為準，如果發現跟老師公布的不同，歡迎回來討論是哪裡算錯或理解不同。</div>
+
+  <div class="stat-block">
+    <h2>章節分布</h2>
+    <div class="stat-row"><div class="stat-label">1-2 多項式的加減</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:21.7%"></div></div><div class="stat-num">5題</div></div><div class="stat-row"><div class="stat-label">1-3 多項式的乘除</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:43.5%"></div></div><div class="stat-num">10題</div></div><div class="stat-row"><div class="stat-label">2-1 平方根的意義</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:34.8%"></div></div><div class="stat-num">8題</div></div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-group">
+      <span class="filter-group-label">題型</span>
+      <button class="filter-btn type-btn active" data-type="choice">選擇</button>
+      <button class="filter-btn type-btn active" data-type="fill">填充</button>
+      <button class="filter-btn type-btn active" data-type="calc">計算</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">難度</span>
+      <button class="filter-btn diff-A active" data-diff="A">A級</button>
+      <button class="filter-btn diff-B active" data-diff="B">B級</button>
+      <button class="filter-btn diff-C active" data-diff="C">C級</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">陷阱題</span>
+      <button class="filter-btn trap-btn" id="trapOnlyBtn">只看陷阱題</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-group-label">我的紀錄</span>
+      <button class="filter-btn wrong-hard-btn" id="wrongHardOnlyBtn">只看做錯／疑難</button>
+    </div>
+    <div class="filter-count" id="filterCount">共 23 題</div>
+  </div>
+
+  <div class="progress-summary" id="progressSummary">
+    已作答 <b id="progAnswered">0</b>／23 題　答對 <b id="progCorrect">0</b>　做錯 <b id="progWrong">0</b>　標記疑難 <b id="progHard">0</b>
+    <button class="clear-all-btn" id="clearAllBtn">清除全部作答紀錄</button>
+  </div>
+
+  <div id="qlist">
+    <div class="qcard" data-qid="觀念1" data-qtype="choice" data-answer="B" data-chapter="1-2" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念1"><div class="qhead"><span class="badge badge-no">觀念1</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">1-2 多項式的加減</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">判斷下列哪一個化簡後是x的多項式？</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念1" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">2x-1/x+5</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念1" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">2x/5+x/17-1/2</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念1" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">2x²-3|x-3|+3x-7</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念1" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">2(x-1)=3(2x+1)-5</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念1">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念1">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念1">👀 直接看答案</button></div><div class="reveal" data-qid="觀念1" hidden><div class="answer-box">參考答案：<b class="answer-letter">B</b></div><div class="trap-reason">⚠️ 陷阱提醒：A含有1/x（x的負次方）不是多項式；C含絕對值|x-3|不是多項式項；D是「方程式」（有等號）不是多項式本身；只有B化簡後係數是分數但仍是x的一次多項式</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">多項式的每一項都必須是「非負整數次方的x」乘上一個係數，不能有分式（x在分母）、絕對值、根號包住x等形式，也不能是方程式（帶等號）。逐項檢查：(A) 2x-1/x+5中的1/x等於x的負一次方，不符合多項式定義。(C) 2x²-3|x-3|+3x-7中的|x-3|是絕對值，不是多項式的項。(D) 2(x-1)=3(2x+1)-5是一個方程式（有等號），不是一個多項式表達式。(B) 2x/5+x/17-1/2化簡後可以合併成(2/5+1/17)x-1/2的形式，仍然是x的一次多項式（係數是分數沒關係，多項式係數可以是任何實數）。答案B。</div></details></div></div></div><div class="qcard" data-qid="觀念2" data-qtype="choice" data-answer="D" data-chapter="1-2" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念2"><div class="qhead"><span class="badge badge-no">觀念2</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">1-2 多項式的加減</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">兩個x的四次多項式做運算，下列何者為真？</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念2" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">兩個多項式相加之後，會變成八次多項式</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念2" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">兩個多項式相減之後，會變成常數多項式</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念2" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">兩個多項式相乘之後，仍是四次多項式</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念2" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">兩個多項式相減之後，次數≤四次</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念2">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念2">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念2">👀 直接看答案</button></div><div class="reveal" data-qid="觀念2" hidden><div class="answer-box">參考答案：<b class="answer-letter">D</b></div><div class="trap-reason">⚠️ 陷阱提醒：加減運算的次數規則跟乘法不同，很容易搞混——相加相減的次數「不會超過」原本的次數，但相乘的次數是「相加」</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">兩個degree相同（都是四次）的多項式相加或相減時，最高次項（四次項）可能會抵消（例如4x⁴+3x-2和4x⁴-3x+2相加時4x⁴會變成8x⁴，但如果兩者的四次項係數恰好相反，相加後四次項就會消失），所以結果的次數「小於或等於」四次，不會超過四次——這正是選項D的敘述，是正確的。選項A把加法的次數規則搞混成乘法的規則（乘法時次數才會相加變成4+4=8次）。選項B「一定變成常數多項式」也不對，相減後次數只是「≤4次」，不一定剛好變成0次（常數）。選項C：兩個四次多項式相乘，次數應該是4+4=8次，不會「仍是四次」。答案D。</div></details></div></div></div><div class="qcard" data-qid="觀念3" data-qtype="choice" data-answer="A" data-chapter="2-1" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念3"><div class="qhead"><span class="badge badge-no">觀念3</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">阿鴻老師說，雖然√15²=(√15)²，但若以正方形的角度來說兩者的意義不同，想聽同學的意見：蔡佩同學說：√15²相當於一個面積為15²的正方形邊長。曉惠同學說：(√15)²相當於一個邊長為√15的正方形面積。試問兩位同學的說法</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念3" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">兩位說法都正確</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念3" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">蔡佩說法正確，曉惠說法錯誤</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念3" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">蔡佩說法錯誤，曉惠說法正確</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念3" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">兩位說法都錯誤</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念3">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念3">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念3">👀 直接看答案</button></div><div class="reveal" data-qid="觀念3" hidden><div class="answer-box">參考答案：<b class="answer-letter">A</b></div><div class="trap-reason">⚠️ 陷阱提醒：√15²跟(√15)²數值上都等於15，容易讓人以為兩位同學的說法在講同一件事，但其實他們分別從「已知面積求邊長」跟「已知邊長求面積」兩個相反的方向來解釋，兩者都是對的幾何詮釋</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">√15²＝√(225)＝15，(√15)²也等於15，兩式數值相同，但幾何意義不同。蔡佩的說法：如果一個正方形的面積是15²＝225，那麼邊長就是√225＝√15²＝15，這是「從面積反推邊長」的正確詮釋。曉惠的說法：如果一個正方形的邊長是√15，那麼面積就是邊長平方＝(√15)²＝15，這是「從邊長正推面積」的正確詮釋。兩位同學分別從不同角度（面積求邊長／邊長求面積）詮釋這兩個算式，兩種說法都符合正方形面積與邊長的關係，都正確。答案A。</div></details></div></div></div><div class="qcard" data-qid="觀念4" data-qtype="choice" data-answer="B" data-chapter="1-3" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念4"><div class="qhead"><span class="badge badge-no">觀念4</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">一個三次多項式除以二次多項式，則其餘式的次數可能為</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念4" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">小於三次</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念4" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">小於二次</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念4" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">必為一次</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念4" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">必為常數</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念4">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念4">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念4">👀 直接看答案</button></div><div class="reveal" data-qid="觀念4" hidden><div class="answer-box">參考答案：<b class="answer-letter">B</b></div><div class="trap-reason">⚠️ 陷阱提醒：多項式除法的規則是「餘式次數必須小於除式（分母）的次數」，不是小於被除式（分子）的次數，容易搞錯是跟哪一個比較</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">多項式除法的基本規則：餘式的次數一定要「小於除式的次數」，才能算是真正除完（否則還可以繼續除下去）。這裡除式是二次多項式，所以餘式的次數必須小於二次，也就是餘式可能是一次式、也可能是常數（0次），統稱「小於二次」。選項C「必為一次」跟D「必為常數」都太過武斷（餘式可能是一次也可能是常數，不是「一定」是某一種），選項A「小於三次」雖然也算對，但不夠精確（沒有抓到「跟除式次數比較」這個關鍵規則）。最精確符合規則的答案是B。</div></details></div></div></div><div class="qcard" data-qid="觀念5" data-qtype="choice" data-answer="D" data-chapter="1-2" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念5"><div class="qhead"><span class="badge badge-no">觀念5</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">1-2 多項式的加減</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">一多項式(a-3)x²-(b+5)x+(c+1)，則下列何者為真？</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念5" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">若為二次多項式則a=3</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念5" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">若為一次多項式則a=3，b為任意數</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念5" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">若為零次多項式則a=3、b=-5、c為任意數</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念5" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">若為零多項式則a=3、b=-5、c=-1</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念5">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念5">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念5">👀 直接看答案</button></div><div class="reveal" data-qid="觀念5" hidden><div class="answer-box">參考答案：<b class="answer-letter">D</b></div><div class="trap-reason">⚠️ 陷阱提醒：「零次多項式」（一個非零常數）跟「零多項式」（整個式子恆等於0）是兩個不同的概念，很容易搞混，這題四個選項都在考驗這個細微差異</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">要判斷多項式的次數，要看最高次項的係數是否為0。若為二次多項式：x²項係數a-3不能是0，也就是a≠3，選項A說「a=3」正好講反了（a=3時x²項會消失，就不是二次式了），A錯。若為一次多項式：需要x²項係數a-3=0（即a=3）、且x項係數-(b+5)不為0（即b≠-5），選項B說「b為任意數」沒有排除b=-5的情況，是不完整/錯誤的敘述，B錯。若為零次多項式（即化簡後是一個非零的常數）：需要a=3（消去x²項）、b=-5（消去x項）、且常數項(c+1)不為0（即c≠-1），選項C說「c為任意數」沒有排除c=-1，C錯。若為零多項式（整個式子恆等於0，包括常數項也是0）：需要a=3、b=-5、且c+1=0（即c=-1），選項D完整且正確地列出了這三個條件。答案D。</div></details></div></div></div><div class="qcard" data-qid="觀念6" data-qtype="choice" data-answer="D" data-chapter="2-1" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_觀念6"><div class="qhead"><span class="badge badge-no">觀念6</span><span class="badge badge-type type-choice">選擇</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">下列四個敘述，哪些是正確的？甲：因為-225=-15²，所以-15是-225的平方根。乙：因為9²=81且(-9)²=81，所以√81的平方根為±9。丙：4.9的平方根是±0.7。丁：若a是b的平方根，則b²=a。</div><div class="opts"><div class="opt" data-letter="A" data-qid="觀念6" tabindex="0" role="button"><span class="opt-letter">(A)</span><span class="opt-text">丁</span><span class="opt-mark"></span></div><div class="opt" data-letter="B" data-qid="觀念6" tabindex="0" role="button"><span class="opt-letter">(B)</span><span class="opt-text">乙、丁</span><span class="opt-mark"></span></div><div class="opt" data-letter="C" data-qid="觀念6" tabindex="0" role="button"><span class="opt-letter">(C)</span><span class="opt-text">丙、丁</span><span class="opt-mark"></span></div><div class="opt" data-letter="D" data-qid="觀念6" tabindex="0" role="button"><span class="opt-letter">(D)</span><span class="opt-text">全都錯</span><span class="opt-mark"></span></div></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="觀念6">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="觀念6">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="觀念6">👀 直接看答案</button></div><div class="reveal" data-qid="觀念6" hidden><div class="answer-box">參考答案：<b class="answer-letter">D</b></div><div class="trap-reason">⚠️ 陷阱提醒：四個敘述都是常見的平方根概念陷阱：負數沒有實數平方根、√符號本身已經是正數不能再問它的平方根、小數平方根不能直接猜、平方根定義的方向（a²=b還是b²=a）容易顛倒</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">甲：負數在實數範圍內沒有平方根（因為任何實數的平方都不會是負數），所以-225根本沒有平方根，就算-225=-15²這個等式本身沒錯，也不能反推出-15是-225的平方根，甲錯。乙：√81本身已經算出來是9（√只取正的那一個根，不是±），所以「√81的平方根」問的是「9的平方根」，答案應該是±3，不是±9（乙把「81的平方根」跟「√81的平方根」搞混了），乙錯。丙：0.7²=0.49，不是4.9，所以±0.7是0.49的平方根，不是4.9的平方根（4.9的平方根其實是±√4.9，是一個無法化成簡單小數的無理數），丙錯。丁：「a是b的平方根」的正確定義是a²=b（不是b²=a），丁把關係寫反了，丁錯。四個敘述全部都是錯的。答案D。</div></details></div></div></div><div class="qcard" data-qid="填11" data-qtype="fill" data-answer="2" data-chapter="2-1" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填11"><div class="qhead"><span class="badge badge-no">填1(1)</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">計算下列各式：√((-6)²)-√(4/25)-(-√5)²+√1.96=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填11" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填11">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填11">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填11">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填11">👀 直接看答案</button></div><div class="reveal" data-qid="填11" hidden><div class="answer-box">參考答案：<b class="answer-letter">2</b></div><div class="trap-reason">⚠️ 陷阱提醒：√((-6)²)要先平方再開根號等於6（不是-6）；(-√5)²是先取√5的相反數再平方，結果等於5（負號平方後消失），這兩步都是常見的符號陷阱</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">逐項計算：√((-6)²)=√36=6（先平方成正數，再開根號）。√(4/25)=2/5=0.4。(-√5)²=(√5)²=5（負號平方後變正，等於直接算(√5)²）。√1.96=1.4。代入：6-0.4-5+1.4=(6-5)+(1.4-0.4)=1+1=2。答案2。</div></details></div></div></div><div class="qcard" data-qid="填12" data-qtype="fill" data-answer="x²-12x+21" data-chapter="1-3" data-difficulty="B" data-trap="0" data-wrong="0" data-hardmark="0" id="q_填12"><div class="qhead"><span class="badge badge-no">填1(2)</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">計算下列各式：(2x-3)²-3(x-2)(x+2)=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填12" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填12">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填12">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填12">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填12">👀 直接看答案</button></div><div class="reveal" data-qid="填12" hidden><div class="answer-box">參考答案：<b class="answer-letter">x²-12x+21</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">先用乘法公式展開：(2x-3)²=4x²-12x+9（和的平方公式的變形，這裡是差的平方）。3(x-2)(x+2)=3(x²-4)=3x²-12（平方差公式）。相減：(4x²-12x+9)-(3x²-12)=4x²-12x+9-3x²+12=x²-12x+21。答案x²-12x+21。</div></details></div></div></div><div class="qcard" data-qid="填13" data-qtype="fill" data-answer="商式=2x-3/2，餘式=6" data-chapter="1-3" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填13"><div class="qhead"><span class="badge badge-no">填1(3)</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">計算下列各式：(4x²-3x+6)÷2x，則商式=？，餘式=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填13" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填13">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填13">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填13">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填13">👀 直接看答案</button></div><div class="reveal" data-qid="填13" hidden><div class="answer-box">參考答案：<b class="answer-letter">商式=2x-3/2，餘式=6</b></div><div class="trap-reason">⚠️ 陷阱提醒：除以單項式2x時，常數項6無法被x整除，容易忘記把它留在餘式裡，而不是硬要湊出一個帶分母的商式項</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">用長除法：4x²÷2x=2x，2x乘以2x等於4x²，扣掉後剩下-3x+6。接著-3x÷2x=-3/2，-3/2乘以2x等於-3x，扣掉後剩下6（因為6不含x，無法再被2x整除）。所以商式是2x-3/2，餘式是6。答案商式=2x-3/2，餘式=6。</div></details></div></div></div><div class="qcard" data-qid="填14" data-qtype="fill" data-answer="3x²+x+6" data-chapter="1-3" data-difficulty="B" data-trap="0" data-wrong="0" data-hardmark="0" id="q_填14"><div class="qhead"><span class="badge badge-no">填1(4)</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">計算下列各式：(3x³-2x²+5x-6)÷(x-1)=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填14" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填14">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填14">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填14">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填14">👀 直接看答案</button></div><div class="reveal" data-qid="填14" hidden><div class="answer-box">參考答案：<b class="answer-letter">3x²+x+6</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">用綜合除法（除以x-1，取1代入）：係數依序是3、-2、5、-6。第一步：3。第二步：3×1+(-2)=1。第三步：1×1+5=6。第四步：6×1+(-6)=0（餘式為0，代表可以整除）。所以商式為3x²+x+6，餘式為0，本題只要求商式，答案是3x²+x+6。</div></details></div></div></div><div class="qcard" data-qid="填2" data-qtype="fill" data-answer="3" data-chapter="1-2" data-difficulty="A" data-trap="0" data-wrong="0" data-hardmark="0" id="q_填2"><div class="qhead"><span class="badge badge-no">填2</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-2 多項式的加減</span><span class="badge badge-diff diff-A">A級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">多項式-3-x²+4x為a次多項式，其中x項的係數為b，常數項為c，則a+b+c=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填2" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填2">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填2">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填2">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填2">👀 直接看答案</button></div><div class="reveal" data-qid="填2" hidden><div class="answer-box">參考答案：<b class="answer-letter">3</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">先把多項式依降冪排列：-x²+4x-3。最高次項是x²，所以次數a=2。x項的係數是4，所以b=4。常數項是-3，所以c=-3。a+b+c=2+4+(-3)=3。答案3。</div></details></div></div></div><div class="qcard" data-qid="填3" data-qtype="fill" data-answer="-11" data-chapter="1-3" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填3"><div class="qhead"><span class="badge badge-no">填3</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">試求(4x³-3x²+2x-1)(x³-2x²+3x-4)的一次項係數為？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填3" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填3">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填3">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填3">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填3">👀 直接看答案</button></div><div class="reveal" data-qid="填3" hidden><div class="answer-box">參考答案：<b class="answer-letter">-11</b></div><div class="trap-reason">⚠️ 陷阱提醒：兩個多項式相乘要找特定次數的項，不需要把整個式子全部展開，只要找出哪些組合的次數相加起來會等於目標次數即可，否則計算量會非常龐大</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">要得到乘積中x的一次項，只需要考慮兩個因式中「次數相加等於1」的項兩兩相乘：第一個多項式的x項(2x)乘以第二個多項式的常數項(-4)：2x×(-4)=-8x；第一個多項式的常數項(-1)乘以第二個多項式的x項(3x)：(-1)×3x=-3x。把這兩個結果加起來：-8x+(-3x)=-11x，所以一次項係數是-11。答案-11。</div></details></div></div></div><div class="qcard" data-qid="填4" data-qtype="fill" data-answer="4.4" data-chapter="2-1" data-difficulty="A" data-trap="0" data-wrong="0" data-hardmark="0" id="q_填4"><div class="qhead"><span class="badge badge-no">填4</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-A">A級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知(4.2)²=17.64，(4.3)²=18.49，(4.4)²=19.36，(4.5)²=20.25，請利用四捨五入法求√19的近似值到小數第一位為？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填4" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填4">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填4">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填4">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填4">👀 直接看答案</button></div><div class="reveal" data-qid="填4" hidden><div class="answer-box">參考答案：<b class="answer-letter">4.4</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">19介於18.49(4.3²)跟19.36(4.4²)之間，比較19跟這兩個數字的距離：19-18.49=0.51，19.36-19=0.36。19比較靠近19.36（4.4²），所以√19比較接近4.4。用四捨五入法取到小數第一位，答案為4.4。</div></details></div></div></div><div class="qcard" data-qid="填5" data-qtype="fill" data-answer="A=-2x²-x+3" data-chapter="1-3" data-difficulty="B" data-trap="0" data-wrong="0" data-hardmark="0" id="q_填5"><div class="qhead"><span class="badge badge-no">填5</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">若多項式A除以(x+2)得商式為(-2x+3)，餘式為-3，則多項式A為？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填5" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填5">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填5">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填5">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填5">👀 直接看答案</button></div><div class="reveal" data-qid="填5" hidden><div class="answer-box">參考答案：<b class="answer-letter">A=-2x²-x+3</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">依除法關係：被除式=除式×商式+餘式。A=(x+2)(-2x+3)+(-3)。先展開(x+2)(-2x+3)=x×(-2x)+x×3+2×(-2x)+2×3=-2x²+3x-4x+6=-2x²-x+6。再加上餘式-3：A=-2x²-x+6-3=-2x²-x+3。答案A=-2x²-x+3。</div></details></div></div></div><div class="qcard" data-qid="填6" data-qtype="fill" data-answer="A=3x³-5x²+9x+5" data-chapter="1-2" data-difficulty="B" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填6"><div class="qhead"><span class="badge badge-no">填6</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-2 多項式的加減</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知多項式A減去(3x³-3x²+4x+5)後，結果為-2x²+5x，試求此多項式A=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填6" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填6">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填6">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填6">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填6">👀 直接看答案</button></div><div class="reveal" data-qid="填6" hidden><div class="answer-box">參考答案：<b class="answer-letter">A=3x³-5x²+9x+5</b></div><div class="trap-reason">⚠️ 陷阱提醒：要從「A減去某式＝結果」反推A，必須把減去的那個多項式「加回去」，而且要注意每一項的正負號都要正確地跟著變號</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">依題意：A-(3x³-3x²+4x+5)=-2x²+5x。把減去的部分移到等號右邊（也就是加回去）：A=-2x²+5x+(3x³-3x²+4x+5)。展開合併：3x³+(-2x²-3x²)+(5x+4x)+5=3x³-5x²+9x+5。答案A=3x³-5x²+9x+5。</div></details></div></div></div><div class="qcard" data-qid="填7" data-qtype="fill" data-answer="c&gt;a&gt;b&gt;d" data-chapter="2-1" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填7"><div class="qhead"><span class="badge badge-no">填7</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">試比較a=5/3，b=√(5/3)，c=5/√3，d=√5/3的大小(以a、b、c、d表示)，答：？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填7" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填7">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填7">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填7">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填7">👀 直接看答案</button></div><div class="reveal" data-qid="填7" hidden><div class="answer-box">參考答案：<b class="answer-letter">c&gt;a&gt;b&gt;d</b></div><div class="trap-reason">⚠️ 陷阱提醒：四個式子外觀很相似（都跟5、3、根號有關），但實際數值差異很大，一定要老實算出每一個的近似值才能正確排序，不能靠直覺猜</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">把四個數都換算成小數比較：a=5/3≈1.667。b=√(5/3)=√1.667≈1.291。c=5/√3=5/1.732≈2.887。d=√5/3=2.236/3≈0.745。由大到小排列：c(2.887)&gt;a(1.667)&gt;b(1.291)&gt;d(0.745)。答案c&gt;a&gt;b&gt;d。</div></details></div></div></div><div class="qcard" data-qid="填8" data-qtype="fill" data-answer="38" data-chapter="2-1" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填8"><div class="qhead"><span class="badge badge-no">填8</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知√(300+a)、√(300-b)、√(300×c)皆為正整數，若a、b、c皆為滿足此條件的最小正整數，其和為？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填8" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填8">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填8">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填8">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填8">👀 直接看答案</button></div><div class="reveal" data-qid="填8" hidden><div class="answer-box">參考答案：<b class="answer-letter">38</b></div><div class="trap-reason">⚠️ 陷阱提醒：三個小題要分別找「大於300的最近完全平方數」「小於300的最近完全平方數」跟「補足質因數使乘積變成完全平方數」三種不同的思考方式，很容易搞混方法</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">（1）求最小正整數a使300+a是完全平方數：17²=289&lt;300，18²=324&gt;300，所以下一個完全平方數是324，a=324-300=24。（2）求最小正整數b使300-b是完全平方數：因為要讓b最小，300-b要盡量接近300但仍是完全平方數，最接近的是17²=289，b=300-289=11。（3）求最小正整數c使300×c是完全平方數：先把300質因數分解，300=2²×3×5²，缺一個3才能配成完全平方（2²×3²×5²=900=30²），所以最小的c=3。三者之和：a+b+c=24+11+3=38。答案38。</div></details></div></div></div><div class="qcard" data-qid="填9" data-qtype="fill" data-answer="-27" data-chapter="1-3" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填9"><div class="qhead"><span class="badge badge-no">填9</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知多項式3x³+ax²+bx-6能被x-1與x-2整除，則a-b=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填9" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填9">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填9">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填9">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填9">👀 直接看答案</button></div><div class="reveal" data-qid="填9" hidden><div class="answer-box">參考答案：<b class="answer-letter">-27</b></div><div class="trap-reason">⚠️ 陷阱提醒：利用因式定理列出兩個方程式再解聯立，是這類題目的標準做法，容易在展開P(2)的計算中算錯4×8這類乘冪的數值</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">能被x-1整除，代表把x=1代入多項式會得到0：3(1)³+a(1)²+b(1)-6=3+a+b-6=a+b-3=0，所以a+b=3。能被x-2整除，代表把x=2代入會得到0：3(2)³+a(2)²+b(2)-6=24+4a+2b-6=4a+2b+18=0，化簡得2a+b=-9。用聯立方程求解：由a+b=3得b=3-a，代入2a+b=-9：2a+(3-a)=-9，a+3=-9，a=-12。代回b=3-(-12)=15。a-b=-12-15=-27。答案-27。</div></details></div></div></div><div class="qcard" data-qid="填10" data-qtype="fill" data-answer="-18" data-chapter="1-3" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填10"><div class="qhead"><span class="badge badge-no">填10</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知兩多項式A、B，若A÷B的商式為2x-6，餘式為-4，試問：若3A÷2B的商式為ax+b，餘式為c，則a+b+c=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填10" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填10">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填10">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填10">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填10">👀 直接看答案</button></div><div class="reveal" data-qid="填10" hidden><div class="answer-box">參考答案：<b class="answer-letter">-18</b></div><div class="trap-reason">⚠️ 陷阱提醒：把A、B同時放大／縮小倍數時，除法關係中的商式跟餘式並不是簡單地跟著等比例縮放，需要重新用「被除式=除式×商式+餘式」的關係仔細推導</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">由題意：A=B(2x-6)-4。將等式兩邊同乘3：3A=3B(2x-6)-12=B(6x-18)-12。要把這個式子改寫成「除以2B」的形式：注意B(6x-18)=2B×(3x-9)，所以3A=2B(3x-9)-12。這正好符合「3A÷2B商式為3x-9、餘式為-12」的形式（因為餘式-12是常數，次數比2B低，符合除法規則）。所以ax+b中a=3、b=-9，c=-12。a+b+c=3+(-9)+(-12)=-18。答案-18。</div></details></div></div></div><div class="qcard" data-qid="填11" data-qtype="fill" data-answer="-7" data-chapter="1-3" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_填11"><div class="qhead"><span class="badge badge-no">填11</span><span class="badge badge-type type-fill">填充</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知x²+x=3，試求x³+3x²-x-13的值？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="填11" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="填11">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="填11">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="填11">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="填11">👀 直接看答案</button></div><div class="reveal" data-qid="填11" hidden><div class="answer-box">參考答案：<b class="answer-letter">-7</b></div><div class="trap-reason">⚠️ 陷阱提醒：遇到高次的x要先用已知條件x²+x=3把x²、x³都換成低次的表達式再代入，硬算x的實際數值（含根號）反而會很麻煩</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">由x²+x=3可得x²=3-x。先求x³：x³=x×x²=x(3-x)=3x-x²=3x-(3-x)=3x-3+x=4x-3。代入所求式：x³+3x²-x-13=(4x-3)+3(3-x)-x-13=4x-3+9-3x-x-13。合併同類項：x的部分：4x-3x-x=0x。常數部分：-3+9-13=-7。整個式子等於0x+(-7)=-7。答案-7。</div></details></div></div></div><div class="qcard" data-qid="計算11" data-qtype="calc" data-answer="17424=2⁴×3²×11²" data-chapter="2-1" data-difficulty="B" data-trap="0" data-wrong="0" data-hardmark="0" id="q_計算11"><div class="qhead"><span class="badge badge-no">計算1(1)</span><span class="badge badge-type type-calc">計算</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">試將17424化為標準分解式（1分）</div><div class="fillrow"><input type="text" class="fill-input" data-qid="計算11" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="計算11">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="計算11">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="計算11">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="計算11">👀 直接看答案</button></div><div class="reveal" data-qid="計算11" hidden><div class="answer-box">參考答案：<b class="answer-letter">17424=2⁴×3²×11²</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">17424連續除以2：17424÷2=8712，8712÷2=4356，4356÷2=2178，2178÷2=1089（共除了4次2，1089不能再被2整除）。1089再分解：1089÷3=363，363÷3=121（121不能再被3整除，共除了2次3）。121=11×11=11²。所以17424=2⁴×3²×11²。</div></details></div></div></div><div class="qcard" data-qid="計算12" data-qtype="calc" data-answer="132" data-chapter="2-1" data-difficulty="B" data-trap="0" data-wrong="0" data-hardmark="0" id="q_計算12"><div class="qhead"><span class="badge badge-no">計算1(2)</span><span class="badge badge-type type-calc">計算</span><span class="badge badge-ch">2-1 平方根的意義</span><span class="badge badge-diff diff-B">B級</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">試求出√17424為多少？（2分）</div><div class="fillrow"><input type="text" class="fill-input" data-qid="計算12" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="計算12">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="計算12">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="計算12">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="計算12">👀 直接看答案</button></div><div class="reveal" data-qid="計算12" hidden><div class="answer-box">參考答案：<b class="answer-letter">132</b></div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">由(1)的標準分解式17424=2⁴×3²×11²，開根號時每個質因數的指數都除以2：√17424=√(2⁴×3²×11²)=2²×3×11=4×3×11=132。答案132。</div></details></div></div></div><div class="qcard" data-qid="計算2" data-qtype="calc" data-answer="A=x-2" data-chapter="1-3" data-difficulty="C" data-trap="1" data-wrong="0" data-hardmark="0" id="q_計算2"><div class="qhead"><span class="badge badge-no">計算2</span><span class="badge badge-type type-calc">計算</span><span class="badge badge-ch">1-3 多項式的乘除</span><span class="badge badge-diff diff-C">C級</span><span class="badge badge-trap">⚠️ 陷阱題</span><span class="badge badge-wrong" hidden>✗ 做錯</span><span class="badge badge-hardmark" hidden>⭐ 疑難</span></div><div class="qbody"><div class="qtext">已知A為多項式，且(x³-2x²+3x-8)/A=(x²+3)-2/A，則A=？</div><div class="fillrow"><input type="text" class="fill-input" data-qid="計算2" placeholder="輸入你的答案"><button class="tool-btn check-btn" data-qid="計算2">核對答案</button></div><div class="qtoolbar"><button class="tool-btn hardmark-btn" data-qid="計算2">⭐ 標記疑難</button><button class="tool-btn reset-btn" data-qid="計算2">🔄 重新作答</button><button class="tool-btn peek-btn" data-qid="計算2">👀 直接看答案</button></div><div class="reveal" data-qid="計算2" hidden><div class="answer-box">參考答案：<b class="answer-letter">A=x-2</b></div><div class="trap-reason">⚠️ 陷阱提醒：等號兩邊都有分母A，要先兩邊同乘A消去分母，再把常數項移項湊出「被除式=除式×商式」的形式，而不是直接硬解看起來像分式方程的式子</div><details class="solution-detail"><summary>📝 詳細解題 <span class="chev">▶</span></summary><div class="solution-body">把等式兩邊同乘A，消去分母：x³-2x²+3x-8=(x²+3)×A-2。把-2移到等號左邊：x³-2x²+3x-8+2=(x²+3)×A，也就是x³-2x²+3x-6=(x²+3)×A。所以A=(x³-2x²+3x-6)÷(x²+3)。用長除法計算：x³÷x²=x，x×(x²+3)=x³+3x，扣掉後剩下-2x²+3x-3x-6=-2x²-6。接著-2x²÷x²=-2，-2×(x²+3)=-2x²-6，扣掉後剩下0（整除，沒有餘式）。所以A=x-2。答案A=x-2。</div></details></div></div></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'quiz_11401_progress_v1';
+  let store = {};
+  try { store = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { store = {}; }
+  function saveStore() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(store)); } catch(e) {} }
+  function getRec(qid) {
+    if (!store[qid]) store[qid] = { selected: null, correct: null, hard: false, userText: '' };
+    return store[qid];
+  }
+
+  const cards = document.querySelectorAll('.qcard');
+
+  function normalize(s) {
+    return (s || '').replace(/\s+/g, '').toLowerCase().replace(/×/g,'x').replace(/[（(]/g,'(').replace(/[）)]/g,')');
+  }
+
+  function renderCard(card) {
+    const qid = card.dataset.qid;
+    const qtype = card.dataset.qtype;
+    const rec = getRec(qid);
+    const correctAnswer = card.dataset.answer;
+    const reveal = card.querySelector('.reveal');
+
+    if (qtype === 'choice') {
+      const opts = card.querySelectorAll('.opt');
+      opts.forEach(opt => opt.classList.remove('is-correct-answer', 'is-selected-wrong'));
+      if (rec.selected) {
+        card.classList.add('answered');
+        reveal.hidden = false;
+        opts.forEach(opt => {
+          const letter = opt.dataset.letter;
+          if (letter === correctAnswer) opt.classList.add('is-correct-answer');
+          else if (letter === rec.selected) opt.classList.add('is-selected-wrong');
+        });
+      } else {
+        card.classList.remove('answered');
+      }
+    } else {
+      const input = card.querySelector('.fill-input');
+      input.value = rec.userText || '';
+      input.classList.remove('marked-correct', 'marked-wrong');
+      if (rec.correct === true) input.classList.add('marked-correct');
+      if (rec.correct === false) input.classList.add('marked-wrong');
+      reveal.hidden = !rec.selected;
+    }
+
+    const wrong = rec.selected && rec.correct === false;
+    card.dataset.wrong = wrong ? '1' : '0';
+    card.querySelector('.badge-wrong').hidden = !wrong;
+    card.dataset.hardmark = rec.hard ? '1' : '0';
+    card.querySelector('.badge-hardmark').hidden = !rec.hard;
+    card.querySelector('.hardmark-btn').classList.toggle('active', rec.hard);
+  }
+
+  function updateProgressSummary() {
+    let answered = 0, correct = 0, wrong = 0, hard = 0;
+    cards.forEach(card => {
+      const rec = getRec(card.dataset.qid);
+      if (rec.selected) {
+        answered++;
+        if (rec.correct === true) correct++; else if (rec.correct === false) wrong++;
+      }
+      if (rec.hard) hard++;
+    });
+    document.getElementById('progAnswered').textContent = answered;
+    document.getElementById('progCorrect').textContent = correct;
+    document.getElementById('progWrong').textContent = wrong;
+    document.getElementById('progHard').textContent = hard;
+  }
+
+  document.getElementById('qlist').addEventListener('click', (e) => {
+    const opt = e.target.closest('.opt');
+    if (opt) {
+      const card = opt.closest('.qcard');
+      const rec = getRec(card.dataset.qid);
+      rec.selected = opt.dataset.letter;
+      rec.correct = (rec.selected === card.dataset.answer);
+      saveStore(); renderCard(card); updateProgressSummary(); applyFilters();
+      return;
+    }
+    const checkBtn = e.target.closest('.check-btn');
+    if (checkBtn) {
+      const card = checkBtn.closest('.qcard');
+      const rec = getRec(card.dataset.qid);
+      const input = card.querySelector('.fill-input');
+      rec.userText = input.value;
+      rec.selected = 'answered';
+      rec.correct = normalize(rec.userText) === normalize(card.dataset.answer) && rec.userText.trim() !== '';
+      saveStore(); renderCard(card); updateProgressSummary(); applyFilters();
+      return;
+    }
+    const hardBtn = e.target.closest('.hardmark-btn');
+    if (hardBtn) {
+      const card = hardBtn.closest('.qcard');
+      const rec = getRec(card.dataset.qid);
+      rec.hard = !rec.hard;
+      saveStore(); renderCard(card); updateProgressSummary(); applyFilters();
+      return;
+    }
+    const resetBtn = e.target.closest('.reset-btn');
+    if (resetBtn) {
+      const card = resetBtn.closest('.qcard');
+      const rec = getRec(card.dataset.qid);
+      rec.selected = null; rec.correct = null; rec.userText = '';
+      saveStore(); renderCard(card); updateProgressSummary(); applyFilters();
+      return;
+    }
+    const peekBtn = e.target.closest('.peek-btn');
+    if (peekBtn) {
+      peekBtn.closest('.qcard').querySelector('.reveal').hidden = false;
+      return;
+    }
+  });
+
+  document.getElementById('clearAllBtn').addEventListener('click', () => {
+    if (!confirm('確定要清除全部作答紀錄、疑難標記嗎？此動作無法復原。')) return;
+    store = {};
+    saveStore();
+    cards.forEach(renderCard);
+    updateProgressSummary();
+    applyFilters();
+  });
+
+  const typeBtns = document.querySelectorAll('.filter-btn[data-type]');
+  const diffBtns = document.querySelectorAll('.filter-btn[data-diff]');
+  const trapBtn = document.getElementById('trapOnlyBtn');
+  const wrongHardBtn = document.getElementById('wrongHardOnlyBtn');
+  const countEl = document.getElementById('filterCount');
+
+  let trapOnly = false, wrongHardOnly = false;
+
+  function applyFilters() {
+    const activeTypes = new Set(Array.from(typeBtns).filter(b=>b.classList.contains('active')).map(b=>b.dataset.type));
+    const activeDiffs = new Set(Array.from(diffBtns).filter(b=>b.classList.contains('active')).map(b=>b.dataset.diff));
+    let shown = 0;
+    cards.forEach(card => {
+      const okType = activeTypes.has(card.dataset.qtype);
+      const okDiff = activeDiffs.has(card.dataset.difficulty);
+      const okTrap = !trapOnly || card.dataset.trap === '1';
+      const okWrongHard = !wrongHardOnly || card.dataset.wrong === '1' || card.dataset.hardmark === '1';
+      const ok = okType && okDiff && okTrap && okWrongHard;
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    countEl.textContent = `共 23 題，符合篩選 ${shown} 題`;
+  }
+
+  typeBtns.forEach(b => b.addEventListener('click', () => { b.classList.toggle('active'); applyFilters(); }));
+  diffBtns.forEach(b => b.addEventListener('click', () => { b.classList.toggle('active'); applyFilters(); }));
+  trapBtn.addEventListener('click', () => { trapOnly = !trapOnly; trapBtn.classList.toggle('active', trapOnly); applyFilters(); });
+  wrongHardBtn.addEventListener('click', () => { wrongHardOnly = !wrongHardOnly; wrongHardBtn.classList.toggle('active', wrongHardOnly); applyFilters(); });
+
+  cards.forEach(renderCard);
+  updateProgressSummary();
+  applyFilters();
+})();
+</script>
+</body>
+</html>
