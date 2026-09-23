@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八年級 數學(三) 3　1-3 多項式的乘除 — 詳解</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20x%3D%2750%27%20y%3D%2772%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%3E%E2%9C%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
+    --card:#ffffff; --hard:#b0442e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 16px 60px;
+    background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
+    line-height:1.85;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  h1{
+    font-size:1.6rem; margin:0 0 4px; color:var(--accent);
+    border-bottom:3px solid var(--accent); padding-bottom:10px;
+  }
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:20px;}
+
+  .filter-bar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg); padding:10px 0 16px; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .filter-btn{
+    border:1.5px solid var(--line); background:var(--card); color:var(--sub);
+    padding:6px 16px; border-radius:20px; font-size:0.88rem; cursor:pointer;
+    font-family:inherit;
+  }
+  .filter-btn.active{
+    border-color:var(--accent); color:#fff; background:var(--accent); font-weight:700;
+  }
+  .filter-btn.hard-filter.active{background:var(--hard); border-color:var(--hard);}
+  .filter-count{color:var(--sub); font-size:0.85rem; margin-left:auto;}
+
+  h2{
+    font-size:1.2rem; margin:32px 0 14px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  h2::before{content:""; width:6px; height:22px; background:var(--accent); border-radius:3px; display:inline-block;}
+
+  .qcard{
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:14px;
+    background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.03);
+  }
+  .qcard[data-hard="true"]{border-color:var(--hard);}
+  .qcard[hidden]{display:none;}
+
+  .qhead{
+    padding:5px 16px; display:flex; align-items:center; gap:10px;
+    background:var(--accent3); color:#fff; font-size:0.92rem; font-weight:700;
+  }
+  .qcard[data-hard="true"] .qhead{background:var(--hard);}
+  .hard-badge{
+    background:#fff; color:var(--hard); font-size:0.72rem; font-weight:700;
+    padding:2px 9px; border-radius:20px;
+  }
+
+  .qbody{padding:16px 20px;}
+  .qtext{
+    background:#fdf6f0; border:1px solid #f0ddc9; border-radius:10px;
+    padding:12px 14px; margin-bottom:12px; font-size:0.95rem;
+  }
+  table{
+    width:100%; border-collapse:collapse; margin-top:10px; font-size:0.92rem;
+    background:var(--card);
+  }
+  th, td{
+    border:1px solid var(--line); padding:9px 10px; text-align:center; vertical-align:middle;
+  }
+  th{background:#f3ede3; color:var(--ink); font-weight:700;}
+
+  .diagram-box{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:12px; margin:12px 0; overflow-x:auto; text-align:center;
+  }
+  .diagram-box img{max-width:100%; display:inline-block; border-radius:6px;}
+  .diagram-box .cap{color:var(--sub); font-size:0.82rem; margin-top:6px;}
+
+  .block{
+    border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
+  }
+  .block-head{padding:7px 14px; font-weight:700; font-size:0.9rem; color:#fff;}
+  .block-body{padding:11px 15px; background:var(--card); font-size:0.93rem;}
+  .b-think .block-head{background:var(--accent3);}
+  .b-key .block-head{background:var(--accent2);}
+  .b-step .block-head{background:var(--accent);}
+  .calc-line{
+    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
+    padding:7px 12px; margin:6px 0; font-size:0.92rem;
+  }
+  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
+  .warn-box{
+    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .warn-box b{color:#b0442e;}
+
+  .answer-box{
+    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
+    padding:9px 14px; margin-top:10px; font-size:0.96rem; text-align:center;
+  }
+  .answer-box b{color:var(--accent); font-size:1.05rem;}
+
+  details.solution{
+    margin-top:14px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  details.solution summary{
+    list-style:none; cursor:pointer; user-select:none;
+    padding:9px 14px; background:#f3ede3; color:var(--ink); font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.solution summary::-webkit-details-marker{display:none;}
+  details.solution summary .chev{margin-left:auto; transition:transform .15s; font-size:0.85rem; color:var(--sub);}
+  details.solution[open] summary .chev{transform:rotate(90deg);}
+  details.solution .sol-body{padding:14px 16px;}
+
+  .toc-nav{
+    display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;
+  }
+  .toc-nav a{
+    display:inline-block; width:30px; height:30px; line-height:30px; text-align:center;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    color:var(--sub); text-decoration:none; font-size:0.85rem;
+  }
+  .toc-nav a:hover{border-color:var(--accent); color:var(--accent);}
+  .toc-nav a[hidden]{display:none;}
+  .toc-nav a.hard{
+    border-color:var(--hard); color:#fff; background:var(--hard); font-weight:700;
+  }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>八年級 數學(三) 3　1-3 多項式的乘除 — 詳解</h1>
+  <div class="subtitle">題目常駐顯示，解題區塊可收合；頂部可篩選全部題目／疑難題</div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部題目</button>
+    <button class="filter-btn hard-filter" data-filter="hard">只看疑難題</button>
+    <span class="filter-count"></span>
+  </div>
+
+  <div class="toc-nav"><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5" class="hard">5</a><a href="#q6">6</a><a href="#q7" class="hard">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16" class="hard">16</a><a href="#q17" class="hard">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21" class="hard">21</a></div>
+
+<h2>一、選擇題（每題4分，共40分）</h2>
+
+<div class="qcard" data-hard="false" id="q1">
+    <div class="qhead">第 選擇1 題 — 乘法公式判斷</div>
+    <div class="qbody">
+      <div class="qtext">有關多項式乘法的運算，下列哪一個選項是正確的？</div>
+      <table><tr><td>(A) (3x+2)²=9x²+4</td><td>(B) (3x−1)(x+4)=3x²−4</td><td>(C) (3x−2)(3x+2)=9x²−4</td><td>(D) (11x−1)²=121x²−11x+1</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">乘法公式：(a+b)²=a²+2ab+b²；(a−b)(a+b)=a²−b²；(a−b)²=a²−2ab+b²，展開時中間項最容易漏掉，要特別小心。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把四個選項都實際展開一次，跟選項給的答案核對。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) (3x+2)²=9x²+12x+4≠9x²+4，錯誤（漏了中間項12x）</div>
+<div class="calc-line"><span class="idx">②</span>(B) (3x−1)(x+4)=3x²+12x−x−4=3x²+11x−4≠3x²−4，錯誤</div>
+<div class="calc-line"><span class="idx">③</span>(C) (3x−2)(3x+2)=(3x)²−2²=9x²−4，正確（平方差公式）</div>
+<div class="calc-line"><span class="idx">④</span>(D) (11x−1)²=121x²−22x+1≠121x²−11x+1，錯誤（中間項算錯）</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 9x²−4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q2">
+    <div class="qhead">第 選擇2 題 — 面積求寬</div>
+    <div class="qbody">
+      <div class="qtext">已知一矩形的面積為(12x²−6x)平方單位，若此矩形的長為3x，則寬為多少？</div>
+      <table><tr><td>(A) 4x+2</td><td>(B) 4x−2</td><td>(C) 4x+3</td><td>(D) 4x−3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">矩形面積=長×寬，所以寬=面積÷長，是一個多項式除以單項式的除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把(12x²−6x)的每一項分別除以3x。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>12x²÷3x=4x</div>
+<div class="calc-line"><span class="idx">②</span>−6x÷3x=−2</div>
+<div class="calc-line"><span class="idx">③</span>寬=4x−2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 4x−2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q3">
+    <div class="qhead">第 選擇3 題 — 二項式相乘</div>
+    <div class="qbody">
+      <div class="qtext">計算 (2x−7)(x−6) = ?</div>
+      <table><tr><td>(A) 2x²−5x−42</td><td>(B) 2x²−5x+42</td><td>(C) 2x²−19x−42</td><td>(D) 2x²−19x+42</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">多項式乘法用分配律，四項都要相乘後再合併同類項，最容易出錯的地方是x的一次項係數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">用「前前、前後、後前、後後」展開後合併x的一次項。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>2x×x=2x²</div>
+<div class="calc-line"><span class="idx">②</span>2x×(−6)=−12x</div>
+<div class="calc-line"><span class="idx">③</span>−7×x=−7x</div>
+<div class="calc-line"><span class="idx">④</span>−7×(−6)=42</div>
+<div class="calc-line"><span class="idx">⑤</span>合併：2x²+(−12x−7x)+42=2x²−19x+42</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 2x²−19x+42</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q4">
+    <div class="qhead">第 選擇4 題 — 整除與餘式判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列敘述正確的有哪些？<br>（甲）4x²+4x+4 可以被x整除<br>（乙）2x²+4x−6 可以被3x−3整除<br>（丙）(2x²−2x+1)÷(x−1)的餘式為0<br>（丁）(x²−7x−3)÷(x−3)的餘式為−15</div>
+      <table><tr><td>(A) 甲丙</td><td>(B) 乙丁</td><td>(C) 甲丁</td><td>(D) 乙丙</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">「能被整除」代表餘式為0；除式是(x−k)這種一次式時，可以用「代入x=k算出的值＝餘式」（餘式定理）快速判斷，不用真的做長除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項檢查甲乙丙丁，甲丙丁可以直接看常數項或代入x值快速判斷，乙需要實際除一次確認餘式是否為0。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>（甲）常數項是4，不是0，多項式能被x整除的必要條件是常數項為0，所以甲錯誤</div>
+<div class="calc-line"><span class="idx">②</span>（丁）除式為x−3，代入x=3：3²−7(3)−3=9−21−3=−15，跟題目說的餘式相符，丁正確</div>
+<div class="calc-line"><span class="idx">③</span>（丙）除式為x−1，代入x=1：2(1)²−2(1)+1=1，餘式應為1不是0，丙錯誤</div>
+<div class="calc-line"><span class="idx">④</span>（乙）實際做長除法：(2x²+4x−6)÷(3x−3)，除到最後餘式為0，確實可以整除，乙正確</div>
+<div class="calc-line"><span class="idx">⑤</span>正確的是乙、丁</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 乙丁</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q5">
+    <div class="qhead">第 選擇5 題 — 反推被除式<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">若多項式A除以x+2得商式為−2x+3，餘式為−5，則多項式A=?</div>
+      <table><tr><td>(A) −2x²−7x−5</td><td>(B) −2x²−7x+1</td><td>(C) −2x²−x−5</td><td>(D) −2x²−x+1</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">除法關係式：被除式＝除式×商式＋餘式。知道除式、商式、餘式，就能反推回被除式，不需要做除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">直接套用「被除式=除式×商式+餘式」把A算出來。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>A=(x+2)×(−2x+3)+(−5)</div>
+<div class="calc-line"><span class="idx">②</span>(x+2)(−2x+3)=−2x²+3x−4x+6=−2x²−x+6</div>
+<div class="calc-line"><span class="idx">③</span>A=−2x²−x+6−5=−2x²−x+1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) −2x²−x+1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q6">
+    <div class="qhead">第 選擇6 題 — 面積相減</div>
+    <div class="qbody">
+      <div class="qtext">如右圖，有一正方形木板，其邊長為a+5，在內部挖去一個兩邊長分別為a、a+2的矩形，則剩餘木板面積為多少平方單位？</div>
+      <table><tr><td>(A) 2a²+8a+25</td><td>(B) 8a+25</td><td>(C) 8a−25</td><td>(D) −8a+25</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">剩餘面積＝大正方形面積－挖掉的矩形面積，兩者都用乘法公式展開後相減。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分別算出正方形面積(a+5)²與矩形面積a(a+2)，再相減，注意減法要把整個展開式括起來再變號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(a+5)²=a²+10a+25</div>
+<div class="calc-line"><span class="idx">②</span>a(a+2)=a²+2a</div>
+<div class="calc-line"><span class="idx">③</span>剩餘面積=(a²+10a+25)−(a²+2a)=8a+25</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 8a+25</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q7">
+    <div class="qhead">第 選擇7 題 — 反推除式<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">若6x²−5x+1除以多項式A得商式為3x−4，餘式為5，則多項式A=?</div>
+      <table><tr><td>(A) x+2</td><td>(B) x−2</td><td>(C) 2x+1</td><td>(D) 2x−1</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">一樣用「被除式=除式×商式+餘式」，但這次要反過來求「除式A」，需要用長除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把餘式5移到左邊，變成「(6x²−5x+1)−5＝A×(3x−4)」，再用長除法求出A。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>6x²−5x+1=A×(3x−4)+5 → A×(3x−4)=6x²−5x−4</div>
+<div class="calc-line"><span class="idx">②</span>用長除法：(6x²−5x−4)÷(3x−4)，6x²÷3x=2x</div>
+<div class="calc-line"><span class="idx">③</span>2x×(3x−4)=6x²−8x，扣掉後剩(−5x+8x)=3x，帶下−4得3x−4</div>
+<div class="calc-line"><span class="idx">④</span>3x÷3x=1，1×(3x−4)=3x−4，扣掉後剩0</div>
+<div class="calc-line"><span class="idx">⑤</span>商式（也就是A）=2x+1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 2x+1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q8">
+    <div class="qhead">第 選擇8 題 — 比較係數</div>
+    <div class="qbody">
+      <div class="qtext">若(−4x+a)(2x²+x−1)的乘積中，x²項的係數為−16，則a=?</div>
+      <table><tr><td>(A) −6</td><td>(B) −3</td><td>(C) 6</td><td>(D) 3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">只需要找出展開後「x²項」是由哪幾項相乘湊出來的，不用展開整個式子，省時間又不容易錯。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">x²項來自「−4x乘以x項」以及「a乘以2x²項」這兩個部分相加。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>−4x×x=−4x²</div>
+<div class="calc-line"><span class="idx">②</span>a×2x²=2ax²</div>
+<div class="calc-line"><span class="idx">③</span>x²項係數＝−4+2a，設等於−16</div>
+<div class="calc-line"><span class="idx">④</span>−4+2a=−16 → 2a=−12 → a=−6</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) −6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q9">
+    <div class="qhead">第 選擇9 題 — 直式除法反推係數</div>
+    <div class="qbody">
+      <div class="qtext">威利以直式計算法作一多項式除法，過程如下（除式為 x+1，被除式為 ax²+bx−1，商式為 cx+d）：第一列相減用的乘積為「x²+x」，第二列相減用的乘積為「−x−1」，最後餘式為0。則a+b+c+d=?</div>
+      <table><tr><td>(A) −2</td><td>(B) −1</td><td>(C) 1</td><td>(D) 2</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">直式除法（長除法）的每一列都藏著訊息：某一列的乘積，就是「當時商的那一項」乘以「除式」的結果。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">從直式各列反推：第一列乘積x²+x，代表商的第一項乘以除式(x+1)等於x²+x，由此可推出a、b；第二列乘積−x−1，可推出商的第二項d。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>商的第一項設為cx，cx×(x+1)=cx²+cx，對照第一列乘積x²+x，得c=1</div>
+<div class="calc-line"><span class="idx">②</span>被除式ax²+bx中的x²項要被這列完全扣除（沒有餘下x²項），所以a=1</div>
+<div class="calc-line"><span class="idx">③</span>扣除x²+x後，剩下的x一次項是(b−1)x，加上帶下來的−1，要湊出「−x−1」，所以(b−1)x−1=−x−1，得b=0</div>
+<div class="calc-line"><span class="idx">④</span>商的第二項d滿足d×(x+1)=−x−1，對照得d=−1</div>
+<div class="calc-line"><span class="idx">⑤</span>a+b+c+d=1+0+1+(−1)=1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q10">
+    <div class="qhead">第 選擇10 題 — 係數比較法</div>
+    <div class="qbody">
+      <div class="qtext">若(2x−1)(x²+ax−3)=bx³+4x²+cx+d，則a+b+c+d=?</div>
+      <table><tr><td>(A) −1</td><td>(B) 0</td><td>(C) 1</td><td>(D) 2</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">兩個多項式相等，代表每一項（x³、x²、x、常數項）的係數都要分別相等，這就是「係數比較法」。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把左式展開整理成bx³+□x²+□x+□的形式，再一項一項對照bx³+4x²+cx+d，解出所有未知數。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>展開(2x−1)(x²+ax−3)＝2x³+2ax²−6x−x²−ax+3＝2x³+(2a−1)x²+(−6−a)x+3</div>
+<div class="calc-line"><span class="idx">②</span>比較x³項：b=2</div>
+<div class="calc-line"><span class="idx">③</span>比較x²項：2a−1=4 → a=5/2</div>
+<div class="calc-line"><span class="idx">④</span>比較x項：c=−6−a=−6−5/2=−17/2</div>
+<div class="calc-line"><span class="idx">⑤</span>比較常數項：d=3</div>
+<div class="calc-line"><span class="idx">⑥</span>a+b+c+d=5/2+2−17/2+3=(5/2−17/2)+5=−6+5=−1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) −1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>二、非選擇題（每格4分，共40分）</h2>
+
+<div class="qcard" data-hard="false" id="q11">
+    <div class="qhead">第 非選1 題 — 多項式乘法綜合</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式：<br>(1) (−4x+7)(2x−1) = ___<br>(2) (x²−3x+2)(3x+2) = ___<br>(3) (2x−5)²−(3x+2)(2x−4) = ___</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">分別是「二項式×二項式」「三項式×二項式」「乘法公式減乘法展開」，都是基本的多項式乘法＋合併同類項。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐式展開後合併同類項；第(3)題要特別注意，減去整個(3x+2)(2x−4)展開式時，每一項都要變號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(1) (−4x+7)(2x−1)=−8x²+4x+14x−7=−8x²+18x−7</div>
+<div class="calc-line"><span class="idx">②</span>(2) (x²−3x+2)(3x+2)=3x³+2x²−9x²−6x+6x+4=3x³−7x²+4</div>
+<div class="calc-line"><span class="idx">③</span>(3) (2x−5)²=4x²−20x+25；(3x+2)(2x−4)=6x²−12x+4x−8=6x²−8x−8</div>
+<div class="calc-line"><span class="idx">④</span>(3) 相減：(4x²−20x+25)−(6x²−8x−8)=4x²−20x+25−6x²+8x+8=−2x²−12x+33</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) −8x²+18x−7　(2) 3x³−7x²+4　(3) −2x²−12x+33</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q12">
+    <div class="qhead">第 非選2 題 — 單項式除法</div>
+    <div class="qbody">
+      <div class="qtext">6x²÷(−12x) 的商式為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">單項式除以單項式，係數相除、同底數的x用指數相減。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把6與−12的比先化簡，再處理x的部分。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>6÷(−12)=−1/2</div>
+<div class="calc-line"><span class="idx">②</span>x²÷x=x</div>
+<div class="calc-line"><span class="idx">③</span>商式=−x/2</div></div></div>
+          
+          <div class="answer-box">答案：<b>−x/2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q13">
+    <div class="qhead">第 非選3 題 — 求餘式（除式為單項式）</div>
+    <div class="qbody">
+      <div class="qtext">(3x²−5x+1)÷2x 的餘式為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">除式2x的次數是1（一次式），所以餘式的次數必須比1小，也就是餘式只能是常數（不含x）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">用長除法把3x²−5x+1除以2x，除到剩下常數項為止。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>3x²÷2x=(3/2)x，(3/2)x×2x=3x²，扣掉後剩−5x+1</div>
+<div class="calc-line"><span class="idx">②</span>−5x÷2x=−5/2，(−5/2)×2x=−5x，扣掉後剩1（常數，次數比2x低，除法結束）</div>
+<div class="calc-line"><span class="idx">③</span>餘式為1</div></div></div>
+          
+          <div class="answer-box">答案：<b>1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q14">
+    <div class="qhead">第 非選4 題 — 長除法商式餘式</div>
+    <div class="qbody">
+      <div class="qtext">(3x²+1)÷(x−2) 的商式為___，餘式為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">一般多項式除以一次式，用長除法逐步做，直到餘式的次數比除式低（變成常數）為止。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把3x²+1想成3x²+0x+1，照長除法標準程序做。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>3x²÷x=3x，3x×(x−2)=3x²−6x，扣掉後剩6x+1</div>
+<div class="calc-line"><span class="idx">②</span>6x÷x=6，6×(x−2)=6x−12，扣掉後剩13</div>
+<div class="calc-line"><span class="idx">③</span>商式=3x+6，餘式=13</div></div></div>
+          
+          <div class="answer-box">答案：<b>商式3x+6，餘式13</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q15">
+    <div class="qhead">第 非選5 題 — 梯形高度反推</div>
+    <div class="qbody">
+      <div class="qtext">若梯形的上底為2x+1，下底為4x−3，面積為(12x²+11x−5)平方單位，則此梯形的高為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">梯形面積＝(上底+下底)×高÷2，所以高＝面積×2÷(上底+下底)，這是一個多項式除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先求上底+下底，再把面積乘以2後，除以(上底+下底)。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>上底+下底=(2x+1)+(4x−3)=6x−2</div>
+<div class="calc-line"><span class="idx">②</span>高=(12x²+11x−5)×2÷(6x−2)=(24x²+22x−10)÷(6x−2)</div>
+<div class="calc-line"><span class="idx">③</span>化簡：24x²+22x−10=2(12x²+11x−5)，6x−2=2(3x−1)，約分後變成(12x²+11x−5)÷(3x−1)</div>
+<div class="calc-line"><span class="idx">④</span>用長除法：12x²÷3x=4x，4x×(3x−1)=12x²−4x，扣掉後剩15x−5；15x÷3x=5，5×(3x−1)=15x−5，扣掉後剩0</div>
+<div class="calc-line"><span class="idx">⑤</span>高=4x+5</div></div></div>
+          
+          <div class="answer-box">答案：<b>4x+5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q16">
+    <div class="qhead">第 非選6 題 — 除式放大後商式變化<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">已知A、B均為多項式，其中B≠0。若A÷B的商式為4x+5，餘式為x+8，則A÷3B的商式為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">被除式A的內容不會變，變的只是除式從B放大成3B（放大3倍）；除式放大幾倍，商式就要跟著縮小幾倍，餘式才能維持不變。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把A用原本的關係式表示出來：A=B×(4x+5)+(x+8)，再想辦法把它改寫成「A=3B×(某商式)+餘式」的形式。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>A=B×(4x+5)+(x+8)</div>
+<div class="calc-line"><span class="idx">②</span>把B×(4x+5)改寫成3B×[(4x+5)/3]，這樣除式就變成3B了</div>
+<div class="calc-line"><span class="idx">③</span>A=3B×[(4x+5)/3]+(x+8)</div>
+<div class="calc-line"><span class="idx">④</span>因為餘式x+8的次數仍然比B（也就是3B）低，符合除法規則，所以這就是正確的商式與餘式</div>
+<div class="calc-line"><span class="idx">⑤</span>A÷3B的商式為(4x+5)/3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(4x+5)/3（即 4x/3+5/3）</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q17">
+    <div class="qhead">第 非選7 題 — 畢氏定理經典圖形<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">右圖正方形中的塗色部分面積為___平方單位（以a、b表示）。（大正方形邊長為a+b，四個角各挖去一個直角三角形，兩股分別為a、b，中間留下一個傾斜的塗色正方形）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">「大正方形面積－四個角的直角三角形面積」就是中間塗色小正方形的面積，這是證明畢氏定理常用的經典圖形。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先算大正方形(a+b)²的面積，再算四個一樣的直角三角形（兩股為a、b）的面積總和，相減就是塗色部分。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>大正方形面積=(a+b)²=a²+2ab+b²</div>
+<div class="calc-line"><span class="idx">②</span>一個直角三角形面積=(1/2)ab，四個共=4×(1/2)ab=2ab</div>
+<div class="calc-line"><span class="idx">③</span>塗色面積=(a²+2ab+b²)−2ab=a²+b²</div></div></div>
+          
+          <div class="answer-box">答案：<b>a²+b²</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>精熟實力題（每題5分，共20分）</h2>
+
+<div class="qcard" data-hard="false" id="q18">
+    <div class="qhead">第 精熟1 題 — 聯立多項式方程式</div>
+    <div class="qbody">
+      <div class="qtext">已知A、B為兩多項式，若2A+3B=4x²+6x−3，A−2B=2x²−4x+2，求A×B=?</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">這是聯立「多項式方程式」，解法跟數字的聯立方程式一樣，可以用代入消去法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">從第二式把A表示成含B的式子，代入第一式解出B，再回頭求A。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>由A−2B=2x²−4x+2 → A=2x²−4x+2+2B</div>
+<div class="calc-line"><span class="idx">②</span>代入2A+3B=4x²+6x−3：2(2x²−4x+2+2B)+3B=4x²+6x−3</div>
+<div class="calc-line"><span class="idx">③</span>展開：4x²−8x+4+7B=4x²+6x−3 → 7B=14x−7 → B=2x−1</div>
+<div class="calc-line"><span class="idx">④</span>A=2x²−4x+2+2(2x−1)=2x²−4x+2+4x−2=2x²</div>
+<div class="calc-line"><span class="idx">⑤</span>A×B=2x²×(2x−1)=4x³−2x²</div></div></div>
+          
+          <div class="answer-box">答案：<b>4x³−2x²</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q19">
+    <div class="qhead">第 精熟2 題 — 四邊形塗色面積</div>
+    <div class="qbody">
+      <div class="qtext">如右圖，四邊形四邊分別標示 3x+5、4x+2、5x−2、2x−4，求塗色部分的面積為何？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">四邊形面積題通常會用「切成兩個三角形分別求面積」或「割補法」來處理。</div></div>
+          <div class="warn-box"><b>提醒：</b>這一題的圖形（四邊各標長度 3x+5、4x+2、5x−2、2x−4）看不清楚塗色部分實際是哪一塊（例如是整個四邊形、還是被對角線切出的三角形），無法確定要用哪個公式計算。麻煩用 Snipping Tool 把這張圖清楚截圖另存新檔並告知檔名，我再回頭幫忙解這一題。</div>
+          <div class="answer-box">答案：<b>此題原始圖形掃描檔線條較淡，塗色範圍無法確認，暫不作答（詳見下方提醒）</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q20">
+    <div class="qhead">第 精熟3 題 — 道路面積（平方差公式）</div>
+    <div class="qbody">
+      <div class="qtext">如右圖，王老先生有一塊正方形土地，邊長為(x−2)公尺。若他在土地四周圍向外開闢寬皆為3公尺的道路，求道路的總面積為多少平方公尺？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">「四周都留寬度相同的道路」會讓外圍變成一個新的正方形，新正方形的邊長＝原邊長＋兩側的道路寬（左右各加一次）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先求出外圍大正方形的邊長與面積，再減去中間原本土地的面積；也可以直接用平方差公式(a+b)(a−b)加速計算。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>外圍大正方形邊長=(x−2)+3+3=x+4</div>
+<div class="calc-line"><span class="idx">②</span>大正方形面積=(x+4)²</div>
+<div class="calc-line"><span class="idx">③</span>道路面積=大正方形面積−原正方形面積=(x+4)²−(x−2)²</div>
+<div class="calc-line"><span class="idx">④</span>用平方差公式：[(x+4)+(x−2)]×[(x+4)−(x−2)]=(2x+2)×6=12x+12</div></div></div>
+          
+          <div class="answer-box">答案：<b>12x+12</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q21">
+    <div class="qhead">第 精熟4 題 — 餘式定理應用<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">已知一多項式A除以x+5的餘式為−2，求3(A+1)除以x+5的餘式為何？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">餘式定理：多項式A除以(x−k)的餘式，就等於把x=k代入A所算出來的值；這裡除式是x+5=x−(−5)，所以k=−5。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不需要知道A完整長什麼樣子，只要知道「A代入x=−5的結果」就等於餘式−2，再利用這個數值去求3(A+1)代入x=−5的結果。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>A除以x+5餘式為−2，代表把x=−5代入A(x)得到的值A(−5)=−2</div>
+<div class="calc-line"><span class="idx">②</span>3(A+1)在x=−5的值＝3×(A(−5)+1)=3×(−2+1)=3×(−1)=−3</div>
+<div class="calc-line"><span class="idx">③</span>根據餘式定理，3(A+1)除以x+5的餘式，就等於3(A+1)代入x=−5的結果，也就是−3</div></div></div>
+          
+          <div class="answer-box">答案：<b>−3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+  <h2>答案總覽</h2>
+  <div class="qcard"><div class="qbody">
+    <table>
+      <thead><tr><th>題號</th><th>答案</th></tr></thead>
+      <tbody>
+        <tr><td>選擇1</td><td>(C) 9x²−4</td></tr>
+<tr><td>選擇2</td><td>(B) 4x−2</td></tr>
+<tr><td>選擇3</td><td>(D) 2x²−19x+42</td></tr>
+<tr><td>選擇4</td><td>(B) 乙丁</td></tr>
+<tr><td>選擇5</td><td>(D) −2x²−x+1</td></tr>
+<tr><td>選擇6</td><td>(B) 8a+25</td></tr>
+<tr><td>選擇7</td><td>(C) 2x+1</td></tr>
+<tr><td>選擇8</td><td>(A) −6</td></tr>
+<tr><td>選擇9</td><td>(C) 1</td></tr>
+<tr><td>選擇10</td><td>(A) −1</td></tr>
+<tr><td>非選1</td><td>(1) −8x²+18x−7　(2) 3x³−7x²+4　(3) −2x²−12x+33</td></tr>
+<tr><td>非選2</td><td>−x/2</td></tr>
+<tr><td>非選3</td><td>1</td></tr>
+<tr><td>非選4</td><td>商式3x+6，餘式13</td></tr>
+<tr><td>非選5</td><td>4x+5</td></tr>
+<tr><td>非選6</td><td>(4x+5)/3（即 4x/3+5/3）</td></tr>
+<tr><td>非選7</td><td>a²+b²</td></tr>
+<tr><td>精熟1</td><td>4x³−2x²</td></tr>
+<tr><td>精熟2</td><td>此題原始圖形掃描檔線條較淡，塗色範圍無法確認，暫不作答（詳見下方提醒）</td></tr>
+<tr><td>精熟3</td><td>12x+12</td></tr>
+<tr><td>精熟4</td><td>−3</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+</div>
+<script>
+
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.qcard[id]');
+  const countEl = document.querySelector('.filter-count');
+
+  function updateCount(){
+    const total = cards.length;
+    const hard = document.querySelectorAll('.qcard[data-hard="true"]').length;
+    countEl.textContent = `共 ${total} 題，疑難題 ${hard} 題`;
+  }
+
+  const navLinks = document.querySelectorAll('.toc-nav a');
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(mode==='all'){ c.hidden = false; }
+        else { c.hidden = c.dataset.hard !== 'true'; }
+      });
+      navLinks.forEach(a=>{
+        if(mode==='all'){ a.hidden = false; }
+        else { a.hidden = !a.classList.contains('hard'); }
+      });
+    });
+  });
+  updateCount();
+
+</script>
+</body>
+</html>

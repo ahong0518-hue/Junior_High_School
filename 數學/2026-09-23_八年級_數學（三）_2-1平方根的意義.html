@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八年級 數學(三) 4　2-1 平方根的意義 — 詳解</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20x%3D%2750%27%20y%3D%2772%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%3E%F0%9F%93%8F%3C/text%3E%3C/svg%3E">
+<style>
+
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
+    --card:#ffffff; --hard:#b0442e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 16px 60px;
+    background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
+    line-height:1.85;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  h1{
+    font-size:1.6rem; margin:0 0 4px; color:var(--accent);
+    border-bottom:3px solid var(--accent); padding-bottom:10px;
+  }
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:20px;}
+
+  .filter-bar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg); padding:10px 0 16px; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .filter-btn{
+    border:1.5px solid var(--line); background:var(--card); color:var(--sub);
+    padding:6px 16px; border-radius:20px; font-size:0.88rem; cursor:pointer;
+    font-family:inherit;
+  }
+  .filter-btn.active{
+    border-color:var(--accent); color:#fff; background:var(--accent); font-weight:700;
+  }
+  .filter-btn.hard-filter.active{background:var(--hard); border-color:var(--hard);}
+  .filter-count{color:var(--sub); font-size:0.85rem; margin-left:auto;}
+
+  h2{
+    font-size:1.2rem; margin:32px 0 14px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  h2::before{content:""; width:6px; height:22px; background:var(--accent); border-radius:3px; display:inline-block;}
+
+  .qcard{
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:14px;
+    background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.03);
+  }
+  .qcard[data-hard="true"]{border-color:var(--hard);}
+  .qcard[hidden]{display:none;}
+
+  .qhead{
+    padding:5px 16px; display:flex; align-items:center; gap:10px;
+    background:var(--accent3); color:#fff; font-size:0.92rem; font-weight:700;
+  }
+  .qcard[data-hard="true"] .qhead{background:var(--hard);}
+  .hard-badge{
+    background:#fff; color:var(--hard); font-size:0.72rem; font-weight:700;
+    padding:2px 9px; border-radius:20px;
+  }
+
+  .qbody{padding:16px 20px;}
+  .qtext{
+    background:#fdf6f0; border:1px solid #f0ddc9; border-radius:10px;
+    padding:12px 14px; margin-bottom:12px; font-size:0.95rem;
+  }
+  table{
+    width:100%; border-collapse:collapse; margin-top:10px; font-size:0.92rem;
+    background:var(--card);
+  }
+  th, td{
+    border:1px solid var(--line); padding:9px 10px; text-align:center; vertical-align:middle;
+  }
+  th{background:#f3ede3; color:var(--ink); font-weight:700;}
+
+  .diagram-box{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:12px; margin:12px 0; overflow-x:auto; text-align:center;
+  }
+  .diagram-box img{max-width:100%; display:inline-block; border-radius:6px;}
+  .diagram-box .cap{color:var(--sub); font-size:0.82rem; margin-top:6px;}
+
+  .block{
+    border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
+  }
+  .block-head{padding:7px 14px; font-weight:700; font-size:0.9rem; color:#fff;}
+  .block-body{padding:11px 15px; background:var(--card); font-size:0.93rem;}
+  .b-think .block-head{background:var(--accent3);}
+  .b-key .block-head{background:var(--accent2);}
+  .b-step .block-head{background:var(--accent);}
+  .calc-line{
+    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
+    padding:7px 12px; margin:6px 0; font-size:0.92rem;
+  }
+  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
+  .warn-box{
+    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .warn-box b{color:#b0442e;}
+
+  .answer-box{
+    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
+    padding:9px 14px; margin-top:10px; font-size:0.96rem; text-align:center;
+  }
+  .answer-box b{color:var(--accent); font-size:1.05rem;}
+
+  details.solution{
+    margin-top:14px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  details.solution summary{
+    list-style:none; cursor:pointer; user-select:none;
+    padding:9px 14px; background:#f3ede3; color:var(--ink); font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.solution summary::-webkit-details-marker{display:none;}
+  details.solution summary .chev{margin-left:auto; transition:transform .15s; font-size:0.85rem; color:var(--sub);}
+  details.solution[open] summary .chev{transform:rotate(90deg);}
+  details.solution .sol-body{padding:14px 16px;}
+
+  .toc-nav{
+    display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;
+  }
+  .toc-nav a{
+    display:inline-block; width:30px; height:30px; line-height:30px; text-align:center;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    color:var(--sub); text-decoration:none; font-size:0.85rem;
+  }
+  .toc-nav a:hover{border-color:var(--accent); color:var(--accent);}
+  .toc-nav a[hidden]{display:none;}
+  .toc-nav a.hard{
+    border-color:var(--hard); color:#fff; background:var(--hard); font-weight:700;
+  }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>八年級 數學(三) 4　2-1 平方根的意義 — 詳解</h1>
+  <div class="subtitle">題目常駐顯示，解題區塊可收合；頂部可篩選全部題目／疑難題</div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部題目</button>
+    <button class="filter-btn hard-filter" data-filter="hard">只看疑難題</button>
+    <span class="filter-count"></span>
+  </div>
+
+  <div class="toc-nav"><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6" class="hard">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10" class="hard">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18" class="hard">18</a><a href="#q19">19</a><a href="#q20" class="hard">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a></div>
+
+<h2>一、選擇題（每題4分，共40分）</h2>
+
+<div class="qcard" data-hard="false" id="q1">
+    <div class="qhead">第 選擇1 題 — 敘述判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列敘述何者正確？</div>
+      <table><tr><td>(A) 36的平方根為±6</td><td>(B) 7是√49的正平方根</td><td>(C) (√5)²=5，所以5是√5的平方根</td><td>(D) −8²=−64，所以−8是−64的平方根</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">平方根的定義：若 x²=a，則 x 稱為 a 的平方根；正數 a 恆有兩個平方根 +√a 與 −√a，「正平方根」專指其中的正值。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐一檢查四個選項的敘述是否符合平方根的定義，特別注意「誰是誰的平方根」不要說反，以及負數在實數範圍內沒有平方根。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) 6²=36 且 (−6)²=36，所以36的平方根確實是 ±6，正確</div>
+<div class="calc-line"><span class="idx">②</span>(B) √49=7，而「7的正平方根」是 √7，不是7本身；這句話把角色說反了，錯誤</div>
+<div class="calc-line"><span class="idx">③</span>(C) (√5)²=5 本身沒錯，但這代表「√5 是 5 的平方根」，不是「5 是 √5 的平方根」，方向說反，錯誤</div>
+<div class="calc-line"><span class="idx">④</span>(D) −8²=−(8²)=−64 沒錯，但 −64 是負數，負數在實數範圍內沒有平方根，錯誤</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) 36的平方根為±6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q2">
+    <div class="qhead">第 選擇2 題 — 比較根號大小</div>
+    <div class="qbody">
+      <div class="qtext">若 a=√26，b=5，c=√27，則 a、b、c 的大小關係為何？</div>
+      <table><tr><td>(A) a&gt;b&gt;c</td><td>(B) b&gt;c&gt;a</td><td>(C) c&gt;b&gt;a</td><td>(D) c&gt;a&gt;b</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根號數的大小，只要比較根號內的數字大小（根號內數字越大，其平方根也越大），把整數也化成根號形式最方便比較。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 b=5 改寫成 √25，這樣三個數就都是「根號某數」的形式，直接比較根號內的 25、26、27 即可。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>b=5=√25</div>
+<div class="calc-line"><span class="idx">②</span>因為 25&lt;26&lt;27，所以 √25&lt;√26&lt;√27，也就是 b&lt;a&lt;c</div>
+<div class="calc-line"><span class="idx">③</span>由小到大是 b&lt;a&lt;c，反過來由大到小就是 c&gt;a&gt;b</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) c&gt;a&gt;b</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q3">
+    <div class="qhead">第 選擇3 題 — 驗證平方根等式</div>
+    <div class="qbody">
+      <div class="qtext">下列哪一個選項中的等式成立？</div>
+      <table><tr><td>(A) √0.025=0.5</td><td>(B) √0.09=0.3</td><td>(C) √1.6=0.4</td><td>(D) √6.4=0.8</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">驗證「√a=b」是否成立，只要檢查 b² 是否等於 a 即可（且 b 需為正數），不用真的去開根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把每個選項的 b 平方回去，看看跟根號內的 a 是否相符。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) 0.5²=0.25≠0.025，不成立</div>
+<div class="calc-line"><span class="idx">②</span>(B) 0.3²=0.09，成立！</div>
+<div class="calc-line"><span class="idx">③</span>(C) 0.4²=0.16≠1.6，不成立</div>
+<div class="calc-line"><span class="idx">④</span>(D) 0.8²=0.64≠6.4，不成立</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) √0.09=0.3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q4">
+    <div class="qhead">第 選擇4 題 — 整數部分</div>
+    <div class="qbody">
+      <div class="qtext">√155 的整數部分為多少？</div>
+      <table><tr><td>(A) 15</td><td>(B) 14</td><td>(C) 13</td><td>(D) 12</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">若 n²&lt;a&lt;(n+1)²，則 √a 的整數部分是 n；找出兩個相鄰完全平方數，把 a 夾在中間即可。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">找出最接近155、比較好平方的整數，往上往下各試幾個，直到夾住155為止。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>12²=144，13²=169</div>
+<div class="calc-line"><span class="idx">②</span>144&lt;155&lt;169，所以 12&lt;√155&lt;13</div>
+<div class="calc-line"><span class="idx">③</span>√155 介於12與13之間，整數部分為12</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 12</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q5">
+    <div class="qhead">第 選擇5 題 — 負平方根應用</div>
+    <div class="qbody">
+      <div class="qtext">若 −4 是 3x+1 的負平方根，則 x 之值為何？</div>
+      <table><tr><td>(A) −2</td><td>(B) −1</td><td>(C) 5</td><td>(D) 16</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">「−4是某數的負平方根」代表這個數的平方根是 ±4，也就是這個數本身等於 4²=16。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把「負平方根是−4」轉換成「這個數等於16」，再解一次方程式即可。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>−4是3x+1的負平方根 → 3x+1=(−4)²=16</div>
+<div class="calc-line"><span class="idx">②</span>3x=16−1=15</div>
+<div class="calc-line"><span class="idx">③</span>x=5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q6">
+    <div class="qhead">第 選擇6 題 — 不等式範圍計數<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">若 a 為正整數，且 2&lt;√a≤3，則符合的 a 值共有多少個？</div>
+      <table><tr><td>(A) 4</td><td>(B) 5</td><td>(C) 6</td><td>(D) 7</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">不等式兩邊同時平方時，若各項都是正數，大小關係不會改變，可以直接把整個不等式平方來去掉根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 2&lt;√a≤3 三邊同時平方，轉換成 a 的範圍，再數這個範圍內有幾個正整數。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>2&lt;√a≤3 兩邊平方（各項皆為正數，方向不變）→ 4&lt;a≤9</div>
+<div class="calc-line"><span class="idx">②</span>符合4&lt;a≤9的正整數有：5、6、7、8、9</div>
+<div class="calc-line"><span class="idx">③</span>共5個</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 5個</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q7">
+    <div class="qhead">第 選擇7 題 — √值的定義</div>
+    <div class="qbody">
+      <div class="qtext">計算 √0.04 之值為何？</div>
+      <table><tr><td>(A) 0.2</td><td>(B) 0.02</td><td>(C) ±0.2</td><td>(D) ±0.02</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√ 這個符號本身只代表「正平方根」（或0），所以√a的結果一定是正數或0，不會有正負兩個值——這點跟「a的平方根」不一樣，要分清楚。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">直接找出平方後等於0.04的正數即可。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>0.2²=0.04</div>
+<div class="calc-line"><span class="idx">②</span>因為√符號只取正值，所以√0.04=0.2（不是±0.2）</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) 0.2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q8">
+    <div class="qhead">第 選擇8 題 — 根號化簡綜合</div>
+    <div class="qbody">
+      <div class="qtext">計算 √((−4)²) − √(4²) + √(16²) − (−√16) 之值為何？</div>
+      <table><tr><td>(A) 0</td><td>(B) 8</td><td>(C) 16</td><td>(D) 20</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(x²)＝|x|（一定是取正值），要先把每一項的根號內平方先處理掉，再看整體正負號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項化簡：√((−4)²)、√(4²)、√(16²)分別等於多少，最後一項要注意「減掉一個負數」等於「加上正數」。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√((−4)²)=√16=4</div>
+<div class="calc-line"><span class="idx">②</span>√(4²)=√16=4</div>
+<div class="calc-line"><span class="idx">③</span>√(16²)=16</div>
+<div class="calc-line"><span class="idx">④</span>−(−√16)=−(−4)=+4</div>
+<div class="calc-line"><span class="idx">⑤</span>合計：4−4+16+4=20</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 20</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q9">
+    <div class="qhead">第 選擇9 題 — 正方形周長</div>
+    <div class="qbody">
+      <div class="qtext">已知一正方形的面積為361平方單位，則其周長為何？</div>
+      <table><tr><td>(A) 19</td><td>(B) 29</td><td>(C) 76</td><td>(D) 116</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">正方形面積＝邊長²，所以邊長＝√面積；周長＝邊長×4。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先用開根號求出邊長，再乘以4得到周長。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>邊長=√361=19</div>
+<div class="calc-line"><span class="idx">②</span>周長=19×4=76</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 76</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q10">
+    <div class="qhead">第 選擇10 題 — 十分逼近法<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">利用十分逼近法，求√19的近似值。根據下列數據，則√19的近似值為何？（以四捨五入法取到小數點後第一位）<br>(1) 3²=9，4²=16，5²=25<br>(2) (4.2)²=17.64，(4.3)²=18.49，(4.4)²=19.36<br>(3) (4.35)²=18.9225</div>
+      <table><tr><td>(A) 4.6</td><td>(B) 4.5</td><td>(C) 4.4</td><td>(D) 4.3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">十分逼近法就是先夾出整數範圍，再一位一位小數往下夾，每次都用「平方後跟19比大小」來判斷落在哪一段。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">根據題目給的三組平方數據，逐步縮小√19所在的範圍，最後再判斷四捨五入到小數點後一位是多少。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>由(1)：4²=16、5²=25，16&lt;19&lt;25，所以4&lt;√19&lt;5</div>
+<div class="calc-line"><span class="idx">②</span>由(2)：(4.3)²=18.49、(4.4)²=19.36，18.49&lt;19&lt;19.36，所以4.3&lt;√19&lt;4.4</div>
+<div class="calc-line"><span class="idx">③</span>由(3)：(4.35)²=18.9225&lt;19，所以√19&gt;4.35，即√19介於4.35與4.4之間</div>
+<div class="calc-line"><span class="idx">④</span>因為√19&gt;4.35（大於這一段的中點），四捨五入到小數點後一位要取4.4</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 4.4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>二、非選擇題（每格4分，共40分）</h2>
+
+<div class="qcard" data-hard="false" id="q11">
+    <div class="qhead">第 非選1 題 — 正平方根記法</div>
+    <div class="qbody">
+      <div class="qtext">若甲數&gt;0，且（甲數）²=23，則甲數可記為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">若一個正數的平方等於a，這個正數就是a的正平方根，記作√a。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">甲數是正數，平方後等於23，所以甲數就是23的正平方根。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>甲數&gt;0 且 (甲數)²=23 → 甲數=√23</div></div></div>
+          
+          <div class="answer-box">答案：<b>√23</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q12">
+    <div class="qhead">第 非選2 題 — 比較根號大小填空</div>
+    <div class="qbody">
+      <div class="qtext">√(5/2) ___ √3。（填入 &gt; 或 &lt;）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較兩個根號數的大小，只要比較根號內的數值大小即可（根號內較大，整體也較大）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 5/2 與 3 化成同樣的小數或分數比較即可。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>5/2=2.5，3=3</div>
+<div class="calc-line"><span class="idx">②</span>因為2.5&lt;3，所以√(5/2)&lt;√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>&lt;</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q13">
+    <div class="qhead">第 非選3 題 — 根號與平方互相抵銷</div>
+    <div class="qbody">
+      <div class="qtext">計算 √((−3)²) + (√3)² = ?</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(x²)=|x|；(√a)²=a（a≥0時）。這是兩個常搞混但方向相反的公式，要分清楚。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分別化簡兩項，第一項是「先平方再開根號」，第二項是「先開根號再平方」。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√((−3)²)=√9=3</div>
+<div class="calc-line"><span class="idx">②</span>(√3)²=3</div>
+<div class="calc-line"><span class="idx">③</span>3+3=6</div></div></div>
+          
+          <div class="answer-box">答案：<b>6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q14">
+    <div class="qhead">第 非選4 題 — 質因數指數化簡</div>
+    <div class="qbody">
+      <div class="qtext">計算 √(3⁴×5²×7²) = ?</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若每個質因數的指數都是偶數，就可以直接把指數除以2後移出根號外。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把3⁴、5²、7²個別開根號（指數除以2）再相乘。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√(3⁴)=3²=9</div>
+<div class="calc-line"><span class="idx">②</span>√(5²)=5</div>
+<div class="calc-line"><span class="idx">③</span>√(7²)=7</div>
+<div class="calc-line"><span class="idx">④</span>9×5×7=315</div></div></div>
+          
+          <div class="answer-box">答案：<b>315</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q15">
+    <div class="qhead">第 非選5 題 — 分數平方根</div>
+    <div class="qbody">
+      <div class="qtext">49/9 的平方根為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">分數的平方根，就是分別對分子、分母開根號（若都是完全平方數的話），且平方根一定有正負兩個。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">49跟9都是完全平方數，可以直接開根號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√49=7，√9=3</div>
+<div class="calc-line"><span class="idx">②</span>49/9的平方根為±7/3</div></div></div>
+          
+          <div class="answer-box">答案：<b>±7/3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q16">
+    <div class="qhead">第 非選6 題 — 綜合運算</div>
+    <div class="qbody">
+      <div class="qtext">計算 [(3−6)² + |−4−7|] ÷ √(9−(−7)) = ?</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">遇到根號、絕對值、括號混在一起的算式，要先處理括號跟絕對值裡面，最後才處理根號跟除法。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分子分母分開算：分子是「平方＋絕對值」，分母是「先算減法再開根號」。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(3−6)²=(−3)²=9</div>
+<div class="calc-line"><span class="idx">②</span>|−4−7|=|−11|=11</div>
+<div class="calc-line"><span class="idx">③</span>分子=9+11=20</div>
+<div class="calc-line"><span class="idx">④</span>9−(−7)=16，√16=4</div>
+<div class="calc-line"><span class="idx">⑤</span>20÷4=5</div></div></div>
+          
+          <div class="answer-box">答案：<b>5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q17">
+    <div class="qhead">第 非選7 題 — 夾出整數部分</div>
+    <div class="qbody">
+      <div class="qtext">已知 n 為正整數，且 n&lt;√180&lt;n+1，則 n=?</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">找出√180的整數部分，就是找兩個相鄰完全平方數夾住180。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">試著找13²、14²跟180比大小。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>13²=169，14²=196</div>
+<div class="calc-line"><span class="idx">②</span>169&lt;180&lt;196，所以13&lt;√180&lt;14</div>
+<div class="calc-line"><span class="idx">③</span>n=13</div></div></div>
+          
+          <div class="answer-box">答案：<b>13</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q18">
+    <div class="qhead">第 非選8 題 — 最大值問題<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">若 a 為正整數，且 √(13−a) 也為正整數，則 a 的最大值為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">要讓a越大，13−a就要越小；但13−a同時要是一個「完全平方數」，√(13−a)才會剛好是正整數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">從最小的正完全平方數開始試（1、4、9…），配出最大的a。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>13−a必須是正整數的完全平方數，且要讓a最大，就要讓13−a最小</div>
+<div class="calc-line"><span class="idx">②</span>最小的正完全平方數是1²=1</div>
+<div class="calc-line"><span class="idx">③</span>13−a=1 → a=12</div>
+<div class="calc-line"><span class="idx">④</span>驗算：√(13−12)=√1=1，確實是正整數</div></div></div>
+          
+          <div class="answer-box">答案：<b>12</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q19">
+    <div class="qhead">第 非選9 題 — 聯立方程式求平方根</div>
+    <div class="qbody">
+      <div class="qtext">若 {3x+2y=4，2x−y=5}，則3x−y的平方根為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">這是聯立方程式，先解出x、y的值，再代入題目要求的式子。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">用代入消去法：由第二式表示出y，代回第一式求x，再求y。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>由2x−y=5 → y=2x−5</div>
+<div class="calc-line"><span class="idx">②</span>代入3x+2y=4：3x+2(2x−5)=4 → 7x−10=4 → 7x=14 → x=2</div>
+<div class="calc-line"><span class="idx">③</span>y=2(2)−5=−1</div>
+<div class="calc-line"><span class="idx">④</span>3x−y=3(2)−(−1)=6+1=7</div>
+<div class="calc-line"><span class="idx">⑤</span>3x−y的平方根為±√7</div></div></div>
+          
+          <div class="answer-box">答案：<b>±√7</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="true" id="q20">
+    <div class="qhead">第 非選10 題 — 正負平方根聯立<span class="hard-badge">疑難題</span></div>
+    <div class="qbody">
+      <div class="qtext">已知3是3a+2b−2的正平方根，−4是a−b+9的負平方根，則a−2b的平方根為___。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">「X是Y的正平方根」代表Y=X²（X&gt;0）；「X是Y的負平方根」代表Y=X²（X&lt;0）。兩種說法算出來Y的方式相同，只是用來判斷X正負的敘述不同。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分別把兩個條件轉成方程式，聯立解出a、b，再代入a−2b求平方根。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>3是3a+2b−2的正平方根 → 3a+2b−2=3²=9 → 3a+2b=11</div>
+<div class="calc-line"><span class="idx">②</span>−4是a−b+9的負平方根 → a−b+9=(−4)²=16 → a−b=7</div>
+<div class="calc-line"><span class="idx">③</span>由②：a=7+b，代入①：3(7+b)+2b=11 → 21+5b=11 → b=−2</div>
+<div class="calc-line"><span class="idx">④</span>a=7+(−2)=5</div>
+<div class="calc-line"><span class="idx">⑤</span>a−2b=5−2(−2)=5+4=9</div>
+<div class="calc-line"><span class="idx">⑥</span>9的平方根為±3</div></div></div>
+          
+          <div class="answer-box">答案：<b>±3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>精熟實力題（每題5分，共20分）</h2>
+
+<div class="qcard" data-hard="false" id="q21">
+    <div class="qhead">第 精熟1 題 — 判斷數字範圍</div>
+    <div class="qbody">
+      <div class="qtext">下列七個數中，哪些數介於12與14之間？請寫出你的答案並說明理由。<br>√136、√166、√170、√185、√192、√198、√200</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">判斷√a是否介於12與14之間，只要看a是否介於12²=144與14²=196之間即可，不用真的算出根號值。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先算出12²與14²當作判斷的「界線」，再逐一檢查七個數字是否落在界線之內。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>12²=144，14²=196，判斷界線為144~196之間</div>
+<div class="calc-line"><span class="idx">②</span>136&lt;144，√136&lt;12，不符合</div>
+<div class="calc-line"><span class="idx">③</span>166、170、185、192都介於144與196之間，符合</div>
+<div class="calc-line"><span class="idx">④</span>198&gt;196，√198&gt;14，不符合；200&gt;196，√200&gt;14，不符合</div></div></div>
+          
+          <div class="answer-box">答案：<b>√166、√170、√185、√192 這四個數介於12與14之間</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q22">
+    <div class="qhead">第 精熟2 題 — 平方差公式應用</div>
+    <div class="qbody">
+      <div class="qtext">已知x−y的正平方根是4，且x+y的負平方根是−2，求x²−y²的平方根為何？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">x²−y²可以用乘法公式拆成(x−y)(x+y)，剛好可以直接利用題目給的兩個條件。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把兩個條件轉換成x−y、x+y的數值，再利用平方差公式相乘。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x−y的正平方根是4 → x−y=4²=16</div>
+<div class="calc-line"><span class="idx">②</span>x+y的負平方根是−2 → x+y=(−2)²=4</div>
+<div class="calc-line"><span class="idx">③</span>x²−y²=(x−y)(x+y)=16×4=64</div>
+<div class="calc-line"><span class="idx">④</span>64的平方根為±8</div></div></div>
+          
+          <div class="answer-box">答案：<b>±8</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q23">
+    <div class="qhead">第 精熟3 題 — 範圍內找完全平方數</div>
+    <div class="qbody">
+      <div class="qtext">若a為正整數，且5&lt;√a&lt;9，則滿足條件的a值有哪些是完全平方數？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">先把不等式兩邊平方，轉換成a的範圍，再從範圍裡挑出「本身也是完全平方數」的a。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">5&lt;√a&lt;9 平方後變成25&lt;a&lt;81，再從26~80之間找出剛好是完全平方數的數字。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>5&lt;√a&lt;9 兩邊平方 → 25&lt;a&lt;81</div>
+<div class="calc-line"><span class="idx">②</span>在25與81之間（不含頭尾）的完全平方數有：36(6²)、49(7²)、64(8²)</div></div></div>
+          
+          <div class="answer-box">答案：<b>a=36、49、64</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q24">
+    <div class="qhead">第 精熟4 題 — 找規律</div>
+    <div class="qbody">
+      <div class="qtext">(1) 已知1+2+1=2²，1+2+3+2+1=3²，1+2+3+4+3+2+1=4²……，求1+2+3+4+5+6+7+8+7+6+5+4+3+2+1=?（2分）<br>(2) 已知1+3=2²，1+3+5=3²，1+3+5+7=4²……，求1+3+5+7+9+11+13+15+17的平方根為何？（3分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">找規律題：觀察每個等式「最大的數字（或個數）是多少」跟「結果的底數」之間的關係，套用同樣的規律。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1)這種「1加到n再加回1」的算式，結果都等於n²，只要看最大數字是多少即可；(2)「連續奇數相加」的算式，結果等於「奇數個數」的平方。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(1)觀察規律：1+2+…+n+…+2+1＝n²（最大值為n，結果就是n²）</div>
+<div class="calc-line"><span class="idx">②</span>(1)題目中最大的數字是8，所以1+2+…+8+…+2+1=8²=64</div>
+<div class="calc-line"><span class="idx">③</span>(2)觀察規律：前k個連續奇數相加＝k²</div>
+<div class="calc-line"><span class="idx">④</span>(2)1+3+5+7+9+11+13+15+17共有9個奇數，所以總和=9²=81</div>
+<div class="calc-line"><span class="idx">⑤</span>(2)81的平方根為±9</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 64　(2) ±9</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+  <h2>答案總覽</h2>
+  <div class="qcard"><div class="qbody">
+    <table>
+      <thead><tr><th>題號</th><th>答案</th></tr></thead>
+      <tbody>
+        <tr><td>選擇1</td><td>(A) 36的平方根為±6</td></tr>
+<tr><td>選擇2</td><td>(D) c&gt;a&gt;b</td></tr>
+<tr><td>選擇3</td><td>(B) √0.09=0.3</td></tr>
+<tr><td>選擇4</td><td>(D) 12</td></tr>
+<tr><td>選擇5</td><td>(C) 5</td></tr>
+<tr><td>選擇6</td><td>(B) 5個</td></tr>
+<tr><td>選擇7</td><td>(A) 0.2</td></tr>
+<tr><td>選擇8</td><td>(D) 20</td></tr>
+<tr><td>選擇9</td><td>(C) 76</td></tr>
+<tr><td>選擇10</td><td>(B) 4.4</td></tr>
+<tr><td>非選1</td><td>√23</td></tr>
+<tr><td>非選2</td><td>&lt;</td></tr>
+<tr><td>非選3</td><td>6</td></tr>
+<tr><td>非選4</td><td>315</td></tr>
+<tr><td>非選5</td><td>±7/3</td></tr>
+<tr><td>非選6</td><td>5</td></tr>
+<tr><td>非選7</td><td>13</td></tr>
+<tr><td>非選8</td><td>12</td></tr>
+<tr><td>非選9</td><td>±√7</td></tr>
+<tr><td>非選10</td><td>±3</td></tr>
+<tr><td>精熟1</td><td>√166、√170、√185、√192 這四個數介於12與14之間</td></tr>
+<tr><td>精熟2</td><td>±8</td></tr>
+<tr><td>精熟3</td><td>a=36、49、64</td></tr>
+<tr><td>精熟4</td><td>(1) 64　(2) ±9</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+</div>
+<script>
+
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.qcard[id]');
+  const countEl = document.querySelector('.filter-count');
+
+  function updateCount(){
+    const total = cards.length;
+    const hard = document.querySelectorAll('.qcard[data-hard="true"]').length;
+    countEl.textContent = `共 ${total} 題，疑難題 ${hard} 題`;
+  }
+
+  const navLinks = document.querySelectorAll('.toc-nav a');
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(mode==='all'){ c.hidden = false; }
+        else { c.hidden = c.dataset.hard !== 'true'; }
+      });
+      navLinks.forEach(a=>{
+        if(mode==='all'){ a.hidden = false; }
+        else { a.hidden = !a.classList.contains('hard'); }
+      });
+    });
+  });
+  updateCount();
+
+</script>
+</body>
+</html>
