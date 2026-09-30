@@ -170,16 +170,38 @@ var D=[
 ['海南','㉒',3,7,1,'s','省'],['澳門','',4,7,1,'s','特別行政區'],['香港','',5,7,1,'s','特別行政區']
 ];
 // 修正：讓相鄰關係更貼近真實地圖（江西在湖南東、浙江在江西東北、福建在江西東南）
-var W=64,H=56,X0=6,Y0=6,svg=document.getElementById('map'),h='';
-D.forEach(function(d){
-  var x=X0+d[2]*W,y=Y0+d[3]*(H+4),w=d[4]*W-4,dash=(d[6]=='直轄市'||d[6]=='特別行政區')?' stroke-dasharray="4 3"':'';
-  var col=getComputedStyle(document.documentElement).getPropertyValue(R[d[5]][1]);
-  var fs=d[0].length>3?13:15;
-  h+='<g class="tile"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+H+'" rx="6" fill="'+col+'"'+dash+'/>';
-  if(d[1])h+='<text class="num" x="'+(x+5)+'" y="'+(y+15)+'" font-size="12" fill="#444">'+d[1]+'</text>';
-  h+='<text class="nm" x="'+(x+w/2)+'" y="'+(y+H/2+8)+'" text-anchor="middle" font-size="'+fs+'" font-weight="bold" fill="#222">'+d[0]+'</text></g>';
-});
-svg.innerHTML=h;
+
+var W=64,H=56,X0=6,Y0=6;
+var OV={'河北':{sp:2,ch:[['北京',52,10,32,36],['天津',86,10,32,36]]},
+ '江蘇':{sp:2,ch:[['上海',76,10,40,36]]},
+ '四川':{sp:2,ch:[['重慶',76,10,40,36]]},
+ '廣東':{rs:2,ch:[['澳門',3,54,27,58],['香港',31,54,27,58]]},
+ '海南':{col:4,row:7}};
+var CHN=['北京','天津','上海','重慶','澳門','香港'];
+function tileSvg(D,R,isDash){
+ var by={},h='',kids='';
+ D.forEach(function(d){by[d[0]]=d});
+ function fillOf(d){var v=R[d[5]];if(v instanceof Array)v=v[1];return getComputedStyle(document.documentElement).getPropertyValue(v)}
+ D.forEach(function(d){
+  if(CHN.indexOf(d[0])>=0)return;
+  var o=OV[d[0]]||{};
+  var col=o.col!=null?o.col:d[2],row=o.row!=null?o.row:d[3],sp=o.sp||d[4],rs=o.rs||1;
+  var x=X0+col*W,y=Y0+row*(H+4),w=sp*W-4,hh=rs*(H+4)-4;
+  var nx=(o.ch&&!o.rs)?x+30:x+w/2,ny=o.rs?y+40:y+hh/2+10;
+  h+='<g class="tile" data-name="'+d[0]+'"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+hh+'" rx="6" fill="'+fillOf(d)+'"'+(isDash(d)?' stroke-dasharray="4 3"':'')+'/>';
+  if(d[1])h+='<text class="num" x="'+(x+5)+'" y="'+(y+16)+'" font-size="13" fill="#444">'+d[1]+'</text>';
+  h+='<text class="nm" x="'+nx+'" y="'+ny+'" text-anchor="middle" font-size="'+(d[0].length>3?13:15)+'" font-weight="bold" fill="#222">'+d[0]+'</text></g>';
+  (o.ch||[]).forEach(function(c){
+   var k=by[c[0]],kx=x+c[1],ky=y+c[2],kw=c[3],kh=c[4];
+   kids+='<g class="tile" data-name="'+k[0]+'"><rect x="'+kx+'" y="'+ky+'" width="'+kw+'" height="'+kh+'" rx="5" fill="#fff" fill-opacity=".6" stroke-dasharray="3 2"/>';
+   if(k[1])kids+='<text class="num" x="'+(kx+3)+'" y="'+(ky+11)+'" font-size="10" fill="#444">'+k[1]+'</text>';
+   kids+='<text class="nm" x="'+(kx+kw/2)+'" y="'+(ky+kh/2+(k[1]?10:5))+'" text-anchor="middle" font-size="12" font-weight="bold" fill="#222">'+k[0]+'</text></g>';
+  });
+ });
+ return h+kids;
+}
+var svg=document.getElementById('map');
+svg.innerHTML=tileSvg(D,R,function(d){return d[6]=='直轄市'||d[6]=='特別行政區'});
 svg.setAttribute('viewBox','0 0 '+(X0*2+9*W)+' '+(Y0*2+8*(H+4)));
 svg.querySelectorAll('.tile').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('show')})});
 var bH=document.getElementById('bHide'),bN=document.getElementById('bNum'),bA=document.getElementById('bAll');
