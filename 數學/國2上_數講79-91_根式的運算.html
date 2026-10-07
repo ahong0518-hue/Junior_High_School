@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國2上 數講79-91 根式的運算 — 詳解</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ctext%20x%3D%2750%27%20y%3D%2772%27%20font-size%3D%2772%27%20text-anchor%3D%27middle%27%3E%F0%9F%93%9D%3C/text%3E%3C/svg%3E">
+<style>
+
+  :root{
+    --bg:#faf7f2; --ink:#2b2420; --sub:#6b6058; --line:#e4dcd0;
+    --accent:#c0704a; --accent2:#4a7a6b; --accent3:#4a6b9a;
+    --card:#ffffff; --hard:#b0442e;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:32px 16px 60px;
+    background:var(--bg); color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
+    line-height:1.85;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  h1{
+    font-size:1.6rem; margin:0 0 4px; color:var(--accent);
+    border-bottom:3px solid var(--accent); padding-bottom:10px;
+  }
+  .subtitle{color:var(--sub); font-size:0.95rem; margin-bottom:20px;}
+  .filter-bar{
+    position:sticky; top:0; z-index:10;
+    background:var(--bg); padding:10px 0 16px; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+  }
+  .filter-btn{
+    border:1.5px solid var(--line); background:var(--card); color:var(--sub);
+    padding:6px 16px; border-radius:20px; font-size:0.88rem; cursor:pointer;
+    font-family:inherit;
+  }
+  .filter-btn.active{
+    border-color:var(--accent); color:#fff; background:var(--accent); font-weight:700;
+  }
+  .filter-btn.hard-filter.active{background:var(--hard); border-color:var(--hard);}
+  .filter-count{color:var(--sub); font-size:0.85rem; margin-left:auto;}
+  h2{
+    font-size:1.2rem; margin:32px 0 14px; color:var(--ink);
+    display:flex; align-items:center; gap:8px;
+  }
+  h2::before{content:""; width:6px; height:22px; background:var(--accent); border-radius:3px; display:inline-block;}
+  .qcard{
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:14px;
+    background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,0.03);
+  }
+  .qcard[data-hard="true"]{border-color:var(--hard);}
+  .qcard[hidden]{display:none;}
+  .qhead{
+    padding:5px 16px; display:flex; align-items:center; gap:10px;
+    background:var(--accent3); color:#fff; font-size:0.92rem; font-weight:700;
+  }
+  .qcard[data-hard="true"] .qhead{background:var(--hard);}
+  .hard-badge{
+    background:#fff; color:var(--hard); font-size:0.72rem; font-weight:700;
+    padding:2px 9px; border-radius:20px;
+  }
+  .qbody{padding:16px 20px;}
+  .qtext{
+    background:#fdf6f0; border:1px solid #f0ddc9; border-radius:10px;
+    padding:12px 14px; margin-bottom:12px; font-size:0.95rem;
+  }
+  table{
+    width:100%; border-collapse:collapse; margin-top:10px; font-size:0.92rem;
+    background:var(--card);
+  }
+  th, td{
+    border:1px solid var(--line); padding:9px 10px; text-align:center; vertical-align:middle;
+  }
+  th{background:#f3ede3; color:var(--ink); font-weight:700;}
+  .diagram-box{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:12px; margin:12px 0; overflow-x:auto; text-align:center;
+  }
+  .diagram-box img{max-width:100%; display:inline-block; border-radius:6px;}
+  .diagram-box .cap{color:var(--sub); font-size:0.82rem; margin-top:6px;}
+  .block{
+    border:1px solid var(--line); border-radius:12px; margin:12px 0; overflow:hidden;
+  }
+  .block-head{padding:7px 14px; font-weight:700; font-size:0.9rem; color:#fff;}
+  .block-body{padding:11px 15px; background:var(--card); font-size:0.93rem;}
+  .b-think .block-head{background:var(--accent3);}
+  .b-key .block-head{background:var(--accent2);}
+  .b-step .block-head{background:var(--accent);}
+  .calc-line{
+    background:#f7f4ee; border-left:4px solid var(--accent3); border-radius:6px;
+    padding:7px 12px; margin:6px 0; font-size:0.92rem;
+  }
+  .calc-line .idx{color:var(--accent3); font-weight:700; margin-right:6px;}
+  .sub-head{
+    display:inline-block; margin:12px 0 2px; padding:2px 12px; border-radius:14px;
+    background:var(--accent3); color:#fff; font-weight:700; font-size:0.9rem;
+  }
+  .sub-head:first-child{margin-top:2px;}
+  .warn-box{
+    background:#fdf1ee; border:1px solid #f0c9c0; border-radius:10px;
+    padding:10px 14px; margin-top:8px; font-size:0.88rem;
+  }
+  .warn-box b{color:#b0442e;}
+  .answer-box{
+    background:#fff8ec; border:2px solid var(--accent); border-radius:10px;
+    padding:9px 14px; margin-top:10px; font-size:0.96rem; text-align:center;
+  }
+  .answer-box b{color:var(--accent); font-size:1.05rem;}
+  details.solution{
+    margin-top:14px; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  details.solution summary{
+    list-style:none; cursor:pointer; user-select:none;
+    padding:9px 14px; background:#f3ede3; color:var(--ink); font-weight:700; font-size:0.92rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  details.solution summary::-webkit-details-marker{display:none;}
+  details.solution summary .chev{margin-left:auto; transition:transform .15s; font-size:0.85rem; color:var(--sub);}
+  details.solution[open] summary .chev{transform:rotate(90deg);}
+  details.solution .sol-body{padding:14px 16px;}
+  .toc-nav{
+    display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px;
+  }
+  .toc-nav a{
+    display:inline-block; width:30px; height:30px; line-height:30px; text-align:center;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    color:var(--sub); text-decoration:none; font-size:0.85rem;
+  }
+  .toc-nav a:hover{border-color:var(--accent); color:var(--accent);}
+  .toc-nav a[hidden]{display:none;}
+  .toc-nav a.hard{
+    border-color:var(--hard); color:#fff; background:var(--hard); font-weight:700;
+  }
+
+</style>
+</head>
+<body>
+<nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">📐 數學</a>&nbsp;›&nbsp; 國2上 數講79-91 根式的運算</nav>
+
+<div class="wrap">
+
+  <h1>國2上 數講79-91 根式的運算 — 詳解</h1>
+  <div class="subtitle">依課本頁碼排序；題目常駐顯示，解題區塊可收合。題號方格依序對應各題。</div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">全部題目</button>
+    <button class="filter-btn hard-filter" data-filter="hard">只看疑難題</button>
+    <span class="filter-count"></span>
+  </div>
+
+  <div class="toc-nav"><a href="#q1">1</a><a href="#q2">2</a><a href="#q3">3</a><a href="#q4">4</a><a href="#q5">5</a><a href="#q6">6</a><a href="#q7">7</a><a href="#q8">8</a><a href="#q9">9</a><a href="#q10">10</a><a href="#q11">11</a><a href="#q12">12</a><a href="#q13">13</a><a href="#q14">14</a><a href="#q15">15</a><a href="#q16">16</a><a href="#q17">17</a><a href="#q18">18</a><a href="#q19">19</a><a href="#q20">20</a><a href="#q21">21</a><a href="#q22">22</a><a href="#q23">23</a><a href="#q24">24</a><a href="#q25">25</a><a href="#q26">26</a><a href="#q27">27</a><a href="#q28">28</a><a href="#q29">29</a><a href="#q30">30</a><a href="#q31">31</a><a href="#q32">32</a><a href="#q33">33</a><a href="#q34">34</a><a href="#q35">35</a><a href="#q36">36</a><a href="#q37">37</a><a href="#q38">38</a><a href="#q39">39</a><a href="#q40">40</a><a href="#q41">41</a><a href="#q42">42</a><a href="#q43">43</a><a href="#q44">44</a><a href="#q45">45</a><a href="#q46">46</a><a href="#q47">47</a><a href="#q48">48</a><a href="#q49">49</a><a href="#q50">50</a><a href="#q51">51</a><a href="#q52">52</a><a href="#q53">53</a><a href="#q54">54</a><a href="#q55">55</a><a href="#q56">56</a><a href="#q57">57</a><a href="#q58">58</a><a href="#q59">59</a><a href="#q60">60</a><a href="#q61">61</a><a href="#q62">62</a><a href="#q63">63</a><a href="#q64">64</a><a href="#q65">65</a><a href="#q66">66</a><a href="#q67">67</a><a href="#q68">68</a><a href="#q69">69</a><a href="#q70">70</a><a href="#q71">71</a><a href="#q72">72</a><a href="#q73">73</a><a href="#q74">74</a><a href="#q75">75</a><a href="#q76">76</a><a href="#q77">77</a><a href="#q78">78</a><a href="#q79">79</a><a href="#q80">80</a><a href="#q81">81</a><a href="#q82">82</a><a href="#q83">83</a><a href="#q84">84</a><a href="#q85">85</a><a href="#q86">86</a><a href="#q87">87</a><a href="#q88">88</a><a href="#q89">89</a><a href="#q90">90</a><a href="#q91">91</a><a href="#q92">92</a></div>
+
+<h2>第79頁　2-2 根式的運算：同類方根的合併</h2>
+
+<div class="qcard" data-hard="false" id="q1">
+    <div class="qhead">講解8 — 同類方根的合併</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) 4√3−5√3　(2) √2−2√2+√3</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先看根號裡的數字一不一樣：一樣的合併係數，不一樣的留著。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>4√3−5√3=(4−5)√3=−√3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√2−2√2=(1−2)√2=−√2；√3與√2不同類，不能合併，所以答案是 −√2+√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) −√3　(2) −√2+√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q2">
+    <div class="qhead">演練8 — 同類方根的合併</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) −2√2+7√2　(2) √5−5√2−2√5</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">同類的挑出來合併：第(2)題√5和−2√5同類，−5√2是另一類。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>(−2+7)√2=5√2</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√5−2√5=(1−2)√5=−√5；再加上 −5√2，得 −√5−5√2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 5√2　(2) −√5−5√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第79頁　化簡後再合併同類方根</h2>
+
+<div class="qcard" data-hard="false" id="q3">
+    <div class="qhead">講解9 — 化簡後再合併同類方根</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) 9√3+7√12−5√48<br>(2) √80−3√20+7√45<br>(3) 2/√6+3√24<br>(4) 18√2/√3 − 10√3/√2 + √150</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不同的根號先全部化到最簡，才能看出誰是同類；分母有根號的先有理化。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√12=√(4×3)=2√3，7√12=14√3；√48=√(16×3)=4√3，5√48=20√3</div>
+<div class="calc-line"><span class="idx">②</span>9√3+14√3−20√3=(9+14−20)√3=3√3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√80=√(16×5)=4√5；√20=√(4×5)=2√5，3√20=6√5；√45=√(9×5)=3√5，7√45=21√5</div>
+<div class="calc-line"><span class="idx">②</span>4√5−6√5+21√5=(4−6+21)√5=19√5</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>2/√6：分子分母同乘 √6，2√6/(√6×√6)=2√6/6=√6/3；√24=√(4×6)=2√6，3√24=6√6</div>
+<div class="calc-line"><span class="idx">②</span>√6/3+6√6=(1/3+6)√6=19√6/3</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>18√2/√3=18√2×√3/(√3×√3)=18√6/3=6√6；10√3/√2=10√3×√2/(√2×√2)=10√6/2=5√6</div>
+<div class="calc-line"><span class="idx">②</span>√150=√(25×6)=5√6；6√6−5√6+5√6=(6−5+5)√6=6√6</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 3√3　(2) 19√5　(3) 19√6/3　(4) 6√6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q4">
+    <div class="qhead">演練9 — 化簡後再合併同類方根</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) −7√18+√50−2√32<br>(2) 3√24−2√150+√54<br>(3) 6/√3−3√12<br>(4) 20/√5+7√45−3√20</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">步驟和講解題一樣：先化最簡、分母有理化，再合併同類。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√18=√(9×2)=3√2，√50=√(25×2)=5√2，√32=√(16×2)=4√2</div>
+<div class="calc-line"><span class="idx">②</span>−7×3√2+5√2−2×4√2=−21√2+5√2−8√2=(−21+5−8)√2=−24√2</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√24=√(4×6)=2√6，√150=√(25×6)=5√6，√54=√(9×6)=3√6</div>
+<div class="calc-line"><span class="idx">②</span>3×2√6−2×5√6+3√6=6√6−10√6+3√6=(6−10+3)√6=−√6</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>6/√3=6√3/(√3×√3)=6√3/3=2√3；√12=√(4×3)=2√3，3√12=6√3</div>
+<div class="calc-line"><span class="idx">②</span>2√3−6√3=(2−6)√3=−4√3</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>20/√5=20√5/5=4√5；√45=3√5，7√45=21√5；√20=2√5，3√20=6√5</div>
+<div class="calc-line"><span class="idx">②</span>4√5+21√5−6√5=(4+21−6)√5=19√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) −24√2　(2) −√6　(3) −4√3　(4) 19√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第80頁　根式的四則運算</h2>
+
+<div class="qcard" data-hard="false" id="q5">
+    <div class="qhead">講解10 — 根式的四則運算</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) √3(√12−√15)<br>(2) √(1 1/4) ÷ √(10/3) × √(16/21)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 用分配律；(2) 帶分數先化假分數，除以根式等於乘倒數，全部放進同一個根號裡約分。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√3×√12=√(3×12)=√36=6</div>
+<div class="calc-line"><span class="idx">②</span>√3×√15=√(3×15)=√45=√(9×5)=3√5，所以 √3(√12−√15)=6−3√5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>帶分數化假分數：1 1/4=5/4</div>
+<div class="calc-line"><span class="idx">②</span>除以 √(10/3) 等於乘上倒數 √(3/10)：原式=√(5/4)×√(3/10)×√(16/21)=√(5/4×3/10×16/21)</div>
+<div class="calc-line"><span class="idx">③</span>約分：分子 5×3×16=240，分母 4×10×21=840，240/840=2/7</div>
+<div class="calc-line"><span class="idx">④</span>√(2/7)=√2/√7=(√2×√7)/(√7×√7)=√14/7</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 6−3√5　(2) √14/7</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q6">
+    <div class="qhead">演練10 — 根式的四則運算</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) √2(−2√10+√18)<br>(2) √(3/4) × √(3/2) ÷ √(1/2)　（題目右緣被截掉，暫依 √(1/2) 計算）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 分配律；(2) 乘除放進同一個根號，約分後開根號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√2×(−2√10)=−2√20=−2√(4×5)=−2×2√5=−4√5</div>
+<div class="calc-line"><span class="idx">②</span>√2×√18=√36=6，合併：−4√5+6=6−4√5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>先算乘：3/4×3/2=9/8</div>
+<div class="calc-line"><span class="idx">②</span>除以 1/2 等於乘 2：9/8×2=9/4，原式=√(9/4)=√9/√4=3/2</div></div></div>
+          <div class="warn-box"><b>提醒：</b>第(2)題最後一個根號的右邊被紙張邊緣截斷，只看得到「√(1」和「2」，我暫時當成 √(1/2) 計算。若實際題目是別的數字（例如 √(1 1/2)），請告訴我，我再改。</div>
+          <div class="answer-box">答案：<b>(1) 6−4√5　(2) 3/2（暫定）</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q7">
+    <div class="qhead">講解11 — 利用公式化簡根式</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) (√7+√2)²　(2) (3√5−√7)(3√5+√7)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">乘法公式：(a+b)²=a²+2ab+b²；(a+b)(a−b)=a²−b²。公式裡的a、b可以直接是根式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 是完全平方；(2) 是平方差，兩個一看就能用公式。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>(√7+√2)²=(√7)²+2×√7×√2+(√2)²=7+2√14+2=9+2√14</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>平方差：(3√5−√7)(3√5+√7)=(3√5)²−(√7)²</div>
+<div class="calc-line"><span class="idx">②</span>(3√5)²=3²×(√5)²=9×5=45，(√7)²=7，45−7=38</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 9+2√14　(2) 38</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q8">
+    <div class="qhead">演練11 — 利用公式化簡根式</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) (√5−2√2)²　(2) (−2√3+√5)(−2√3−√5)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">乘法公式：(a−b)²=a²−2ab+b²；(a+b)(a−b)=a²−b²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 完全平方；(2) 把 −2√3 看成a，√5看成b，就是 (a+b)(a−b)。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>(√5−2√2)²=(√5)²−2×√5×2√2+(2√2)²</div>
+<div class="calc-line"><span class="idx">②</span>(√5)²=5，2×√5×2√2=4√10，(2√2)²=4×2=8，所以 5−4√10+8=13−4√10</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>平方差：(−2√3+√5)(−2√3−√5)=(−2√3)²−(√5)²</div>
+<div class="calc-line"><span class="idx">②</span>(−2√3)²=4×3=12，(√5)²=5，12−5=7</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 13−4√10　(2) 7</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q9">
+    <div class="qhead">講解12 — 利用平方差公式有理化分母</div>
+    <div class="qbody">
+      <div class="qtext">利用 (a+b)(a−b)=a²−b² 化簡下列各式：<br>(1) 4/(√5−1)　(2) 1/(√5+2) + 3/(√5−√2)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分母是「根式±數」的形式，就乘上「共軛」（符號相反的那一組），分母變成整數。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>分子分母同乘 √5+1：4/(√5−1)=4(√5+1)/[(√5−1)(√5+1)]</div>
+<div class="calc-line"><span class="idx">②</span>分母：(√5−1)(√5+1)=5−1=4，所以 4(√5+1)/4=√5+1</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>1/(√5+2) 同乘 √5−2：分母 (√5+2)(√5−2)=5−4=1，得 √5−2</div>
+<div class="calc-line"><span class="idx">②</span>3/(√5−√2) 同乘 √5+√2：分母 (√5−√2)(√5+√2)=5−2=3，得 3(√5+√2)/3=√5+√2</div>
+<div class="calc-line"><span class="idx">③</span>相加：(√5−2)+(√5+√2)=2√5+√2−2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √5+1　(2) 2√5+√2−2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q10">
+    <div class="qhead">演練12 — 利用平方差公式有理化分母</div>
+    <div class="qbody">
+      <div class="qtext">利用 (a+b)(a−b)=a²−b² 化簡下列各式：<br>(1) 8/(3+√5)　(2) 4/(√5−√3) − 2/(√3+√2)　（右緣被截掉，依 √3+√2 計算）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">兩個分數各自有理化後再相減。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>同乘 3−√5：8/(3+√5)=8(3−√5)/[(3+√5)(3−√5)]，分母 9−5=4</div>
+<div class="calc-line"><span class="idx">②</span>8(3−√5)/4=2(3−√5)=6−2√5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>4/(√5−√3) 同乘 √5+√3：分母 5−3=2，得 4(√5+√3)/2=2√5+2√3</div>
+<div class="calc-line"><span class="idx">②</span>2/(√3+√2) 同乘 √3−√2：分母 3−2=1，得 2(√3−√2)=2√3−2√2</div>
+<div class="calc-line"><span class="idx">③</span>相減：(2√5+2√3)−(2√3−2√2)=2√5+2√3−2√3+2√2=2√5+2√2</div></div></div>
+          <div class="warn-box"><b>提醒：</b>第(2)題第二個分母的右緣被紙張截斷，我讀成 √3+√2。算出來剛好能漂亮消掉 2√3，應該沒錯，但請確認。</div>
+          <div class="answer-box">答案：<b>(1) 6−2√5　(2) 2√5+2√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第81頁　學習即時通</h2>
+
+<div class="qcard" data-hard="false" id="q11">
+    <div class="qhead">即時通1 — 根式加減綜合</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式並化為最簡根式：<br>(1) −13√6+5√6−7√6<br>(2) −7√3−5√5+√12+√20<br>(3) 6/√18+4/√2<br>(4) 40/√5−10/√2+√20</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先化最簡，找同類方根再合併。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>(−13+5−7)√6=−15√6</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√12=√(4×3)=2√3，√20=√(4×5)=2√5</div>
+<div class="calc-line"><span class="idx">②</span>−7√3+2√3=−5√3，−5√5+2√5=−3√5，所以 =−5√3−3√5</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>√18=√(9×2)=3√2，6/√18=6/(3√2)=2/√2=2√2/(√2×√2)=2√2/2=√2</div>
+<div class="calc-line"><span class="idx">②</span>4/√2=4√2/2=2√2，所以 √2+2√2=3√2</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>40/√5=40√5/5=8√5，10/√2=10√2/2=5√2，√20=2√5</div>
+<div class="calc-line"><span class="idx">②</span>8√5−5√2+2√5=10√5−5√2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) −15√6　(2) −5√3−3√5　(3) 3√2　(4) 10√5−5√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q12">
+    <div class="qhead">即時通2 — 乘法公式與根式</div>
+    <div class="qbody">
+      <div class="qtext">利用公式計算下列各式，並將結果化為最簡根式：<br>(1) (4√3+2√5)(3√5−√3)<br>(2) (−3+√5)²<br>(3) (3−2√5)²<br>(4) (3√2+2)(3√2−2)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 沒有公式可用，四項分別相乘；(2)(3) 完全平方；(4) 平方差。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>逐項相乘：4√3×3√5=12√15，4√3×(−√3)=−4×3=−12，2√5×3√5=6×5=30，2√5×(−√3)=−2√15</div>
+<div class="calc-line"><span class="idx">②</span>合併：12√15−2√15=10√15，−12+30=18，所以 =18+10√15</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>(−3+√5)²=(−3)²+2×(−3)×√5+(√5)²=9−6√5+5=14−6√5</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>(3−2√5)²=3²−2×3×2√5+(2√5)²=9−12√5+20=29−12√5</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>(3√2)²−2²=9×2−4=18−4=14</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 18+10√15　(2) 14−6√5　(3) 29−12√5　(4) 14</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q13">
+    <div class="qhead">即時通3 — 有理化分母</div>
+    <div class="qbody">
+      <div class="qtext">利用 (a+b)(a−b)=a²−b² 化簡下列各式：<br>(1) −4/(√5−3)<br>(2) 8/(√7−√3) − 4/(3−√7)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分母各自乘上共軛。第(1)題分母 √5−3 是負數，結果會變正，不要慌。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>分子分母同乘 √5+3：−4(√5+3)/[(√5−3)(√5+3)]</div>
+<div class="calc-line"><span class="idx">②</span>分母：(√5)²−3²=5−9=−4，所以 −4(√5+3)/(−4)=√5+3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>8/(√7−√3) 同乘 √7+√3：分母 7−3=4，得 8(√7+√3)/4=2√7+2√3</div>
+<div class="calc-line"><span class="idx">②</span>4/(3−√7) 同乘 3+√7：分母 9−7=2，得 4(3+√7)/2=2(3+√7)=6+2√7</div>
+<div class="calc-line"><span class="idx">③</span>相減：2√7+2√3−(6+2√7)=2√7+2√3−6−2√7=2√3−6</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √5+3　(2) 2√3−6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第81頁　學力精熟：比較根式的大小</h2>
+
+<div class="qcard" data-hard="false" id="q14">
+    <div class="qhead">整合1 講解 — 比較根式的大小</div>
+    <div class="qbody">
+      <div class="qtext">比較下列各組三數的大小關係：<br>(1) √(3/2)、3/√2、√3/2<br>(2) 3+√2、2√2+√3、√6+√5</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根式大小：把每個數都化成同樣形式（例如全部寫成 √某數）比根號內，或平方後再比；兩個正數的平方大者原數也大。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 全部化成「某根號÷2」；(2) 三個數都是正數，平方後都會出現 11，只要比剩下的根號部分。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√(3/2)=√3/√2=√3×√2/(√2×√2)=√6/2</div>
+<div class="calc-line"><span class="idx">②</span>3/√2=3√2/2，3√2=√(9×2)=√18，所以 3/√2=√18/2</div>
+<div class="calc-line"><span class="idx">③</span>三個數分母都是2，比分子：√18＞√6＞√3，所以 3/√2＞√(3/2)＞√3/2</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>三個數都是正數，各自平方：(3+√2)²=9+6√2+2=11+6√2，6√2=√(36×2)=√72</div>
+<div class="calc-line"><span class="idx">②</span>(2√2+√3)²=8+4√6+3=11+4√6，4√6=√(16×6)=√96</div>
+<div class="calc-line"><span class="idx">③</span>(√6+√5)²=6+2√30+5=11+2√30，2√30=√(4×30)=√120</div>
+<div class="calc-line"><span class="idx">④</span>√72＜√96＜√120，所以 3+√2＜2√2+√3＜√6+√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 3/√2＞√(3/2)＞√3/2　(2) √6+√5＞2√2+√3＞3+√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q15">
+    <div class="qhead">整合1 演練 — 比較根式的大小</div>
+    <div class="qbody">
+      <div class="qtext">比較下列各組三數的大小關係：<br>(1) √(3/5)、√3/5、3/√5<br>(2) √12−√5、√14−√3、√10−√7</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根式大小：把每個數都化成同樣形式（例如全部寫成 √某數）比根號內，或平方後再比；兩個正數的平方大者原數也大。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 全部化成「某根號÷5」；(2) 用近似值估：√3≈1.732、√5≈2.236、√7≈2.646、√10≈3.162、√12≈3.464、√14≈3.742。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√(3/5)=√3/√5=√3×√5/(√5×√5)=√15/5</div>
+<div class="calc-line"><span class="idx">②</span>3/√5=3√5/5，3√5=√(9×5)=√45，所以 3/√5=√45/5；第三個數是 √3/5</div>
+<div class="calc-line"><span class="idx">③</span>分母都是5，比分子：√45＞√15＞√3，所以 3/√5＞√(3/5)＞√3/5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>近似值：√3≈1.732，√5≈2.236，√7≈2.646，√10≈3.162，√12≈3.464，√14≈3.742</div>
+<div class="calc-line"><span class="idx">②</span>√12−√5≈3.464−2.236=1.228；√14−√3≈3.742−1.732=2.010；√10−√7≈3.162−2.646=0.516</div>
+<div class="calc-line"><span class="idx">③</span>所以 √14−√3＞√12−√5＞√10−√7</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 3/√5＞√(3/5)＞√3/5　(2) √14−√3＞√12−√5＞√10−√7</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第82頁　根式綜合計算與應用</h2>
+
+<div class="qcard" data-hard="false" id="q16">
+    <div class="qhead">講解2 — 根式綜合計算</div>
+    <div class="qbody">
+      <div class="qtext">a=(√5+√2)/2，b=(√5−√2)/2，求 a²−ab+b² 之值。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">代數式變形：a²−ab+b²=(a+b)²−3ab。先求「和」與「積」，不必分別算 a²、b²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">看到 a²+b² 這類對稱式，優先想到用 a+b 和 ab 表示，比直接平方快很多。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a+b=(√5+√2)/2+(√5−√2)/2=2√5/2=√5</div>
+<div class="calc-line"><span class="idx">②</span>ab=[(√5+√2)/2]×[(√5−√2)/2]=(√5+√2)(√5−√2)/4=(5−2)/4=3/4</div>
+<div class="calc-line"><span class="idx">③</span>a²−ab+b²=(a²+2ab+b²)−3ab=(a+b)²−3ab</div>
+<div class="calc-line"><span class="idx">④</span>(a+b)²=(√5)²=5，3ab=3×3/4=9/4，所以 5−9/4=20/4−9/4=11/4</div></div></div>
+          
+          <div class="answer-box">答案：<b>11/4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q17">
+    <div class="qhead">演練2 — 根式綜合計算</div>
+    <div class="qbody">
+      <div class="qtext">x=(√7+√3)/2，y=(√7−√3)/2，求 x²−y² 之值。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">平方差公式：x²−y²=(x−y)(x+y)。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">x、y 一個加一個減，x+y 和 x−y 都能化得很簡單。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x+y=√7</div>
+<div class="calc-line"><span class="idx">②</span>x−y=(√7+√3−√7+√3)/2=√3</div>
+<div class="calc-line"><span class="idx">③</span>x²−y²=(x−y)(x+y)=√3×√7=√21</div></div></div>
+          
+          <div class="answer-box">答案：<b>√21</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q18">
+    <div class="qhead">講解3 — 根式運算的應用</div>
+    <div class="qbody">
+      <div class="qtext">已知 √350≈18.7。若 √(350×a)、√(350/b)、√(350+c)、√(350−d) 均為正整數，且 a、b、c、d 均為最小正整數，則 a、b、c、d 分別是多少？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內的數要是「完全平方數」，開出來才是整數；完全平方數的質因數指數都是偶數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">a、b 用質因數分解補齊或約掉奇數次方；c、d 則是找最接近350的完全平方數（18²=324、19²=361）。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>350 質因數分解：350=2×175=2×5×35=2×5×5×7=2×5²×7，2 和 7 都是奇數次方</div>
+<div class="calc-line"><span class="idx">②</span>√(350×a)：要補成每個質因數都是偶數次方，a 最小=2×7=14</div>
+<div class="calc-line"><span class="idx">③</span>350×14=2²×5²×7²=4900=70²，√4900=70，所以 a=14</div>
+<div class="calc-line"><span class="idx">④</span>√(350/b)：要約掉奇數次方，b 最小=2×7=14，350÷14=25=5²，√25=5，所以 b=14</div>
+<div class="calc-line"><span class="idx">⑤</span>√350≈18.7 介於 18 與 19 之間：18²=324，19²=361</div>
+<div class="calc-line"><span class="idx">⑥</span>√(350+c)：350+c 要變成下一個完全平方數 361，c=361−350=11，√361=19</div>
+<div class="calc-line"><span class="idx">⑦</span>√(350−d)：350−d 要變成上一個完全平方數 324，d=350−324=26，√324=18</div></div></div>
+          
+          <div class="answer-box">答案：<b>a=14，b=14，c=11，d=26</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q19">
+    <div class="qhead">演練3 — 根式運算的應用</div>
+    <div class="qbody">
+      <div class="qtext">設 a、b、c、d 為正整數，√1620≈40.25，若 √(1620×a)、√(1620/b)、√(1620+c)、√(1620−d) 均為正整數，且 a、b、c、d 均為最小，則：<br>(1) a=？，√(1620×a)=？<br>(2) b=？，√(1620/b)=？<br>(3) c=？，√(1620+c)=？<br>(4) d=？，√(1620−d)=？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同講解題：用質因數分解找 a、b；用相鄰完全平方數（40²=1600、41²=1681）找 c、d。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先分解 1620，看哪些質因數是奇數次方。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>1620 質因數分解：1620=2×810=2×2×405=2²×405，405=5×81=5×3⁴，所以 1620=2²×3⁴×5，只有 5 是奇數次方</div>
+<div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>要補成偶數次方：a=5，1620×5=8100=90²，√8100=90</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>要約掉：b=5，1620÷5=324=18²，√324=18</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>√1620≈40.25，介於 40 與 41 之間：40²=1600，41²=1681</div>
+<div class="calc-line"><span class="idx">②</span>1620+c=1681，c=1681−1620=61，√1681=41</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>1620−d=1600，d=1620−1600=20，√1600=40</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) a=5，90　(2) b=5，18　(3) c=61，41　(4) d=20，40</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第83頁　試題宅急便：觀念澄清是非題</h2>
+
+<div class="qcard" data-hard="false" id="q20">
+    <div class="qhead">是非題 1~5 — 觀念澄清是非題</div>
+    <div class="qbody">
+      <div class="qtext">（正確的打○，錯誤的打×）<br>1. √((−2)²×3)=−2√3<br>2. √(9+16)=√9+√16=7<br>3. √12 與 5/√3 是同類方根<br>4. 2√3+5√2=7√5<br>5. (2+√2)/(2−√2)=[(2+√2)(2+√2)]/[(2−√2)(2+√2)]=(2²+4√2+2)/2=3+2√2</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號的基本性質：√(a²)=|a|（結果不為負）；√(a+b)≠√a+√b；不同類根式不能加減；有理化分母要乘共軛。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">每一句都逐步檢查，找出錯在哪一步。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">1.</div>
+<div class="calc-line"><span class="idx">①</span>(−2)²=4，√(4×3)=√12=√(4×3)=2√3，不是 −2√3（根號的結果不會是負數），×</div>
+<div class="sub-head">2.</div>
+<div class="calc-line"><span class="idx">①</span>左邊 √(9+16)=√25=5；右邊 √9+√16=3+4=7；5≠7，所以 √(a+b)≠√a+√b，×</div>
+<div class="sub-head">3.</div>
+<div class="calc-line"><span class="idx">①</span>√12=√(4×3)=2√3；5/√3=5√3/(√3×√3)=5√3/3；根號內都是3，是同類方根，○</div>
+<div class="sub-head">4.</div>
+<div class="calc-line"><span class="idx">①</span>√3 與 √2 根號內不同，不是同類方根，不能直接相加成 7√5，×</div>
+<div class="sub-head">5.</div>
+<div class="calc-line"><span class="idx">①</span>分母乘共軛 2+√2：(2−√2)(2+√2)=4−2=2；分子 (2+√2)²=4+4√2+2=6+4√2；(6+4√2)/2=3+2√2，○</div></div></div>
+          
+          <div class="answer-box">答案：<b>1.×　2.×　3.○　4.×　5.○</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第83頁　基礎題：重點1 根式的表示與根式的乘法</h2>
+
+<div class="qcard" data-hard="false" id="q21">
+    <div class="qhead">基礎1 — 根號與次方（106會考）</div>
+    <div class="qbody">
+      <div class="qtext">下列哪一個選項中的等式成立？</div>
+      <table><tr><td>(A) √(2²)=2</td><td>(B) √(3³)=3</td><td>(C) √(4⁴)=4</td><td>(D) √(5⁵)=5</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(a²)=|a|；奇數次方開根號要先拆成「偶數次方×剩下的」，例如 √(3³)=3√3。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項把根號內拆出平方。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √(2²)=2，成立</div>
+<div class="calc-line"><span class="idx">②</span>(B) √(3³)=√(3²×3)=3√3≠3</div>
+<div class="calc-line"><span class="idx">③</span>(C) √(4⁴)=4²=16≠4</div>
+<div class="calc-line"><span class="idx">④</span>(D) √(5⁵)=5²√5=25√5≠5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) √(2²)=2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q22">
+    <div class="qhead">基礎2 — 面積與周長估值（106會考）</div>
+    <div class="qbody">
+      <div class="qtext">若一正方形的面積為20平方公分，周長為x公分，則x的值介於下列哪兩個整數之間？</div>
+      <table><tr><td>(A) 16，17</td><td>(B) 17，18</td><td>(C) 18，19</td><td>(D) 19，20</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">正方形面積＝邊長²，邊長＝√面積；估算根式大小時，把整數也化成根號比較（或找相鄰完全平方數）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先求邊長，再乘4得周長，把周長放進根號裡找夾住它的完全平方數。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>正方形面積=邊長²=20，邊長=√20=√(4×5)=2√5</div>
+<div class="calc-line"><span class="idx">②</span>周長 x=4×2√5=8√5</div>
+<div class="calc-line"><span class="idx">③</span>把 8 放進根號：8√5=√(64×5)=√320</div>
+<div class="calc-line"><span class="idx">④</span>17²=289，18²=324，289＜320＜324，所以 17＜x＜18</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 17，18</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q23">
+    <div class="qhead">基礎3 — 根號等式判斷（104會考）</div>
+    <div class="qbody">
+      <div class="qtext">下列哪一個選項中的等式不成立？</div>
+      <table><tr><td>(A) √(3⁸)=3⁴</td><td>(B) √((−5)⁶)=(−5)³</td><td>(C) √(3⁴×5¹⁰)=3²×5⁵</td><td>(D) √((−3)⁴×(−5)⁸)=(−3)²×(−5)⁴</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(a²)=|a|，所以 √((−5)⁶)=√((−5)³)²=|(−5)³|，結果一定是非負數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">題目問「不成立」，要找出錯的那一個，其他三個都要驗證為對。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √(3⁸)=√((3⁴)²)=3⁴，成立</div>
+<div class="calc-line"><span class="idx">②</span>(B) √((−5)⁶)=√(((−5)³)²)=|(−5)³|=|−125|=125，但 (−5)³=−125，125≠−125，不成立</div>
+<div class="calc-line"><span class="idx">③</span>(C) √(3⁴×5¹⁰)=√((3²)²×(5⁵)²)=3²×5⁵，成立</div>
+<div class="calc-line"><span class="idx">④</span>(D) √((−3)⁴×(−5)⁸)=√(((−3)²)²×((−5)⁴)²)=(−3)²×(−5)⁴=9×625，成立</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q24">
+    <div class="qhead">基礎4 — 根式乘法</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各根式：<br>(1) √(21/5)×√(10/7)　(2) √(4/3)×√(9/4)<br>(3) √(2/5)×√(15/2)　(4) √10×√3</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√a×√b=√(ab)，乘進同一個根號後先約分再開根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先合併，再約分化簡。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√(21/5)×√(10/7)=√(21/5×10/7)=√(210/35)=√6</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√(4/3)×√(9/4)=√(4/3×9/4)=√(36/12)=√3</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>√(2/5)×√(15/2)=√(2/5×15/2)=√(30/10)=√3</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>√10×√3=√(10×3)=√30</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √6　(2) √3　(3) √3　(4) √30</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q25">
+    <div class="qhead">基礎5 — 比較根式大小</div>
+    <div class="qbody">
+      <div class="qtext">若甲=2√5，乙=3√2，丙=4，則這三個數中最大的是＿，最小的是＿。（以甲、乙、丙作答）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根式大小：把每個數都化成同樣形式（例如全部寫成 √某數）比根號內，或平方後再比；兩個正數的平方大者原數也大。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">全部化成 √某數 再比。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>甲=2√5=√(4×5)=√20</div>
+<div class="calc-line"><span class="idx">②</span>乙=3√2=√(9×2)=√18</div>
+<div class="calc-line"><span class="idx">③</span>丙=4=√16</div>
+<div class="calc-line"><span class="idx">④</span>比根號內：20＞18＞16，所以 甲＞乙＞丙</div></div></div>
+          
+          <div class="answer-box">答案：<b>最大是甲，最小是丙</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第84頁　重點2 根式的除法與有理化</h2>
+
+<div class="qcard" data-hard="false" id="q26">
+    <div class="qhead">基礎6 — 化簡結果比較</div>
+    <div class="qbody">
+      <div class="qtext">下列各選項的化簡結果，有一個和另外三個不同，請選出不同的是哪一個？</div>
+      <table><tr><td>(A) √14÷√7</td><td>(B) (1/√2)×2</td><td>(C) √18÷3</td><td>(D) √12÷2</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把四個選項都化到最簡，找出不一樣的那一個。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √14÷√7=√(14÷7)=√2</div>
+<div class="calc-line"><span class="idx">②</span>(B) (1/√2)×2=2/√2=2×√2/(√2×√2)=2√2/2=√2</div>
+<div class="calc-line"><span class="idx">③</span>(C) √18=√(9×2)=3√2，3√2÷3=√2</div>
+<div class="calc-line"><span class="idx">④</span>(D) √12=√(4×3)=2√3，2√3÷2=√3，只有 (D) 不同</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q27">
+    <div class="qhead">基礎7 — 三角形面積</div>
+    <div class="qbody">
+      <div class="qtext">若一個三角形的底邊長為√2，面積為√5平方單位，則底邊上的高為多少？</div>
+      <table><tr><td>(A) √10</td><td>(B) √10/2</td><td>(C) 2√10</td><td>(D) √20</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">三角形面積＝底×高÷2，所以高＝2×面積÷底。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">用面積公式反推高。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>三角形面積=底×高÷2，所以 √5=√2×高÷2</div>
+<div class="calc-line"><span class="idx">②</span>高=2×√5÷√2=2√5/√2</div>
+<div class="calc-line"><span class="idx">③</span>2/√2=2×√2/(√2×√2)=2√2/2=√2</div>
+<div class="calc-line"><span class="idx">④</span>高=√2×√5=√10</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) √10</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q28">
+    <div class="qhead">基礎8 — 有理化的乘法選擇</div>
+    <div class="qbody">
+      <div class="qtext">要將 3/√12 化成最簡根式，可在分母及分子乘上哪一個數？</div>
+      <table><tr><td>(A) √3</td><td>(B) √6</td><td>(C) 3</td><td>(D) 12</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">√12=2√3，分母只要補一個√3就變成整數。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√12=√(4×3)=2√3，所以 3/√12=3/(2√3)</div>
+<div class="calc-line"><span class="idx">②</span>分子分母同乘 √3：3×√3/(2√3×√3)=3√3/(2×3)</div>
+<div class="calc-line"><span class="idx">③</span>3√3/6=√3/2，分母已無根號</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) √3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q29">
+    <div class="qhead">基礎9 — 最簡根式判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列何者是最簡根式？</div>
+      <table><tr><td>(A) √25</td><td>(B) 3/√2</td><td>(C) √30</td><td>(D) √(4/3)</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">最簡根式三條件：①根號內無平方因數 ②根號內不含分母 ③分母沒有根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項檢查三個條件。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √25=5，不是根式</div>
+<div class="calc-line"><span class="idx">②</span>(B) 3/√2，分母有根號</div>
+<div class="calc-line"><span class="idx">③</span>(C) √30=√(2×3×5)，無平方因數，是最簡根式</div>
+<div class="calc-line"><span class="idx">④</span>(D) √(4/3)，有分母且有平方因數，要化簡</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) √30</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q30">
+    <div class="qhead">基礎10 — 化簡根式（112會考）</div>
+    <div class="qbody">
+      <div class="qtext">化簡 √135 的結果為下列何者？</div>
+      <table><tr><td>(A) 3√5</td><td>(B) 27√5</td><td>(C) 3√15</td><td>(D) 9√15</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">135 拆出最大的平方因數：135=9×15。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>135=9×15</div>
+<div class="calc-line"><span class="idx">②</span>√135=√9×√15=3√15</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 3√15</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q31">
+    <div class="qhead">基礎11 — 有理化與係數（113會考）</div>
+    <div class="qbody">
+      <div class="qtext">將 9/(4−√7) 化為 a+b√7，其中 a、b 為整數，求 a+b 之值為何？</div>
+      <table><tr><td>(A) 5</td><td>(B) 3</td><td>(C) −9</td><td>(D) −15</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分母乘共軛 4+√7，化成 a+b√7 的樣子再讀出 a、b。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>分子分母同乘 4+√7：9(4+√7)/[(4−√7)(4+√7)]</div>
+<div class="calc-line"><span class="idx">②</span>分母：4²−(√7)²=16−7=9</div>
+<div class="calc-line"><span class="idx">③</span>9(4+√7)/9=4+√7=4+1×√7，所以 a=4，b=1</div>
+<div class="calc-line"><span class="idx">④</span>a+b=4+1=5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) 5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q32">
+    <div class="qhead">基礎12 — 化為最簡根式</div>
+    <div class="qbody">
+      <div class="qtext">將下列各式化為最簡根式：<br>(1) √(2³×3²)　(2) √(2²×3²×7)　(3) √45　(4) √2700<br>(5) −6/√3　(6) √(5/18)　(7) 1/√(2²×3³×5²)　(8) 2/√180</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">提出平方因數；分數的根號先有理化。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√(2³×3²)=√(2²×2×3²)=2×3×√2=6√2</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√(2²×3²×7)=2×3×√7=6√7</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>√45=√(9×5)=3√5</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>√2700=√(900×3)=30√3</div>
+<div class="sub-head">(5)</div>
+<div class="calc-line"><span class="idx">①</span>−6/√3=−6×√3/(√3×√3)=−6√3/3=−2√3</div>
+<div class="sub-head">(6)</div>
+<div class="calc-line"><span class="idx">①</span>√(5/18)=√5/√18=√5/(3√2)=√5×√2/(3×√2×√2)=√10/6</div>
+<div class="sub-head">(7)</div>
+<div class="calc-line"><span class="idx">①</span>√(2²×3³×5²)=√(2²×3²×3×5²)=2×3×5×√3=30√3，所以 1/(30√3)=√3/(30×√3×√3)=√3/90</div>
+<div class="sub-head">(8)</div>
+<div class="calc-line"><span class="idx">①</span>√180=√(36×5)=6√5，2/(6√5)=1/(3√5)=√5/(3×√5×√5)=√5/15</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 6√2　(2) 6√7　(3) 3√5　(4) 30√3　(5) −2√3　(6) √10/6　(7) √3/90　(8) √5/15</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q33">
+    <div class="qhead">基礎13 — 利用已知近似值估值</div>
+    <div class="qbody">
+      <div class="qtext">已知 √47≈6.856、√470≈21.679，則 √47000≈＿、√4700≈＿、√4.7≈＿、√0.47≈＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內每擴大（縮小）100倍，開根號後只擴大（縮小）10倍；所以要把題目數字寫成「已知數×100的次方」或「÷100」。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 47000、4700、4.7、0.47 分別和 470、47 對照。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√47000=√(470×100)=√470×√100=10√470≈10×21.679=216.79</div>
+<div class="calc-line"><span class="idx">②</span>√4700=√(47×100)=10√47≈10×6.856=68.56</div>
+<div class="calc-line"><span class="idx">③</span>√4.7=√(470÷100)=√470÷10≈21.679÷10=2.1679</div>
+<div class="calc-line"><span class="idx">④</span>√0.47=√(47÷100)=√47÷10≈6.856÷10=0.6856</div></div></div>
+          
+          <div class="answer-box">答案：<b>216.79、68.56、2.1679、0.6856</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q34">
+    <div class="qhead">基礎14 — 正方形邊長</div>
+    <div class="qbody">
+      <div class="qtext">有一個正方形的面積為7290平方單位，則此正方形的邊長為＿。（答案以最簡根式表示）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">邊長＝√面積，把7290拆出平方因數：7290=729×10，729=27²。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>7290 拆因數：7290=729×10，729=27²（27×27=729）</div>
+<div class="calc-line"><span class="idx">②</span>邊長=√7290=√(729×10)=√729×√10=27√10</div></div></div>
+          
+          <div class="answer-box">答案：<b>27√10</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第85頁　重點3 根式的加減與四則運算</h2>
+
+<div class="qcard" data-hard="false" id="q35">
+    <div class="qhead">基礎15 — 根式運算律</div>
+    <div class="qbody">
+      <div class="qtext">若a、b、c均為正數，下列運算規則何者錯誤？</div>
+      <table><tr><td>(A) √a·√b=√b·√a</td><td>(B) √a·(√b+√c)=√a·√b+√a·√c</td><td>(C) (√a·√b)·√c=√a·(√b·√c)</td><td>(D) √a÷(√b+√c)=√a÷√b+√a÷√c</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式也有交換律、結合律、乘法對加法的分配律；但「除以一個和」不能把除法分配到括號內的每一項。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項檢查哪個規則不是真的運算律。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √a·√b=√b·√a，交換律，正確</div>
+<div class="calc-line"><span class="idx">②</span>(B) √a(√b+√c)=√a·√b+√a·√c，分配律，正確</div>
+<div class="calc-line"><span class="idx">③</span>(C) (√a·√b)·√c=√a·(√b·√c)，結合律，正確</div>
+<div class="calc-line"><span class="idx">④</span>(D) √a÷(√b+√c)≠√a÷√b+√a÷√c（例如 1÷(1+1)=1/2，但 1÷1+1÷1=2），錯誤</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q36">
+    <div class="qhead">基礎16 — 同類方根判斷</div>
+    <div class="qbody">
+      <div class="qtext">−3√3 與下列何者不是同類方根？</div>
+      <table><tr><td>(A) √12</td><td>(B) √18</td><td>(C) √27</td><td>(D) √48</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把每個選項化到最簡，看根號內是不是3。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √12=2√3</div>
+<div class="calc-line"><span class="idx">②</span>(B) √18=3√2，根號內是2，不同類</div>
+<div class="calc-line"><span class="idx">③</span>(C) √27=3√3</div>
+<div class="calc-line"><span class="idx">④</span>(D) √48=4√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) √18</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q37">
+    <div class="qhead">基礎17 — 三角形周長</div>
+    <div class="qbody">
+      <div class="qtext">有一個三角形的三邊長分別為 2、4、2√3，則此三角形的周長為多少？</div>
+      <table><tr><td>(A) 8</td><td>(B) 8√3</td><td>(C) 8+√3</td><td>(D) 6+2√3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">周長＝三邊相加；不同類的數（整數和根式）不能合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">直接相加。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>周長=2+4+2√3=6+2√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 6+2√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q38">
+    <div class="qhead">基礎18 — 根式加減（111會考補考）</div>
+    <div class="qbody">
+      <div class="qtext">算式 √50+√48−√18−√12 之值為何？</div>
+      <table><tr><td>(A) 2√17</td><td>(B) 4√17</td><td>(C) 2√2+2√3</td><td>(D) 16√2+12√3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">全部化最簡後合併同類。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√50=√(25×2)=5√2，√48=√(16×3)=4√3</div>
+<div class="calc-line"><span class="idx">②</span>√18=√(9×2)=3√2，√12=√(4×3)=2√3</div>
+<div class="calc-line"><span class="idx">③</span>原式=5√2+4√3−3√2−2√3</div>
+<div class="calc-line"><span class="idx">④</span>同類合併：(5−3)√2+(4−2)√3=2√2+2√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 2√2+2√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q39">
+    <div class="qhead">基礎19 — 根式分配律</div>
+    <div class="qbody">
+      <div class="qtext">算式 √15×(1/√3−1) 之值為何？</div>
+      <table><tr><td>(A) √5−√15</td><td>(B) √5−1</td><td>(C) 2−√5</td><td>(D) 1</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">用分配律展開。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√15×1/√3=√(15/3)=√5</div>
+<div class="calc-line"><span class="idx">②</span>√15×(−1)=−√15</div>
+<div class="calc-line"><span class="idx">③</span>合併=√5−√15</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) √5−√15</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q40">
+    <div class="qhead">基礎20 — 根式分配律（109會考）</div>
+    <div class="qbody">
+      <div class="qtext">算式 √2×(√48−√12) 之值為何？</div>
+      <table><tr><td>(A) 6√2</td><td>(B) 2√6</td><td>(C) 2√21</td><td>(D) 4√6−2√3</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">括號內先化簡再乘，比分配律更快。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√48=√(16×3)=4√3，√12=√(4×3)=2√3</div>
+<div class="calc-line"><span class="idx">②</span>括號內：4√3−2√3=2√3</div>
+<div class="calc-line"><span class="idx">③</span>√2×2√3=2√(2×3)=2√6</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 2√6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q41">
+    <div class="qhead">基礎21 — 根式運算判斷（110會考）</div>
+    <div class="qbody">
+      <div class="qtext">下列等式何者不成立？</div>
+      <table><tr><td>(A) 4√3+2√3=6√3</td><td>(B) 4√3−2√3=2√3</td><td>(C) 4√3×2√3=8√3</td><td>(D) 4√3÷2√3=2</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根相加減只動係數；根式相乘係數乘係數、根號乘根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項驗算，找出錯的。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) 4√3+2√3=6√3，成立</div>
+<div class="calc-line"><span class="idx">②</span>(B) 4√3−2√3=2√3，成立</div>
+<div class="calc-line"><span class="idx">③</span>(C) 4√3×2√3=8×3=24，不是8√3，不成立</div>
+<div class="calc-line"><span class="idx">④</span>(D) 4√3÷2√3=2，成立</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q42">
+    <div class="qhead">基礎22 — 根式四則運算</div>
+    <div class="qbody">
+      <div class="qtext">計算下列各式，並將結果化為最簡根式：<br>(1) (√8−√18)·√6　(2) −√50+2√18−√98<br>(3) −(√3)²+√((−2)²)−(−√6)²　(4) (−4+√3)²<br>(5) (4√3−√10)(4√3+√10)　(6) (√6−√2)(√6+√2)−4√3(√3−√2)</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先化簡再算，公式能用就用。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√8=√(4×2)=2√2，√18=√(9×2)=3√2，括號內 2√2−3√2=−√2</div>
+<div class="calc-line"><span class="idx">②</span>−√2×√6=−√12=−√(4×3)=−2√3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√50=5√2，√18=3√2，√98=√(49×2)=7√2</div>
+<div class="calc-line"><span class="idx">②</span>−5√2+2×3√2−7√2=−5√2+6√2−7√2=(−5+6−7)√2=−6√2</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>(√3)²=3，√((−2)²)=√4=2，(−√6)²=6，所以 −3+2−6=−7</div>
+<div class="sub-head">(4)</div>
+<div class="calc-line"><span class="idx">①</span>(−4+√3)²=(−4)²+2×(−4)×√3+(√3)²=16−8√3+3=19−8√3</div>
+<div class="sub-head">(5)</div>
+<div class="calc-line"><span class="idx">①</span>(4√3−√10)(4√3+√10)=(4√3)²−(√10)²=16×3−10=48−10=38</div>
+<div class="sub-head">(6)</div>
+<div class="calc-line"><span class="idx">①</span>前半：(√6−√2)(√6+√2)=6−2=4</div>
+<div class="calc-line"><span class="idx">②</span>後半：4√3×(√3−√2)=4√3×√3−4√3×√2=12−4√6</div>
+<div class="calc-line"><span class="idx">③</span>4−(12−4√6)=4−12+4√6=−8+4√6</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) −2√3　(2) −6√2　(3) −7　(4) 19−8√3　(5) 38　(6) −8+4√6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q43">
+    <div class="qhead">基礎23 — 正方形面積</div>
+    <div class="qbody">
+      <div class="qtext">設一個正方形的邊長為 (2√3+3√2) 公分，則其面積為＿平方公分。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">完全平方公式：(a+b)²=a²+2ab+b²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">邊長平方就是面積。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(2√3)²=4×3=12，(3√2)²=9×2=18</div>
+<div class="calc-line"><span class="idx">②</span>2×2√3×3√2=12√6（係數 2×2×3=12，√3×√2=√6）</div>
+<div class="calc-line"><span class="idx">③</span>面積=(2√3+3√2)²=12+12√6+18=30+12√6</div></div></div>
+          
+          <div class="answer-box">答案：<b>30+12√6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q44">
+    <div class="qhead">基礎24 — 有理化分母</div>
+    <div class="qbody">
+      <div class="qtext">已知 a=1/(√3−1)，若將 a 值的分子及分母同乘以 √3+1 後，可得到＿；若想將 6/(√7−2) 的分母化成沒有根號，則分子及分母同時乘以＿，化簡成＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分母是 √3−1 就乘共軛 √3+1；分母是 √7−2 就乘 √7+2。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a=1/(√3−1)，分子分母同乘 √3+1</div>
+<div class="calc-line"><span class="idx">②</span>分母：(√3−1)(√3+1)=3−1=2，所以 a=(√3+1)/2</div>
+<div class="calc-line"><span class="idx">③</span>6/(√7−2)，分子分母同乘 √7+2</div>
+<div class="calc-line"><span class="idx">④</span>分母：(√7−2)(√7+2)=7−4=3，6(√7+2)/3=2(√7+2)=2√7+4</div></div></div>
+          
+          <div class="answer-box">答案：<b>(√3+1)/2；√7+2；2√7+4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第86頁　進階題</h2>
+
+<div class="qcard" data-hard="false" id="q45">
+    <div class="qhead">進階1 — 數線與估值（103會考）</div>
+    <div class="qbody">
+      <div class="qtext">數線上有A、B、C、D四點，根據圖中各點的位置，判斷哪一點所表示的數與 11−2√39 最接近？</div>
+      <table><tr><td>(A) A</td><td>(B) B</td><td>(C) C</td><td>(D) D</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">要估算含根號的數的位置：先估根號的整數範圍，再算出大約的小數值。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">√39 介於6和7之間；2√39 約12.5，所以 11−2√39 約−1.5。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>6²=36，7²=49，36＜39＜49，所以 6＜√39＜7，√39≈6.24</div>
+<div class="calc-line"><span class="idx">②</span>2√39≈2×6.24=12.48</div>
+<div class="calc-line"><span class="idx">③</span>11−2√39≈11−12.48=−1.48</div>
+<div class="calc-line"><span class="idx">④</span>圖中A約在−2.5、B約在−1.5、C約在−0.5、D約在0.5，−1.48 最接近B</div></div></div>
+          <div class="warn-box"><b>提醒：</b>這題要靠數線圖判斷：我從圖上讀到各點約在 A≈−2.5、B≈−1.5、C≈−0.5、D≈0.5（相鄰兩點差1）。請對照課本確認各點位置是否正確。</div>
+          <div class="answer-box">答案：<b>(B) B</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q46">
+    <div class="qhead">進階2 — 乘法公式應用</div>
+    <div class="qbody">
+      <div class="qtext">若 x=√3+1，則 x²−2x+1=？</div>
+      <table><tr><td>(A) 3</td><td>(B) 6</td><td>(C) 9</td><td>(D) 12</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">x²−2x+1 是完全平方 (x−1)²，先化簡再代入最省事。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不要直接把 √3+1 代進去展開，先看式子能不能用公式整理。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x²−2x+1=(x−1)²</div>
+<div class="calc-line"><span class="idx">②</span>x−1=√3，所以 (x−1)²=3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) 3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q47">
+    <div class="qhead">進階3 — 帶分數開根號</div>
+    <div class="qbody">
+      <div class="qtext">計算 √(287 1/289) 之值為何？</div>
+      <table><tr><td>(A) 17 1/17</td><td>(B) 17 16/17</td><td>(C) 16 1/17</td><td>(D) 16 16/17</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">帶分數要先化成假分數；若分子是完全平方數，分母也是完全平方數，就可以直接開根號。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">287 1/289=(287×289+1)/289，觀察分子是不是 288²。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>287×289=287×(300−11)=86100−3157=82943，加1得82944</div>
+<div class="calc-line"><span class="idx">②</span>82944=288²，289=17²</div>
+<div class="calc-line"><span class="idx">③</span>√(82944/289)=288/17=16 16/17（17×16=272，288−272=16）</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 16 16/17</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q48">
+    <div class="qhead">進階4 — 差的大小比較</div>
+    <div class="qbody">
+      <div class="qtext">關於 √8−√7、√7−√6、√6−√5 三數的大小關係，下列何者正確？</div>
+      <table><tr><td>(A) √8−√7=√7−√6=√6−√5</td><td>(B) √7−√6＜√6−√5＜√8−√7</td><td>(C) √6−√5＜√7−√6＜√8−√7</td><td>(D) √8−√7＜√7−√6＜√6−√5</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√a−√b=(a−b)/(√a+√b)：分子相同時，分母越大，整個分數越小。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把三個數都有理化成「1÷(兩根式相加)」，再比分母。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√8−√7=1/(√8+√7)；√7−√6=1/(√7+√6)；√6−√5=1/(√6+√5)</div>
+<div class="calc-line"><span class="idx">②</span>分母大小：√8+√7＞√7+√6＞√6+√5，分母越大分數越小</div>
+<div class="calc-line"><span class="idx">③</span>所以 √8−√7＜√7−√6＜√6−√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q49">
+    <div class="qhead">進階5 — 有理化與倒數</div>
+    <div class="qbody">
+      <div class="qtext">a=2/(√5+√3)，b=2/(√5−√3)，則：<br>(1) 1/a+1/b=＿　(2) ab=＿</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">分數的倒數就是上下顛倒；兩個共軛根式相乘用平方差。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不用先有理化 a、b：1/a 直接翻面，最簡單。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>1/a=1÷[2/(√5+√3)]=(√5+√3)/2</div>
+<div class="calc-line"><span class="idx">②</span>1/b=(√5−√3)/2</div>
+<div class="calc-line"><span class="idx">③</span>1/a+1/b=(√5+√3+√5−√3)/2=2√5/2=√5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>ab=2/(√5+√3)×2/(√5−√3)=4/[(√5+√3)(√5−√3)]</div>
+<div class="calc-line"><span class="idx">②</span>分母：5−3=2，所以 ab=4/2=2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √5　(2) 2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q50">
+    <div class="qhead">進階6 — 對稱式求值</div>
+    <div class="qbody">
+      <div class="qtext">若 x+y=−√3，xy=1−√3，則 x²+y²=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">x²+y²=(x+y)²−2xy，用「和」與「積」求值。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不需要解出x、y。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(x+y)²=(−√3)²=3</div>
+<div class="calc-line"><span class="idx">②</span>x²+y²=(x+y)²−2xy（因為 (x+y)²=x²+2xy+y²）</div>
+<div class="calc-line"><span class="idx">③</span>=3−2×(1−√3)=3−2+2√3=1+2√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>1+2√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q51">
+    <div class="qhead">進階7 — 完全平方求值</div>
+    <div class="qbody">
+      <div class="qtext">若 x=√2+√3，y=√2−√3，則 x²+2xy+y²=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">x²+2xy+y²=(x+y)²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">看出完全平方，先算 x+y。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x+y=(√2+√3)+(√2−√3)=2√2</div>
+<div class="calc-line"><span class="idx">②</span>x²+2xy+y²=(x+y)²</div>
+<div class="calc-line"><span class="idx">③</span>(2√2)²=4×2=8</div></div></div>
+          
+          <div class="answer-box">答案：<b>8</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q52">
+    <div class="qhead">進階8 — 解含根式的一元一次方程式</div>
+    <div class="qbody">
+      <div class="qtext">解下列各一元一次方程式，並將其解化為最簡根式：<br>(1) √5x−√3x=2，x=＿<br>(2) √3x−1=x+1，x=＿</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">移項後把含x的項提出，x的係數是根式，兩邊同除以它再有理化。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">當一般一元一次方程式解，只是係數是根式。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>提出 x：(√5−√3)x=2</div>
+<div class="calc-line"><span class="idx">②</span>x=2/(√5−√3)，同乘 √5+√3：2(√5+√3)/[(√5−√3)(√5+√3)]</div>
+<div class="calc-line"><span class="idx">③</span>分母 5−3=2，x=2(√5+√3)/2=√5+√3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>移項：√3x−x=1+1，(√3−1)x=2</div>
+<div class="calc-line"><span class="idx">②</span>x=2/(√3−1)，同乘 √3+1：2(√3+1)/(3−1)</div>
+<div class="calc-line"><span class="idx">③</span>x=2(√3+1)/2=√3+1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √5+√3　(2) √3+1</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q53">
+    <div class="qhead">進階9 — 括號重組用平方差</div>
+    <div class="qbody">
+      <div class="qtext">計算 (√2+√3−1)(√2−√3+1)＝＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">把 √3−1 看成一整組：括號重組後變成 [√2+(√3−1)][√2−(√3−1)] 的平方差形式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">第二個括號 −√3+1=−(√3−1)，所以兩個括號是共軛的關係。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>把 √3−1 看成一整組：第一個括號=√2+(√3−1)</div>
+<div class="calc-line"><span class="idx">②</span>第二個括號=√2−√3+1=√2−(√3−1)</div>
+<div class="calc-line"><span class="idx">③</span>原式=[√2+(√3−1)][√2−(√3−1)]=(√2)²−(√3−1)²</div>
+<div class="calc-line"><span class="idx">④</span>(√3−1)²=(√3)²−2×√3×1+1²=3−2√3+1=4−2√3</div>
+<div class="calc-line"><span class="idx">⑤</span>原式=2−(4−2√3)=2−4+2√3=−2+2√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>−2+2√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q54">
+    <div class="qhead">進階10 — 比較大小（平方法）</div>
+    <div class="qbody">
+      <div class="qtext">已知 a=√17+√3、b=√7+√13、c=2√10，則 a、b、c 三數的大小關係為＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">三個數都是正數，平方後比較：(√m+√n)²=m+n+2√(mn)。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">平方之後前面的 17+3、7+13 都是20，只要比後面的根號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a²=(√17+√3)²=17+2√51+3=20+2√51</div>
+<div class="calc-line"><span class="idx">②</span>b²=(√7+√13)²=7+2√91+13=20+2√91</div>
+<div class="calc-line"><span class="idx">③</span>c²=(2√10)²=4×10=40=20+20=20+2√100</div>
+<div class="calc-line"><span class="idx">④</span>比較根號：51＜91＜100，所以 √51＜√91＜√100</div>
+<div class="calc-line"><span class="idx">⑤</span>所以 a²＜b²＜c²，三數都是正數，故 a＜b＜c</div></div></div>
+          
+          <div class="answer-box">答案：<b>a＜b＜c</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第87頁　明星國中試題本 2-2 根式的運算（一）：選擇題（每題3分）</h2>
+
+<div class="qcard" data-hard="false" id="q55">
+    <div class="qhead">明星一 選1 — 同類方根辨識</div>
+    <div class="qbody">
+      <div class="qtext">甲：√28、√54；乙：√0.002、√5；丙：5/√3、√(3 1/5)，何者化簡後為同類方根？</div>
+      <table><tr><td>(A) 甲</td><td>(B) 乙</td><td>(C) 丙</td><td>(D) 以上皆是</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">每組各自化最簡，看兩個數的根號內是否相同。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>甲：√28=√(4×7)=2√7，√54=√(9×6)=3√6，根號內 7 和 6 不同，不同類</div>
+<div class="calc-line"><span class="idx">②</span>乙：√0.002=√(20/10000)=√20/100=2√5/100=√5/50，和 √5 根號內都是5，同類</div>
+<div class="calc-line"><span class="idx">③</span>丙：5/√3=5√3/3（根號內3）；√(3 1/5)=√(16/5)=4/√5=4√5/5（根號內5），不同類</div>
+<div class="calc-line"><span class="idx">④</span>只有乙是同類方根</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 乙</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q56">
+    <div class="qhead">明星一 選2 — 小數根號用已知值表示</div>
+    <div class="qbody">
+      <div class="qtext">若 √15=a，則 √9.6+√2.4 的值為下列何者？</div>
+      <table><tr><td>(A) 0.8a</td><td>(B) a</td><td>(C) 1.2a</td><td>(D) 1.4a</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√9.6=√(960/100)=√960/10；把 960 和 240 拆出 15 的倍數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">目標是把兩項都變成「某數×√15」再合併。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√9.6=√(960/100)=√960/10，960=64×15，√960=8√15，所以 √9.6=8√15/10=0.8√15</div>
+<div class="calc-line"><span class="idx">②</span>√2.4=√(240/100)=√240/10，240=16×15，√240=4√15，所以 √2.4=4√15/10=0.4√15</div>
+<div class="sub-head">0.</div>
+<div class="calc-line"><span class="idx">①</span>8√15+0.4√15=1.2√15=1.2a</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 1.2a</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q57">
+    <div class="qhead">明星一 選3 — 有理化求係數</div>
+    <div class="qbody">
+      <div class="qtext">若 (√12−√5)/(√12+√5)=a+b√15，則 a−b 的值為何？</div>
+      <table><tr><td>(A) 0</td><td>(B) 13/7</td><td>(C) 3</td><td>(D) 5</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分子分母同乘分母的共軛 (√12−√5)。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>分母：(√12+√5)(√12−√5)=12−5=7</div>
+<div class="calc-line"><span class="idx">②</span>分子：(√12−√5)²=12−2√60+5=17−2√60，√60=√(4×15)=2√15，所以分子=17−4√15</div>
+<div class="calc-line"><span class="idx">③</span>原式=(17−4√15)/7=17/7−(4/7)√15，a=17/7，b=−4/7</div>
+<div class="calc-line"><span class="idx">④</span>a−b=17/7−(−4/7)=17/7+4/7=21/7=3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q58">
+    <div class="qhead">明星一 選4 — 化簡後比較</div>
+    <div class="qbody">
+      <div class="qtext">已知 a、b、c 皆為整數，若 √150=a√6，√252=6√b，√192=c√3，則 a、b、c 的大小關係為何？</div>
+      <table><tr><td>(A) c＞b＞a</td><td>(B) b＞c＞a</td><td>(C) a＞b＞c</td><td>(D) b＞a＞c</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">各自化到最簡，對照係數找出 a、b、c。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√150=√(25×6)=√25×√6=5√6，對照 a√6，所以 a=5</div>
+<div class="calc-line"><span class="idx">②</span>√252=√(36×7)=√36×√7=6√7，對照 6√b，所以 b=7</div>
+<div class="calc-line"><span class="idx">③</span>√192=√(64×3)=√64×√3=8√3，對照 c√3，所以 c=8</div>
+<div class="calc-line"><span class="idx">④</span>比較 a=5、b=7、c=8：8＞7＞5，所以 c＞b＞a</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) c＞b＞a</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q59">
+    <div class="qhead">明星一 選5 — 根號性質判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列敘述何者錯誤？</div>
+      <table><tr><td>(A) √2+√2+√2=3√2</td><td>(B) √2+√3=√(2+3)</td><td>(C) √2×√3=√(2×3)</td><td>(D) √2÷√3=√(2÷3)</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號乘除可以合併成同一個根號；但根號加減不行：√a+√b≠√(a+b)。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項檢查。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √2+√2+√2=3√2，正確</div>
+<div class="calc-line"><span class="idx">②</span>(B) √2+√3≠√(2+3)=√5，錯誤</div>
+<div class="calc-line"><span class="idx">③</span>(C) √2×√3=√(2×3)，正確</div>
+<div class="calc-line"><span class="idx">④</span>(D) √2÷√3=√(2÷3)，正確</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q60">
+    <div class="qhead">明星一 選6 — 比較大小</div>
+    <div class="qbody">
+      <div class="qtext">若 a=√(8+3)，b=√8+√3，c=√7+2，則 a、b、c 的大小關係為何？</div>
+      <table><tr><td>(A) a＞b＞c</td><td>(B) a＞c＞b</td><td>(C) b＞c＞a</td><td>(D) c＞b＞a</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根式大小：把每個數都化成同樣形式（例如全部寫成 √某數）比根號內，或平方後再比；兩個正數的平方大者原數也大。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先估各數的近似值，再用平方法確認 b、c 誰大。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a=√11≈3.32</div>
+<div class="calc-line"><span class="idx">②</span>b=√8+√3≈2.83+1.73=4.56</div>
+<div class="calc-line"><span class="idx">③</span>c=√7+2≈2.65+2=4.65</div>
+<div class="calc-line"><span class="idx">④</span>確認 b、c：b²=11+2√24≈20.80，c²=11+4√7≈21.58，所以 c＞b</div>
+<div class="calc-line"><span class="idx">⑤</span>c＞b＞a</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) c＞b＞a</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q61">
+    <div class="qhead">明星一 選7 — 湊共軛的次方</div>
+    <div class="qbody">
+      <div class="qtext">(√7+√5)⁸(√7−√5)⁷ 的值與下列何者相同？</div>
+      <table><tr><td>(A) −2</td><td>(B) 128√7+128√5</td><td>(C) 2</td><td>(D) 128√7−128√5</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">(a+b)ⁿ(a−b)ⁿ=[(a+b)(a−b)]ⁿ：次方相同的可以先配對乘。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">8次方和7次方，先配出7組共軛，剩下1個 (√7+√5)。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(√7+√5)⁸(√7−√5)⁷=[(√7+√5)(√7−√5)]⁷×(√7+√5)</div>
+<div class="calc-line"><span class="idx">②</span>(√7+√5)(√7−√5)=7−5=2</div>
+<div class="calc-line"><span class="idx">③</span>=2⁷×(√7+√5)=128√7+128√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B) 128√7+128√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q62">
+    <div class="qhead">明星一 選8 — 根式敘述判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列敘述何者正確？</div>
+      <table><tr><td>(A) 2√3=3√2</td><td>(B) 1/√10=√0.1</td><td>(C) 1/√0.1=1/√10</td><td>(D) 1/√3＞1</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(1/a)=1/√a；注意 1/√0.1 其實是 √10。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項驗證。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) 2√3=√12，3√2=√18，不相等</div>
+<div class="calc-line"><span class="idx">②</span>(B) 1/√10=√(1/10)=√0.1，正確</div>
+<div class="calc-line"><span class="idx">③</span>(C) 1/√0.1=√10，不等於 1/√10</div>
+<div class="calc-line"><span class="idx">④</span>(D) 1/√3≈0.577，小於1</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第87-88頁　明星一：填充題（每格5分）</h2>
+
+<div class="qcard" data-hard="false" id="q63">
+    <div class="qhead">明星一 填1 — 有理化求k再開根號</div>
+    <div class="qbody">
+      <div class="qtext">若 8/(5√2)=k√2，則 k+4 1/5 的平方根為＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先把左邊有理化化成 k√2 的形式讀出 k。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>8/(5√2)=8×√2/(5√2×√2)=8√2/10=(4/5)√2，對照 k√2，所以 k=4/5</div>
+<div class="calc-line"><span class="idx">②</span>k+4 1/5=4/5+4+1/5=4+1=5</div>
+<div class="calc-line"><span class="idx">③</span>5 的平方根為 ±√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>±√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q64">
+    <div class="qhead">明星一 填2 — 根號內小數</div>
+    <div class="qbody">
+      <div class="qtext">若 √50+√0.02=a√2，則 a=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">√0.02=√(2/100)=√2/10。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√50=√(25×2)=5√2</div>
+<div class="calc-line"><span class="idx">②</span>√0.02=√(2/100)=√2/10</div>
+<div class="calc-line"><span class="idx">③</span>5√2+√2/10=(5+1/10)√2=(51/10)√2，所以 a=51/10</div></div></div>
+          
+          <div class="answer-box">答案：<b>51/10（=5.1）</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q65">
+    <div class="qhead">明星一 填3 — 連加的根號</div>
+    <div class="qbody">
+      <div class="qtext">已知 √(7+7+7+7+7+7+7+7+7)=√7+√7+……=a×√7，則 a=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內9個7相加＝9×7=63；右邊是若干個 √7 相加＝個數×√7。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先化簡左邊：√63=3√7。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√(7×9)=√63=3√7</div>
+<div class="calc-line"><span class="idx">②</span>所以 a×√7=3√7，a=3</div></div></div>
+          <div class="warn-box"><b>提醒：</b>我看到根號內有9個7相加，若實際個數不同請告訴我。若題目的意思是「根號外也有一串 √7 相加」，結果一樣是 a=3。</div>
+          <div class="answer-box">答案：<b>3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q66">
+    <div class="qhead">明星一 填4 — 完全平方與係數</div>
+    <div class="qbody">
+      <div class="qtext">若 m、n 為正整數，且 (√8+√6)²=m+n×√3，則 m+n=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">完全平方展開後把根號化最簡，對照 m、n。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">展開後會出現 √48，要化簡成 4√3。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(√8+√6)²=(√8)²+2×√8×√6+(√6)²=8+2√48+6</div>
+<div class="calc-line"><span class="idx">②</span>√48=√(16×3)=4√3，2√48=8√3</div>
+<div class="calc-line"><span class="idx">③</span>(√8+√6)²=14+8√3，對照 m+n√3：m=14，n=8，m+n=22</div></div></div>
+          
+          <div class="answer-box">答案：<b>22</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q67">
+    <div class="qhead">明星一 填5 — 質因數分解開根號</div>
+    <div class="qbody">
+      <div class="qtext">若 a=2⁴×3²×5³，則 √a=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">指數是偶數的直接開出，奇數次方留一個在根號內。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把每個質因數的指數除以2。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>2⁴ 開根號變 2²=4</div>
+<div class="calc-line"><span class="idx">②</span>3² 開根號變 3</div>
+<div class="calc-line"><span class="idx">③</span>5³=5²×5，開根號變 5√5</div>
+<div class="calc-line"><span class="idx">④</span>√a=4×3×5√5=60√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>60√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q68">
+    <div class="qhead">明星一 填6 — 解根式方程式</div>
+    <div class="qbody">
+      <div class="qtext">若 √2·x=4√3，則 x=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">兩邊同除以 √2，再有理化。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">x=4√3/√2。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x=4√3/√2=4√6/2=2√6</div></div></div>
+          
+          <div class="answer-box">答案：<b>2√6</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q69">
+    <div class="qhead">明星一 填7 — 代入求值</div>
+    <div class="qbody">
+      <div class="qtext">若 a=3+√3，則 (4−a)(a−2)=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">先算括號內：4−a、a−2 都可以化簡，再用平方差。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">代入後出現 (1−√3)(1+√3)。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>4−a=1−√3，a−2=1+√3</div>
+<div class="calc-line"><span class="idx">②</span>(1−√3)(1+√3)=1−3=−2</div></div></div>
+          
+          <div class="answer-box">答案：<b>−2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q70">
+    <div class="qhead">明星一 填8 — 根式四則運算</div>
+    <div class="qbody">
+      <div class="qtext">計算並化簡下列各式：<br>(1) √27×(1/√6−√3)<br>(2) 2/(√5−√7)−10÷(1/√5)<br>(3) √(4/49)×√(7 21/25)÷√((−0.16)²)+(√1.8)²</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 分配律；(2) 先有理化再算除法（÷分數＝×倒數）；(3) 帶分數化假分數，逐項開根號。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√27=√(9×3)=3√3</div>
+<div class="calc-line"><span class="idx">②</span>分配律：3√3×(1/√6)=3√3/√6=3√(3/6)=3/√2=3√2/2</div>
+<div class="calc-line"><span class="idx">③</span>3√3×(−√3)=−3×3=−9，所以 =3√2/2−9</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>2/(√5−√7) 同乘 √5+√7：分母 5−7=−2，得 2(√5+√7)/(−2)=−√5−√7</div>
+<div class="calc-line"><span class="idx">②</span>10÷(1/√5)=10×√5=10√5</div>
+<div class="calc-line"><span class="idx">③</span>−√5−√7−10√5=(−1−10)√5−√7=−11√5−√7</div>
+<div class="sub-head">(3)</div>
+<div class="calc-line"><span class="idx">①</span>√(4/49)=2/7；7 21/25=(7×25+21)/25=196/25，√(196/25)=14/5</div>
+<div class="calc-line"><span class="idx">②</span>√((−0.16)²)=0.16；(√1.8)²=1.8</div>
+<div class="calc-line"><span class="idx">③</span>2/7×14/5=28/35=4/5=0.8；0.8÷0.16=5；5+1.8=6.8</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 3√2/2−9　(2) −11√5−√7　(3) 34/5（=6.8）</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第88頁　明星一：計算題</h2>
+
+<div class="qcard" data-hard="false" id="q71">
+    <div class="qhead">明星一 計1 — 分母有理化連加（裂項）</div>
+    <div class="qbody">
+      <div class="qtext">計算 6/(√5+√2)+6/(√8+√5)+6/(√11+√8)+……+6/(√50+√47)。（8分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">每一項分母兩根式的平方差都是3，有理化後會「前後相消」。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>每一項分母兩根號平方的差都是3：(√5)²−(√2)²=3，(√8)²−(√5)²=3……</div>
+<div class="calc-line"><span class="idx">②</span>6/(√5+√2)=6(√5−√2)/[(√5+√2)(√5−√2)]=6(√5−√2)/3=2(√5−√2)</div>
+<div class="calc-line"><span class="idx">③</span>6/(√8+√5)=6(√8−√5)/(8−5)=2(√8−√5)；6/(√11+√8)=2(√11−√8)；……；6/(√50+√47)=2(√50−√47)</div>
+<div class="calc-line"><span class="idx">④</span>相加：2(√5−√2)+2(√8−√5)+2(√11−√8)+……+2(√50−√47)，中間的 √5、√8、√11、……、√47 前後相消</div>
+<div class="calc-line"><span class="idx">⑤</span>剩下 2(√50−√2)</div>
+<div class="calc-line"><span class="idx">⑥</span>√50=5√2，所以 2(5√2−√2)=2×4√2=8√2</div></div></div>
+          
+          <div class="answer-box">答案：<b>8√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q72">
+    <div class="qhead">明星一 計2 — 代入求值</div>
+    <div class="qbody">
+      <div class="qtext">已知 x=4+2√5，y=4−2√5，求 xy−x÷y 的值。（8分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">xy 用平方差；x÷y 把 x/y 的分母有理化。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先分別算 xy 與 x/y，最後相減。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>xy=(4+2√5)(4−2√5)=4²−(2√5)²=16−4×5=16−20=−4</div>
+<div class="calc-line"><span class="idx">②</span>x÷y=(4+2√5)/(4−2√5)，分子分母各提出公因數2：(2+√5)/(2−√5)</div>
+<div class="calc-line"><span class="idx">③</span>分子分母同乘 2+√5：分子 (2+√5)²=4+4√5+5=9+4√5</div>
+<div class="calc-line"><span class="idx">④</span>分母：(2−√5)(2+√5)=4−5=−1</div>
+<div class="calc-line"><span class="idx">⑤</span>x÷y=(9+4√5)/(−1)=−9−4√5</div>
+<div class="calc-line"><span class="idx">⑥</span>xy−x÷y=−4−(−9−4√5)=−4+9+4√5=5+4√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>5+4√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q73">
+    <div class="qhead">明星一 計3 — 共軛互為倒數</div>
+    <div class="qbody">
+      <div class="qtext">已知 x=1/(√3+√2)，y=1/(√3−√2)，求 4xy 的值。（10分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">xy=1/[(√3+√2)(√3−√2)]：分母是平方差，不必把 x、y 各自有理化。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">直接把兩個分數相乘。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>x=1/(√3+√2)，y=1/(√3−√2)</div>
+<div class="calc-line"><span class="idx">②</span>xy=1/(√3+√2)×1/(√3−√2)=1/[(√3+√2)(√3−√2)]</div>
+<div class="calc-line"><span class="idx">③</span>分母：(√3)²−(√2)²=3−2=1，所以 xy=1</div>
+<div class="calc-line"><span class="idx">④</span>4xy=4×1=4</div></div></div>
+          
+          <div class="answer-box">答案：<b>4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第89頁　明星國中試題本 2-2 根式的運算（二）：選擇題（每題4分）</h2>
+
+<div class="qcard" data-hard="false" id="q74">
+    <div class="qhead">明星二 選1 — 根式係數與平方根</div>
+    <div class="qbody">
+      <div class="qtext">若 √108=√a×√6=b√3，√81=c，則 a+b−c 的平方根為何？</div>
+      <table><tr><td>(A) 15</td><td>(B) 3√5</td><td>(C) ±√15</td><td>(D) ±3√5</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 √108 拆成兩種形式各自讀出 a、b；c 是 √81 的值（正數）。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√108=√(36×3)=6√3，對照 b√3，b=6</div>
+<div class="calc-line"><span class="idx">②</span>√a×√6=√(6a)，要等於 √108，所以 6a=108，a=18</div>
+<div class="calc-line"><span class="idx">③</span>c=√81=9</div>
+<div class="calc-line"><span class="idx">④</span>a+b−c=18+6−9=15，15 的平方根為 ±√15</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) ±√15</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q75">
+    <div class="qhead">明星二 選2 — 根式敘述判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列敘述何者正確？</div>
+      <table><tr><td>(A) √4+√3=√7</td><td>(B) √18÷3=√2</td><td>(C) √(9 1/4)=3 1/2</td><td>(D) √((−2)²)=−√2</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">逐項驗算：√4+√3 不能合併；帶分數要先化假分數；√((−2)²)=2。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項檢查。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √4+√3=2+√3≠√7</div>
+<div class="calc-line"><span class="idx">②</span>(B) √18÷3=3√2÷3=√2，正確</div>
+<div class="calc-line"><span class="idx">③</span>(C) √(9 1/4)=√(37/4)=√37/2，不是 3 1/2</div>
+<div class="calc-line"><span class="idx">④</span>(D) √((−2)²)=2，不是−√2</div></div></div>
+          
+          <div class="answer-box">答案：<b>(B)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q76">
+    <div class="qhead">明星二 選3 — 平方差求積</div>
+    <div class="qbody">
+      <div class="qtext">若 x=3+√2，y=3−√2，則 xy=？</div>
+      <table><tr><td>(A) 1</td><td>(B) 5</td><td>(C) 7</td><td>(D) 13</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">(a+b)(a−b)=a²−b²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">x、y 剛好是共軛。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>xy=(3+√2)(3−√2)=9−2=7</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 7</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q77">
+    <div class="qhead">明星二 選4 — 連加根式與指數</div>
+    <div class="qbody">
+      <div class="qtext">若 √2+√4+√8+√32+√128=2ᵃ+b√2，則 a+b=？</div>
+      <table><tr><td>(A) 5</td><td>(B) 6</td><td>(C) 15</td><td>(D) 16</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內若有平方因數，要先提出來化成最簡根式：√(a²b)=a√b；分母有根號要先有理化（分子分母同乘分母的根式）。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">各項化最簡，整數項放一邊（對應 2ᵃ），√2 的項放另一邊（對應 b√2）。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√4=2</div>
+<div class="calc-line"><span class="idx">②</span>√8=√(4×2)=2√2</div>
+<div class="calc-line"><span class="idx">③</span>√32=√(16×2)=4√2</div>
+<div class="calc-line"><span class="idx">④</span>√128=√(64×2)=8√2</div>
+<div class="calc-line"><span class="idx">⑤</span>整數部分：2；√2 部分：√2+2√2+4√2+8√2=15√2，所以 原式=2+15√2</div>
+<div class="calc-line"><span class="idx">⑥</span>對照 2ᵃ+b√2：2ᵃ=2，a=1；b=15；a+b=16</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 16</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q78">
+    <div class="qhead">明星二 選5 — 整數判斷</div>
+    <div class="qbody">
+      <div class="qtext">下列選項中，何者不是整數？</div>
+      <table><tr><td>(A) √144÷√4</td><td>(B) √196+√9</td><td>(C) √28×√7</td><td>(D) √72−√8</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">每一項先化簡再判斷：根號乘除先合併；根號加減要看是不是同類。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">逐項算出結果。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) √144=12，√4=2，12÷2=6</div>
+<div class="calc-line"><span class="idx">②</span>(B) √196=14，√9=3，14+3=17</div>
+<div class="calc-line"><span class="idx">③</span>(C) √28×√7=√(28×7)=√196=14</div>
+<div class="calc-line"><span class="idx">④</span>(D) √72=√(36×2)=6√2，√8=√(4×2)=2√2，6√2−2√2=4√2，不是整數</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D)</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q79">
+    <div class="qhead">明星二 選6 — 最小正整數使根號為整數</div>
+    <div class="qbody">
+      <div class="qtext">已知 a、b 為正整數，若 √(45×a) 與 √(120/b) 皆為正整數，則 a、b 最小值的和為多少？</div>
+      <table><tr><td>(A) 7</td><td>(B) 12</td><td>(C) 35</td><td>(D) 42</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根號內要是完全平方數：質因數分解，補齊（a）或約掉（b）奇數次方的質因數。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">45=3²×5，120=2³×3×5。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>45=3²×5，3 是偶數次方，5 是奇數次方</div>
+<div class="calc-line"><span class="idx">②</span>要讓 45×a 是完全平方，a 最小補 5：45×5=225=15²，a=5</div>
+<div class="calc-line"><span class="idx">③</span>120=2×60=2×2×30=2×2×2×15=2³×3×5，2、3、5 都是奇數次方</div>
+<div class="calc-line"><span class="idx">④</span>要讓 120÷b 是完全平方，b 最小=2×3×5=30：120÷30=4=2²</div>
+<div class="calc-line"><span class="idx">⑤</span>a+b=5+30=35</div></div></div>
+          
+          <div class="answer-box">答案：<b>(C) 35</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q80">
+    <div class="qhead">明星二 選7 — √3的同類方根</div>
+    <div class="qbody">
+      <div class="qtext">下列哪些是 √3 的同類方根？(甲)√180　(乙)√0.3　(丙)√(16/27)　(丁)√(3/5)　(戊)√1.08</div>
+      <table><tr><td>(A) 甲、丙</td><td>(B) 乙、丁</td><td>(C) 甲、丁</td><td>(D) 丙、戊</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">每一個化最簡，看是不是「有理數×√3」。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>甲：√180=√(36×5)=6√5，根號內5，不是</div>
+<div class="calc-line"><span class="idx">②</span>乙：√0.3=√(30/100)=√30/10，不是</div>
+<div class="calc-line"><span class="idx">③</span>丙：√(16/27)=4/√27=4/(3√3)=4√3/(3×3)=4√3/9，根號內3，是</div>
+<div class="calc-line"><span class="idx">④</span>丁：√(3/5)=√3/√5=√15/5，不是</div>
+<div class="calc-line"><span class="idx">⑤</span>戊：√1.08=√(108/100)=√108/10=6√3/10，根號內3，是</div>
+<div class="calc-line"><span class="idx">⑥</span>所以丙、戊是 √3 的同類方根</div></div></div>
+          
+          <div class="answer-box">答案：<b>(D) 丙、戊</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q81">
+    <div class="qhead">明星二 選8 — 比較大小</div>
+    <div class="qbody">
+      <div class="qtext">下列選項中，何者數值最大？</div>
+      <table><tr><td>(A) 5√2</td><td>(B) 4√3</td><td>(C) 3√5</td><td>(D) 2√11</td></tr></table>
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">比較根式大小：把每個數都化成同樣形式（例如全部寫成 √某數）比根號內，或平方後再比；兩個正數的平方大者原數也大。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">係數乘進根號：a√b=√(a²b)，比根號內。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(A) 5√2=√50</div>
+<div class="calc-line"><span class="idx">②</span>(B) 4√3=√48</div>
+<div class="calc-line"><span class="idx">③</span>(C) 3√5=√45</div>
+<div class="calc-line"><span class="idx">④</span>(D) 2√11=√44</div>
+<div class="calc-line"><span class="idx">⑤</span>√50 最大</div></div></div>
+          
+          <div class="answer-box">答案：<b>(A) 5√2</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第89-90頁　明星二：填充題（每格5分）</h2>
+
+<div class="qcard" data-hard="false" id="q82">
+    <div class="qhead">明星二 填1 — 小數部分與倒數</div>
+    <div class="qbody">
+      <div class="qtext">若 √3 的小數部分為 a，則 a²+a+2/a=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√3≈1.73，整數部分是1，所以小數部分 a=√3−1。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 a 代入，2/a 要有理化。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a=√3−1</div>
+<div class="calc-line"><span class="idx">②</span>a²=(√3−1)²=4−2√3，所以 a²+a=4−2√3+√3−1=3−√3</div>
+<div class="calc-line"><span class="idx">③</span>2/a=2/(√3−1)=2(√3+1)/(3−1)=√3+1</div>
+<div class="calc-line"><span class="idx">④</span>合計：3−√3+√3+1=4</div></div></div>
+          
+          <div class="answer-box">答案：<b>4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q83">
+    <div class="qhead">明星二 填2 — 根式加減</div>
+    <div class="qbody">
+      <div class="qtext">若 a=5√2−√20，b=√18−3√5，求：(1) a−b　(2) a+b</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">同類方根（根號內化到最簡後數字相同）可以像同類項一樣合併：m√a+n√a=(m+n)√a，係數加減、根號不變；不同類的根式不能硬合併。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先化最簡再代入：a=5√2−2√5，b=3√2−3√5。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√20=√(4×5)=2√5，所以 a=5√2−2√5</div>
+<div class="calc-line"><span class="idx">②</span>√18=√(9×2)=3√2，所以 b=3√2−3√5</div>
+<div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>a−b=(5√2−2√5)−(3√2−3√5)=5√2−2√5−3√2+3√5=2√2+√5</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>a+b=(5√2−2√5)+(3√2−3√5)=8√2−5√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 2√2+√5　(2) 8√2−5√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q84">
+    <div class="qhead">明星二 填3 — 代入與公式</div>
+    <div class="qbody">
+      <div class="qtext">若 a=1+√3，則 (a+4)(a−4)−2a+17=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">(a+4)(a−4)=a²−16，整個式子會變成 (a−1)²。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">先化簡再代入。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>(a+4)(a−4)−2a+17=a²−16−2a+17=a²−2a+1=(a−1)²</div>
+<div class="calc-line"><span class="idx">②</span>a−1=√3，(a−1)²=3</div></div></div>
+          
+          <div class="answer-box">答案：<b>3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q85">
+    <div class="qhead">明星二 填4 — 利用已知近似值</div>
+    <div class="qbody">
+      <div class="qtext">已知 √7≈2.6458，則 √(7/9)≈＿。（四捨五入取到小數點後第二位）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(7/9)=√7/√9=√7/3。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">分母是完全平方數，直接開出。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√(7/9)=√7/3≈2.6458/3≈0.8819</div>
+<div class="calc-line"><span class="idx">②</span>取到小數點後第二位：0.88</div></div></div>
+          
+          <div class="answer-box">答案：<b>0.88</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q86">
+    <div class="qhead">明星二 填5 — 根式四則運算</div>
+    <div class="qbody">
+      <div class="qtext">計算並化簡下列各式：<br>(1) 5/(√5−2)×√(1 4/5)÷(3√5/√3)<br>(2) −2√27/3+3√48/4−4√75/5</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">根式乘除：√a×√b=√(ab)，√a÷√b=√(a÷b)；乘開時用分配律，遇到 (a+b)(a−b)、(a±b)² 要想到乘法公式。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 每個因子先化簡，除法改乘倒數；(2) 每項先化最簡再合併。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>5/(√5−2) 同乘 √5+2：分母 5−4=1，=5(√5+2)=5√5+10</div>
+<div class="calc-line"><span class="idx">②</span>√(1 4/5)=√(9/5)=√9/√5=3/√5</div>
+<div class="calc-line"><span class="idx">③</span>3√5/√3=(3/√3)×√5=√3×√5=√15</div>
+<div class="calc-line"><span class="idx">④</span>(5√5+10)×3/√5：5√5×3/√5=15，10×3/√5=30/√5=30√5/5=6√5，合計 15+6√5</div>
+<div class="calc-line"><span class="idx">⑤</span>÷√15：(15+6√5)/√15=(15+6√5)×√15/15，15√15/15=√15，6√5×√15/15=6√75/15=6×5√3/15=2√3</div>
+<div class="calc-line"><span class="idx">⑥</span>所以 =√15+2√3</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>√27=3√3，2√27/3=6√3/3=2√3；√48=4√3，3√48/4=12√3/4=3√3；√75=5√3，4√75/5=20√3/5=4√3</div>
+<div class="calc-line"><span class="idx">②</span>−2√3+3√3−4√3=(−2+3−4)√3=−3√3</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) √15+2√3　(2) −3√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q87">
+    <div class="qhead">明星二 填6 — 對稱式與根號</div>
+    <div class="qbody">
+      <div class="qtext">設 a＞0，b＞0，a+b=24，ab=36，則 √(a/b)+√(b/a)=＿。</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">√(a/b)+√(b/a)=√a/√b+√b/√a=(a+b)/√(ab)，通分後用「和」與「積」代入。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">不需要解出 a、b。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>√(a/b)+√(b/a)=(√a×√a+√b×√b)/(√a×√b)=(a+b)/√(ab)</div>
+<div class="calc-line"><span class="idx">②</span>=24/√36=24/6=4</div></div></div>
+          
+          <div class="answer-box">答案：<b>4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第90頁　明星二：計算題</h2>
+
+<div class="qcard" data-hard="false" id="q88">
+    <div class="qhead">明星二 計1 — 代入求值</div>
+    <div class="qbody">
+      <div class="qtext">若 a=2+√5，求 a²−3a+1/a 的值。（10分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">a²、3a、1/a 分別算出來再合併；1/a 要有理化。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">a=2+√5，1/a=1/(2+√5)=√5−2。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>a=2+√5，a²=(2+√5)²=4+4√5+5=9+4√5</div>
+<div class="calc-line"><span class="idx">②</span>3a=3(2+√5)=6+3√5</div>
+<div class="calc-line"><span class="idx">③</span>1/a=1/(2+√5)，同乘 √5−2：(√5−2)/[(2+√5)(√5−2)]=(√5−2)/(5−4)=√5−2</div>
+<div class="calc-line"><span class="idx">④</span>a²−3a+1/a=(9+4√5)−(6+3√5)+(√5−2)</div>
+<div class="calc-line"><span class="idx">⑤</span>常數：9−6−2=1；√5：4√5−3√5+√5=2√5，結果=1+2√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>1+2√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q89">
+    <div class="qhead">明星二 計2 — 有理化連加求m</div>
+    <div class="qbody">
+      <div class="qtext">若 1/(√2+1)+1/(√3+√2)+1/(2+√3)+1/(2+m)=√5−1，求 m 的值。（10分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">有理化分母：遇到 1/(√a−√b) 就乘 (√a+√b)，利用 (√a−√b)(√a+√b)=a−b 把根號消掉，反之亦然。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">前三項各自有理化會「前後相消」；2=√4，所以第四項的有理化會接著出現 √5。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="calc-line"><span class="idx">①</span>1/(√2+1) 同乘 √2−1：分母 2−1=1，得 √2−1</div>
+<div class="calc-line"><span class="idx">②</span>1/(√3+√2) 同乘 √3−√2：分母 3−2=1，得 √3−√2</div>
+<div class="calc-line"><span class="idx">③</span>1/(2+√3) 同乘 2−√3：分母 4−3=1，得 2−√3</div>
+<div class="calc-line"><span class="idx">④</span>前三項相加：(√2−1)+(√3−√2)+(2−√3)=−1+2=1（√2、√3 前後相消）</div>
+<div class="calc-line"><span class="idx">⑤</span>方程式：1+1/(2+m)=√5−1，所以 1/(2+m)=√5−1−1=√5−2</div>
+<div class="calc-line"><span class="idx">⑥</span>2+m=1/(√5−2)=(√5+2)/(5−4)=√5+2</div>
+<div class="calc-line"><span class="idx">⑦</span>m=√5+2−2=√5</div></div></div>
+          
+          <div class="answer-box">答案：<b>m=√5</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q90">
+    <div class="qhead">明星二 計3 — 長方形周長與面積</div>
+    <div class="qbody">
+      <div class="qtext">一長方形的長為 (1−√2+√3) 公分，寬為 (1+√2−√3) 公分，則：<br>(1) 此長方形的周長為多少公分？（4分）<br>(2) 此長方形的面積為多少平方公分？（4分）</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">(1) 周長＝2×(長+寬)；(2) 長、寬一個是 1−(√2−√3)，一個是 1+(√2−√3)，用平方差。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">把 √2−√3 看成一整組。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>長+寬=(1−√2+√3)+(1+√2−√3)=2，周長=2×2=4</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>面積=[1−(√2−√3)][1+(√2−√3)]=1−(√2−√3)²</div>
+<div class="calc-line"><span class="idx">①</span>(√2−√3)²=2+3−2√6=5−2√6，所以面積=1−5+2√6=2√6−4</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 4公分　(2) 2√6−4平方公分</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+<h2>第91頁　會考非選模擬試題</h2>
+
+<div class="qcard" data-hard="false" id="q91">
+    <div class="qhead">會考非選 1 — 小數部分概念</div>
+    <div class="qbody">
+      <div class="qtext">心平在做回家功課時，寫到一個題目為「若 √3 的小數部分為 a，則 a²+a+2/a=？」於是她想到老師早上有教到一個概念：「已知 √153≈12.269，所以 √153 的小數部分為 √153−12」，請利用此概念，則：<br>(1) √3−a 的結果是哪一個整數？<br>(2) 利用(1)，則心平可以得到 a²+a+2/a=？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">無理數的小數部分＝這個數−整數部分。√3≈1.73，整數部分是1，小數部分 a=√3−1。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 直接代入；(2) 用 a=√3−1 代入並把 2/a 有理化。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>√3≈1.73，整數部分是1，小數部分 a=√3−1</div>
+<div class="calc-line"><span class="idx">②</span>√3−a=√3−(√3−1)=√3−√3+1=1</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>a²=(√3−1)²=(√3)²−2×√3×1+1²=3−2√3+1=4−2√3</div>
+<div class="calc-line"><span class="idx">②</span>a²+a=(4−2√3)+(√3−1)=3−√3</div>
+<div class="calc-line"><span class="idx">③</span>2/a=2/(√3−1)，同乘 √3+1：2(√3+1)/(3−1)=√3+1</div>
+<div class="calc-line"><span class="idx">④</span>a²+a+2/a=(3−√3)+(√3+1)=4</div></div></div>
+          
+          <div class="answer-box">答案：<b>(1) 1　(2) 4</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+<div class="qcard" data-hard="false" id="q92">
+    <div class="qhead">會考非選 2 — 平方差公式與面積</div>
+    <div class="qbody">
+      <div class="qtext">在一個邊長為60公尺的正方形土地中規畫A、B兩個正方形水池，水池的邊長分別為24公尺與36公尺，其餘的部分皆為草坪（如圖，單位：公尺）。若草坪面積與一塊邊長x公尺的正方形面積相等，則：<br>(1) 若 60²−24²=36×m，利用平方差公式 a²−b²=(a−b)(a+b)，求出 m=？<br>(2) 承(1)題，求 x=？</div>
+      
+      <details class="solution">
+        <summary>解題 <span class="chev">&#9654;</span></summary>
+        <div class="sol-body">
+          <div class="block b-key"><div class="block-head">&#128273; 核心觀念</div><div class="block-body">平方差公式：a²−b²=(a−b)(a+b)；草坪面積＝大正方形面積－兩個水池面積。</div></div>
+<div class="block b-think"><div class="block-head">&#128173; 思考邏輯</div><div class="block-body">(1) 用公式拆開，與 36×m 對照；(2) 草坪＝60²−24²−36²，再把(1)的結果代入。</div></div>
+<div class="block b-step"><div class="block-head">&#128209; 解題步驟</div><div class="block-body"><div class="sub-head">(1)</div>
+<div class="calc-line"><span class="idx">①</span>平方差公式：60²−24²=(60−24)(60+24)</div>
+<div class="calc-line"><span class="idx">②</span>60−24=36，60+24=84，所以 =36×84，對照 36×m，m=84</div>
+<div class="sub-head">(2)</div>
+<div class="calc-line"><span class="idx">①</span>草坪面積=大正方形−水池A−水池B=60²−24²−36²</div>
+<div class="calc-line"><span class="idx">②</span>把 60²−24² 換成 36×84：36×84−36²=36×(84−36)</div>
+<div class="calc-line"><span class="idx">③</span>84−36=48，所以草坪面積=36×48，x²=36×48=36×16×3</div>
+<div class="calc-line"><span class="idx">④</span>x=√(36×16×3)=6×4×√3=24√3</div></div></div>
+          <div class="warn-box"><b>提醒：</b>這題的圖（兩個水池A、B在正方形土地中的位置）我只用文字敘述來解：假設A、B完全在土地內、互不重疊。</div>
+          <div class="answer-box">答案：<b>(1) m=84　(2) x=24√3</b></div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+
+  <h2>答案總覽</h2>
+  <div class="qcard"><div class="qbody">
+    <table>
+      <thead><tr><th>題號</th><th>答案</th></tr></thead>
+      <tbody>
+        <tr><td>講解8</td><td>(1) −√3　(2) −√2+√3</td></tr>
+<tr><td>演練8</td><td>(1) 5√2　(2) −√5−5√2</td></tr>
+<tr><td>講解9</td><td>(1) 3√3　(2) 19√5　(3) 19√6/3　(4) 6√6</td></tr>
+<tr><td>演練9</td><td>(1) −24√2　(2) −√6　(3) −4√3　(4) 19√5</td></tr>
+<tr><td>講解10</td><td>(1) 6−3√5　(2) √14/7</td></tr>
+<tr><td>演練10</td><td>(1) 6−4√5　(2) 3/2（暫定）</td></tr>
+<tr><td>講解11</td><td>(1) 9+2√14　(2) 38</td></tr>
+<tr><td>演練11</td><td>(1) 13−4√10　(2) 7</td></tr>
+<tr><td>講解12</td><td>(1) √5+1　(2) 2√5+√2−2</td></tr>
+<tr><td>演練12</td><td>(1) 6−2√5　(2) 2√5+2√2</td></tr>
+<tr><td>即時通1</td><td>(1) −15√6　(2) −5√3−3√5　(3) 3√2　(4) 10√5−5√2</td></tr>
+<tr><td>即時通2</td><td>(1) 18+10√15　(2) 14−6√5　(3) 29−12√5　(4) 14</td></tr>
+<tr><td>即時通3</td><td>(1) √5+3　(2) 2√3−6</td></tr>
+<tr><td>整合1 講解</td><td>(1) 3/√2＞√(3/2)＞√3/2　(2) √6+√5＞2√2+√3＞3+√2</td></tr>
+<tr><td>整合1 演練</td><td>(1) 3/√5＞√(3/5)＞√3/5　(2) √14−√3＞√12−√5＞√10−√7</td></tr>
+<tr><td>講解2</td><td>11/4</td></tr>
+<tr><td>演練2</td><td>√21</td></tr>
+<tr><td>講解3</td><td>a=14，b=14，c=11，d=26</td></tr>
+<tr><td>演練3</td><td>(1) a=5，90　(2) b=5，18　(3) c=61，41　(4) d=20，40</td></tr>
+<tr><td>是非題 1~5</td><td>1.×　2.×　3.○　4.×　5.○</td></tr>
+<tr><td>基礎1</td><td>(A) √(2²)=2</td></tr>
+<tr><td>基礎2</td><td>(B) 17，18</td></tr>
+<tr><td>基礎3</td><td>(B)</td></tr>
+<tr><td>基礎4</td><td>(1) √6　(2) √3　(3) √3　(4) √30</td></tr>
+<tr><td>基礎5</td><td>最大是甲，最小是丙</td></tr>
+<tr><td>基礎6</td><td>(D)</td></tr>
+<tr><td>基礎7</td><td>(A) √10</td></tr>
+<tr><td>基礎8</td><td>(A) √3</td></tr>
+<tr><td>基礎9</td><td>(C) √30</td></tr>
+<tr><td>基礎10</td><td>(C) 3√15</td></tr>
+<tr><td>基礎11</td><td>(A) 5</td></tr>
+<tr><td>基礎12</td><td>(1) 6√2　(2) 6√7　(3) 3√5　(4) 30√3　(5) −2√3　(6) √10/6　(7) √3/90　(8) √5/15</td></tr>
+<tr><td>基礎13</td><td>216.79、68.56、2.1679、0.6856</td></tr>
+<tr><td>基礎14</td><td>27√10</td></tr>
+<tr><td>基礎15</td><td>(D)</td></tr>
+<tr><td>基礎16</td><td>(B) √18</td></tr>
+<tr><td>基礎17</td><td>(D) 6+2√3</td></tr>
+<tr><td>基礎18</td><td>(C) 2√2+2√3</td></tr>
+<tr><td>基礎19</td><td>(A) √5−√15</td></tr>
+<tr><td>基礎20</td><td>(B) 2√6</td></tr>
+<tr><td>基礎21</td><td>(C)</td></tr>
+<tr><td>基礎22</td><td>(1) −2√3　(2) −6√2　(3) −7　(4) 19−8√3　(5) 38　(6) −8+4√6</td></tr>
+<tr><td>基礎23</td><td>30+12√6</td></tr>
+<tr><td>基礎24</td><td>(√3+1)/2；√7+2；2√7+4</td></tr>
+<tr><td>進階1</td><td>(B) B</td></tr>
+<tr><td>進階2</td><td>(A) 3</td></tr>
+<tr><td>進階3</td><td>(D) 16 16/17</td></tr>
+<tr><td>進階4</td><td>(D)</td></tr>
+<tr><td>進階5</td><td>(1) √5　(2) 2</td></tr>
+<tr><td>進階6</td><td>1+2√3</td></tr>
+<tr><td>進階7</td><td>8</td></tr>
+<tr><td>進階8</td><td>(1) √5+√3　(2) √3+1</td></tr>
+<tr><td>進階9</td><td>−2+2√3</td></tr>
+<tr><td>進階10</td><td>a＜b＜c</td></tr>
+<tr><td>明星一 選1</td><td>(B) 乙</td></tr>
+<tr><td>明星一 選2</td><td>(C) 1.2a</td></tr>
+<tr><td>明星一 選3</td><td>(C) 3</td></tr>
+<tr><td>明星一 選4</td><td>(A) c＞b＞a</td></tr>
+<tr><td>明星一 選5</td><td>(B)</td></tr>
+<tr><td>明星一 選6</td><td>(D) c＞b＞a</td></tr>
+<tr><td>明星一 選7</td><td>(B) 128√7+128√5</td></tr>
+<tr><td>明星一 選8</td><td>(B)</td></tr>
+<tr><td>明星一 填1</td><td>±√5</td></tr>
+<tr><td>明星一 填2</td><td>51/10（=5.1）</td></tr>
+<tr><td>明星一 填3</td><td>3</td></tr>
+<tr><td>明星一 填4</td><td>22</td></tr>
+<tr><td>明星一 填5</td><td>60√5</td></tr>
+<tr><td>明星一 填6</td><td>2√6</td></tr>
+<tr><td>明星一 填7</td><td>−2</td></tr>
+<tr><td>明星一 填8</td><td>(1) 3√2/2−9　(2) −11√5−√7　(3) 34/5（=6.8）</td></tr>
+<tr><td>明星一 計1</td><td>8√2</td></tr>
+<tr><td>明星一 計2</td><td>5+4√5</td></tr>
+<tr><td>明星一 計3</td><td>4</td></tr>
+<tr><td>明星二 選1</td><td>(C) ±√15</td></tr>
+<tr><td>明星二 選2</td><td>(B)</td></tr>
+<tr><td>明星二 選3</td><td>(C) 7</td></tr>
+<tr><td>明星二 選4</td><td>(D) 16</td></tr>
+<tr><td>明星二 選5</td><td>(D)</td></tr>
+<tr><td>明星二 選6</td><td>(C) 35</td></tr>
+<tr><td>明星二 選7</td><td>(D) 丙、戊</td></tr>
+<tr><td>明星二 選8</td><td>(A) 5√2</td></tr>
+<tr><td>明星二 填1</td><td>4</td></tr>
+<tr><td>明星二 填2</td><td>(1) 2√2+√5　(2) 8√2−5√5</td></tr>
+<tr><td>明星二 填3</td><td>3</td></tr>
+<tr><td>明星二 填4</td><td>0.88</td></tr>
+<tr><td>明星二 填5</td><td>(1) √15+2√3　(2) −3√3</td></tr>
+<tr><td>明星二 填6</td><td>4</td></tr>
+<tr><td>明星二 計1</td><td>1+2√5</td></tr>
+<tr><td>明星二 計2</td><td>m=√5</td></tr>
+<tr><td>明星二 計3</td><td>(1) 4公分　(2) 2√6−4平方公分</td></tr>
+<tr><td>會考非選 1</td><td>(1) 1　(2) 4</td></tr>
+<tr><td>會考非選 2</td><td>(1) m=84　(2) x=24√3</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+</div>
+<script>
+
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.qcard[id]');
+  const countEl = document.querySelector('.filter-count');
+  function updateCount(){
+    const total = cards.length;
+    const hard = document.querySelectorAll('.qcard[data-hard="true"]').length;
+    countEl.textContent = `共 ${total} 題，疑難題 ${hard} 題`;
+  }
+  const navLinks = document.querySelectorAll('.toc-nav a');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+      cards.forEach(c=>{
+        if(mode==='all'){ c.hidden = false; }
+        else { c.hidden = c.dataset.hard !== 'true'; }
+      });
+      navLinks.forEach(a=>{
+        if(mode==='all'){ a.hidden = false; }
+        else { a.hidden = !a.classList.contains('hard'); }
+      });
+    });
+  });
+  updateCount();
+
+</script>
+</body>
+</html>
