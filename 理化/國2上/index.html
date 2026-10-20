@@ -66,6 +66,9 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
   .grid a.card { padding: 14px 16px; gap: 12px; }
   .grid .card-icon { font-size: 1.8rem; }
+  .sub { font-size: 0.88rem; font-weight: 700; color: #5b6b82; margin: 18px 2px 0; padding-bottom: 4px; border-bottom: 1px dashed #c9d1de; }
+  .sub:first-child { margin-top: 6px; }
+  .sub + .grid { margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -77,29 +80,36 @@
 <main>
   <details class="sec">
     <summary>📘 第一次段考範圍 <span class="cnt">(4)</span></summary>
+    <div class="sub">📖 講義詳解・第2章 物質的世界</div>
     <div class="grid">
-  <a class="card" href="溶解度與濃度.html">
+      <a class="card" href="溶解度與濃度.html">
     <div class="card-icon">🧪</div>
     <div class="card-text">
       <h2>溶解度與濃度</h2>
       <p>生活化預習筆記</p>
     </div>
   </a>
-  <a class="card" href="聲波回聲應用題精選詳解.html">
+    </div>
+    <div class="sub">📖 講義詳解・第3章 波動與聲音</div>
+    <div class="grid">
+      <a class="card" href="聲波回聲應用題精選詳解.html">
     <div class="card-icon">🔊</div>
     <div class="card-text">
       <h2>聲波回聲應用題精選詳解</h2>
       <p>應用題精選詳解</p>
     </div>
   </a>
-  <a class="card" href="一段段考題庫/八上_理化_一段歷屆段考題庫.html">
+    </div>
+    <div class="sub">📝 考卷與題庫</div>
+    <div class="grid">
+      <a class="card" href="一段段考題庫/八上_理化_一段歷屆段考題庫.html">
     <div class="card-icon">📝</div>
     <div class="card-text">
       <h2>一段歷屆段考題庫</h2>
       <p>八上理化・歷屆段考題目彙整</p>
     </div>
   </a>
-  <a class="card" href="2026-09-30_台北市大安高中114學年度第一學期八年級自然科第一次定期評量試卷.html">
+      <a class="card" href="2026-09-30_台北市大安高中114學年度第一學期八年級自然科第一次定期評量試卷.html">
     <div class="card-icon">📄</div>
     <div class="card-text">
       <h2>大安高中 八上自然 第一次定期評量</h2>
@@ -110,8 +120,9 @@
   </details>
   <details class="sec" open>
     <summary>📗 第二次段考範圍 <span class="cnt">(1)</span></summary>
+    <div class="sub">📖 講義詳解・第4章 光</div>
     <div class="grid">
-  <a class="card" href="2026-10-15_4-3預習講義_光的折射與透鏡.html">
+      <a class="card" href="2026-10-15_4-3預習講義_光的折射與透鏡.html">
     <div class="card-icon">🔍</div>
     <div class="card-text">
       <h2>4-3 預習講義 光的折射與透鏡</h2>
