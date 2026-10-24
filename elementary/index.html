@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國小教材</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #2c3e50;
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, #2c3e50, #3d5a80);
+    color: white;
+    padding: 28px 24px 24px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.5rem; font-weight: 700; }
+  header p { font-size: 0.85rem; opacity: 0.7; margin-top: 6px; }
+  .back {
+    display: inline-block;
+    margin: 0 0 4px;
+    font-size: 0.78rem;
+    opacity: 0.6;
+    text-decoration: none;
+    color: white;
+  }
+  main {
+    max-width: 600px;
+    margin: 32px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  a.card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    border-radius: 14px;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  a.card:hover {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+    transform: translateY(-2px);
+  }
+  .card-icon { font-size: 2.2rem; flex-shrink: 0; }
+  .card-text h2 { font-size: 1rem; font-weight: 700; color: #1a2a44; }
+  .card-text p { font-size: 0.82rem; color: #666; margin-top: 4px; }
+  main { max-width: 920px; display: block; }
+  details.sec { margin-bottom: 18px; }
+  details.sec > summary { list-style: none; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 8px; font-size: 1.02rem; font-weight: 700; color: #3d5a80; padding: 12px 16px; background: white; border-radius: 12px; border-left: 5px solid #3d5a80; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  details.sec > summary::-webkit-details-marker { display: none; }
+  details.sec > summary::after { content: "▾"; margin-left: auto; transition: transform 0.2s; }
+  details.sec:not([open]) > summary::after { transform: rotate(-90deg); }
+  details.sec > summary .cnt { font-size: 0.78rem; font-weight: 400; color: #888; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+  .grid a.card { padding: 14px 16px; gap: 12px; }
+  .grid .card-icon { font-size: 1.8rem; }
+  .sub { font-size: 0.88rem; font-weight: 700; color: #5b6b82; margin: 18px 2px 0; padding-bottom: 4px; border-bottom: 1px dashed #c9d1de; }
+  .sub:first-child { margin-top: 6px; }
+  .sub + .grid { margin-top: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="../index.html">← 返回首頁</a>
+  <h1>國小</h1>
+  <p>選擇主題</p>
+</header>
+<main>
+  <details class="sec" open>
+    <summary>📗 五上期中考 <span class="cnt">(2)</span></summary>
+    <div class="sub">📖 互動複習講義・第1~2單元</div>
+    <div class="grid">
+      <a class="card" href="自然5上_第1-2單元_互動複習講義.html">
+        <div class="card-icon">🌱</div>
+        <div class="card-text">
+          <h2>自然5上 第1~2單元 互動複習講義</h2>
+          <p>五上期中考複習</p>
+        </div>
+      </a>
+      <a class="card" href="社會5上_第1-2單元_互動複習講義.html">
+        <div class="card-icon">🌏</div>
+        <div class="card-text">
+          <h2>社會5上 第1~2單元 互動複習講義</h2>
+          <p>五上期中考複習</p>
+        </div>
+      </a>
+    </div>
+  </details>
+</main>
+</body>
+</html>
