@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>指數重建講義</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%94%A2%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#333;--sub:#555;--line:#e0d8ca;--ac:#c0704a;--ac2:#4a7a6b;--ac3:#4a6b9a;--bad:#b0442e;--soft:#f3ece0;--hi:#fff7e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1f1d1a;--card:#2a2723;--ink:#eee;--sub:#bbb;--line:#4a443c;--ac:#e0916b;--ac2:#7fc4ad;--ac3:#8fb0e0;--bad:#ee8a74;--soft:#38342d;--hi:#3a3322}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;line-height:1.7;font-size:1.2rem}
+.wrap{max-width:860px;margin:0 auto;padding:10px 16px 110px}
+.tabs{display:flex;gap:8px;margin:2px 0 8px}
+.tabs button{flex:1;font-family:inherit;font-size:1.05rem;padding:9px 8px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--sub)}
+.top select{font-family:inherit;font-size:.9rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:62%}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac2);width:0;transition:width .25s}
+.slide{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.slide.cur{display:block}
+.tag{display:inline-block;background:var(--ac3);color:#fff;border-radius:99px;padding:0 12px;font-size:.95rem}
+.tag.sup{background:var(--ac2)}.tag.pr{background:var(--ac)}
+h1{font-size:1.6rem;margin:6px 0 10px;line-height:1.35}
+.fig{max-width:100%;height:auto;display:block;margin:8px auto;max-height:330px;color:var(--ink)}
+.figs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+.figs .fig{max-width:48%}
+.fig.big .lbl,.fig.big .lbl2,.fig.big .tI,.fig.big .tR,.fig.big .tF,.fig.big .tB{font-size:16px}
+@media (orientation:portrait) and (min-width:600px){.fig{max-height:46vh}}
+.txt{margin:8px 0}
+.txt b{color:var(--ac)}
+.txt ol,.txt ul{margin:6px 0;padding-left:1.4em}
+.txt li{margin:4px 0}
+.eq{font-size:1.5rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.5}
+table.t{border-collapse:collapse;width:100%;font-size:1.02rem;margin:8px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+table.t th{background:var(--soft)}
+.q{background:var(--hi);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:10px 0}
+.q .p{font-weight:700}
+details summary{cursor:pointer;color:var(--ac3);font-size:1rem}
+.q .a{padding:4px 0;color:var(--ac2);font-weight:700}
+.sheet{background:#fffbe3;border:2px dashed #d9b84a;border-radius:12px;padding:8px 12px;margin:10px 0;font-size:1rem;color:#3d3a2c}
+.sheet b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sheet{background:#3b3722;border-color:#a88c2f;color:#eee}:root:not([data-theme=light]) .sheet b{color:#f0c860}}
+.src{font-size:.95rem;color:var(--sub);margin:-4px 0 10px}
+.ai{display:inline-block;background:#e6f0eb;color:#2f5d4f;border:1px solid var(--ac2);border-radius:6px;padding:0 6px;font-size:.95rem;font-weight:700;line-height:1.5;white-space:nowrap}
+.ai.re{background:#e8edf6;color:#344e78;border-color:var(--ac3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .ai{background:#24352f;color:#9fd6c2}:root:not([data-theme=light]) .ai.re{background:#262f40;color:#a9c2ea}}
+.note{margin-top:12px;font-size:.95rem;color:var(--sub)}
+.note details{border-top:1px dashed var(--line);padding-top:6px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:12px;justify-content:center;z-index:5}
+.nav button{font-family:inherit;font-size:1.2rem;padding:12px 28px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:130px}
+.nav button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.nav button:disabled{opacity:.4}
+/* SVG 圖形 */
+.lbl{fill:currentColor;font-size:14px}.lbl2{fill:currentColor;font-size:15px;font-weight:700}
+.lbl,.lbl2,.tI,.tR,.tF{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.tI,.tR,.tF{font-size:14px;font-weight:700}
+.tI{fill:var(--ac)}.tR{fill:var(--ac3)}.tF{fill:var(--ac2)}
+.rI{stroke:var(--ac);stroke-width:3;fill:none}.rR{stroke:var(--ac3);stroke-width:3;fill:none}
+.rF{stroke:var(--ac2);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.nl{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.ifc{stroke:currentColor;stroke-width:2.5}
+.ghostL{stroke:var(--sub);stroke-width:2;stroke-dasharray:4 4;fill:none}
+.q1,.q2,.q3,.q1d,.q2d,.q3d{stroke-width:2.4;fill:none}.q1,.q1d{stroke:var(--ac)}.q2,.q2d{stroke:var(--ac2)}.q3,.q3d{stroke:var(--ac3)}.q1d,.q2d,.q3d{stroke-dasharray:5 4;stroke-width:1.8}
+.axis{stroke:currentColor;stroke-width:1.5}.obj{stroke:currentColor;stroke-width:3.5}.img{stroke:var(--bad);stroke-width:3.5}.imgd{stroke:var(--bad);stroke-width:3;stroke-dasharray:6 4}
+.tB{fill:var(--bad);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.arcI{stroke:var(--ac);stroke-width:2;fill:none}.arcR{stroke:var(--ac3);stroke-width:2;fill:none}.arcF{stroke:var(--ac2);stroke-width:2;fill:none}.arcX{stroke:var(--sub);stroke-width:1.6;fill:none}
+@media print{body{background:#fff;color:#000}.nav,.top select,.bar,.tabs{display:none}.slide{display:block!important;break-inside:avoid;page-break-after:always;border:0}.wrap{padding:0}details{display:block}details>summary{display:none}}
+@media (max-width:560px){body{font-size:1.08rem}h1{font-size:1.4rem}.figs .fig{max-width:100%}.tabs button{font-size:.88rem;padding:8px 4px}.top{flex-direction:column;align-items:stretch;gap:4px}.top select{max-width:100%;width:100%}.nav{gap:8px;padding:8px 10px}.nav button{min-width:0;flex:1;padding:12px 6px;font-size:1.05rem;white-space:nowrap}}
+/* 手寫層 */
+.slide{position:relative}
+.ink-cv{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+body.ink .wrap{touch-action:none;padding-bottom:190px}
+.nav button.sm{min-width:0;padding:12px 16px}
+.nav button.inkon{background:var(--ac3);border-color:var(--ac3);color:#fff}
+.inkbar{position:fixed;left:0;right:0;bottom:68px;z-index:6;display:none;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:8px 10px;background:var(--card);border-top:1px solid var(--line)}
+body.ink .inkbar{display:flex}
+.inkbar button{font-family:inherit;font-size:1rem;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.inkbar button.on{border-color:var(--ac);background:var(--hi)}
+.inkbar label{font-size:.95rem;display:flex;align-items:center;gap:4px}
+.inkbar input{width:20px;height:20px}
+@media print{.inkbar{display:none!important}}
+/* 橫放（寬螢幕）：版面加寬，有圖的頁分左右兩欄，圖的高度跟著螢幕高度 */
+@media (orientation:landscape) and (min-width:900px){
+  .wrap{max-width:1280px;padding-top:6px}
+  .tabs{margin:0 0 4px}
+  .bar{margin:4px 0 8px}
+  .slide{padding:12px 22px}
+  .slide>h1{display:inline-block;margin:0 0 4px 10px;vertical-align:middle;font-size:1.5rem}
+  .src{margin:0 0 6px}
+  .slide>.tag{vertical-align:middle}
+  .sbody.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+  .sbody.tq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .sbody.two .fig{max-height:calc(100vh - 280px);margin-top:4px}
+  .sbody.two .figs .fig{max-height:calc(50vh - 110px)}
+  .sbody:not(.two) .stxt{max-width:1000px;margin:0 auto}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+}
+/* 橫放、螢幕比較矮（高解析平板、網址列佔掉高度）：字稍微縮小 */
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){
+  body{font-size:1.08rem;line-height:1.6}
+  .slide>h1{font-size:1.35rem}
+  .tabs button{padding:6px 8px;font-size:.98rem}
+  .q{padding:6px 12px;margin:7px 0}
+  .eq{font-size:1.35rem;margin:4px 0}
+  .sheet{padding:6px 10px;margin:7px 0}
+  .sbody.two .fig{max-height:calc(100vh - 265px)}
+  table.t{font-size:.95rem}table.t th,table.t td{padding:4px 6px}
+  .nav{padding:6px 14px}.nav button{padding:9px 24px}
+  .inkbar{bottom:58px}
+}
+
+/* 手寫顏色圓點 */
+.inkbar .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* ❓ 標記有問題 */
+.mk{font-family:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:99px;padding:1px 12px;cursor:pointer;vertical-align:middle;margin:0 0 4px 8px;line-height:1.6}
+.mk.on{background:#fde7ee;border-color:#e91e63;color:#ad1457;font-weight:700}
+.q .mq{float:right;margin:0 0 4px 8px;padding:0 10px}
+.q.flash{outline:3px solid #e91e63;outline-offset:2px}
+.qpanel{position:fixed;left:0;right:0;bottom:68px;z-index:7;display:none;max-height:55vh;overflow:auto;background:var(--card);border-top:2px solid #e91e63;padding:8px 16px 12px}
+body.qp .qpanel{display:block}
+.qph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qph button{font-family:inherit;font-size:.95rem;margin-left:6px;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qpanel a{display:block;padding:8px 6px;border-bottom:1px dashed var(--line);color:var(--ink);text-decoration:none;cursor:pointer;font-size:1rem}
+.qpanel a.sub{padding-left:26px;color:var(--sub)}
+.qpanel .empty{color:var(--sub);padding:8px 6px;font-size:1rem}
+.nav button.qon{background:#e91e63;border-color:#e91e63;color:#fff}
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){.qpanel{bottom:58px}}
+@media print{.qpanel,.mk{display:none!important}}
+@media (max-width:560px){.nav button.sm{flex:0 0 auto;padding:12px 12px}.nav .lb{display:none}}
+
+/* 觀念釐清選擇題 */
+.mc{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+.mo{font-family:inherit;font-size:1.05rem;text-align:left;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.5}
+.mo b{color:var(--ac3);margin-right:4px}
+.mo.ok{background:#e3f3ea;border-color:#2e8b57}
+.mo.no{background:#fde9e4;border-color:var(--bad)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mo.ok{background:#1f3a2c}:root:not([data-theme=light]) .mo.no{background:#4a2a24}}
+.mcf{font-size:1rem;margin:4px 0}
+.mcf.good{color:#1f6b45}.mcf.bad{color:var(--bad)}.mcf .try{color:var(--sub)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mcf.good{color:#8fe0b4}}
+/* 數學：分數、指數 */
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.25;margin:0 2px}
+.fr>span{padding:0 4px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.fp{font-size:1.6em;vertical-align:middle;line-height:1}
+sup{line-height:0;font-size:.72em}
+.c1{color:var(--ac);font-weight:700}.c2{color:var(--ac3);font-weight:700}.c3{color:var(--ac2);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+.big-eq{font-size:1.6rem;text-align:center;margin:8px 0;line-height:1.9}
+.q .a .ex{font-weight:400;color:var(--ink)}
+
+</style>
+</head>
+<body><nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">📐 數學</a>&nbsp;›&nbsp; 基礎重建 › 國1 指數重建講義</nav>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="top"><span>指數重建講義　1-4 指數記法與科學記號＋2-4 指數律</span><select id="jump" aria-label="跳到某一頁"></select></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div id="slides"></div>
+</div>
+<div class="inkbar" id="inkbar">
+  <button data-c="pu" class="on"><span class="dot" style="background:#7b1fa2"></span>紫</button><button data-c="pk"><span class="dot" style="background:#e91e63"></span>桃紅</button><button data-c="cy"><span class="dot" style="background:#0097a7"></span>青</button>
+  <button id="inkErase">🧽 橡皮擦</button><button id="inkUndo">↶ 復原</button><button id="inkClear">🗑 清這頁</button><button id="inkSpace">＋ 空白計算區</button>
+  <label><input type="checkbox" id="inkPen"> 只有筆能寫（手指用來捲動）</label>
+</div>
+<div class="qpanel" id="qpanel"><div class="qph"><b>❓ 標記有問題的地方</b><span><button id="qpClear">清除全部</button><button id="qpClose">✕ 關閉</button></span></div><div id="qpList"></div></div>
+<div class="nav"><button id="qpBtn" class="sm">❓<span class="lb"> 問題</span></button><button id="inkBtn" class="sm" aria-pressed="false">✏️<span class="lb"> 手寫</span></button><button id="prev">◀ 上一步</button><button id="next" class="go">下一步 ▶</button></div>
+
+<script>
+(function(){
+/* ===== 數學預習講義共用工具（分數／指數排版、選擇題 mc、表格）===== */
+var UID=0;
+function f1(x){return (Math.round(x*10)/10).toString();}
+function T(x,y,t,cls,anchor){return '<text class="'+(cls||'lbl')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'">'+t+'</text>';}
+function P(b,e){return b+'<sup>'+e+'</sup>';}
+function fr(n,d){return '<span class="fr"><span>'+n+'</span><span>'+d+'</span></span>';}
+function FP(n,d,e,neg){return '<span class="fp">(</span>'+(neg?'−':'')+fr(n,d)+'<span class="fp">)</span>'+(e!==undefined?'<sup>'+e+'</sup>':'');}
+/* 選擇題：選項順序依題目文字固定洗牌（每次開啟順序相同），避免正解總在同一個位置。用 Math.imul 做乘法，h*1103515245 超過 2^53 會失去低位元，洗牌會偏向 */
+function mc(q,o,a,w,exp){
+  var h=7,i,idx=o.map(function(_,k){return k;});
+  for(i=0;i<q.length;i++)h=(h*31+q.charCodeAt(i))>>>0;
+  for(i=idx.length-1;i>0;i--){h=(Math.imul(h,1103515245)+12345)>>>0;var j=(h>>>8)%(i+1),t=idx[i];idx[i]=idx[j];idx[j]=t;}
+  return [q,exp,{o:idx.map(function(k){return o[k];}),w:idx.map(function(k){return w[k];}),a:idx.indexOf(a)}];
+}
+function tbl(head,rows){
+  var h='<table class="t"><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(x){return '<td>'+x+'</td>';}).join('')+'</tr>';});
+  return h+'</table>';
+}
+function eq(h){return '<div class="eq">'+h+'</div>';}
+
+var AI='<span class="ai">💡 補充說明</span> ',RE='<span class="ai re">🔁 類題</span> ';
+/* ===== 指數重建講義（1-4 指數記法與科學記號＋2-4 指數律）===== */
+/* ===== 圖形 ===== */
+/* 指數記法：2×2×2×2 ＝ 2⁴，標出底數和指數 */
+function expFig(){
+  var id='x'+(++UID),W=520,H=240;
+  var s='<svg class="fig big" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="2 乘 2 乘 2 乘 2 等於 2 的 4 次方，2 是底數，4 是指數">';
+  s+='<defs><marker id="'+id+'" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,1 L11,6 L0,11 Z" fill="currentColor"/></marker></defs>';
+  s+='<text x="14" y="78" font-size="34" fill="currentColor">2×2×2×2</text>';
+  s+='<path d="M16 96 Q16 108 28 108 L190 108 Q202 108 202 96" fill="none" stroke="var(--ac)" stroke-width="2.5"/>';
+  s+=T(109,134,'有 4 個 2 連乘','lbl2','middle');
+  s+='<text x="226" y="78" font-size="34" fill="currentColor">＝</text>';
+  s+='<text x="285" y="104" font-size="90" font-weight="700" fill="var(--ac)">2</text>';
+  s+='<text x="345" y="56" font-size="50" font-weight="700" fill="var(--ac3)">4</text>';
+  s+=T(412,40,'指數','lbl2');s+=T(412,62,'連乘了幾個','lbl');
+  s+='<line x1="408" y1="46" x2="380" y2="48" stroke="var(--ac3)" stroke-width="2" marker-end="url(#'+id+')"/>';
+  s+=T(290,182,'底數','lbl2','middle');s+=T(290,204,'被連乘的那個數','lbl','middle');
+  s+='<line x1="290" y1="168" x2="290" y2="118" stroke="var(--ac)" stroke-width="2" marker-end="url(#'+id+')"/>';
+  return s+'</svg>';
+}
+/* 小數點跳格：ch 每個數字、g0 原來小數點所在的縫（0＝第一個數字前）、g1 新的縫 */
+function jumpFig(ch,g0,g1,msg,res,zeroN){
+  var id='j'+(++UID),bw=52,gap=4,x0=44,W=x0*2+ch.length*(bw+gap),H=250,y0=80,bh=58;
+  var s='<svg class="fig big" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="小數點跳格示意圖">';
+  s+='<defs><marker id="'+id+'" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,1 L11,6 L0,11 Z" fill="var(--ac)"/></marker></defs>';
+  function gx(g){return x0+g*(bw+gap)-gap/2;}
+  ch.forEach(function(c,i){
+    var x=x0+i*(bw+gap),dim=(i<zeroN);
+    s+='<rect x="'+x+'" y="'+y0+'" width="'+bw+'" height="'+bh+'" rx="8" fill="var(--soft)" stroke="var(--line)" stroke-width="2"/>';
+    s+='<text x="'+(x+bw/2)+'" y="'+(y0+42)+'" font-size="36" text-anchor="middle" fill="'+(dim?'var(--sub)':'currentColor')+'" font-weight="'+(dim?'400':'700')+'">'+c+'</text>';
+  });
+  var a=gx(g0),b=gx(g1),mid=(a+b)/2;
+  s+='<path d="M'+f1(a)+' '+(y0-8)+' Q'+f1(mid)+' 8 '+f1(b)+' '+(y0-8)+'" fill="none" stroke="var(--ac)" stroke-width="3" marker-end="url(#'+id+')"/>';
+  s+=T(mid,24,msg,'lbl2','middle');
+  s+='<circle cx="'+f1(a)+'" cy="'+(y0+bh+10)+'" r="7" fill="var(--bad)"/>'+T(a,y0+bh+40,'原來的小數點','lbl','middle');
+  s+='<circle cx="'+f1(b)+'" cy="'+(y0+bh+10)+'" r="7" fill="var(--ac2)"/>'+T(b,y0+bh+62,'新的小數點','lbl','middle');
+  s+=T(W/2,H-6,res,'lbl2','middle');
+  return s+'</svg>';
+}
+
+/* ===== 投影片資料 ===== */
+var DECKS={A:{name:'1-4 指數記法與科學記號',SL:[]},B:{name:'2-4 指數律',SL:[]}};
+function add(d,o){DECKS[d].SL.push(o);}
+var A=function(o){add('A',o);},B=function(o){add('B',o);};
+var LEGEND='<b>頁面上的標記：</b><ul><li>📖 <b>出處</b>：這一頁的內容來自課本哪一頁</li><li>'+AI+'：課本<b>沒有寫</b>，是額外幫你理解的比喻、推理或整理</li><li>'+RE+'：題型來自課本，數字是換過的，不是原題</li><li>🎯 <b>觀念釐清</b>：選擇題。點一個選項，馬上知道對不對；選項都是最常見的錯誤想法，答錯會告訴你錯在哪裡，並自動標上 ❓</li><li>❓ <b>有問題</b>：看不懂的頁按標題旁的「❓ 這頁有問題」；下方「❓ 問題」按鈕會列出全部（包含答錯的題），點一下就跳過去</li><li>✏️ <b>手寫</b>：可以在頁面上直接寫字、算題</li></ul>';
+
+/* ================= 主題一：1-4 指數記法與科學記號 ================= */
+A({t:'指數：把「連乘」寫短',tag:'今天的目標',
+ text:'這份講義把「指數」從頭重新蓋一遍。分兩大塊（上方分頁切換）：<ol><li><b>1-4 指數記法與科學記號</b>（課本 p.50～58）：指數到底是什麼？括號和負號怎麼看？比大小怎麼比？很大、很小的數怎麼寫成科學記號？</li><li><b>2-4 指數律</b>（課本 p.117～123）：分數的次方、四條指數律、0 次方、用指數律比大小和解應用題。</li></ol>每個觀念都是同一個節奏：<b>先看懂 → 想一想 → 🎯 觀念釐清（選擇題）→ 🔁 類題</b>。<br>選擇題裡的錯誤選項，都是最常見的錯法，答錯沒關係，看「錯在哪裡」最重要。<br><br>'+LEGEND});
+
+A({t:'指數是什麼：同一個數連乘',tag:'重點',src:'課本 p.50 重點1 ①②',
+ fig:expFig(),
+ text:'當<b>同一個數 a 連乘 m 次</b>，可以簡寫成 <b>'+P('a','m')+'</b>，讀作「a 的 m 次方」。<br>例：2×2×2×2 有 4 個 2，簡寫成 <b>'+P('2','4')+'</b>，讀作「二的四次方」。<ul><li><b>底數</b>：被連乘的那個數（這裡是 2）</li><li><b>指數</b>：連乘了幾個（這裡是 4）</li></ul>指數是 1 時通常不寫：'+P('5','1')+' 就是 5。',
+ qs:[['2⁴ 的「底數」和「指數」各是哪一個？','底數是 2（被連乘的數），指數是 4（連乘幾個）。'],['5×5×5×5×5×5 寫成指數記法是什麼？','有 6 個 5 連乘，寫成 '+P('5','6')+'。'],['5³ 讀作什麼？展開是什麼？','讀作「五的三次方」，展開是 5×5×5＝125。']]});
+
+A({t:'🎯 觀念釐清①：指數不是乘法',tag:'觀念釐清',src:'課本 p.50 重點1 ①',
+ qs:[
+  mc('2³ 等於多少？',['6（2×3）','8（2×2×2）','5（2＋3）','23'],1,['把 2³ 當成 2×3 了。指數 3 的意思是「連乘 3 個 2」，不是「乘以 3」。','','把「次方」當成加法了。2³＝2×2×2。','2³ 不是「二十三」，右上角的小數字是指數。'],'2³＝2×2×2＝8。'),
+  mc('3⁴ 展開之後是哪一個？',['3×4','3＋3＋3＋3','3×3×3×3','4×4×4'],2,['3×4＝12 是「4 個 3 相加」，不是指數。','3＋3＋3＋3 是加法（＝12）。指數是「連乘」。','','底數和指數弄反了。底數 3 才是被連乘的數，指數 4 才是連乘幾個。'],'3⁴＝3×3×3×3＝81。'),
+  mc('2×2×2×2×2×2×2 用指數記法寫成？',['2⁷','7²','2×7','2⁶'],0,['','底數和指數放反了。連乘的是 2，所以 2 是底數；有 7 個 2，所以指數是 7。','2×7＝14，是「7 個 2 相加」，不是連乘。','再數一次，共有 7 個 2，不是 6 個。'],'連乘的是 2 → 底數是 2；共 7 個 2 → 指數是 7。所以是 2⁷。'),
+  mc('7¹ 等於多少？',['1','8','7'],2,['1 是指數，不是被連乘的數。7¹ 的意思是「只有 1 個 7」，就是 7。','指數不是拿來加的。7¹＝7。',''],'指數是 1，就是只有 1 個 7，所以 7¹＝7。')
+ ]});
+
+A({t:'把連乘寫成指數：先全部拆成同一個底數',tag:'練習',src:'課本 p.50 講解題①、演練題①（本頁是換數字的類題）',
+ text:RE+'題型：<b>2×4×8＝2<sup>□</sup></b>，□＝？<br>做法：把 4 和 8 都拆成 2 的連乘，再數有幾個 2：<br>4＝2×2（2 個 2）、8＝2×2×2（3 個 2）<br>2×4×8＝2 × (2×2) × (2×2×2) → 共 1＋2＋3＝<b>6</b> 個 2 → 2⁶。',
+ qs:[['(−5)×(−5)×(−5)×(−5)×(−5)＝(−5)<sup>□</sup>，□＝？','連乘的是 −5，共 5 個，所以 □＝5。'],['3×9×27＝3<sup>□</sup>，□＝？','9＝3×3（2 個）、27＝3×3×3（3 個），加上原本的 1 個：1＋2＋3＝6。□＝6。（檢查：3×9×27＝729＝3⁶ ✔）'],['2×8×16＝2<sup>□</sup>，□＝？','2＝2¹（1 個）、8＝2³（3 個）、16＝2⁴（4 個）：1＋3＋4＝8。□＝8。（檢查：2×8×16＝256＝2⁸ ✔）'],
+  mc('2×4＝2<sup>□</sup>，□ 是多少？',['2＋4＝6','3','8','4'],1,['不是把 2 和 4 加起來。4＝2×2，所以 2×4＝2×2×2＝2³。','','8 是 2×4 的「值」，不是指數。指數是「有幾個 2」。','4＝2×2 只有 2 個 2，再加上原本的 1 個，共 3 個。'],'2×4＝2×(2×2)＝2×2×2，共 3 個 2，所以是 2³。')]});
+
+A({t:'括號是關鍵：−3⁴ 和 (−3)⁴ 不一樣',tag:'重點',src:'課本 p.50 重點1 ③、p.51 講解題②(3)、p.52 講解題④',
+ text:'指數只管「緊貼在它左邊的那個東西」。<ul><li><b>有括號</b> (−3)⁴：括號裡整個（含負號）都是底數 → 連乘 4 個 (−3)</li><li><b>沒括號</b> −3⁴：底數只有 3，負號在最外面 → 先算 3⁴，再加負號</li></ul>'+tbl(['寫法','底數是誰','展開','值'],[['(−3)⁴','−3','(−3)×(−3)×(−3)×(−3)','81'],['−3⁴','3','−(3×3×3×3)','−81'],['(−3)³','−3','(−3)×(−3)×(−3)','−27'],['−3³','3','−(3×3×3)','−27']])+'<br>'+AI+'看到 −3⁴，把它想成「3⁴ 的相反數」就不會錯。',
+ qs:[['(−2)⁴ 和 −2⁴ 一樣嗎？各是多少？','不一樣。(−2)⁴＝(−2)×(−2)×(−2)×(−2)＝16；−2⁴＝−(2×2×2×2)＝−16。'],['(−2)³ 和 −2³ 呢？','一樣，都是 −8。但那是奇數次方碰巧得到相同的值，兩個的「底數」其實還是不同（−2 和 2）。']]});
+
+A({t:'🎯 觀念釐清②：有沒有括號',tag:'觀念釐清',src:'課本 p.50～52',
+ qs:[
+  mc('−5² 等於多少？',['25','−25','−10','10'],1,['25 是 (−5)² 的值。−5² 沒有括號，底數只有 5，負號在外面：−(5×5)＝−25。','','−5² 不是 −5×2。指數是「連乘」，不是乘以 2。','指數不是乘 2，而且負號也不能消失。'],'−5²＝−(5×5)＝−25。'),
+  mc('(−5)² 等於多少？',['−25','−10','25','10'],2,['有括號，−5 整個是底數：(−5)×(−5)＝25（負負得正）。','指數 2 是連乘 2 個 (−5)，不是 −5×2。','','指數不是乘 2。(−5)²＝(−5)×(−5)＝25。'],'(−5)²＝(−5)×(−5)＝25。'),
+  mc('(−4)³ 和 −4³ 的關係是？',['一個正一個負','一樣，都是 64','一樣，都是 −64'],2,['兩個都是負的：(−4)³＝(−4)(−4)(−4)＝−64；−4³＝−(4×4×4)＝−64。','奇數個負數相乘，結果是負的，不會是 64。',''],'(−4)³＝(−4)×(−4)×(−4)＝−64；−4³＝−(4×4×4)＝−64。都是 −64。'),
+  mc('下面哪一個和 −3⁴ 的值相同？',['(−3)⁴','−(3⁴)','(−3)×4','3⁴'],1,['(−3)⁴＝81，有括號，底數變成 −3。','','(−3)×4＝−12，指數不是乘法。','3⁴＝81 是正的，−3⁴ 是負的。'],'−3⁴＝−(3⁴)＝−81，選 −(3⁴)。'),
+  mc('−(−2)² 等於多少？',['4','−2','2','−4'],3,['先算 (−2)²＝4，最外面還有一個負號，所以是 −4。','指數不是乘 2。(−2)²＝4，再加外面的負號 → −4。','負號不會消掉。(−2)²＝4，外面的負號讓它變 −4。',''],'先算 (−2)²＝(−2)×(−2)＝4，再加最外面的負號：−4。')
+ ]});
+
+A({t:'負數的次方：正負號怎麼判斷',tag:'重點',src:'課本 p.50 重點1 ③、p.51 講解題②',
+ text:'(−2)ⁿ 就是 n 個 (−2) 連乘。看<b>負號的個數</b>：<ul><li>偶數個負號相乘 → 結果是<b>正</b></li><li>奇數個負號相乘 → 結果是<b>負</b></li></ul>'+tbl(['(−2)¹','(−2)²','(−2)³','(−2)⁴','(−2)⁵','(−2)⁶'],[['−2','4','−8','16','−32','64'],['奇數次 → 負','偶數次 → 正','奇數次 → 負','偶數次 → 正','奇數次 → 負','偶數次 → 正']])+'<b>規則</b>：底數是負數時，<b>指數是偶數</b>，結果是正數；<b>指數是奇數</b>，結果是負數。<br>特別的：(−1) 的奇數次方是 −1，偶數次方是 1。',
+ qs:[['(−1)⁹⁹ 是多少？','指數 99 是奇數，結果是負的；1 連乘還是 1。所以是 −1。'],['不用算出來，(−7)¹⁰ 是正還是負？','指數 10 是偶數 → 正數。'],['(−10)³ 等於多少？','(−10)×(−10)×(−10)＝−1000。']]});
+
+A({t:'算指數的值：先判斷底數，再展開',tag:'練習',src:'課本 p.51 講解題②、演練題②（本頁是換數字的類題）',
+ text:RE+'三步驟：<ol><li>看清楚<b>底數</b>是誰（有沒有括號？）</li><li>判斷結果<b>正或負</b>（負數的偶數次方為正、奇數次方為負）</li><li>把數字連乘算出來</li></ol>'+AI+'數字大時分段算：3⁸＝(3⁴)×(3⁴)＝81×81＝6561。',
+ qs:[['6³＝？','6×6×6＝36×6＝216。'],['(−3)⁸＝？','底數 −3，指數 8 是偶數，結果為正。3⁸＝81×81＝6561，所以 (−3)⁸＝6561。'],['−4³＝？','沒有括號，底數是 4：−(4×4×4)＝−64。'],['(−5)⁴＝？','指數 4 是偶數，結果為正。5⁴＝25×25＝625，所以 (−5)⁴＝625。']]});
+
+A({t:'含指數的四則運算：先算指數',tag:'重點',src:'課本 p.51 講解題③',
+ text:'計算順序：<ol><li><b>括號</b>裡面先算</li><li>接著算<b>指數</b>（次方）</li><li>再算<b>乘、除</b>（由左到右）</li><li>最後算<b>加、減</b></li></ol>'+AI+'例：5＋2×(−3)²<br>＝5＋2×9　← 先算指數 (−3)²＝9<br>＝5＋18　← 再算乘法<br>＝23　← 最後算加法<br>例：−6²÷4＝−36÷4＝−9（−6² 沒有括號，先算 6²＝36，再加負號）',
+ qs:[['−4²÷(−2)³＝？','−4²＝−16，(−2)³＝−8。−16÷(−8)＝2。'],['10−(−2)³×3＝？','(−2)³＝−8。−8×3＝−24。10−(−24)＝10＋24＝34。'],['(−3)²×2−5²＝？','(−3)²＝9，5²＝25。9×2＝18。18−25＝−7。']]});
+
+A({t:'🎯 觀念釐清③：運算順序',tag:'觀念釐清',src:'課本 p.51 講解題③',
+ qs:[
+  mc('3＋2×3² 等於多少？',['45','15','21','81'],2,['你先算了 3＋2＝5。乘法要比加法先算：2×3²＝2×9＝18，再加 3＝21。','指數 3² 要先算成 9，不是 3。','','指數只管它左邊緊貼的 3，不是整個 (3＋2×3)。'],'先算指數 3²＝9，再算 2×9＝18，最後 3＋18＝21。'),
+  mc('−2²＋(−2)² 等於多少？',['8','0','−8','4'],1,['你把 −2² 當成 (−2)² 了。−2²＝−4，不是 +4。','','(−2)² 是 +4，不是 −4。','−2²＝−4，(−2)²＝4，相加是 0，不是 4。'],'−2²＝−4，(−2)²＝4，−4＋4＝0。'),
+  mc('2×3² 等於多少？',['36','18','12'],1,['指數 ² 只作用在 3，不是 (2×3)²。2×3²＝2×9＝18。','','你把指數 2 當成「乘 2」了。3²＝9，不是 6。'],'先算 3²＝9，再算 2×9＝18。'),
+  mc('(−1)²⁰²⁶＋(−1)²⁰²⁷ 等於多少？',['−2','2','0','2026'],2,['(−1)²⁰²⁶ 是正的（偶數次方）＝1，不是 −1。','(−1)²⁰²⁷ 是負的（奇數次方）＝−1，不是 +1。','','指數不用拿來加；兩個都是 ±1。'],'(−1)²⁰²⁶＝1（偶數次），(−1)²⁰²⁷＝−1（奇數次）。1＋(−1)＝0。')
+ ]});
+
+A({t:'比大小①：底數比 1 大，還是比 1 小',tag:'重點',src:'課本 p.50 重點1 ②、p.52 講解題④(1)',
+ text:'<b>連乘一個比 1 大的數</b>，每乘一次就變大；<b>連乘一個比 1 小的數</b>，每乘一次就變小。'+tbl(['','1 次方','2 次方','3 次方','4 次方'],[['底數 2（比 1 大）','2','4','8','16'],['底數 0.5（比 1 小）','0.5','0.25','0.125','0.0625']])+'<ul><li>底數 <b>大於 1</b>：指數愈大，值愈<b>大</b>。例：2⁵&gt;2³</li><li>底數在 <b>0 和 1 之間</b>：指數愈大，值愈<b>小</b>。例：(0.2)⁵&lt;(0.2)³</li></ul>',
+ qs:[['7⁸ 和 7⁵ 哪個大？','底數 7 大於 1，指數愈大值愈大，所以 7⁸ 比較大。'],['(0.2)⁵ 和 (0.2)³ 哪個大？','底數 0.2 在 0 和 1 之間，指數愈大值愈小，所以 (0.2)³ 比較大。（(0.2)³＝0.008，(0.2)⁵＝0.00032）']]});
+
+A({t:'比大小②：底數是負數時，先判斷正負',tag:'重點',src:'課本 p.52 講解題④(2)(3)(4)、演練題④',
+ text:'做法：<ol><li>先判斷兩個數各是<b>正還是負</b>（<b>正數 &gt; 0 &gt; 負數</b>）</li><li>一正一負：正的大，不用算</li><li>兩個都是負：<b>看起來數字大的反而小</b>（−6561 比 −729 小）</li></ol>例：(−6)³ 是負的、(−6)⁴ 是正的 → (−6)³ &lt; (−6)⁴。',
+ qs:[['(−7)⁵ □ (−7)⁶，填 &gt;、&lt; 或 ＝','(−7)⁵ 是負的，(−7)⁶ 是正的。負數比正數小：(−7)⁵ &lt; (−7)⁶。'],['(−8)² □ −8²','(−8)²＝64，−8²＝−64。64 &gt; −64，所以 (−8)² &gt; −8²。'],['(−3)³ □ −3³','(−3)³＝−27，−3³＝−27。所以 ＝。'],['−2⁶ □ (−2)³','−2⁶＝−64，(−2)³＝−8。兩個都是負的，−64 比 −8 小，所以 −2⁶ &lt; (−2)³。']]});
+
+A({t:'🎯 觀念釐清④：比大小',tag:'觀念釐清',src:'課本 p.50、p.52',
+ qs:[
+  mc('5⁹ 和 5⁸ 哪個大？',['5⁸','5⁹','一樣大'],1,['底數 5 比 1 大，指數愈大值愈大。5⁹ 才是比較大的。','','5⁹＝5⁸×5，多乘了一個 5，所以更大。'],'底數 5 &gt; 1，指數愈大值愈大：5⁹ &gt; 5⁸。'),
+  mc('(0.3)⁴ 和 (0.3)² 哪個大？',['(0.3)⁴','(0.3)²','一樣大'],1,['底數 0.3 比 1 小，連乘愈多次愈小。(0.3)⁴＝0.0081 比較小。','','(0.3)²＝0.09，(0.3)⁴＝0.0081，不一樣。'],'底數在 0 和 1 之間，指數愈大值愈小：(0.3)² &gt; (0.3)⁴。（0.09 &gt; 0.0081）'),
+  mc('(−2)⁵ 和 (−2)⁴ 哪個大？',['(−2)⁵','(−2)⁴','一樣大'],1,['(−2)⁵＝−32 是負的，(−2)⁴＝16 是正的。負數一定比正數小。','','一個是 −32，一個是 16，不一樣。'],'(−2)⁵＝−32，(−2)⁴＝16。16 &gt; −32，所以 (−2)⁴ 比較大。'),
+  mc('−2⁴ 和 (−2)⁴ 哪個大？',['−2⁴ 比較大','一樣大','(−2)⁴ 比較大'],2,['−2⁴＝−16，(−2)⁴＝16，−16 比 16 小。','沒有括號時，負號在外面：−2⁴＝−16；有括號是 +16，不一樣。',''],'−2⁴＝−16，(−2)⁴＝16。16 &gt; −16，所以 (−2)⁴ 比較大。'),
+  mc('1⁵⁰ 和 1⁵ 哪個大？',['1⁵⁰ 比較大','1⁵ 比較大','一樣大'],2,['底數是 1 的時候，不管連乘幾次，結果都是 1。「指數愈大值愈大」只適用於底數比 1 大。','同上：1 連乘幾次都是 1。',''],'1 連乘幾次都是 1，所以 1⁵⁰＝1⁵＝1，一樣大。')
+ ]});
+
+/* ---- 10 的次方與科學記號 ---- */
+A({t:'位值表：10 的次方怎麼來',tag:'重點',src:'課本 p.53 重點2 ①',
+ text:'把每個位置的「位值」寫成 10 的次方：'+tbl(['位名','千位','百位','十位','個位','十分位','百分位','千分位'],[['位值','1000','100','10','1','0.1','0.01','0.001'],['10 的次方','10³','10²','10¹','<b>10⁰</b>','<b>10⁻¹</b>','<b>10⁻²</b>','<b>10⁻³</b>']])+'<ul><li>往<b>左</b>一格，位值變 <b>10 倍</b>，次方<b>加 1</b></li><li>往<b>右</b>一格，位值變 <b>0.1 倍</b>（十分之一），次方<b>減 1</b></li></ul>因為 1 是 10 的 0.1 倍（10×0.1＝1），次方比 10¹ 少 1，所以<b>規定 1＝10⁰</b>。同樣地 0.1＝10⁻¹、0.01＝10⁻²、0.001＝10⁻³。<br>'+AI+'「負的次方」不是負數，而是「比 1 小的小數」。',
+ qs:[['10⁰ 等於多少？','等於 1（個位的位值）。不是 0。'],['10⁻² 是負數嗎？','不是。10⁻²＝0.01，是一個很小的正數。']]});
+
+A({t:'10 的負次方：1 在小數點後第幾位',tag:'重點',src:'課本 p.53 重點2 ①(2)、p.54 講解題⑤',
+ text:'(0.1)ᵐ＝('+fr('1','10')+')ᵐ＝10⁻ᵐ。例：10⁻³＝('+fr('1','10')+')³＝0.001。<br>兩招，一看就知道怎麼寫：<ul><li><b>10ⁿ</b>（n 是正整數）：1 的後面接 <b>n 個 0</b>。例：10⁶＝1000000</li><li><b>10⁻ⁿ</b>：<b>1 在小數點後第 n 位</b>（小數點和 1 之間有 n−1 個 0）。例：10⁻⁴＝0.0001</li></ul>'+tbl(['10⁵','10²','10⁰','10⁻¹','10⁻⁴'],[['100000','100','1','0.1','0.0001'],['5 個 0','2 個 0','','第 1 位','第 4 位']]),
+ qs:[['10⁻⁵ 寫成小數，1 前面有幾個 0？','1 在小數點後第 5 位：0.00001。小數點和 1 之間有 4 個 0（不是 5 個）。'],['10⁸ 後面有幾個 0？','有 8 個 0：100000000。']]});
+
+A({t:'🎯 觀念釐清⑤：10 的次方',tag:'觀念釐清',src:'課本 p.53～54',
+ qs:[
+  mc('10⁻³ 等於多少？',['−1000','−30','0.001','0.03'],2,['負的次方不是負數。10⁻³＝1/10³＝0.001。','10⁻³ 不是 10×(−3)。次方是「連乘」或「連除」的簡寫。','','0.03 是 3×10⁻²。10⁻³ 的 1 在小數點後第 3 位：0.001。'],'10⁻³＝1/10³＝1/1000＝0.001。'),
+  mc('10⁰ 等於多少？',['0','1','10'],1,['0 次方不是 0。從位值表看：個位的位值是 1，所以 10⁰＝1。','','10¹ 才是 10。10⁰＝1。'],'個位的位值是 1，所以 10⁰＝1。'),
+  mc('0.0001 用 10 的次方表示是？',['10⁴','10⁻³','10⁻⁴','−10⁴'],2,['10⁴＝10000，是大數；0.0001 是小數，次方要是負的。','1 在小數點後第 4 位（0.0001 有 4 位小數），次方要 −4，不是 −3。','','−10⁴＝−10000。10⁻⁴ 的負號在指數上，意思完全不同。'],'1 在小數點後第 4 位，所以 0.0001＝10⁻⁴。'),
+  mc('1000000 用 10 的次方表示是？',['10⁵','10⁶','10⁷'],1,['1 後面有 6 個 0，次方是 6，不是 5。','','多數了一個 0。1000000 後面只有 6 個 0。'],'1000000 是 1 後面接 6 個 0，所以是 10⁶。'),
+  mc('−10⁴ 和 10⁻⁴ 一樣嗎？',['一樣','不一樣：−10⁴＝−10000，10⁻⁴＝0.0001'],1,['負號放在 10 前面和放在指數上，意思完全不同。−10⁴ 是 10⁴ 的相反數；10⁻⁴ 是 1/10⁴。',''],'−10⁴＝−10000（負的大數）；10⁻⁴＝0.0001（正的小數）。')
+ ]});
+
+A({t:'用 10 的次方表示一個數',tag:'練習',src:'課本 p.54 講解題⑤、演練題⑤（本頁是換數字的類題）',
+ text:RE+'兩招：<ul><li>大數 1000…0：<b>數 0 的個數</b>，就是指數</li><li>小數 0.00…1：<b>數 1 在小數點後第幾位</b>，指數就是負的那個數字</li></ul>分數 '+fr('1','100000')+' 先改成小數 0.00001，再看 1 在第幾位。',
+ qs:[['100000000 ＝ 10<sup>□</sup>','1 後面有 8 個 0，所以是 10⁸。'],['0.00000001 ＝ 10<sup>□</sup>','1 在小數點後第 8 位，所以是 10⁻⁸。'],['1/1000000000 ＝ 10<sup>□</sup>','分母 1 後面有 9 個 0，1/10⁹＝0.000000001，1 在第 9 位，所以是 10⁻⁹。'],['(0.1)⁷ ＝ 10<sup>□</sup>','(0.1)⁷＝(1/10)⁷＝1/10⁷＝10⁻⁷。']]});
+
+A({t:'位值展開式：把數字拆成 10 的次方',tag:'練習',src:'課本 p.54 講解題⑥、演練題⑥（本頁是換數字的類題）',
+ text:RE+'每一個數字，乘上它所在位置的位值：<br>4075＝4×10³＋0×10²＋7×10¹＋5×10⁰<br>6.28＝6×10⁰＋2×10⁻¹＋8×10⁻²<br>對照位值表：千位 10³、百位 10²、十位 10¹、個位 10⁰、十分位 10⁻¹、百分位 10⁻²…',
+ qs:[['5284＝5×10<sup>a</sup>＋2×10<sup>b</sup>＋8×10<sup>c</sup>＋4×10<sup>d</sup>，求 a、b、c、d','5 在千位 → a＝3；2 在百位 → b＝2；8 在十位 → c＝1；4 在個位 → d＝0。'],['7.03＝7×10<sup>a</sup>＋0×10<sup>b</sup>＋3×10<sup>c</sup>，求 a、b、c','7 在個位 → a＝0；0 在十分位 → b＝−1；3 在百分位 → c＝−2。'],['60.15＝6×10<sup>a</sup>＋0×10<sup>b</sup>＋1×10<sup>c</sup>＋5×10<sup>d</sup>，求 a、b、c、d','6 在十位 → a＝1；0 在個位 → b＝0；1 在十分位 → c＝−1；5 在百分位 → d＝−2。']]});
+
+A({t:'科學記號：把數字寫成 a×10ᵐ',tag:'重點',src:'課本 p.53 重點2 ②',
+ text:'<b>科學記號</b>：把一個數寫成 <b>a×10<sup>m</sup></b> 的樣子，其中 <b>1 ≤ a &lt; 10</b>，m 是整數。<br>符號 ≤ 讀作「小於或等於」。<br>例：35000＝<b>3.5</b>×10⁴；0.0062＝<b>6.2</b>×10⁻³。<br>'+AI+'為什麼要規定 a 在 1 和 10 之間？因為大家用同一種寫法，數字一看就知道有多大（看 10 的次方），也方便比大小。<br>記憶：<b>a 的整數部分只能有一位數字，而且不能是 0</b>。',
+ qs:[['a 一定要在哪個範圍？','1 ≤ a &lt; 10：大於或等於 1，而且小於 10。所以 a 可以是 1，不可以是 10。']]});
+
+A({t:'🎯 觀念釐清⑥：什麼是科學記號',tag:'觀念釐清',src:'課本 p.53 重點2 ②',
+ qs:[
+  mc('下面哪一個是科學記號？',['12×10³','0.5×10⁴','3.2×10⁻²','32×10⁻³'],2,['a＝12 太大了（要小於 10）。12×10³＝1.2×10⁴ 才是科學記號。','a＝0.5 太小了（要大於或等於 1）。0.5×10⁴＝5×10³ 才是科學記號。','','a＝32 太大了。32×10⁻³＝3.2×10⁻² 才是科學記號。'],'3.2×10⁻² 的 a＝3.2，符合 1 ≤ a &lt; 10。'),
+  mc('1×10⁵ 是科學記號嗎？',['是，因為 a＝1 符合 1 ≤ a &lt; 10','不是，a 一定要大於 1','不是，a 一定要有小數'],0,['','範圍是「大於或等於 1」，所以 a＝1 可以。','a 不一定要有小數，整數也可以（例如 9×10⁵）。'],'1×10⁵ 的 a＝1，符合 1 ≤ a &lt; 10，是科學記號。'),
+  mc('10×10⁴ 改成科學記號是？',['1×10⁴','1×10⁵','10×10⁴ 已經是了'],1,['10×10⁴＝10¹×10⁴＝10⁵＝1×10⁵，不是 1×10⁴。','','a 不能是 10。要把 10 變成 1，次方要加 1。'],'10×10⁴＝10⁵＝1×10⁵。'),
+  mc('科學記號裡的 10 的指數，可以是負數嗎？',['可以，用來表示很小的數','不行，一定要是正整數'],0,['','可以。例如 0.00045＝4.5×10⁻⁴。很小的數就用負的指數。'],'可以。大數用正的指數（3.5×10⁸），小數用負的指數（4.5×10⁻⁴）。')
+ ]});
+
+A({t:'大數 → 科學記號：小數點往左跳',tag:'重點',src:'課本 p.55 講解題⑦(1)(2)',
+ fig:jumpFig(['9','0','0','0','0','0'],6,1,'往左跳 5 格','900000＝9×10⁵（跳了 5 格，指數就是 5）',0),
+ text:'三步驟：<ol><li>在<b>第一個不是 0 的數字後面</b>放小數點（這樣 a 就在 1 和 10 之間）</li><li>數小數點<b>從原來的位置跳了幾格</b> → 這個數字就是 10 的指數</li><li>寫成 <b>a×10ⁿ</b></li></ol>例：1300000＝1.3×10⁶（7 位數，小數點往左跳 6 格）。<br>'+AI+'整數的科學記號，指數＝<b>位數 − 1</b>。',
+ qs:[['4500000 ＝ ？×10<sup>？</sup>','7 位數，小數點往左跳 6 格：4.5×10⁶。'],['72000000000 ＝ ？×10<sup>？</sup>','72000000000 有 11 位數，指數＝11−1＝10：7.2×10¹⁰。']]});
+
+A({t:'小數 → 科學記號：小數點往右跳，指數變負',tag:'重點',src:'課本 p.55 講解題⑦(3)(4)',
+ fig:jumpFig(['0','0','0','3','0','8'],1,4,'往右跳 3 格','0.00308＝3.08×10⁻³（往右跳 3 格，指數是 −3）',3),
+ text:'小數點要<b>往右跳</b>，才能讓第一個不是 0 的數字變成個位 → 指數是<b>負的</b>。<br>規則：第一個不是 0 的數字在<b>小數點後第 n 位</b>，指數就是 <b>−n</b>。<br>例：0.00308 的 3 在小數點後第 3 位 → 3.08×10⁻³。',
+ qs:[['0.0000052 ＝ ？×10<sup>？</sup>','5 在小數點後第 6 位：5.2×10⁻⁶。'],['0.0407 ＝ ？×10<sup>？</sup>','4 在小數點後第 2 位：4.07×10⁻²。'],['25/1000000 ＝ ？×10<sup>？</sup>','25/1000000＝0.000025，2 在小數點後第 5 位：2.5×10⁻⁵。']]});
+
+A({t:'🎯 觀念釐清⑦：換成科學記號',tag:'觀念釐清',src:'課本 p.55 講解題⑦',
+ qs:[
+  mc('3200 的科學記號是？',['3.2×10²','3.2×10³','32×10²','0.32×10⁴'],1,['3200 是 4 位數，指數＝位數−1＝3，不是 2。','','a＝32 太大，不符合 1 ≤ a &lt; 10。','a＝0.32 太小，不符合 1 ≤ a &lt; 10。'],'3200 是 4 位數，小數點往左跳 3 格：3.2×10³。'),
+  mc('0.0045 的科學記號是？',['4.5×10⁻³','4.5×10⁻⁴','45×10⁻⁴','4.5×10³'],0,['','4 在小數點後第 3 位（0.0045：0、0、4），指數是 −3，不是 −4。','a＝45 太大，不符合 1 ≤ a &lt; 10。','很小的數，指數要是負的。'],'4 在小數點後第 3 位 → 4.5×10⁻³。'),
+  mc('6×10⁻³ 化成小數是？',['0.0006','0.006','6000'],1,['6 要在小數點後第 3 位：0.006（有兩個 0），不是 0.0006。','','指數是負的，是很小的數，不是 6000。'],'6×10⁻³ 的 6 在小數點後第 3 位：0.006。'),
+  mc('5.07×10⁴ 化成整數是？',['507000','50700','5070'],1,['小數點只往右跳 4 格：5.07 → 50700。','','只跳了 3 格。要跳 4 格：5.07 → 50700。'],'小數點往右跳 4 格（不夠的補 0）：50700。')
+ ]});
+
+A({t:'反過來：科學記號 → 一般數，順便判斷位數',tag:'重點',src:'課本 p.53 重點2 ③、p.55 講解題⑧、p.56 講解題⑨',
+ text:'<ul><li><b>a×10ⁿ</b>（n 是正整數）：小數點往<b>右</b>跳 n 格（不夠補 0）。整數部分是 <b>(n＋1) 位數</b>。例：1.13×10⁵＝113000，是 6 位數。</li><li><b>a×10⁻ⁿ</b>：小數點往<b>左</b>跳 n 格（前面補 0）。從小數點後<b>第 n 位</b>開始出現不是 0 的數字。例：7.38×10⁻⁵＝0.0000738，從第 5 位開始。</li></ul>',
+ qs:[['2.6×10⁷ 化成整數，是幾位數？','2.6×10⁷＝26000000，是 8 位數（指數 7＋1）。'],['9.1×10⁻⁴ 化成小數，從小數點後第幾位開始不是 0？','9.1×10⁻⁴＝0.00091，從第 4 位開始（指數的 4）。'],['3.14×10⁶ 化成整數是多少？是幾位數？','小數點往右跳 6 格：3140000，是 7 位數。']]});
+
+A({t:'🎯 觀念釐清⑧：位數與第幾位',tag:'觀念釐清',src:'課本 p.53 重點2 ③、p.56 講解題⑨',
+ qs:[
+  mc('5.1×10⁴ 是幾位數？',['4 位數','5 位數','6 位數'],1,['指數是 4，位數是「指數＋1」＝5。5.1×10⁴＝51000。','','多算了一位。5.1×10⁴＝51000，是 5 位數。'],'5.1×10⁴＝51000，是 5 位數（指數 4＋1）。'),
+  mc('8×10⁰ 是幾位數？',['0 位數','1 位數','8 位數'],1,['8×10⁰＝8，是 1 位數（指數 0＋1）。','','位數不是 a。指數是 0，位數＝0＋1＝1。'],'8×10⁰＝8，是 1 位數。'),
+  mc('3.2×10⁻⁵ 從小數點後第幾位開始不是 0？',['第 4 位','第 5 位','第 6 位'],1,['3.2×10⁻⁵＝0.000032，前面有 4 個 0，但 3 是在第 5 位。「第幾位」＝指數的數字 5。','','指數是 −5，所以是第 5 位，不是第 6 位。'],'3.2×10⁻⁵＝0.000032，3 在第 5 位。'),
+  mc('6.02×10²³ 是幾位數？',['23 位數','24 位數','25 位數'],1,['位數＝指數＋1，不是指數本身。','','多算了一位。位數＝23＋1＝24。'],'位數＝指數＋1＝23＋1＝24。'),
+  mc('0.0000072 的科學記號是 7.2×10⁻ⁿ，n＝？',['5','6','7'],1,['0.0000072：0、0、0、0、0、7 → 7 在第 6 位，不是第 5 位。','','7 在小數點後第 6 位（不是第 7 位）。'],'0.0000072，7 在小數點後第 6 位，所以是 7.2×10⁻⁶。')
+ ]});
+
+A({t:'比較科學記號：先比指數，再比 a',tag:'重點',src:'課本 p.57 重點3 ①、p.58 講解題⑩',
+ text:'比較 a×10ᵐ 和 b×10ⁿ：<ol><li><b>先比指數</b>：指數大的比較大（10 的次方愈大，值愈大）</li><li><b>指數一樣</b>，再比 a 和 b</li></ol>例：9.5×10⁶ 和 3.7×10⁷<br>指數 6 &lt; 7 → 3.7×10⁷ 比較大。<b>不能因為 9.5 &gt; 3.7 就選前者！</b><br>負指數：指數 −3 比 −4 大。3.1×10⁻⁴ &lt; 6.2×10⁻³（−4 &lt; −3）。<br>'+AI+'指數是 −4 代表「很小」，−3 是「沒那麼小」。',
+ qs:[['6.2×10⁸ □ 5.9×10⁸','指數相同，比 a：6.2 &gt; 5.9，所以 &gt;。'],['9.9×10⁻² □ 1.1×10⁻¹','指數 −2 &lt; −1，所以 9.9×10⁻² &lt; 1.1×10⁻¹。（0.099 &lt; 0.11）'],['2×10⁵ □ 9×10⁴','指數 5 &gt; 4，所以 2×10⁵ &gt; 9×10⁴。（200000 &gt; 90000）'],['4.8×10⁻⁷ □ 4.8×10⁻⁹','a 相同，指數 −7 &gt; −9，所以 &gt;。']]});
+
+A({t:'🎯 觀念釐清⑨：比較科學記號',tag:'觀念釐清',src:'課本 p.57 重點3 ①、p.58',
+ qs:[
+  mc('7.5×10³ 和 2.1×10⁴ 哪個大？',['7.5×10³','2.1×10⁴','一樣大'],1,['你只比了 a（7.5 &gt; 2.1）。要先比指數：4 &gt; 3，所以 2.1×10⁴ 比較大。（7500 &lt; 21000）','','7500 和 21000 不一樣大。'],'先比指數：4 &gt; 3，所以 2.1×10⁴ 比較大。'),
+  mc('3×10⁻² 和 8×10⁻³ 哪個大？',['3×10⁻²','8×10⁻³'],0,['','8 &gt; 3，但要先比指數：−2 &gt; −3，所以 3×10⁻² 比較大。（0.03 &gt; 0.008）'],'先比指數：−2 &gt; −3，所以 3×10⁻² 比較大。'),
+  mc('1×10⁻⁵ 和 9×10⁻⁶ 哪個大？',['9×10⁻⁶','1×10⁻⁵'],1,['a 的 9 比較大，但指數 −6 比 −5 小，要先比指數。9×10⁻⁶＝0.000009，比 0.00001 小。',''],'先比指數：−5 &gt; −6，所以 1×10⁻⁵ 比較大。'),
+  mc('把 5.5×10⁴、2×10⁶、9.9×10⁵ 由大到小排列：',['9.9×10⁵、5.5×10⁴、2×10⁶','5.5×10⁴、9.9×10⁵、2×10⁶','2×10⁶、9.9×10⁵、5.5×10⁴'],2,['你只比了 a。要先比指數：6 &gt; 5 &gt; 4。','順序完全反了，這是由小到大。',''],'指數 6 &gt; 5 &gt; 4，所以由大到小是 2×10⁶、9.9×10⁵、5.5×10⁴。')
+ ]});
+
+A({t:'常見的單位：全部都是 10 的次方',tag:'重點',src:'課本 p.57 重點3 ②',
+ text:tbl(['記數單位','長度單位','重量單位'],[['1 千＝10³','1 公里＝10³ 公尺','1 公噸＝10⁶ 公克'],['1 萬＝10⁴','1 公分＝10⁻² 公尺','1 公斤＝10³ 公克'],['1 億＝10⁸','1 毫米＝10⁻³ 公尺','1 毫克＝10⁻³ 公克'],['1 兆＝10¹²','1 微米＝10⁻⁶ 公尺',''],['','1 奈米＝10⁻⁹ 公尺','']])+'比公尺大的單位，指數是<b>正的</b>；比公尺小的單位，指數是<b>負的</b>。',
+ qs:[['3 公里是多少公尺？用科學記號寫。','1 公里＝10³ 公尺，所以 3 公里＝3×10³ 公尺。'],['5 毫米是多少公尺？','1 毫米＝10⁻³ 公尺，所以 5 毫米＝5×10⁻³ 公尺。'],['4 億用科學記號怎麼寫？','1 億＝10⁸，所以 4 億＝4×10⁸。']]});
+
+A({t:'🎯 觀念釐清⑩：單位',tag:'觀念釐清',src:'課本 p.57 重點3 ②',
+ qs:[
+  mc('1 微米是多少公尺？',['10⁶ 公尺','10⁻³ 公尺','10⁻⁹ 公尺','10⁻⁶ 公尺'],3,['微米比公尺小很多，指數要是負的。10⁶ 是 1 公噸＝10⁶ 公克的那個 10⁶。','10⁻³ 公尺是 1 毫米。','10⁻⁹ 公尺是 1 奈米。',''],'1 微米＝10⁻⁶ 公尺。'),
+  mc('1 公噸是多少公克？',['10³ 公克','10⁶ 公克','10⁻³ 公克'],1,['10³ 公克是 1 公斤。1 公噸＝1000 公斤＝1000×1000＝10⁶ 公克。','','10⁻³ 公克是 1 毫克，是很小的單位。'],'1 公噸＝1000 公斤＝10³×10³＝10⁶ 公克。'),
+  mc('2.5 公斤用「公克」寫成科學記號是？',['2.5×10³ 公克','2.5×10⁻³ 公克','2.5×10⁶ 公克'],0,['','公斤比公克大，所以換成公克數字會變大（指數是正的）。','10⁶ 是公噸換公克。公斤換公克是 10³。'],'1 公斤＝10³ 公克，所以 2.5 公斤＝2.5×10³ 公克。'),
+  mc('7×10⁻³ 公尺是多少？',['7 公里','7 公分','7 毫米','7 微米'],2,['公里是 10³ 公尺。','公分是 10⁻² 公尺，不是 10⁻³。','','微米是 10⁻⁶ 公尺。'],'10⁻³ 公尺＝1 毫米，所以 7×10⁻³ 公尺＝7 毫米。')
+ ]});
+
+A({t:'先算出來，再改成科學記號',tag:'練習',src:'課本 p.58 講解題⑪、演練題⑪（本頁是換數字的類題）',
+ text:RE+'兩步驟：<ol><li>先把乘法<b>算出來</b>（有小數就先數好小數位數）</li><li>再用小數點跳格，寫成 <b>a×10ⁿ</b></li></ol>例：230×70＝16100＝1.61×10⁴（5 位數，指數＝4）。<br>注意：算出來是 14 這種兩位數，也要改成 1.4×10¹，不能留 14×10⁰。',
+ qs:[['450×20＝？，用科學記號表示','450×20＝9000＝9×10³。'],['0.012×0.5＝？，用科學記號表示','0.012×0.5＝0.006＝6×10⁻³。'],['0.0035×4000＝？，用科學記號表示','0.0035×4000＝14＝1.4×10¹。'],['1500×3000＝？，用科學記號表示','1500×3000＝4500000＝4.5×10⁶。']]});
+
+A({t:'計算機螢幕上的科學記號',tag:'重點',src:'課本 p.57 重點3 ③',
+ text:'計算機的螢幕最多只能顯示 <b>10 個數字</b>：<ul><li>結果的絕對值<b>大於 9999999999</b>（比 10 位數還大）→ 用科學記號顯示。例：200000×600000，螢幕顯示「1.2　11」（右上角的小數字 11 是指數）＝ 1.2×10¹¹</li><li>結果的絕對值<b>小於 0.01</b> → 也用科學記號顯示。例：1÷400，螢幕顯示「2.5　−03」＝ 2.5×10⁻³</li><li>輸入科學記號：3×10¹² 按 <b>3 EXP 12</b>；4×10⁻¹⁵ 按 <b>4 EXP 15 ±</b></li></ul>螢幕數字最多 10 個，所以科學記號顯示的值可能是<b>四捨五入的近似值</b>。例：9¹¹＝31381059609，螢幕顯示 3.138105961×10¹⁰。',
+ qs:[['螢幕顯示「6.4　−02」，代表多少？','代表 6.4×10⁻²＝0.064。'],['9¹¹ 真正的值是 31381059609，為什麼計算機顯示的 3.138105961×10¹⁰ 不完全一樣？','因為螢幕最多只能顯示 10 個數字，超過的部分四捨五入，所以顯示的是近似值。']]});
+
+A({t:'1-4 整理：最容易錯的 7 件事',tag:'重點',src:'課本 p.50～58 整理',
+ text:tbl(['常見的錯誤想法','正確的想法'],[['2³＝2×3＝6','2³＝2×2×2＝8（連乘 3 個 2）'],['−3⁴＝81','−3⁴＝−81；有括號 (−3)⁴ 才是 81'],['10⁻³＝−1000','10⁻³＝0.001（負的次方是小數，不是負數）'],['10⁰＝0','10⁰＝1'],['12×10³ 是科學記號','a 要在 1 和 10 之間，12×10³＝1.2×10⁴'],['比科學記號只看 a','先比指數，指數一樣才比 a'],['0.0045＝4.5×10⁻⁴','4 在第 3 位，所以是 4.5×10⁻³']]),
+ note:'有錯過的那幾件，可以在頁面標題旁按「❓ 這頁有問題」，之後優先複習。'});
+
+A({t:'1-4 總檢查：混合題',tag:'檢查自己',src:'綜合 1-4 各頁',
+ qs:[
+  mc('(−2)⁴ − 2⁴ 等於多少？',['32','0','−32','16'],1,['(−2)⁴＝16，2⁴＝16，16−16＝0，不是 32。','','把 (−2)⁴ 當成 −16（忘了括號），−16−16＝−32。但 (−2)⁴＝+16。','16−16＝0，不是 16。'],'(−2)⁴＝16，2⁴＝16，16−16＝0。'),
+  mc('0.00052 的科學記號是？',['5.2×10⁻³','52×10⁻⁵','5.2×10⁻⁴','5.2×10⁴'],2,['5 在小數點後第 4 位，指數是 −4，不是 −3。','a＝52 太大，不符合 1 ≤ a &lt; 10。','','指數要是負的。'],'5 在小數點後第 4 位，所以是 5.2×10⁻⁴。'),
+  mc('下面哪一個最大？',['9×10⁻⁶','1×10⁻⁵','3×10⁻⁵','2×10⁻⁷'],2,['指數 −6 比 −5 小，不是最大。','1×10⁻⁵ 比 3×10⁻⁵ 小（指數相同，1 &lt; 3）。','','指數 −7 最小。'],'指數最大的是 −5，有 1×10⁻⁵ 和 3×10⁻⁵ 兩個，再比 a：3 &gt; 1。所以 3×10⁻⁵ 最大。'),
+  mc('(−1)⁷ ＋ 10⁰ 等於多少？',['−2','0','2'],1,['(−1)⁷＝−1，10⁰＝1，相加是 0，不是 −2。','','10⁰＝1，不是 0；(−1)⁷＝−1。1＋(−1)＝0，不是 2。'],'(−1)⁷＝−1（奇數次方），10⁰＝1，−1＋1＝0。'),
+  mc('8.2×10⁶ 是幾位數？',['6 位數','7 位數','8 位數'],1,['位數＝指數＋1＝7，不是 6。','','位數不是 a 的 8。位數＝指數＋1＝7。'],'位數＝指數＋1＝6＋1＝7，8.2×10⁶＝8200000。'),
+  mc('(−2)×(−2)×(−2)×(−2)×(−2) 等於多少？',['32','−32','−10','−25'],1,['5 個負數相乘（奇數個），結果是負的：−32。','','這是 (−2)×5 的結果，指數是連乘，不是乘 5。','你把 5 當成底數了。連乘的是 (−2)，共 5 個。'],'(−2)⁵＝−32（5 個負號，奇數個，結果為負）。')
+ ]});
+
+/* ================= 主題二：2-4 指數律 ================= */
+B({t:'指數律：連乘的「省力規則」',tag:'今天的目標',
+ text:'課本 p.117～123（你的檔案叫 2-3，課本上印的章節是 <b>2-4 指數律</b>）。這一節回答三個問題：<ol><li><b>分數也可以連乘嗎？</b>（分數的指數記法）</li><li><b>指數相乘、相除、次方的次方，怎麼不用一個一個乘？</b>（四條指數律＋0 次方）</li><li><b>用指數律比大小、解應用題</b></li></ol>先備知識：1-4 的「指數是連乘的簡寫」、括號和負號。如果還不穩，可以先回到「1-4 指數記法與科學記號」分頁。<br>這一節最重要的原則：<b>指數律不是用背的，是「數個數」數出來的。</b>每一條我們都先數一次，再整理成公式。<br><br>'+LEGEND});
+
+B({t:'分數也可以連乘：(−5/2)³',tag:'重點',src:'課本 p.117 重點1 ①',
+ text:'分數的指數記法和整數<b>完全一樣</b>：把<b>整個分數（含負號）</b>放進括號當底數，連乘 m 次，就是 aᵐ。<br>例：'+FP('5','2',3,true)+' ＝ '+FP('5','2',undefined,true)+'×'+FP('5','2',undefined,true)+'×'+FP('5','2',undefined,true)+' ＝ −'+fr('5×5×5','2×2×2')+' ＝ −'+fr('125','8')+'<br>正負號同樣看負號的個數：3 個負號（奇數）→ 負。',
+ qs:[['(−1/3)² ＝？','兩個負號（偶數個），結果是正：'+fr('1×1','3×3')+'＝'+fr('1','9')+'。'],['(−2/5)³ ＝？','三個負號（奇數個），結果是負：−'+fr('2×2×2','5×5×5')+'＝−'+fr('8','125')+'。']]});
+
+B({t:'分數的次方：分子、分母「各自」連乘',tag:'重點',src:'課本 p.117 重點1 ②',
+ text:FP('2','3',4)+' ＝ '+fr('2','3')+'×'+fr('2','3')+'×'+fr('2','3')+'×'+fr('2','3')+' ＝ '+fr('<span class="c1">2×2×2×2</span>','<span class="c2">3×3×3×3</span>')+' ＝ '+fr('<span class="c1">2⁴</span>','<span class="c2">3⁴</span>')+' ＝ '+fr('16','81')+'<br>公式：<b>'+FP('b','a','m')+' ＝ '+fr('bᵐ','aᵐ')+'</b>（a ≠ 0，因為分母不能是 0）<br><b>分子要有指數，分母也要有指數</b>。<br>'+AI+'(b/a)ᵐ 的 m 是「整個分數」的次方，所以上下都要。',
+ qs:[['(3/4)³ ＝？',fr('3³','4³')+'＝'+fr('27','64')+'。'],['(−3/2)² ＝？','偶數個負號為正：'+fr('3²','2²')+'＝'+fr('9','4')+'。']]});
+
+B({t:'🎯 觀念釐清A：分數的次方',tag:'觀念釐清',src:'課本 p.117',
+ qs:[
+  mc(FP('2','3',2)+' 等於多少？',[fr('4','3'),fr('4','9'),fr('2','9')],1,['你只把分子平方了。分母也要平方：3²＝9。','','你只把分母平方了。分子 2 也要平方：2²＝4。'],'分子分母各自平方：'+fr('2²','3²')+'＝'+fr('4','9')+'。'),
+  mc(FP('1','2',3,true)+' 等於多少？',[fr('1','8'),'−'+fr('1','6'),'−'+fr('1','8'),'−'+fr('3','2')],2,['3 個負號相乘（奇數個）是負的。','分母是 2³＝8，不是 2×3＝6。','','指數不是乘在分數上。分子 1³＝1，分母 2³＝8。'],'3 個負號 → 負；1³＝1，2³＝8。所以是 −'+fr('1','8')+'。'),
+  mc('−'+FP('1','2',2)+' 與 '+FP('1','2',2,true)+' 一樣嗎？',['一樣，都是 '+fr('1','4'),'一樣，都是 −'+fr('1','4'),'不一樣：−'+fr('1','4')+' 與 '+fr('1','4')],2,['−(1/2)² 外面有負號：−'+fr('1','4')+'，是負的。','(−1/2)²＝(−1/2)×(−1/2)＝'+fr('1','4')+'，是正的。',''],'−(1/2)²＝−'+fr('1','4')+'（括號外的負號）；(−1/2)²＝'+fr('1','4')+'。兩個不一樣。'),
+  mc(FP('3','5',1,true)+' 等於多少？',['−'+fr('3','5'),fr('3','5'),'−3'],0,['','指數 1 就是只有 1 個，不會變號。負號還在。','指數 1 不會改變分數。'],'指數是 1，就是它自己：−'+fr('3','5')+'。'),
+  mc('(1 又 '+fr('1','2')+')² 等於多少？',['1 又 '+fr('1','4'),fr('9','4'),fr('1','2')],1,['不能分開平方（1²＋(1/2)²）。要先化成假分數 3/2，再整個平方：9/4。','','1 又 1/2 比 1 大，平方後會更大，不會變成 1/2。'],'1 又 '+fr('1','2')+'＝'+fr('3','2')+'，平方：'+fr('3²','2²')+'＝'+fr('9','4')+'。')
+ ]});
+
+B({t:'分數指數的計算：先化假分數，再判斷正負',tag:'練習',src:'課本 p.118 講解題①②、演練題①②（本頁是換數字的類題）',
+ text:RE+'步驟：<ol><li>帶分數先化成<b>假分數</b>（例：1 又 1/2＝3/2）</li><li>判斷結果<b>正或負</b></li><li>分子、分母<b>各自</b>連乘</li><li>能約分就約分</li></ol>除以一個分數＝乘以它的<b>倒數</b>。',
+ qs:[['(−4/3)³ ＝？','3 個負號 → 負。'+fr('4³','3³')+'＝'+fr('64','27')+'，所以 −'+fr('64','27')+'。'],['(−1/2)⁴ ＝？','4 個負號 → 正。'+fr('1⁴','2⁴')+'＝'+fr('1','16')+'。'],['(−1/5)²×10 ＝？','(−1/5)²＝'+fr('1','25')+'。'+fr('1','25')+'×10＝'+fr('10','25')+'＝'+fr('2','5')+'。'],['(−1 又 1/2) ÷ (3/4)² ＝？','−1 又 1/2＝−3/2；(3/4)²＝9/16。−'+fr('3','2')+'÷'+fr('9','16')+'＝−'+fr('3','2')+'×'+fr('16','9')+'＝−'+fr('48','18')+'＝−'+fr('8','3')+'。']]});
+
+B({t:'指數律①：同底數相乘，指數相加',tag:'重點',src:'課本 p.119 重點2 ①',
+ text:'<b>不要背，先數個數：</b><br>2³×2⁴ ＝ <span class="c1">(2×2×2)</span> × <span class="c2">(2×2×2×2)</span> ＝ 共 3＋4＝<b>7</b> 個 2 ＝ 2⁷<br><b>公式：aᵐ × aⁿ ＝ a<sup>m＋n</sup></b>（a ≠ 0）<br>相乘時，「有幾個 a」要<b>加起來</b>。<br>例：'+FP('2','3',5)+'×'+FP('2','3',4)+' ＝ '+FP('2','3','5＋4')+' ＝ '+FP('2','3',9)+'<br><b>前提：底數一樣。</b>',
+ qs:[['5²×5⁶ ＝ 5<sup>□</sup>','2＋6＝8，所以是 5⁸。（5²有 2 個 5，5⁶有 6 個 5，共 8 個）'],['(−3)⁴×(−3) ＝ (−3)<sup>□</sup>','(−3) 就是 (−3)¹。4＋1＝5，所以是 (−3)⁵。']]});
+
+B({t:'指數律②：同底數相除，指數相減',tag:'重點',src:'課本 p.119 重點2 ①',
+ text:'<b>先數個數：</b><br>2⁵÷2³ ＝ '+fr('<span class="c1">2×2×2</span>×2×2','<span class="c1">2×2×2</span>')+' ＝ 上下各消掉 3 個 2 ＝ 剩 2×2 ＝ 2² （5−3＝<b>2</b>）<br><b>公式：aᵐ ÷ aⁿ ＝ a<sup>m−n</sup></b>（a ≠ 0）<br>相除時，分子的 a 和分母的 a 會<b>一一約掉</b>，剩下的個數是<b>相減</b>。<br>注意：<b>前面的指數減去後面的指數</b>（被除數的指數 − 除數的指數）。<br>例：'+FP('2','3',5)+'÷'+FP('2','3',3)+' ＝ '+FP('2','3','5−3')+' ＝ '+FP('2','3',2),
+ qs:[['7⁹÷7⁴ ＝ 7<sup>□</sup>','9−4＝5，所以是 7⁵。'],['(−5)⁸÷(−5)³ ＝ (−5)<sup>□</sup>','8−3＝5，所以是 (−5)⁵。']]});
+
+B({t:'指數律③：次方的次方，指數相乘',tag:'重點',src:'課本 p.119 重點2 ①',
+ text:'<b>先數個數：</b><br>(2³)² ＝ <span class="c1">2³</span> × <span class="c2">2³</span> ＝ (2×2×2)×(2×2×2) ＝ 共 3×2＝<b>6</b> 個 2 ＝ 2⁶<br>意思：「3 個 2」重複了 2 次，所以是 3 乘 2。<br><b>公式：(aᵐ)ⁿ ＝ a<sup>m×n</sup></b>（a ≠ 0）<br>例：[ '+FP('2','3',5)+' ]³ ＝ '+FP('2','3','5×3')+' ＝ '+FP('2','3',15),
+ qs:[['(5²)⁴ ＝ 5<sup>□</sup>','2×4＝8，所以是 5⁸。'],['[(−2)³]⁵ ＝ (−2)<sup>□</sup>','3×5＝15，所以是 (−2)¹⁵。']]});
+
+B({t:'指數律④：乘積的次方，各自乘方',tag:'重點',src:'課本 p.119 重點2 ①',
+ text:'<b>先數個數：</b><br>(2×3)⁴ ＝ (2×3)×(2×3)×(2×3)×(2×3) ＝ <span class="c1">(2×2×2×2)</span> × <span class="c2">(3×3×3×3)</span> ＝ <span class="c1">2⁴</span>×<span class="c2">3⁴</span><br><b>公式：(a×b)ᵐ ＝ aᵐ × bᵐ</b>（a ≠ 0，b ≠ 0）<br>外面的指數，要<b>分給括號裡的每一個因數</b>。<br>注意：只能用在<b>「乘」</b>，不能用在「加」。<br>例：[ '+fr('2','3')+'×'+fr('1','5')+' ]<sup>4</sup> ＝ '+FP('2','3',4)+'×'+FP('1','5',4),
+ qs:[['(2×5)³ ＝ 2<sup>□</sup>×5<sup>△</sup>','兩個都是 3：(2×5)³＝2³×5³。'],['(2×3)² 和 2²×3²，各是多少？','(2×3)²＝6²＝36；2²×3²＝4×9＝36。一樣大。']]});
+
+B({t:'四條指數律整理成一張表',tag:'重點',src:'課本 p.119 重點2 ①',
+ text:tbl(['想做的事','底數的條件','指數怎麼處理','例'],[['aᵐ×aⁿ（相乘）','要一樣','<b>相加</b>：a<sup>m＋n</sup>','2³×2⁴＝2⁷'],['aᵐ÷aⁿ（相除）','要一樣','<b>相減</b>：a<sup>m−n</sup>','2⁵÷2³＝2²'],['(aᵐ)ⁿ（次方的次方）','只有一個底數','<b>相乘</b>：a<sup>m×n</sup>','(2³)²＝2⁶'],['(a×b)ᵐ（乘積的次方）','兩個因數相乘','<b>分給每一個</b>：aᵐ×bᵐ','(2×3)²＝2²×3²']])+'<br>記憶方法（完整的句子）：<ul><li>兩個<b>同底數</b>的數<b>相乘</b>，指數要<b>相加</b>。</li><li>兩個同底數的數<b>相除</b>，指數要<b>相減</b>。</li><li><b>次方的次方</b>，指數要<b>相乘</b>。</li></ul>',
+ qs:[['看到 2³×2⁴，指數要「加」還是「乘」？','要「加」：同底數相乘，指數相加。3＋4＝7。'],['看到 (2³)⁴，指數要「加」還是「乘」？','要「乘」：次方的次方，指數相乘。3×4＝12。']]});
+
+B({t:'🎯 觀念釐清B：用錯指數律（相乘、次方）',tag:'觀念釐清',src:'課本 p.119',
+ qs:[
+  mc('2³×2⁴ 等於多少？',['2⁷','2¹²','4⁷','4¹²'],0,['','你把指數 3 和 4 相乘了。同底數相乘，指數是「相加」：3＋4＝7。','底數不會相乘。底數還是 2，只有指數相加。','底數和指數都弄錯了。'],'同底數相乘，指數相加：3＋4＝7，所以是 2⁷。'),
+  mc('(2³)⁴ 等於多少？',['2⁷','2¹²','6¹²'],1,['你用了「相加」。次方的次方，指數要「相乘」：3×4＝12。','','底數 2 和指數 3 不能相乘。底數還是 2。'],'次方的次方，指數相乘：3×4＝12，所以是 2¹²。'),
+  mc('2⁵÷2² 等於多少？',['2⁷','2³','1³'],1,['相除是指數「相減」，不是相加：5−2＝3。','','底數不會相除成 1。底數還是 2，指數相減：5−2＝3。']  ,'同底數相除，指數相減：5−2＝3，所以是 2³。'),
+  mc('2³×3³ 等於多少？',['6⁶','6³','5⁶'],1,['指數不會相加，因為底數不同。2³×3³＝(2×3)³＝6³。','','底數 2 和 3 不是相加。2³×3³＝(2×3)³＝6³。'],'指數一樣，可以反過來用 (a×b)ᵐ＝aᵐ×bᵐ：2³×3³＝(2×3)³＝6³。'),
+  mc('(2×3)² 等於多少？',['2²×3²','2²＋3²','2×3²'],0,['','乘法才能分給兩個因數，不能變成加法。2²＋3²＝13，但 (2×3)²＝36。','指數 2 要分給 2 和 3 兩個。(2×3)²＝2²×3²。'],'乘積的次方，各自乘方：(2×3)²＝2²×3²＝4×9＝36。')
+ ]});
+
+B({t:'🎯 觀念釐清C：什麼時候不能用指數律',tag:'觀念釐清',src:'課本 p.119',
+ qs:[
+  mc('2³＋2⁴ 等於 2⁷ 嗎？',['等於，指數相加','不等於：2³＋2⁴＝8＋16＝24','不等於，它等於 2¹²'],1,['指數律只能用在「乘、除、次方」。加法不能把指數相加。2⁷＝128，但 8＋16＝24。','','加法沒有指數律可以套，直接算：8＋16＝24。'],'2³＝8，2⁴＝16，8＋16＝24；2⁷＝128。不一樣。加法沒有指數律。'),
+  mc('(2＋3)² 等於多少？',['2²＋3²＝13','25','10'],1,['不能把 (2＋3)² 拆成 2²＋3²。要先算括號：(2＋3)²＝5²＝25。','','指數 2 是連乘，不是乘 2。5²＝25，不是 10。'],'先算括號：2＋3＝5，再算 5²＝25。'),
+  mc('2³×3⁴ 能不能合併成一個次方？',['能，等於 6⁷','能，等於 2⁷','不能直接合併，底數和指數都不同'],2,['底數不同、指數也不同，不能這樣合併。6⁷＝279936，但 2³×3⁴＝8×81＝648。','2⁷＝128，但 2³×3⁴＝648。',''],'2³×3⁴＝8×81＝648。底數和指數都不同，無法合併成一個次方。')
+ ]});
+
+B({t:'用指數律填空（一）',tag:'練習',src:'課本 p.119 講解題③、演練題③（本頁是換數字的類題）',
+ text:RE+'做法：先看是哪一條指數律：<ul><li>同底數相乘 → 指數<b>相加</b></li><li>同底數相除 → 指數<b>相減</b></li><li>次方的次方 → 指數<b>相乘</b></li></ul>底數是負數或分數時，整個括號（含負號、分數）都是底數，<b>指數律一樣用</b>。',
+ qs:[['(−3)²×(−3)⁵＝(−3)<sup>□</sup>','2＋5＝7。'],['(−4)⁹÷(−4)⁴＝(−4)<sup>□</sup>','9−4＝5。'],['[(−3/4)²]³＝(−3/4)<sup>□</sup>','2×3＝6。'],['(−1/6)³×(−1/6)⁸＝(−1/6)<sup>□</sup>','3＋8＝11。']]});
+
+B({t:'指數律（二）：分給兩個底數',tag:'練習',src:'課本 p.120 講解題④、演練題④（本頁是換數字的類題）',
+ text:RE+'外面的指數會分給括號裡<b>每一個因數</b>，每個因數裡面原本的指數要再<b>乘</b>上外面的指數。<br>例：[(−1/2)²×(2/3)]³＝(−1/2)<sup>2×3</sup>×(2/3)<sup>1×3</sup>＝(−1/2)⁶×(2/3)³。注意 (2/3) 本來的指數是 1。',
+ qs:[['(2×7)⁴＝2<sup>□</sup>×7<sup>△</sup>','□＝4，△＝4。'],['[(−1/3)³×(4/5)]²＝(−1/3)<sup>□</sup>×(4/5)<sup>△</sup>','(−1/3) 的指數 3×2＝6；(4/5) 的指數 1×2＝2。□＝6，△＝2。'],['(−2/3)⁵×(−2/3)⁴÷(−2/3)⁶＝(−2/3)<sup>□</sup>','5＋4−6＝3。□＝3。']]});
+
+B({t:'指數是 0：為什麼 a⁰＝1',tag:'重點',src:'課本 p.119 重點2 ②',
+ text:'用「同底數相除」會碰到一個問題：2³÷2³ 是多少？<ul><li>直接算：8÷8＝<b>1</b></li><li>用指數律：2³÷2³＝2<sup>3−3</sup>＝<b>2⁰</b></li></ul>兩個結果要一樣，所以<b>規定：2⁰＝1</b>。一般來說：<b>a ≠ 0 時，a⁰＝1</b>。<br>'+AI+'另一種看法：往下看，每少一次方就「除以 2」：'+tbl(['2⁴','2³','2²','2¹','2⁰'],[['16','8','4','2','1']])+'2⁰＝2÷2＝1。（和 1-4 的 10⁰＝1 是同一件事）',
+ qs:[['5⁰ ＝ ？','＝1。'],['(−2/3)⁰ ＝ ？','＝1。不管底數是正是負、是整數是分數，只要不是 0，0 次方都是 1。']]});
+
+B({t:'🎯 觀念釐清D：0 次方',tag:'觀念釐清',src:'課本 p.119 重點2 ②',
+ qs:[
+  mc('7⁰ 等於多少？',['0','1','7','沒有意義'],1,['0 次方不是 0。規定 a⁰＝1（a ≠ 0）。','','7¹ 才是 7。','有意義：規定 a⁰＝1。'],'a⁰＝1（a ≠ 0），所以 7⁰＝1。'),
+  mc('(−3)⁰ 等於多少？',['−3','−1','1','0'],2,['0 次方不是「底數本身」。','除了 0 以外，任何數的 0 次方都是 1，不看正負。','','0 次方不是 0。'],'(−3)⁰＝1。'),
+  mc('−3⁰ 等於多少？',['1','−1','0','3'],1,['沒有括號，底數只有 3：−3⁰＝−(3⁰)＝−1。','','0 次方不是 0。−3⁰＝−(3⁰)＝−(1)。','3⁰＝1，不是 3。'],'沒有括號，底數是 3：−3⁰＝−(3⁰)＝−1。'),
+  mc('2⁰＋3⁰ 等於多少？',['5⁰','1','2','0'],2,['5⁰＝1，但 2⁰＋3⁰＝1＋1＝2。指數律不能套在加法上。','兩個 0 次方各是 1，加起來是 2，不是 1。','','0 次方不是 0。'],'2⁰＝1，3⁰＝1，所以 2⁰＋3⁰＝1＋1＝2。')
+ ]});
+
+B({t:'用指數律化簡再計算',tag:'練習',src:'課本 p.120～121 講解題⑤⑥、演練題⑤⑥（本頁是換數字的類題）',
+ text:RE+'做法：<b>先用指數律化簡，再算數字</b>，不要一個一個乘出來。<br>例：3⁴×3²÷3³＋3²＝3<sup>4＋2−3</sup>＋3²＝3³＋3²＝27＋9＝36。<br>注意：加、減<b>不能</b>合併指數，先各自算出來再加減。',
+ qs:[['(3/2)³×(4/3)³ ＝ ？','底數不同、指數相同，用 (a×b)ᵐ 反過來：(3/2×4/3)³＝2³＝8。'],['[(2/3)⁶×(2/3)⁴÷(2/3)¹⁰]⁵ ＝ ？','括號裡：6＋4−10＝0，所以是 (2/3)⁰＝1。1⁵＝1。'],['(2×5)⁶÷2³÷5²＝2<sup>a</sup>×5<sup>b</sup>，求 a、b','(2×5)⁶＝2⁶×5⁶。2⁶÷2³＝2³，5⁶÷5²＝5⁴。所以 a＝3，b＝4。（檢查：8×625＝5000＝10⁶÷200 ✔）'],['2⁴×7⁴＝a⁴，求 a','指數相同，底數相乘：(2×7)⁴＝14⁴，所以 a＝14。']]});
+
+B({t:'把數字拆成同一個底數，才能用指數律',tag:'💡 補充說明',src:'課本 p.121 學習即時通 4、p.123 講解題③ 都會用到；這張對照表是自己整理的，課本沒有',
+ text:AI+'指數律需要「同底數」。遇到不同的數，先把它拆成同一個底數：'+tbl(['底數','1 次','2 次','3 次','4 次','5 次','6 次'],[['2','2','4','8','16','32','64'],['3','3','9','27','81','243','729'],['5','5','25','125','625','','']])+'<br>例：8×16＝2³×2⁴＝2⁷；9³＝(3²)³＝3⁶；25²÷5³＝(5²)²÷5³＝5⁴÷5³＝5。',
+ qs:[['8×16＝2<sup>□</sup>','8＝2³，16＝2⁴。3＋4＝7，所以 2⁷。（檢查：8×16＝128＝2⁷ ✔）'],['9³＝3<sup>□</sup>','9＝3²。(3²)³＝3⁶，所以 □＝6。（檢查：9³＝729＝3⁶ ✔）'],['25²÷5³＝5<sup>□</sup>','25＝5²。(5²)²＝5⁴，5⁴÷5³＝5¹，所以 □＝1。（檢查：625÷125＝5 ✔）']]});
+
+B({t:'2+2+2+2 是 2⁴ 嗎？相加和相乘要分清楚',tag:'重點',src:'課本 p.122 學力精熟② (2)',
+ text:'<ul><li>2×2×2×2 是「連乘」＝2⁴＝16</li><li>2＋2＋2＋2 是「連加」＝4 個 2 相加＝<b>4×2</b>＝8＝2²×2＝2³</li></ul>連乘時，指數看「<b>幾個 2 相乘</b>」；連加時，要先變成「<b>乘法</b>」：幾個 a 相加＝(幾)×a。<br>例：2³＋2³＋2³＋2³＝4×2³＝2²×2³＝2⁵（4 個 2³ 相加）。',
+ qs:[['3＋3＋3＝3<sup>□</sup>','3 個 3 相加＝3×3＝3²。□＝2。'],['5²＋5²＋5²＋5²＋5²＝5<sup>□</sup>','5 個 5² 相加＝5×5²＝5¹×5²＝5³。□＝3。'],['4＋4＋4＋4＝4<sup>□</sup>','4 個 4 相加＝4×4＝4²。□＝2。']]});
+
+B({t:'🎯 觀念釐清E：相加還是相乘',tag:'觀念釐清',src:'課本 p.122 學力精熟② (2)',
+ qs:[
+  mc('下面哪一個等於 2＋2＋2？',['2³','2×3','3²','2²'],1,['2³＝2×2×2＝8 是「連乘」。2＋2＋2＝6。','','3²＝9。2＋2＋2＝6。','2²＝4。2＋2＋2＝6。'],'2＋2＋2＝3×2＝6。'),
+  mc('3×3×3×3 和 3＋3＋3＋3 一樣嗎？',['一樣，都是 12','一樣，都是 81','不一樣：81 和 12'],2,['3×3×3×3＝81，3＋3＋3＋3＝12。','3＋3＋3＋3 是加法，只有 12。',''],'3×3×3×3＝3⁴＝81；3＋3＋3＋3＝4×3＝12。'),
+  mc('4³＋4³＋4³＋4³ 等於多少？',['4¹²','4⁴','4⁷'],1,['加法不能把指數相乘。4 個 4³ 相加＝4×4³＝4⁴。','','加法不能把指數相加。4 個 4³ 相加＝4×4³＝4⁴。'],'4 個 4³ 相加＝4×4³＝4¹×4³＝4⁴。'),
+  mc('2⁵＋2⁵ 等於多少？',['2¹⁰','4⁵','2⁶','2⁵'],2,['加法不會把指數相加。2⁵＋2⁵＝2×2⁵＝2⁶。','底數不會變成 4。2⁵＋2⁵＝2×2⁵＝2⁶。','','2⁵＋2⁵ 是 2 個 2⁵ 相加，比 2⁵ 大。'],'2 個 2⁵ 相加＝2×2⁵＝2¹×2⁵＝2⁶。')
+ ]});
+
+B({t:'用指數律比大小：化成同底數（或同指數）',tag:'重點',src:'課本 p.119 重點2 ③、p.123 講解題③、演練題③',
+ text:'<ul><li>底數<b>大於 1</b>：指數愈大，值愈大</li><li>底數在 <b>0 和 1 之間</b>：指數愈大，值愈小</li></ul>如果底數不同，先<b>化成同一個底數</b>，再比指數：<br>A＝(2⁸×2⁵)÷2⁶＝2<sup>8＋5−6</sup>＝2⁷<br>B＝(2⁹÷2⁴)×2²＝2<sup>9−4＋2</sup>＝2⁷<br>C＝16²＝(2⁴)²＝2⁸<br>底數都是 2（大於 1），指數 8 &gt; 7，所以 C &gt; A＝B。<br>或者<b>化成同樣的指數</b>，再比底數：2³⁰＝(2³)¹⁰＝8¹⁰；3²⁰＝(3²)¹⁰＝9¹⁰；9 &gt; 8 → 3²⁰ 比較大。',
+ qs:[['(1/2)⁵ 和 (1/2)⁸ 哪個大？','底數 1/2 在 0 和 1 之間，指數愈大值愈小，所以 (1/2)⁵ 比較大。'],['2³⁰ 和 3²⁰ 哪個大？','2³⁰＝(2³)¹⁰＝8¹⁰；3²⁰＝(3²)¹⁰＝9¹⁰。指數都是 10，9 &gt; 8，所以 3²⁰ 比較大。']]});
+
+B({t:'🎯 觀念釐清F：比大小',tag:'觀念釐清',src:'課本 p.123 講解題③、演練題③',
+ qs:[
+  mc('4³ 和 2⁵ 哪個大？',['4³','2⁵','一樣大'],0,['','底數不同，不能只看指數。化成底數 2：4³＝(2²)³＝2⁶，比 2⁵ 大。','4³＝64，2⁵＝32，不一樣。'],'4³＝(2²)³＝2⁶＝64，2⁵＝32。4³ 比較大。'),
+  mc('8² 和 4³ 哪個大？',['8²','4³','一樣大'],2,['化成底數 2：8²＝(2³)²＝2⁶，4³＝(2²)³＝2⁶，一樣大。','同上，兩個都是 2⁶＝64。',''],'8²＝(2³)²＝2⁶＝64；4³＝(2²)³＝2⁶＝64。一樣大。'),
+  mc('(1/3)⁴ 和 (1/3)⁷ 哪個大？',['(1/3)⁴','(1/3)⁷','一樣大'],0,['','底數比 1 小，指數愈大值愈小。(1/3)⁷ 反而比較小。','底數 1/3 連乘 4 次與 7 次，值不同。'],'底數 1/3 在 0 和 1 之間，指數愈大值愈小：(1/3)⁴ &gt; (1/3)⁷。'),
+  mc('3¹⁰ 和 9⁴ 哪個大？',['3¹⁰','9⁴','一樣大'],0,['','9⁴＝(3²)⁴＝3⁸，比 3¹⁰ 小。底數不同時，要先化成同底數。','3¹⁰ 和 3⁸ 不一樣。'],'9⁴＝(3²)⁴＝3⁸。底數都是 3，10 &gt; 8，所以 3¹⁰ 比較大。'),
+  mc('2⁹ 和 3⁶ 哪個大？',['2⁹','3⁶','一樣大'],1,['2⁹＝(2³)³＝8³，3⁶＝(3²)³＝9³，9³ 比較大。（512 &lt; 729）','','2⁹＝512，3⁶＝729，不一樣。'],'2⁹＝(2³)³＝8³；3⁶＝(3²)³＝9³。指數相同，9 &gt; 8，所以 3⁶ 比較大。')
+ ]});
+
+B({t:'應用題：每隔一段時間變成原來的幾倍',tag:'重點',src:'課本 p.123 講解題④、演練題④',
+ text:'課本例題（碳足跡）：每 5 年 CO₂ 排放量<b>減少 25%</b>。<ol><li>減少 25% → 剩下 100%−25%＝75%＝<b>'+fr('3','4')+'</b>（變成原來的 3/4，<b>不是 1/4</b>）</li><li>20 年 ÷ 5 年＝<b>4 次</b></li><li>每過 5 年乘一次 3/4，共 4 次：1×'+FP('3','4',4)+'＝'+fr('3⁴','4⁴')+'＝'+fr('81','256')+'</li></ol>反過來問：變成原來的 '+fr('243','1024')+'，經過幾年？<br>243＝3⁵，1024＝4⁵ → '+fr('3⁵','4⁵')+'＝'+FP('3','4',5)+'，共 5 次，5×5＝<b>25 年</b>。',
+ qs:[['某物質每 10 年剩下原來的 1/2。30 年後，剩下原來的幾分之幾？','30÷10＝3 次，(1/2)³＝'+fr('1','8')+'。'],['承上題，剩下原來的 1/64 時，過了幾年？','64＝2⁶，1/64＝(1/2)⁶，共 6 次，6×10＝60 年。'],['某池塘的藻類每 2 天減少 20%，6 天後剩下原來的幾分之幾？','減少 20% → 剩下 80%＝4/5。6÷2＝3 次，(4/5)³＝'+fr('64','125')+'。']]});
+
+B({t:'🎯 觀念釐清G：應用題的陷阱',tag:'觀念釐清',src:'課本 p.123 講解題④',
+ qs:[
+  mc('「減少 25%」，等於變成原來的幾分之幾？',['1/4','3/4','25','5/4'],1,['25% 是「減少的部分」。剩下的是 100%−25%＝75%＝3/4。','','25% 不是 25 倍。','5/4 是「增加 25%」。'],'剩下 100%−25%＝75%＝3/4。'),
+  mc('每 3 年增加 50%，變成原來的幾倍？',['0.5 倍','1.5 倍','3 倍'],1,['0.5 倍是「變成一半」。增加 50% 是變成 100%＋50%＝150%。','','「3 年」不是倍數。100%＋50%＝150%＝1.5 倍。'],'100%＋50%＝150%＝1.5 倍。'),
+  mc('每 4 小時變成原來的 1/3，12 小時後是原來的多少？',['1/9','1/12','1/27'],2,['12÷4＝3 次，不是 2 次。要連乘 3 個 1/3：(1/3)³。','分母不是 3×4＝12。是 (1/3)×(1/3)×(1/3)，分母 3×3×3＝27。',''],'12÷4＝3 次，(1/3)³＝1/27。')
+ ]});
+
+B({t:'含指數的分數運算',tag:'練習',src:'課本 p.122 學力精熟 講解題①、演練題①（本頁是換數字的類題）',
+ text:RE+'步驟：<ol><li>先把每個<b>指數算出來</b>（特別注意負號的個數）</li><li>分母有指數：先算分母，例：'+fr('1','(−2)³')+'＝'+fr('1','−8')+'＝−'+fr('1','8')+'</li><li>通分、加減</li></ol>課本例：'+fr('1','2')+'＋'+fr('1','(−2)²')+'＋'+fr('1','(−2)³')+'＋'+fr('1','(−2)⁴')+'＝'+fr('1','2')+'＋'+fr('1','4')+'−'+fr('1','8')+'＋'+fr('1','16')+'＝'+fr('11','16'),
+ qs:[[fr('1','3')+'＋'+fr('1','(−3)²')+'＋'+fr('1','(−3)³')+' ＝ ？','(−3)²＝9，(−3)³＝−27。'+fr('1','3')+'＋'+fr('1','9')+'−'+fr('1','27')+'＝'+fr('9＋3−1','27')+'＝'+fr('11','27')+'。'],['(−1/2)³＋(1/2)² ＝ ？','(−1/2)³＝−1/8；(1/2)²＝1/4＝2/8。−1/8＋2/8＝1/8。'],['(2/3)²÷(−2/3)³ ＝ ？','(2/3)²＝4/9；(−2/3)³＝−8/27。4/9÷(−8/27)＝4/9×(−27/8)＝−108/72＝−3/2。']]});
+
+B({t:'2-4 整理：最容易錯的 7 件事',tag:'重點',src:'課本 p.117～123 整理',
+ text:tbl(['常見的錯誤想法','正確的想法'],[['2³×2⁴＝2¹²','同底數相乘，指數相加：2⁷'],['(2³)⁴＝2⁷','次方的次方，指數相乘：2¹²'],['2³＋2⁴＝2⁷','加法沒有指數律，直接算：8＋16＝24'],['(2/3)²＝4/3','分子分母都要平方：4/9'],['2⁰＝0','2⁰＝1（a ≠ 0 時 a⁰＝1）'],['2＋2＋2＋2＝2⁴','連加是乘法：4×2＝2³'],['減少 25% 變成 1/4','減少 25% 剩下 75%＝3/4']]),
+ note:'有錯過的那幾件，可以在頁面標題旁按「❓ 這頁有問題」，之後優先複習。'});
+
+B({t:'2-4 總檢查：混合題',tag:'檢查自己',src:'綜合 2-4 各頁',
+ qs:[
+  mc('3⁵×3²÷3³ 等於多少？',['3⁶','3⁴','3³⁰'],1,['除法要「減」3，不是加 3：5＋2−3＝4。','','指數只做加減（同底數相乘除），不是相乘。'],'5＋2−3＝4，所以是 3⁴。'),
+  mc('[(−5)²]³ 等於多少？',['(−5)⁵','(−5)⁶','−5⁶'],1,['次方的次方，指數要相乘：2×3＝6，不是相加。','','(−5)⁶ 是正的 15625，−5⁶ 是負的（外面多一個負號）。'],'次方的次方，指數相乘：2×3＝6，所以是 (−5)⁶。'),
+  mc('(−1/3)²×27 等於多少？',['−3','3','9','1/3'],1,['(−1/3)² 是正的（偶數個負號）：1/9，1/9×27＝3，不是 −3。','','(−1/3)²＝1/9，不是 1/3。1/9×27＝3，不是 9。','(−1/3)² 算成 1/9 後，還要再乘 27，不是停在 1/3。1/9×27＝3。'],'(−1/3)²＝1/9。1/9×27＝3。'),
+  mc('5⁰×5² 等於多少？',['0','10','25'],2,['5⁰＝1，不是 0。5⁰×5²＝1×25＝25。','5² 是 25，不是 5×2＝10。',''],'5⁰＝1，5²＝25。1×25＝25。'),
+  mc('某物質每 2 年變成原來的 2/3，6 年後是原來的多少？',['8/27','2/9','12/27'],0,['','6÷2＝3 次，不是乘 3：要連乘 3 個 2/3，分子分母各自 3 次方：(2/3)³＝8/27。','分子分母要各自 3 次方，不是把 2 乘 6。'],'6÷2＝3 次，(2/3)³＝8/27。'),
+  mc('3⁴×9² 寫成 3 的幾次方？',['3⁶','3⁸','3¹⁶'],1,['9²＝(3²)²＝3⁴（不是 3²）。3⁴×3⁴＝3⁸。','','同底數相乘，指數相加（4＋4＝8），不是相乘。'],'9²＝(3²)²＝3⁴。3⁴×3⁴＝3⁸。')
+ ]});
+
+/* ===== 播放 ===== */
+var deck='A',cur=0,QM={};
+function pageMarked(d,n){var p=d+n;for(var k in QM)if(k===p||k.indexOf(p+':')===0)return true;return false;}
+function el(i){return document.getElementById(i);}
+var h='';
+Object.keys(DECKS).forEach(function(k){
+  DECKS[k].SL.forEach(function(s,i){
+    h+='<section class="slide" id="s'+k+i+'"><span class="tag'+(s.tag&&/^(📌|💡)/.test(s.tag)?' sup':'')+'">'+(s.tag||('步驟 '+(i+1)))+'</span><h1>'+s.t+'</h1><button class="mk" data-k="'+k+i+'">❓ 這頁有問題</button>'+(s.src?'<div class="src">📖 出處：'+s.src+'</div>':'');
+    /* 橫放平板：有圖的頁圖在左、文字在右；沒圖但有文字＋想一想：文字在左、想一想在右（見 CSS .sbody.two） */
+    var tq=!s.fig&&s.qs&&s.text;
+    h+='<div class="sbody'+(s.fig?' two':(tq?' two tq':''))+'">';
+    if(s.fig)h+='<div class="sfig">'+s.fig+'</div>';
+    else if(tq)h+='<div class="sfig"><div class="txt">'+s.text+'</div>'+(s.sheet?'<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>':'')+'</div>';
+    h+='<div class="stxt">';
+    if(s.text&&!tq)h+='<div class="txt">'+s.text+'</div>';
+    if(s.sheet&&!tq)h+='<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>';
+    if(s.qs){h+='<div class="qs'+(s.qs.length>2&&!s.fig&&!tq?' qgrid':'')+'">';s.qs.forEach(function(q,qi){h+='<div class="q" id="q'+k+i+'_'+qi+'"><button class="mk mq" data-k="'+k+i+':'+qi+'">❓</button><div class="p">'+(q[2]?'觀念釐清：':'想一想：')+q[0]+'</div>'+(q[2]?'<div class="mc">'+q[2].o.map(function(o,oi){return '<button class="mo" data-i="'+oi+'"><b>'+'ABCDE'.charAt(oi)+'.</b> '+o+'</button>';}).join('')+'</div><div class="mcf" aria-live="polite"></div><details><summary>直接看正解</summary><div class="a">✅ 答：'+'ABCDE'.charAt(q[2].a)+'. '+q[2].o[q[2].a]+'<br><span class="ex">'+q[1]+'</span></div></details>':'<details><summary>看答案</summary><div class="a">'+q[1]+'</div></details>')+'</div>';});h+='</div>';}
+    if(s.note)h+='<div class="note"><details><summary>👂 上課聽這裡</summary>'+s.note+'</details></div>';
+    h+='</div></div></section>';
+  });
+});
+el('slides').innerHTML=h;
+Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s){if(s.init)s.init();});});
+if(Object.keys(DECKS).length<2)el('tabs').style.display='none';
+el('tabs').innerHTML=Object.keys(DECKS).map(function(k){return '<button data-d="'+k+'">'+DECKS[k].name+'</button>';}).join('');
+function curId(){return 's'+deck+cur;}
+function go(d,i){
+  deck=d;var SL=DECKS[d].SL;cur=Math.max(0,Math.min(SL.length-1,i));
+  Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s,n){el('s'+k+n).classList.toggle('cur',k===d&&n===cur);});});
+  Array.prototype.forEach.call(el('tabs').children,function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});
+  el('jump').innerHTML=SL.map(function(s,n){return '<option value="'+n+'">'+(pageMarked(d,n)?'❓ ':'')+(n+1)+'. '+s.t.replace(/<[^>]+>/g,'')+'</option>';}).join('');
+  el('jump').value=String(cur);
+  el('pb').style.width=((cur+1)/SL.length*100)+'%';
+  el('prev').disabled=cur===0;
+  el('next').textContent=cur===SL.length-1?'完成 ✓':'下一步 ▶';
+  try{history.replaceState(null,'','#'+d+(cur+1));}catch(e){}
+  window.scrollTo(0,0);
+  if(INK.cv[curId()])canvasFor(curId());
+}
+
+/* ===== 手寫層 =====
+   每一頁各自一張透明畫布，筆跡存成向量（換頁再回來還在，重新整理才會消失）。
+   「只有筆能寫」：觸控筆（或滑鼠）寫字，手指照常捲動、按「看答案」。 */
+var INK={on:false,color:'pu',erase:false,penOnly:true,strokes:{},cv:{}};
+try{var pp=localStorage.getItem('handout_ink_pen_only');if(pp!==null)INK.penOnly=(pp==='1');}catch(e){}
+/* 手寫顏色刻意避開圖形用的橘、綠、藍、磚紅、深灰 */
+var INKC={pu:['#7b1fa2','#ce93d8'],pk:['#e91e63','#f48fb1'],cy:['#0097a7','#4dd0e1']};
+function inkColor(c){var dk=false;try{dk=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';}catch(e){}return (INKC[c]||INKC.pu)[dk?1:0];}
+function canvasFor(id){
+  var sec=el(id),cv=INK.cv[id];
+  if(!cv){cv=document.createElement('canvas');cv.className='ink-cv';sec.appendChild(cv);INK.cv[id]=cv;}
+  if(!INK.strokes[id])INK.strokes[id]=[];
+  var w=sec.clientWidth,hh=sec.clientHeight,r=window.devicePixelRatio||1;
+  if(w&&hh&&(cv._w!==w||cv._h!==hh||cv._r!==r)){cv._w=w;cv._h=hh;cv._r=r;cv.width=Math.round(w*r);cv.height=Math.round(hh*r);cv.style.width=w+'px';cv.style.height=hh+'px';redraw(id);}
+  return cv;
+}
+function seg(ctx,s,a,b){ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+function redraw(id){
+  var cv=INK.cv[id];if(!cv||!cv._w)return;var ctx=cv.getContext('2d'),r=cv._r||1;
+  ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,cv._w,cv._h);
+  (INK.strokes[id]||[]).forEach(function(s){
+    if(s.p.length===1){seg(ctx,s,s.p[0],[s.p[0][0]+0.1,s.p[0][1]]);return;}
+    ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.p[0][0],s.p[0][1]);
+    for(var k=1;k<s.p.length;k++)ctx.lineTo(s.p[k][0],s.p[k][1]);ctx.stroke();
+  });
+}
+function eraseAt(x,y){
+  function near(p,q){var vx=q[0]-p[0],vy=q[1]-p[1],L=vx*vx+vy*vy,t=L?Math.max(0,Math.min(1,((x-p[0])*vx+(y-p[1])*vy)/L)):0,dx=p[0]+t*vx-x,dy=p[1]+t*vy-y;return dx*dx+dy*dy<196;}
+  var id=curId(),a=INK.strokes[id]||[],keep=a.filter(function(s){for(var k=0;k<s.p.length;k++)if(near(s.p[k],s.p[Math.min(k+1,s.p.length-1)]))return false;return true;});
+  if(keep.length!==a.length){INK.strokes[id]=keep;redraw(id);}
+}
+var drawing=null,finger=null;
+function pos(e){var rc=INK.cv[curId()].getBoundingClientRect();return [Math.round((e.clientX-rc.left)*10)/10,Math.round((e.clientY-rc.top)*10)/10];}
+el('slides').addEventListener('pointerdown',function(e){
+  if(!INK.on)return;
+  var penLike=(e.pointerType==='pen'||e.pointerType==='mouse');
+  if(!penLike&&INK.penOnly){finger={id:e.pointerId,y:e.clientY};return;}
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();var id=curId();canvasFor(id);
+  var p=pos(e),er=INK.erase||(e.buttons&32)===32;
+  drawing={id:e.pointerId,erase:er,sec:id};
+  try{el('slides').setPointerCapture(e.pointerId);}catch(_){}
+  if(er){eraseAt(p[0],p[1]);return;}
+  drawing.s={c:INK.color,w:e.pointerType==='pen'?3:4,p:[p]};INK.strokes[id].push(drawing.s);redraw(id);
+});
+el('slides').addEventListener('pointermove',function(e){
+  if(finger&&e.pointerId===finger.id){window.scrollBy(0,finger.y-e.clientY);finger.y=e.clientY;return;}
+  if(!drawing||e.pointerId!==drawing.id)return;
+  e.preventDefault();
+  var evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e],ctx=INK.cv[drawing.sec].getContext('2d');
+  evs.forEach(function(ev){
+    var p=pos(ev);
+    if(drawing.erase){eraseAt(p[0],p[1]);return;}
+    var pts=drawing.s.p,last=pts[pts.length-1];
+    if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<1)return;
+    pts.push(p);seg(ctx,drawing.s,last,p);
+  });
+});
+function endInk(e){if(finger&&e.pointerId===finger.id)finger=null;if(drawing&&e.pointerId===drawing.id)drawing=null;}
+el('slides').addEventListener('pointerup',endInk);
+el('slides').addEventListener('pointercancel',endInk);
+function setInk(on){
+  INK.on=on;document.body.classList.toggle('ink',on);
+  el('inkBtn').classList.toggle('inkon',on);el('inkBtn').setAttribute('aria-pressed',on?'true':'false');
+  el('inkBtn').innerHTML=on?'✏️<span class="lb"> 手寫中</span>':'✏️<span class="lb"> 手寫</span>';
+  if(on)canvasFor(curId());
+}
+function markTool(){
+  el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.classList.toggle('on',!INK.erase&&b.dataset.c===INK.color);});
+  el('inkErase').classList.toggle('on',INK.erase);
+}
+el('inkBtn').onclick=function(){setInk(!INK.on);if(INK.on)setQP(false);};
+el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){INK.color=b.dataset.c;INK.erase=false;markTool();};});
+el('inkErase').onclick=function(){INK.erase=!INK.erase;markTool();};
+el('inkUndo').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length){a.pop();redraw(id);}};
+el('inkClear').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length&&confirm('清除這一頁的手寫？')){INK.strokes[id]=[];redraw(id);}};
+el('inkSpace').onclick=function(){var sec=el(curId()),pb=parseInt(sec.style.paddingBottom||'18',10);sec.style.paddingBottom=(pb+320)+'px';canvasFor(curId());window.scrollBy(0,320);};
+el('inkPen').checked=INK.penOnly;
+el('inkPen').onchange=function(){INK.penOnly=el('inkPen').checked;try{localStorage.setItem('handout_ink_pen_only',INK.penOnly?'1':'0');}catch(e){}};
+window.addEventListener('resize',function(){if(INK.cv[curId()])canvasFor(curId());});
+el('slides').addEventListener('toggle',function(){if(INK.cv[curId()])canvasFor(curId());},true);
+
+/* ===== ❓ 標記有問題的頁、題 =====
+   點頁面上的「❓ 這頁有問題」或想一想右上角的「❓」標記；下方「❓ 問題」列出全部，點了直接跳過去。
+   存在這台裝置的瀏覽器（localStorage），重新整理還在。 */
+var QKEY='handout_marks_'+document.title;
+try{QM=JSON.parse(localStorage.getItem(QKEY)||'{}')||{};}catch(e){QM={};}
+function saveQM(){try{localStorage.setItem(QKEY,JSON.stringify(QM));}catch(e){}}
+function plain(x){return String(x).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();}
+function cut(x,n){return x.length>n?x.slice(0,n)+'…':x;}
+function mkParse(k){return k.match(/^([A-Z])(\d+)(?::(\d+))?$/);}
+function paintMarks(){
+  el('slides').querySelectorAll('.mk').forEach(function(b){var on=!!QM[b.dataset.k];b.classList.toggle('on',on);if(!b.classList.contains('mq'))b.textContent=on?'❗ 已標記有問題':'❓ 這頁有問題';b.setAttribute('aria-pressed',on?'true':'false');});
+  var n=Object.keys(QM).length;el('qpBtn').innerHTML='❓<span class="lb"> 問題</span>'+(n?'（'+n+'）':'');
+  var SL=DECKS[deck].SL;Array.prototype.forEach.call(el('jump').options,function(o,i){o.textContent=(pageMarked(deck,i)?'❓ ':'')+(i+1)+'. '+plain(SL[i].t);});
+  var multi=Object.keys(DECKS).length>1,keys=Object.keys(QM).filter(mkParse).sort(function(a,b){var pa=mkParse(a),pb=mkParse(b);if(pa[1]!==pb[1])return pa[1]<pb[1]?-1:1;return (+pa[2]-pb[2])||((pa[3]===undefined?-1:+pa[3])-(pb[3]===undefined?-1:+pb[3]));});
+  var out='',lastPage='';
+  keys.forEach(function(k){
+    var m=mkParse(k);if(!DECKS[m[1]])return;var s=DECKS[m[1]].SL[+m[2]];if(!s)return;
+    var head=(multi?DECKS[m[1]].name.split('｜')[0]+'　':'')+'第 '+(+m[2]+1)+' 頁　'+cut(plain(s.t),22);
+    if(m[3]===undefined){out+='<a data-go="'+k+'">📄 '+head+'</a>';lastPage=m[1]+m[2];}
+    else{var q=s.qs&&s.qs[+m[3]];if(!q)return;if(lastPage!==m[1]+m[2])out+='<a data-go="'+m[1]+m[2]+'">📄 '+head+'</a>';lastPage=m[1]+m[2];out+='<a class="sub" data-go="'+k+'">└ 想一想：'+cut(plain(q[0]),30)+'</a>';}
+  });
+  el('qpList').innerHTML=out||'<div class="empty">還沒有標記。看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」。</div>';
+}
+function setQP(on){document.body.classList.toggle('qp',on);el('qpBtn').classList.toggle('qon',on);if(on&&INK.on)setInk(false);}
+el('slides').addEventListener('click',function(e){var b=e.target.closest('.mk');if(!b)return;e.preventDefault();var k=b.dataset.k;if(QM[k])delete QM[k];else QM[k]=1;saveQM();paintMarks();});
+/* 選擇題：點選項 → 立刻顯示對錯；答錯的題自動標 ❓ */
+el('slides').addEventListener('click',function(e){
+  var b=e.target.closest('.mo');if(!b)return;
+  var box=b.closest('.q'),m=box.id.match(/^q([A-Z])(\d+)_(\d+)$/);if(!m)return;
+  var q=DECKS[m[1]].SL[+m[2]].qs[+m[3]],i=+b.dataset.i,mc=q[2],ok=(i===mc.a),f=box.querySelector('.mcf');
+  Array.prototype.forEach.call(box.querySelectorAll('.mo'),function(x){x.classList.remove('ok','no');});
+  b.classList.add(ok?'ok':'no');
+  if(ok){f.className='mcf good';f.innerHTML='✅ 答對了！'+q[1];}
+  else{f.className='mcf bad';f.innerHTML='❌ '+mc.w[i]+'<br><span class="try">再選選看，或按下面「直接看正解」。</span>';var k=m[1]+m[2]+':'+m[3];if(!QM[k]){QM[k]=1;saveQM();paintMarks();}}
+});
+el('qpBtn').onclick=function(){setQP(!document.body.classList.contains('qp'));};
+el('qpClose').onclick=function(){setQP(false);};
+el('qpClear').onclick=function(){if(Object.keys(QM).length&&confirm('清除全部的「有問題」標記？')){QM={};saveQM();paintMarks();}};
+el('qpList').onclick=function(e){var a=e.target.closest('a[data-go]');if(!a)return;var m=mkParse(a.dataset.go);go(m[1],+m[2]);setQP(false);
+  if(m[3]!==undefined){var q=el('q'+m[1]+m[2]+'_'+m[3]);if(q){q.scrollIntoView({block:'center'});q.classList.add('flash');setTimeout(function(){q.classList.remove('flash');},1600);}}};
+
+el('tabs').onclick=function(e){var b=e.target.closest('button');if(b)go(b.getAttribute('data-d'),0);};
+el('prev').onclick=function(){go(deck,cur-1);};
+el('next').onclick=function(){if(cur<DECKS[deck].SL.length-1)go(deck,cur+1);};
+el('jump').onchange=function(){go(deck,Number(el('jump').value));};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(deck,cur+1);else if(e.key==='ArrowLeft')go(deck,cur-1);});
+var m=(location.hash||'').match(/^#([AB])(\d+)$/);
+go(m?m[1]:'A',m?parseInt(m[2],10)-1:0);
+paintMarks();
+})();
+</script>
+</body>
+</html>

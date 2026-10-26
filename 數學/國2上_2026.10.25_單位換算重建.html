@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>單位換算重建講義</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%93%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#333;--sub:#555;--line:#e0d8ca;--ac:#c0704a;--ac2:#4a7a6b;--ac3:#4a6b9a;--bad:#b0442e;--soft:#f3ece0;--hi:#fff7e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1f1d1a;--card:#2a2723;--ink:#eee;--sub:#bbb;--line:#4a443c;--ac:#e0916b;--ac2:#7fc4ad;--ac3:#8fb0e0;--bad:#ee8a74;--soft:#38342d;--hi:#3a3322}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;line-height:1.7;font-size:1.2rem}
+.wrap{max-width:860px;margin:0 auto;padding:10px 16px 110px}
+.tabs{display:flex;gap:8px;margin:2px 0 8px}
+.tabs button{flex:1;font-family:inherit;font-size:1.05rem;padding:9px 8px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--sub)}
+.top select{font-family:inherit;font-size:.9rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:62%}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac2);width:0;transition:width .25s}
+.slide{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.slide.cur{display:block}
+.tag{display:inline-block;background:var(--ac3);color:#fff;border-radius:99px;padding:0 12px;font-size:.95rem}
+.tag.sup{background:var(--ac2)}.tag.pr{background:var(--ac)}
+h1{font-size:1.6rem;margin:6px 0 10px;line-height:1.35}
+.fig{max-width:100%;height:auto;display:block;margin:8px auto;max-height:330px;color:var(--ink)}
+.figs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+.figs .fig{max-width:48%}
+.fig.big .lbl,.fig.big .lbl2,.fig.big .tI,.fig.big .tR,.fig.big .tF,.fig.big .tB{font-size:16px}
+@media (orientation:portrait) and (min-width:600px){.fig{max-height:46vh}}
+.txt{margin:8px 0}
+.txt b{color:var(--ac)}
+.txt ol,.txt ul{margin:6px 0;padding-left:1.4em}
+.txt li{margin:4px 0}
+.eq{font-size:1.5rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.5}
+table.t{border-collapse:collapse;width:100%;font-size:1.02rem;margin:8px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+table.t th{background:var(--soft)}
+.q{background:var(--hi);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:10px 0}
+.q .p{font-weight:700}
+details summary{cursor:pointer;color:var(--ac3);font-size:1rem}
+.q .a{padding:4px 0;color:var(--ac2);font-weight:700}
+.sheet{background:#fffbe3;border:2px dashed #d9b84a;border-radius:12px;padding:8px 12px;margin:10px 0;font-size:1rem;color:#3d3a2c}
+.sheet b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sheet{background:#3b3722;border-color:#a88c2f;color:#eee}:root:not([data-theme=light]) .sheet b{color:#f0c860}}
+.src{font-size:.95rem;color:var(--sub);margin:-4px 0 10px}
+.ai{display:inline-block;background:#e6f0eb;color:#2f5d4f;border:1px solid var(--ac2);border-radius:6px;padding:0 6px;font-size:.95rem;font-weight:700;line-height:1.5;white-space:nowrap}
+.ai.re{background:#e8edf6;color:#344e78;border-color:var(--ac3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .ai{background:#24352f;color:#9fd6c2}:root:not([data-theme=light]) .ai.re{background:#262f40;color:#a9c2ea}}
+.note{margin-top:12px;font-size:.95rem;color:var(--sub)}
+.note details{border-top:1px dashed var(--line);padding-top:6px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:12px;justify-content:center;z-index:5}
+.nav button{font-family:inherit;font-size:1.2rem;padding:12px 28px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:130px}
+.nav button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.nav button:disabled{opacity:.4}
+/* SVG 圖形 */
+.lbl{fill:currentColor;font-size:14px}.lbl2{fill:currentColor;font-size:15px;font-weight:700}
+.lbl,.lbl2,.tI,.tR,.tF{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.tI,.tR,.tF{font-size:14px;font-weight:700}
+.tI{fill:var(--ac)}.tR{fill:var(--ac3)}.tF{fill:var(--ac2)}
+.rI{stroke:var(--ac);stroke-width:3;fill:none}.rR{stroke:var(--ac3);stroke-width:3;fill:none}
+.rF{stroke:var(--ac2);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.nl{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.ifc{stroke:currentColor;stroke-width:2.5}
+.ghostL{stroke:var(--sub);stroke-width:2;stroke-dasharray:4 4;fill:none}
+.q1,.q2,.q3,.q1d,.q2d,.q3d{stroke-width:2.4;fill:none}.q1,.q1d{stroke:var(--ac)}.q2,.q2d{stroke:var(--ac2)}.q3,.q3d{stroke:var(--ac3)}.q1d,.q2d,.q3d{stroke-dasharray:5 4;stroke-width:1.8}
+.axis{stroke:currentColor;stroke-width:1.5}.obj{stroke:currentColor;stroke-width:3.5}.img{stroke:var(--bad);stroke-width:3.5}.imgd{stroke:var(--bad);stroke-width:3;stroke-dasharray:6 4}
+.tB{fill:var(--bad);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.arcI{stroke:var(--ac);stroke-width:2;fill:none}.arcR{stroke:var(--ac3);stroke-width:2;fill:none}.arcF{stroke:var(--ac2);stroke-width:2;fill:none}.arcX{stroke:var(--sub);stroke-width:1.6;fill:none}
+@media print{body{background:#fff;color:#000}.nav,.top select,.bar,.tabs{display:none}.slide{display:block!important;break-inside:avoid;page-break-after:always;border:0}.wrap{padding:0}details{display:block}details>summary{display:none}}
+@media (max-width:560px){body{font-size:1.08rem}h1{font-size:1.4rem}.figs .fig{max-width:100%}.tabs button{font-size:.88rem;padding:8px 4px}.top{flex-direction:column;align-items:stretch;gap:4px}.top select{max-width:100%;width:100%}.nav{gap:8px;padding:8px 10px}.nav button{min-width:0;flex:1;padding:12px 6px;font-size:1.05rem;white-space:nowrap}}
+/* 手寫層 */
+.slide{position:relative}
+.ink-cv{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+body.ink .wrap{touch-action:none;padding-bottom:190px}
+.nav button.sm{min-width:0;padding:12px 16px}
+.nav button.inkon{background:var(--ac3);border-color:var(--ac3);color:#fff}
+.inkbar{position:fixed;left:0;right:0;bottom:68px;z-index:6;display:none;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:8px 10px;background:var(--card);border-top:1px solid var(--line)}
+body.ink .inkbar{display:flex}
+.inkbar button{font-family:inherit;font-size:1rem;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.inkbar button.on{border-color:var(--ac);background:var(--hi)}
+.inkbar label{font-size:.95rem;display:flex;align-items:center;gap:4px}
+.inkbar input{width:20px;height:20px}
+@media print{.inkbar{display:none!important}}
+/* 橫放（寬螢幕）：版面加寬，有圖的頁分左右兩欄，圖的高度跟著螢幕高度 */
+@media (orientation:landscape) and (min-width:900px){
+  .wrap{max-width:1280px;padding-top:6px}
+  .tabs{margin:0 0 4px}
+  .bar{margin:4px 0 8px}
+  .slide{padding:12px 22px}
+  .slide>h1{display:inline-block;margin:0 0 4px 10px;vertical-align:middle;font-size:1.5rem}
+  .src{margin:0 0 6px}
+  .slide>.tag{vertical-align:middle}
+  .sbody.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+  .sbody.tq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .sbody.two .fig{max-height:calc(100vh - 280px);margin-top:4px}
+  .sbody.two .figs .fig{max-height:calc(50vh - 110px)}
+  .sbody:not(.two) .stxt{max-width:1000px;margin:0 auto}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+}
+/* 橫放、螢幕比較矮（高解析平板、網址列佔掉高度）：字稍微縮小 */
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){
+  body{font-size:1.08rem;line-height:1.6}
+  .slide>h1{font-size:1.35rem}
+  .tabs button{padding:6px 8px;font-size:.98rem}
+  .q{padding:6px 12px;margin:7px 0}
+  .eq{font-size:1.35rem;margin:4px 0}
+  .sheet{padding:6px 10px;margin:7px 0}
+  .sbody.two .fig{max-height:calc(100vh - 265px)}
+  table.t{font-size:.95rem}table.t th,table.t td{padding:4px 6px}
+  .nav{padding:6px 14px}.nav button{padding:9px 24px}
+  .inkbar{bottom:58px}
+}
+
+/* 手寫顏色圓點 */
+.inkbar .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* ❓ 標記有問題 */
+.mk{font-family:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:99px;padding:1px 12px;cursor:pointer;vertical-align:middle;margin:0 0 4px 8px;line-height:1.6}
+.mk.on{background:#fde7ee;border-color:#e91e63;color:#ad1457;font-weight:700}
+.q .mq{float:right;margin:0 0 4px 8px;padding:0 10px}
+.q.flash{outline:3px solid #e91e63;outline-offset:2px}
+.qpanel{position:fixed;left:0;right:0;bottom:68px;z-index:7;display:none;max-height:55vh;overflow:auto;background:var(--card);border-top:2px solid #e91e63;padding:8px 16px 12px}
+body.qp .qpanel{display:block}
+.qph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qph button{font-family:inherit;font-size:.95rem;margin-left:6px;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qpanel a{display:block;padding:8px 6px;border-bottom:1px dashed var(--line);color:var(--ink);text-decoration:none;cursor:pointer;font-size:1rem}
+.qpanel a.sub{padding-left:26px;color:var(--sub)}
+.qpanel .empty{color:var(--sub);padding:8px 6px;font-size:1rem}
+.nav button.qon{background:#e91e63;border-color:#e91e63;color:#fff}
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){.qpanel{bottom:58px}}
+@media print{.qpanel,.mk{display:none!important}}
+@media (max-width:560px){.nav button.sm{flex:0 0 auto;padding:12px 12px}.nav .lb{display:none}}
+
+/* 觀念釐清選擇題 */
+.mc{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+.mo{font-family:inherit;font-size:1.05rem;text-align:left;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.5}
+.mo b{color:var(--ac3);margin-right:4px}
+.mo.ok{background:#e3f3ea;border-color:#2e8b57}
+.mo.no{background:#fde9e4;border-color:var(--bad)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mo.ok{background:#1f3a2c}:root:not([data-theme=light]) .mo.no{background:#4a2a24}}
+.mcf{font-size:1rem;margin:4px 0}
+.mcf.good{color:#1f6b45}.mcf.bad{color:var(--bad)}.mcf .try{color:var(--sub)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mcf.good{color:#8fe0b4}}
+/* 數學：分數、指數 */
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.25;margin:0 2px}
+.fr>span{padding:0 4px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.fp{font-size:1.6em;vertical-align:middle;line-height:1}
+sup{line-height:0;font-size:.72em}
+.c1{color:var(--ac);font-weight:700}.c2{color:var(--ac3);font-weight:700}.c3{color:var(--ac2);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+.big-eq{font-size:1.6rem;text-align:center;margin:8px 0;line-height:1.9}
+.q .a .ex{font-weight:400;color:var(--ink)}
+
+/* 📌 定義卡 */
+.def{border:2px solid var(--ac);border-left-width:9px;background:var(--hi);border-radius:10px;padding:8px 14px;margin:8px 0 12px}
+.def .dh{font-weight:700;color:var(--ac);margin-bottom:2px}
+.def .eq{margin:4px 0 2px}
+/* 數學講義：圖在 1138×620 這類較窄的橫放畫面會縮到約 0.85 倍，圖內字放大到 18px 才不會低於 15px */
+.fig.big.x18 .lbl,.fig.big.x18 .lbl2{font-size:18px}
+
+/* 上下兩排逐欄對齊（COLS） */
+.cols{max-width:30em;margin:6px auto}
+.cols .cr{display:grid;text-align:center}
+.cols .cr{margin-bottom:8px;column-gap:8px}
+.cols .r1{font-size:1rem;white-space:nowrap}
+.hl{color:var(--ac3);font-weight:700}
+.pa{color:var(--sub);font-weight:400;font-size:.85em}
+
+.txt .rd,.rd{color:#d32f2f;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .txt .rd,:root:not([data-theme=light]) .rd{color:#ff8a80}}
+:root[data-theme=dark] .txt .rd,:root[data-theme=dark] .rd{color:#ff8a80}
+
+/* 全形逗號「，」：微軟正黑體把它放在字格正中間，看起來像乘號「·」。只有這個字改用微軟雅黑（逗號在左下角），其他字不變 */
+@font-face{font-family:"逗號";src:local("Microsoft YaHei"),local("微软雅黑"),local("Noto Sans SC"),local("PingFang SC");unicode-range:U+FF0C}
+body{font-family:"逗號","Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif}
+
+.t.fx{table-layout:fixed}
+.t.fx td,.t.fx th{text-align:center}
+.t.nh td.rl{background:var(--soft);font-weight:700;width:24%}
+
+</style>
+</head>
+<body><nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">📐 數學</a>&nbsp;›&nbsp; 基礎重建 › 國2上 單位換算重建</nav>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="top"><span>單位換算重建講義　長度・面積・體積・質量／時間・速度・光速／濃度・ppm／正比・反比／測量值・最小刻度</span><select id="jump" aria-label="跳到某一頁"></select></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div id="slides"></div>
+</div>
+<div class="inkbar" id="inkbar">
+  <button data-c="pu" class="on"><span class="dot" style="background:#7b1fa2"></span>紫</button><button data-c="pk"><span class="dot" style="background:#e91e63"></span>桃紅</button><button data-c="cy"><span class="dot" style="background:#0097a7"></span>青</button>
+  <button id="inkErase">🧽 橡皮擦</button><button id="inkUndo">↶ 復原</button><button id="inkClear">🗑 清這頁</button><button id="inkSpace">＋ 空白計算區</button>
+  <label><input type="checkbox" id="inkPen"> 只有筆能寫（手指用來捲動）</label>
+</div>
+<div class="qpanel" id="qpanel"><div class="qph"><b>❓ 標記有問題的地方</b><span><button id="qpClear">清除全部</button><button id="qpClose">✕ 關閉</button></span></div><div id="qpList"></div></div>
+<div class="nav"><button id="qpBtn" class="sm">❓<span class="lb"> 問題</span></button><button id="inkBtn" class="sm" aria-pressed="false">✏️<span class="lb"> 手寫</span></button><button id="prev">◀ 上一步</button><button id="next" class="go">下一步 ▶</button></div>
+
+<script>
+(function(){
+/* ===== 數學預習講義共用工具（分數／指數排版、選擇題 mc、表格）===== */
+var UID=0;
+function f1(x){return (Math.round(x*10)/10).toString();}
+function T(x,y,t,cls,anchor){return '<text class="'+(cls||'lbl')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'">'+t+'</text>';}
+function P(b,e){return b+'<sup>'+e+'</sup>';}
+function fr(n,d){return '<span class="fr"><span>'+n+'</span><span>'+d+'</span></span>';}
+function FP(n,d,e,neg){return '<span class="fp">(</span>'+(neg?'−':'')+fr(n,d)+'<span class="fp">)</span>'+(e!==undefined?'<sup>'+e+'</sup>':'');}
+/* 選擇題：選項順序依題目文字固定洗牌（每次開啟順序相同），避免正解總在同一個位置。用 Math.imul 做乘法，h*1103515245 超過 2^53 會失去低位元，洗牌會偏向 */
+function mc(q,o,a,w,exp){
+  var h=7,i,idx=o.map(function(_,k){return k;});
+  for(i=0;i<q.length;i++)h=(h*31+q.charCodeAt(i))>>>0;
+  for(i=idx.length-1;i>0;i--){h=(Math.imul(h,1103515245)+12345)>>>0;var j=(h>>>8)%(i+1),t=idx[i];idx[i]=idx[j];idx[j]=t;}
+  return [q,exp,{o:idx.map(function(k){return o[k];}),w:idx.map(function(k){return w[k];}),a:idx.indexOf(a)}];
+}
+function tbl(head,rows){
+  var h='<table class="t"><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(x){return '<td>'+x+'</td>';}).join('')+'</tr>';});
+  return h+'</table>';
+}
+function eq(h){return '<div class="eq">'+h+'</div>';}
+
+var AI='<span class="ai">💡 補充說明</span> ',RE='<span class="ai re">🔁 類題</span> ';
+
+/* 定義卡：單位、名詞的定義要一眼看到（頁面上方，粗框） */
+function DEF(term,body){return '<div class="def"><div class="dh">📌 定義：'+term+'</div>'+body+'</div>';}
+
+/* 多排、逐欄對齊（每欄置中）：COLS(排1, 排2, …)，每排是字串陣列；不要用全形空格對齊，字寬不同會歪。
+   HL(字)＝重點字上色；PA(字)＝括號裡可省略的部分（灰色） */
+function HL(x){return '<b class="hl">'+x+'</b>';}
+function PA(x){return '<span class="pa">('+x+')</span>';}
+function COLS(){var rs=Array.prototype.slice.call(arguments),n=rs[0].length,st=' style="grid-template-columns:repeat('+n+',minmax(2.6em,1fr))"';
+  return '<div class="eq cols">'+rs.map(function(r,k){return '<div class="cr r'+k+'"'+st+'>'+r.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';}).join('')+'</div>';}
+
+/* RD(字)＝字首字母標紅（k、c、m、μ、n） */
+function RD(x){return '<b class="rd">'+x+'</b>';}
+/* ===== 單位換算重建講義（長度・面積・體積・容量・質量／時間・速度・光速／濃度・ppm／正比・反比／測量值・最小刻度）===== */
+/* 初稿依標準單位定義編寫，之後由使用者拍自修對照；數值已用 Python 驗算 */
+function X(n){return P('10',n);}
+function ARW(id){return '<defs><marker id="'+id+'" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,1 L11,6 L0,11 Z" fill="currentColor"/></marker></defs>';}
+
+/* ===== 圖形 ===== */
+/* 長度換算鏈：km → m → mm → μm → nm，每一格都是 ×1000 */
+function chainFig(){
+  var id='c'+(++UID),W=640,H=178,bw=76,gap=65,x0=0,y0=48,bh=46;
+  var names=['km','m','mm','μm','nm'],zh=['公里','公尺','毫米','微米','奈米'];
+  var s='<svg class="fig big x18" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="公里到奈米，每一格都是乘以一千">'+ARW(id);
+  names.forEach(function(n,i){
+    var x=x0+i*(bw+gap);
+    s+='<rect x="'+x+'" y="'+y0+'" width="'+bw+'" height="'+bh+'" rx="8" fill="var(--soft)" stroke="var(--line)" stroke-width="2"/>';
+    s+='<text x="'+(x+bw/2)+'" y="'+(y0+31)+'" font-size="24" font-weight="700" text-anchor="middle" fill="currentColor">'+n+'</text>';
+    s+=T(x+bw/2,y0+bh+24,zh[i],'lbl','middle');
+    if(i<4){
+      var ax=x+bw+4,bx=x+bw+gap-4;
+      s+='<line x1="'+ax+'" y1="'+(y0+bh/2)+'" x2="'+bx+'" y2="'+(y0+bh/2)+'" stroke="var(--ac)" stroke-width="3" marker-end="url(#'+id+')"/>';
+      s+=T(x+bw+gap/2,y0+bh/2-10,'×1000','lbl2','middle');
+    }
+  });
+  s+=T(W/2,H-22,'由左往右，每走一格：單位變小 1000 倍，同一個量的數字變大 1000 倍','lbl2','middle');
+  s+=T(W/2,H-2,'（cm 夾在 m 和 mm 之間，但 1 cm 只有 10 mm，不在這條 ×1000 的路上）','lbl','middle');
+  return s+'</svg>';
+}
+/* 邊長 1 m 的正方形，用 10×10 大格表示：一大格 10 cm × 10 cm */
+function areaFig(){
+  var W=560,H=330,gx=70,gy=40,cs=22,n=10;
+  var s='<svg class="fig big" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="邊長 1 公尺的正方形，每邊 100 公分，面積 10000 平方公分">';
+  s+='<rect x="'+(gx+cs*3)+'" y="'+(gy+cs*2)+'" width="'+cs+'" height="'+cs+'" fill="var(--ac)" opacity=".55"/>';
+  for(var i=0;i<=n;i++){
+    s+='<line x1="'+gx+'" y1="'+(gy+i*cs)+'" x2="'+(gx+n*cs)+'" y2="'+(gy+i*cs)+'" stroke="var(--line)" stroke-width="1.5"/>';
+    s+='<line x1="'+(gx+i*cs)+'" y1="'+gy+'" x2="'+(gx+i*cs)+'" y2="'+(gy+n*cs)+'" stroke="var(--line)" stroke-width="1.5"/>';
+  }
+  s+='<rect x="'+gx+'" y="'+gy+'" width="'+(n*cs)+'" height="'+(n*cs)+'" fill="none" stroke="currentColor" stroke-width="3"/>';
+  s+=T(gx+n*cs/2,gy-12,'1 m ＝ 100 cm','lbl2','middle');
+  s+='<text class="lbl2" transform="rotate(-90 '+(gx-14)+' '+(gy+n*cs/2)+')" x="'+(gx-14)+'" y="'+(gy+n*cs/2)+'" text-anchor="middle">1 m ＝ 100 cm</text>';
+  s+=T(330,70,'塗色的一小格','lbl2');
+  s+=T(330,94,'10 cm × 10 cm ＝ 100 cm²','lbl');
+  s+=T(330,128,'整個正方形有 10×10','lbl');s+=T(330,150,'＝ 100 個這樣的小格','lbl');
+  s+=T(330,190,'100 × 100 cm²','lbl2');
+  s+=T(330,222,'＝ 10,000 cm²','lbl2');
+  s+=T(330,270,'所以 1 m² ＝ 10,000 cm²','lbl2');
+  return s+'</svg>';
+}
+/* 立方體：每邊 side，標出體積算式；cap 是右側說明行（陣列） */
+function cubeFig(side,cap,full){
+  var W=580,H=300,fx=56,fy=100,s0=150,dx=62,dy=44;
+  var s='<svg class="fig big" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="邊長 '+side+' 的正立方體">';
+  s+='<polygon points="'+fx+','+fy+' '+(fx+dx)+','+(fy-dy)+' '+(fx+s0+dx)+','+(fy-dy)+' '+(fx+s0)+','+fy+'" fill="var(--soft)" stroke="currentColor" stroke-width="2.5"/>';
+  s+='<polygon points="'+(fx+s0)+','+fy+' '+(fx+s0+dx)+','+(fy-dy)+' '+(fx+s0+dx)+','+(fy-dy+s0)+' '+(fx+s0)+','+(fy+s0)+'" fill="var(--soft)" stroke="currentColor" stroke-width="2.5" opacity=".8"/>';
+  s+='<rect x="'+fx+'" y="'+fy+'" width="'+s0+'" height="'+s0+'" fill="var(--card)" stroke="currentColor" stroke-width="2.5"/>';
+  s+=T(fx+s0/2,fy+s0+26,full||side,'lbl2','middle');
+  s+=T(fx-8,fy+s0/2+6,side,'lbl2','end');
+  s+=T(fx+s0+dx+8,fy-dy+s0/2+6,side,'lbl2');
+  cap.forEach(function(c,i){s+=T(352,70+i*34,c[0],c[1]||'lbl','start');});
+  return s+'</svg>';
+}
+/* 太陽→地球：光走的距離與時間 */
+function sunFig(){
+  var id='s'+(++UID),W=620,H=190;
+  var s='<svg class="fig big x18" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="太陽到地球的距離約 1.5 乘以 10 的 8 次方公里，光約走 500 秒">'+ARW(id);
+  s+='<circle cx="52" cy="92" r="40" fill="#f4a300" stroke="currentColor" stroke-width="2"/>';
+  s+='<circle cx="572" cy="92" r="18" fill="var(--ac2)" stroke="currentColor" stroke-width="2"/>';
+  s+=T(52,152,'太陽','lbl2','middle');s+=T(572,132,'地球','lbl2','middle');
+  s+='<line x1="102" y1="92" x2="544" y2="92" stroke="var(--ac)" stroke-width="3.5" marker-end="url(#'+id+')"/>';
+  s+=T(322,70,'距離 1.5×10⁸ km','lbl2','middle');
+  s+=T(322,122,'光速 3×10⁵ km/s','lbl2','middle');
+  s+=T(322,170,'時間 ＝ 距離 ÷ 速度 ＝ 500 s ≈ 8.3 min','lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 長度單位指數階梯：x 位置依指數等比例排列，兩個單位之間隔幾格，就是差 10 的幾次方 */
+function ladderFig(i0,i1,msg){
+  var id='l'+(++UID),W=640,H=240,U=[['km','公里',3],['m','公尺',0],['cm','公分',-2],['mm','毫米',-3],['μm','微米',-6],['nm','奈米',-9]];
+  function X0(e){return 44+(3-e)*46;}
+  var s='<svg class="fig big x18" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="km、m、cm、mm、μm、nm 的指數分別是 3、0、負2、負3、負6、負9">'+ARW(id);
+  s+='<line x1="20" y1="124" x2="'+(W-14)+'" y2="124" stroke="var(--line)" stroke-width="2"/>';
+  for(var e=3;e>=-9;e--)s+='<line x1="'+X0(e)+'" y1="118" x2="'+X0(e)+'" y2="130" stroke="var(--line)" stroke-width="2"/>';
+  U.forEach(function(u,k){
+    var x=X0(u[2]),on=(k===i0||k===i1);
+    s+='<rect x="'+(x-21)+'" y="78" width="42" height="34" rx="6" fill="'+(on?'var(--ac)':'var(--soft)')+'" fill-opacity="'+(on?'.35':'1')+'" stroke="'+(on?'var(--ac)':'var(--line)')+'" stroke-width="2"/>';
+    s+='<text x="'+x+'" y="102" font-size="20" font-weight="700" text-anchor="middle" fill="currentColor">'+u[0]+'</text>';
+    s+=T(x,150,String(u[2]).replace('-','−'),'lbl2','middle');
+    s+=T(x,172,u[1],'lbl','middle');
+  });
+  if(i0!=null&&i1!=null){
+    var a=X0(U[i0][2]),b=X0(U[i1][2]),m=(a+b)/2;
+    s+='<path d="M'+a+' 72 Q'+m+' 10 '+b+' 72" fill="none" stroke="var(--ac)" stroke-width="3" marker-end="url(#'+id+')"/>';
+    s+=T(m,24,msg,'lbl2','middle');
+  }
+  s+=T(W/2,H-32,'方格下面的數字 n：1 個這種單位 ＝ 10ⁿ m','lbl2','middle');
+  s+=T(W/2,H-8,'兩個單位之間隔幾格，指數就差幾','lbl','middle');
+  return s+'</svg>';
+}
+
+/* ===== 投影片資料 ===== */
+var DECKS={A:{name:'長度・面積・體積・容量・質量',SL:[]},B:{name:'時間・速度・光速',SL:[]},C:{name:'濃度・ppm',SL:[]},D:{name:'正比・反比',SL:[]},E:{name:'測量值・最小刻度',SL:[]}};
+function add(d,o){DECKS[d].SL.push(o);}
+var A=function(o){add('A',o);},B=function(o){add('B',o);},C=function(o){add('C',o);},D=function(o){add('D',o);},E=function(o){add('E',o);};
+var LEGEND='<b>頁面上的標記：</b><ul><li>📖 <b>出處</b>：這一頁的內容來自自修哪一頁（自修＝你拍的「基本測量」章 p.16～44、第 2 章 p.69～70、第 4 章 p.151～152）。標「網路查詢整理」的，是我上網查國中理化教學資料後編的（例如速率，國三上才教），等自修拍到再對照。標「補習班」的，是你拍的補習班講義（張羽自然）。標「初稿」的，是我依標準單位定義編的</li><li>📌 <b>定義</b>：每個單位、名詞的「定義」都用粗框框起來。換算算錯，常常是因為定義沒讀熟，先讀框框再算</li><li>'+AI+'：額外幫你理解的比喻、推導或整理</li><li>'+RE+'：換了數字的練習題</li><li>🎯 <b>觀念釐清</b>：選擇題。點一個選項，馬上知道對不對；選項都是最常見的錯誤想法，答錯會告訴你錯在哪裡，並自動標上 ❓</li><li>❓ <b>有問題</b>：看不懂的頁按標題旁的「❓ 這頁有問題」；下方「❓ 問題」按鈕會列出全部（包含答錯的題），點一下就跳過去</li><li>✏️ <b>手寫</b>：可以在頁面上直接寫字、算題</li></ul>';
+var SRC0='初稿：標準單位定義（自修「基本測量」章沒有這部分，待對照）';
+
+/* ================= 主題 A：長度・面積・體積・容量・質量 ================= */
+A({t:'單位換算：只用一個方法',tag:'今天的目標',
+ text:'以前背的口訣（「補兩個 0」「長一面二體三」）背了又忘，原因是<b>從來沒看過那些 0 是從哪裡來的</b>。這次不背，改用一個方法，每一題都一樣：<div class="eq">1 個單位 ＝ '+X('n')+' × 基本單位</div>把它代進去算，0 的個數自己會跑出來。<br>用到你剛學完的<b>指數</b>（上一份「指數重建講義」）：面積、體積的換算，其實就是「次方的次方」。<br><br>三大塊（上方分頁切換）：<ol><li><b>長度・面積・體積・容量・質量</b>（已對照自修 1-1、1-2，p.16～44）</li><li><b>時間・速度・光速</b>（初稿，自修這章沒有，待對照）</li><li><b>濃度・ppm</b>（初稿，自修這章沒有，待對照）</li></ol>每個觀念的節奏：<b>先看懂 → 想一想 → 🎯 觀念釐清（選擇題）</b>。<br><br>'+LEGEND});
+
+A({t:'先複習：10 的次方就是小數點跳格',tag:'複習',src:'上一份「指數重建講義」1-4（自修 p.50～58）',
+ text:'換算會一直用到 10 的次方，先確認會讀：'+tbl(['寫法','念法','算出來','小數點'],[[X('3'),'10 的三次方','1000','從 1 的右邊，往右跳 3 格'],[X('2'),'10 的二次方','100','往右跳 2 格'],[X('1'),'10 的一次方','10','往右跳 1 格'],[X('0'),'10 的零次方','1','不跳'],[X('−1'),'10 的負一次方','0.1','往左跳 1 格'],[X('−2'),'10 的負二次方','0.01','往左跳 2 格'],[X('−3'),'10 的負三次方','0.001','往左跳 3 格'],[X('−6'),'10 的負六次方','0.000001','往左跳 6 格']])+'<ul><li>指數是<b>正的</b>：數字變大，小數點往<b>右</b>跳</li><li>指數是<b>負的</b>：數字變小，小數點往<b>左</b>跳</li></ul>',
+ qs:[mc('10⁻³ 等於多少？',['−1000','0.001','0.0001','−0.001'],1,['負指數不是負數。10⁻³ 是「1000 分之一」，是正的 0.001。','','小數點只往左跳 3 格：0.001（1 的前面共 3 個 0，含個位的 0）。0.0001 是 10⁻⁴。','負指數不會讓數字變成負的，10⁻³ 還是正數。'],'10⁻³＝1÷10³＝1÷1000＝0.001。'),
+  mc('4.5×10³ 等於多少？',['45','450','4500','0.0045'],2,['只往右跳了 1 格。10³ 要跳 3 格。','只往右跳了 2 格。10³ 要跳 3 格。','','這是往左跳了。正指數 10³ 數字變大，要往右跳。'],'4.5 往右跳 3 格：4.5 → 45 → 450 → 4500。'),
+  ['10⁶ 是 1 的後面幾個 0？','10⁶＝1,000,000，1 的後面有 6 個 0。（和指數是幾，0 就有幾個）']]});
+
+A({t:'公制字首：k、c、m、μ、n 各是多少倍',tag:'重點',src:'自修 p.17 重點2 ④＋你知道嗎；p.40 智慧櫥窗（10 的倍數名稱）',
+ text:'長度的 km、cm、mm、μm、nm，質量的 kg、mg，容量的 mL，名字都是「<b>字首 ＋ 基本單位</b>」。字首記一次，三種單位通用：'+tbl(['字首','英文','符號','倍數（念法）','例子'],[['千','kilo','k','10³（10 的三次方）＝ 1000','1 km ＝ 10³ m，1 kg ＝ 10³ g'],['百','hecto','h','10²（10 的二次方）＝ 100','很少用（自修 p.40）'],['十','deca','da','10¹（10 的一次方）＝ 10','很少用（自修 p.40）'],['（個）','','','10⁰（10 的零次方）＝ 1','m（公尺）、g（公克）、L（公升）'],['分','deci','d','10⁻¹（10 的負一次方）＝ 0.1','1 dm ＝ 10⁻¹ m'],['厘','centi','c','10⁻²（10 的負二次方）＝ 0.01','1 cm ＝ 10⁻² m'],['毫','milli','m','10⁻³（10 的負三次方）＝ 0.001','1 mm ＝ 10⁻³ m，1 mg ＝ 10⁻³ g，1 mL ＝ 10⁻³ L'],['微','micro','μ','10⁻⁶（10 的負六次方）','1 μm ＝ 10⁻⁶ m'],['奈','nano','n','10⁻⁹（10 的負九次方）','1 nm ＝ 10⁻⁹ m']])+'<br>自修 p.17：米的英文是 meter，簡寫 m；kilo 是「千倍」，所以 km 是千米（公里）；milli 是「千分之一」，所以 mm 是毫米。<b>奈米是 1 公尺的十億分之一</b>。<br>'+AI+'注意：<b>字母 m 有兩種意思</b>。單獨寫 m 是「公尺」；放在別的字母前面（mm、mg、mL）是「毫＝10⁻³」。',
+ qs:[['1 km、1 cm、1 mm 各等於幾 m？請用 10 的次方寫。','1 km＝10³ m；1 cm＝10⁻² m；1 mm＝10⁻³ m。'],['mg 裡的 m 是什麼意思？','m 是字首「毫」＝10⁻³，所以 1 mg＝10⁻³ g（千分之一公克）。'],['奈米是公尺的幾分之一？','十億分之一。10⁻⁹ m＝1 nm。']]});
+
+A({t:'自修的長度單位表',tag:'重點',src:'自修 p.17 重點2 ④（常用的長度國際單位）、p.17 觀念掃描',
+ text:'自修把常用的長度單位整理成一張表。右邊兩欄是「這個單位等於多少 m／多少 mm」：'+tbl(['單位','符號','與米換算','與毫米換算'],[['千米（公里）','km','10³ m','10⁶ mm'],['米（公尺）','m','1 m','10³ mm'],['分米（公寸）','dm','10⁻¹ m','10² mm'],['厘米（公分）','cm','10⁻² m','10 mm'],['毫米','mm','10⁻³ m','1 mm'],['微米','μm','10⁻⁶ m','10⁻³ mm'],['奈米','nm','10⁻⁹ m','10⁻⁶ mm']])+'奈米科技研究的是 1～100 奈米大小的東西。<br>'+AI+'這張表不用背：每一格都能用上一頁的字首倍數算出來。例如 1 km ＝ 10³ m ＝ 10³ × 10³ mm ＝ 10⁶ mm（同底數相乘，指數相加）。',
+ qs:[['1 dm 是幾 cm？','1 dm＝10⁻¹ m，1 cm＝10⁻² m，指數相減：（−1）−（−2）＝1，所以 1 dm＝10 cm。（用表：10² mm ÷ 10 mm＝10）'],['1 μm 是幾 mm？','表上寫 10⁻³ mm，也就是 0.001 mm。'],['1 km 是幾 mm？為什麼是 10⁶？','1 km＝10³ m，1 m＝10³ mm。指數相加：3＋3＝6，所以是 10⁶ mm。']]});
+
+A({t:'補習班的長度表：多了 hm、dam，還有手寫的順口溜',tag:'補充',src:'補習班講義（張羽自然）p.15「B. 長度的單位」；順口溜是補習班講義 p.20 最下面的手寫字，不是自修或標準記法，我看不出是誰寫的',
+ text:'補習班的表比自修多了兩個很少用的單位。名字都是「公」開頭，要看後面一個字：<b>里 ＞ 引 ＞ 丈 ＞ 尺 ＞ 寸 ＞ 分</b>。'+tbl(['中文名','符號','與 m 的關係','提醒'],[['公里','km','10³ m','最大'],['公引','hm','10² m','很少用'],['公丈','dam','10 m','很少用（推算最小刻度會遇到）'],['公尺','m','1 m','基本單位'],['公寸（分米）','dm','10⁻¹ m',''],['公分（厘米）','cm','10⁻² m',''],['公釐（毫米）','mm','10⁻³ m',''],['微米','μm','10⁻⁶ m','你寫：細胞'],['奈米','nm','10⁻⁹ m','你寫：分子']])+'補習班講義 p.20 最下面有一行手寫的順口溜「尺 寸 公 毫 微 奈」（不是自修或標準記法，我看不出是誰寫的）。其中的「公」就是公分，容易和「公里」弄混，所以這裡<b>改成「分」</b>，一看就知道是 10⁻²：'+COLS([HL('尺'),HL('寸'),HL('分'),HL('毫'),HL('微'),HL('奈')],[PA('公')+HL('尺'),PA('公')+HL('寸'),PA('公')+HL('分'),HL('毫')+PA('米'),HL('微')+PA('米'),HL('奈')+PA('米')],['m','dm','cm','mm','μm','nm'],['1','10⁻¹','10⁻²','10⁻³','10⁻⁶','10⁻⁹'])+'上色的字是順口溜裡要記的那個字，灰色括號是可以省略的字（公尺 ＝ 尺，公分 ＝ 分，毫米 ＝ 毫）。這個很好記：<b>尺（m）＝ 1</b>，後面五個一個一個往下。再把最前面的 km（10³）加上去，就是完整的一排。<br>'+AI+'「公」不一定是公里：公分 cm 也有「公」字，看後面的「分」才知道是 10⁻²。',
+ qs:[['1 dam、1 hm 各是幾 m？','dam＝10 m；hm＝100 m。'],['「公分」和「公里」差幾倍？用指數算。','公里 3，公分 −2，3−（−2）＝5，差 10⁵ 倍。'],['順口溜「尺寸分毫微奈」裡，哪一個是 10⁻⁶？','微（μm）。']]});
+
+A({t:'六個長度單位：記一排指數就好',tag:'重點',src:'本講義整理；指數取自自修 p.17 單位表，單位順序大→小',
+ fig:ladderFig(),
+ text:'長度只要記住這一排（由大到小）：'+COLS([RD('k')+'m','m',RD('c')+'m',RD('m')+'m',RD('μ')+'m',RD('n')+'m'],['10³','10⁰','10⁻²','10⁻³','10⁻⁶','10⁻⁹'])+'紅字是字首（k 千、c 厘、m 毫、μ 微、n 奈）。每一格就是「1 個這種單位等於 10 的幾次方 m」。<br>怎麼記：<ul><li>km 是 10³、m 是 10⁰（基本，＝1）</li><li>m 後面的四個：cm＝−2，mm＝−3，μm＝−6，nm＝−9</li><li>'+AI+'除了 cm 以外，其他都是 <b>3 的倍數</b>（3、−3、−6、−9）。cm 是「夾在中間」的例外，和 mm 只差 1 格。</li></ul>圖上方格的位置是照指數排的：<b>兩個單位之間隔幾格，就是差 10 的幾次方</b>。例如 mm 到 μm 隔 3 格，所以差 10³＝1000 倍。',
+ qs:[['用指數寫出 km、cm、mm、μm、nm（單位是 m）。','km＝10³ m；cm＝10⁻² m；mm＝10⁻³ m；μm＝10⁻⁶ m；nm＝10⁻⁹ m。'],['cm 和 mm 之間隔幾格？μm 和 nm 之間呢？','cm（−2）和 mm（−3）隔 1 格，差 10 倍。μm（−6）和 nm（−9）隔 3 格，差 10³＝1000 倍。'],['哪一個單位是「3 的倍數」的例外？','cm（−2）。']]});
+
+A({t:'用大小記單位：每個單位大概有多大',tag:'補充',src:'自編整理（大小是約略值，方便記憶）；奈米科技 1～100 nm 見自修 p.17',
+ text:AI+'數字記不住時，先想「這個單位大概是多大」，換算的方向就不容易錯：'+tbl(['單位','指數','大約有多大（約略值）'],[['km 公里','3','步行約 10～15 分鐘的路'],['m 公尺','0','一大步、一扇門的寬度（約 0.9 m）'],['cm 公分','−2','指甲的寬度（約 1 cm）'],['mm 毫米','−3','一張信用卡的厚度（約 0.8 mm）'],['μm 微米','−6','頭髮的粗細約 50～100 μm；細菌約 1～10 μm'],['nm 奈米','−9','病毒約 100 nm（自修：奈米科技研究 1～100 nm）']])+'<br><b>判斷方向的小檢查：</b>用「小的單位」去量同一段長度，需要的數量一定比較多，所以<b>換成小單位，數字要變大；換成大單位，數字要變小</b>。就像把 1 張千元鈔換成百元鈔，張數會變多（變成 10 張）。',
+ qs:[['頭髮約 80 μm，比 1 mm 大還是小？','80 μm＝0.08 mm，比 1 mm 小。'],['3 cm 換成 mm，數字會變大還是變小？為什麼？','變大。mm 是比較小的單位，要用比較多個 mm 才湊得出 3 cm：30 mm。'],['5000 m 換成 km，數字會變大還是變小？','變小。km 是比較大的單位，只需要 5 個 km：5 km。']]});
+
+A({t:'一步到位：兩個指數相減',tag:'重點',src:'本講義整理（依自修 p.17 單位表）',
+ fig:ladderFig(0,2,'3 −（−2）＝ 5 格，所以乘 10⁵'),
+ text:'<ol><li>從階梯圖找「起點單位」和「終點單位」的指數</li><li><b>起點指數 − 終點指數 ＝ k</b></li><li>原來的數字 × 10<sup>k</sup>（k 是正的：小數點往右跳 k 格；k 是負的：往左跳）</li></ol>例：3.2 km 換成 cm：3 −（−2）＝ 5，3.2 × 10⁵ ＝ <b>320,000 cm</b>。<br>例：450 mm 換成 m：（−3）− 0 ＝ −3，450 × 10⁻³ ＝ <b>0.45 m</b>。<br>例：25 μm 換成 mm：（−6）−（−3）＝ −3，25 × 10⁻³ ＝ <b>0.025 mm</b>。<br>例：0.2 mm 換成 nm：（−3）−（−9）＝ 6，0.2 × 10⁶ ＝ <b>200,000 nm</b>。<br>算完用上一頁的小檢查：換成<b>小單位</b>，數字有沒有<b>變大</b>？',
+ qs:[['1 μm 是幾 nm？','（−6）−（−9）＝3，10³＝1000 nm。'],['5 cm 是幾 mm？','（−2）−（−3）＝1，5×10＝50 mm。'],['2000 m 是幾 km？','0 − 3 ＝ −3，2000×10⁻³＝2 km。']]});
+
+A({t:'六個單位互換總表：減出來的，不用背',tag:'補充',src:'本講義整理（把「起點指數 − 終點指數」全部算出來）',
+ text:'每一格是「1 個左邊的單位 ＝ 10 的幾次方 個上面的單位」：'+(function(){
+   var U=[['km',3],['m',0],['cm',-2],['mm',-3],['μm',-6],['nm',-9]];
+   function f(n){return n===0?'1':X(String(n).replace('-','−'));}
+   return tbl(['1 個 ↓　換成 →'].concat(U.map(function(u){return u[0];})),U.map(function(r){return ['1 '+r[0]].concat(U.map(function(c){return f(r[1]-c[1]);}));}));
+ })()+'<br>看一行就懂規則：例如 1 m 那一行，換成 km 是 10⁻³（數字變小），換成 nm 是 10⁹（數字變大）。<br>'+AI+'表是對角線對稱的：1 km＝10⁶ mm，反過來 1 mm＝10⁻⁶ km。這張表不是要你背，是用來<b>檢查</b>自己算的對不對。',
+ qs:[['1 mm 換成 km 是 10 的幾次方？','（−3）−3 ＝ −6，所以 1 mm＝10⁻⁶ km。'],['1 μm 換成 cm 是 10 的幾次方？','（−6）−（−2）＝ −4，1 μm＝10⁻⁴ cm。']]});
+
+A({t:'代入法：三步驟換算',tag:'重點',src:'自修 p.17 單位表的用法（「代入法」三步驟是本講義的整理）',
+ text:'<ol><li><b>寫出</b>「1 個這種單位 ＝ '+X('n')+' × 基本單位」</li><li><b>把題目的數字乘進去</b></li><li><b>小數點跳格</b>，寫出答案</li></ol>例 1：3.5 km 是幾 m？<br>1 km ＝ '+X('3')+' m<br>3.5 km ＝ 3.5 × '+X('3')+' m ＝ <b>3500 m</b>　（小數點往右跳 3 格）<br><br>例 2：45 cm 是幾 m？<br>1 cm ＝ '+X('−2')+' m<br>45 cm ＝ 45 × '+X('−2')+' m ＝ <b>0.45 m</b>　（小數點往左跳 2 格）',
+ qs:[['0.6 km 是幾 m？','1 km＝10³ m。0.6×10³＝600 m。'],['8 mm 是幾 m？','1 mm＝10⁻³ m。8×10⁻³＝0.008 m。']]});
+
+A({t:'兩個都不是基本單位：指數相加、相減',tag:'重點',src:'自修 p.17「與毫米換算」欄的算法（本講義整理）',
+ text:'例：7 mm 是幾 cm？<br>1 mm ＝ '+X('−3')+' m，1 cm ＝ '+X('−2')+' m<br>同樣都用 m 當中間人：7 mm ＝ 7 × '+X('−3')+' m，再除以 1 cm 的 '+X('−2')+' m。<br>同底數相除，指數相減：（−3）−（−2）＝ −1<br>7 mm ＝ 7 × '+X('−1')+' cm ＝ <b>0.7 cm</b><br><br>例：1 km 是幾 cm？<br>1 km ＝ '+X('3')+' m，1 m ＝ '+X('2')+' cm<br>同底數相乘，指數相加：3 ＋ 2 ＝ 5<br>1 km ＝ <b>'+X('5')+' cm</b> ＝ 100,000 cm',
+ qs:[['1 cm 是幾 mm？用指數說明。','1 cm＝10⁻² m，1 mm＝10⁻³ m。指數相減：（−2）−（−3）＝1。所以 1 cm＝10¹ mm＝10 mm。'],['2 m 是幾 mm？','1 m＝10³ mm（因為 1 mm＝10⁻³ m）。2×10³＝2000 mm。']]});
+
+A({t:'🎯 觀念釐清①：長度換算',tag:'觀念釐清',src:'題目自編，依自修 p.17 單位表',
+ qs:[
+  mc('2.5 km 等於多少 m？',['2500 m','250 m','0.0025 m','25000 m'],0,['','只跳了 1 格。1 km＝10³ m，要跳 3 格。','方向反了。km 是大單位，換成小單位 m 數字要變大。','跳了 4 格，多跳了。1 km＝10³ m，跳 3 格。'],'1 km＝10³ m，2.5×10³＝2500 m。'),
+  mc('35 mm 等於多少 cm？',['3.5 cm','350 cm','0.35 cm','35000 cm'],0,['','方向反了。mm 是小單位，換成較大的 cm，數字要變小。','只差 10 倍，但跳了 2 格。1 cm＝10 mm，只要跳 1 格。','35000 是 1 m 換 mm 的倍數（10³），而 cm 和 mm 之間只差 10 倍。'],'1 mm＝10⁻¹ cm，35×10⁻¹＝3.5 cm。'),
+  mc('0.8 m 等於多少 cm？',['80 cm','8 cm','0.008 cm','800 cm'],0,['','只差 10 倍是 cm↔mm。m 和 cm 差 10² 倍（100 倍），要跳 2 格。','方向反了。m 是大單位，換成小單位 cm，數字要變大。','跳了 3 格，多跳 1 格。1 m＝10² cm，跳 2 格。'],'1 m＝10² cm，0.8×10²＝80 cm。'),
+  mc('1 km 等於多少 cm？',['10⁵ cm（100,000）','10³ cm（1000）','10⁶ cm（1,000,000）','10² cm（100）'],0,['','這只是 km→m（10³）。還要再從 m 換成 cm（10²），指數相加：3＋2＝5。','多算了一次。km→m 是 3，m→cm 是 2，3＋2＝5，不是 6。','這只是 m→cm（10²），還沒算 km→m（10³）。']  ,'km→m 是 10³，m→cm 是 10²，指數相加 3＋2＝5。所以 1 km＝10⁵ cm。'),
+  mc('1 dm（分米）等於多少 cm？',['10 cm','100 cm','1 cm','0.1 cm'],0,['','100 是 1 m 和 cm 的關係。dm 是 10⁻¹ m，cm 是 10⁻² m，只差 10 倍。','dm 和 cm 是不同的單位，數字不會一樣。dm 比 cm 大。','方向反了。dm 比 cm 大，換成較小的 cm 數字要變大。'],'dm＝10⁻¹ m，cm＝10⁻² m，指數相減：（−1）−（−2）＝1，所以 1 dm＝10 cm。')]});
+
+
+
+A({t:'同一個長度，不同單位的寫法',tag:'重點',src:'自修 p.18 重點3 ②③、p.19 例2「測量結果」列；寫法提醒是本講義整理',
+ text:'自修 p.18：同一個測量結果，選的單位不同，數值也不同。例：小藍身高 160.5 公分，也可以寫成 1.605 公尺（因為 1 公尺＝100 公分）。<br>自修 p.19 例2 裡的換算：<ul><li>1.8 公分 ＝ 1.8 × 10⁻² 公尺 ＝ <b>0.018 公尺</b></li><li>17.6 毫米 ＝ <b>1.76 公分</b></li><li>14.0 毫米 ＝ <b>1.40 公分</b></li></ul>'+AI+'注意最後一個：14.0 mm 換成 cm 要寫 <b>1.40</b> cm，<b>不能寫成 1.4 cm</b>。換算只是「小數點跳格」，數字本身（包含最後面的 0）要照抄。最後那一位是量出來的估計數值（自修 p.18 重點4），省略掉就變成另一把尺量出來的結果了。',
+ qs:[['17.6 mm 是幾 cm？','1 mm＝10⁻¹ cm。17.6×10⁻¹＝1.76 cm。'],
+  mc('14.0 mm 換成 cm，哪一個寫法才對？',['1.40 cm','1.4 cm','14 cm','140 cm'],0,['','數值一樣，但少寫了最後一個 0。14.0 的那個 0 是量出來的估計數值，換算後要保留，寫 1.40。','方向反了。mm 換成較大的 cm，數字要變小。','方向反了，而且多跳了。'],'1 mm＝10⁻¹ cm，小數點往左跳 1 格：14.0 → 1.40。最後的 0 要保留。'),
+  mc('1.8 公分等於多少公尺？',['0.018 公尺','0.18 公尺','180 公尺','0.0018 公尺'],0,['','只往左跳 1 格。1 公分＝10⁻² 公尺，要跳 2 格。','方向反了。公分比公尺小，換成公尺數字要變小。','往左跳了 3 格，多跳 1 格。'],'1.8×10⁻²＝0.018 公尺。'),
+  mc('小藍身高 1.605 公尺，等於多少公分？',['160.5 公分','16.05 公分','1605 公分','0.01605 公分'],0,['','只往右跳 1 格。1 公尺＝10² 公分，要跳 2 格。','往右跳了 3 格，多跳 1 格。','方向反了。公尺比公分大，換成公分數字要變大。'],'1.605×10²＝160.5 公分。')]});
+
+A({t:'μm、nm：每一格是 ×1000，不是 ×10',tag:'重點',src:'自修 p.17 單位表（本頁的 ×1000 鏈是本講義的整理）',
+ fig:chainFig(),
+ text:'1 mm ＝ '+X('3')+' μm，1 μm ＝ '+X('3')+' nm　（因為 μm＝'+X('−6')+' m、mm＝'+X('−3')+' m、nm＝'+X('−9')+' m，相鄰兩個都差 3 個指數）<br>例：0.5 μm 是幾 nm？　0.5 × '+X('3')+' ＝ <b>500 nm</b>；例：2500 nm 是幾 μm？　2500 × '+X('−3')+' ＝ <b>2.5 μm</b>',
+ qs:[['3 mm 是幾 μm？','1 mm＝10³ μm，3×10³＝3000 μm。'],['400 nm 是幾 μm？','1 nm＝10⁻³ μm，400×10⁻³＝0.4 μm。']]});
+
+A({t:'🎯 觀念釐清②：μm、nm',tag:'觀念釐清',src:'題目自編，依自修 p.17 單位表',
+ qs:[
+  mc('1 mm 等於多少 μm？',['1000 μm','10 μm','100 μm','1,000,000 μm'],0,['','10 倍是 cm 和 mm 的關係。mm 和 μm 之間差 3 個指數（10³）。','100 倍是 m 和 cm 的關係。','1,000,000（10⁶）是 1 m 換成 μm。1 mm 換成 μm 只差 10³。'],'mm＝10⁻³ m，μm＝10⁻⁶ m，指數差 3，所以 1 mm＝10³ μm。'),
+  mc('某病毒直徑約 100 nm，等於多少 μm？',['0.1 μm','100,000 μm','10 μm','1000 μm'],0,['','方向反了。nm 比 μm 小，換成 μm 數字要變小，不是變大。','只跳了 1 格往右。要往左跳 3 格。','數字變大了。nm 換成 μm，數字要變小。'],'1 nm＝10⁻³ μm，100×10⁻³＝0.1 μm。'),
+  mc('頭髮直徑約 80 μm，等於多少 mm？',['0.08 mm','80,000 mm','0.8 mm','8 mm'],0,['','方向反了。μm 是小單位，換成較大的 mm，數字要變小。','只往左跳 1 格。μm→mm 差 10³，要跳 3 格。','數字變大了，且只跳 1 格。要往左跳 3 格。'],'1 μm＝10⁻³ mm，80×10⁻³＝0.08 mm。'),
+  mc('1 m 等於多少 nm？',['10⁹ nm','10⁶ nm','10³ nm','10¹² nm'],0,['','10⁶ 是 1 m 換成 μm。','10³ 是 1 m 換成 mm。','多算了。nm＝10⁻⁹ m，所以 1 m＝10⁹ nm。']  ,'nm＝10⁻⁹ m，所以 1 m 要 10⁹ 個 nm。')]});
+
+A({t:'🎯 長度換算練習①：六個單位混著來',tag:'觀念釐清',src:'題目自編，依自修 p.17 單位表；解說用「指數相減」',
+ qs:[
+  mc('3.2 km 等於多少 cm？',['320,000 cm','3200 cm','32,000 cm','0.000032 cm'],0,['','3200 是只換成 m（3.2 km＝3200 m），還沒換成 cm。','少乘了一個 10。3−（−2）＝5，要跳 5 格。','方向反了。km 換成小單位 cm，數字要變大。'],'3 −（−2）＝5。3.2×10⁵＝320,000 cm。'),
+  mc('450 mm 等於多少 m？',['0.45 m','4.5 m','45 m','450,000 m'],0,['','只跳了 2 格（那是換成 cm 的算法）。mm→m 要跳 3 格。','這是換成 cm 的數字（45 cm），不是 m。','方向反了。mm 換成大單位 m，數字要變小。'],'（−3）− 0＝−3。450×10⁻³＝0.45 m。'),
+  mc('25 μm 等於多少 mm？',['0.025 mm','25,000 mm','0.25 mm','0.000025 mm'],0,['','方向反了。μm 換成較大的 mm，數字要變小。','只跳 1 格。μm→mm 要跳 3 格。','這是換成 m 的答案（25 μm＝0.000025 m），題目問的是 mm。'],'（−6）−（−3）＝−3。25×10⁻³＝0.025 mm。'),
+  mc('0.2 mm 等於多少 nm？',['200,000 nm','200 nm','2,000,000 nm','0.0000002 nm'],0,['','這是換成 μm 的答案（0.2 mm＝200 μm），還要再乘 1000 才是 nm。','多跳了 1 格。（−3）−（−9）＝6，要跳 6 格。','方向反了。mm 換成更小的 nm，數字要變大。'],'（−3）−（−9）＝6。0.2×10⁶＝200,000 nm。'),
+  mc('6000 nm 等於多少 μm？',['6 μm','6,000,000 μm','0.006 μm','60 μm'],0,['','方向反了。nm 換成較大的 μm，數字要變小。','跳太多格。nm→μm 只差 3 格。','這是用了 100 倍。μm 和 nm 之間每格是 ×1000，不是 ×100。'],'（−9）−（−6）＝−3。6000×10⁻³＝6 μm。')
+ ]});
+
+A({t:'🎯 長度換算練習②：換算、排序、比大小',tag:'觀念釐清',src:'題目自編，依自修 p.17 單位表；第 5 題的頭髮、病毒大小為約略值',
+ qs:[
+  mc('2.5 m 等於多少 mm？',['2500 mm','250 mm','25,000 mm','0.0025 mm'],0,['','這是換成 cm 的答案（250 cm）。m→mm 要跳 3 格。','多跳了 1 格。','方向反了。m 換成小單位 mm，數字要變大。'],'0 −（−3）＝3。2.5×10³＝2500 mm。'),
+  mc('80 cm 等於多少 km？',['0.0008 km','0.8 km','0.008 km','8,000,000 km'],0,['','0.8 是換成 m 的數字（80 cm＝0.8 m）。換成 km 還要再跳 3 格。','只跳了 4 格。（−2）− 3＝−5，要跳 5 格。','方向反了。cm 換成大單位 km，數字要變小。'],'（−2）− 3＝−5。80×10⁻⁵＝0.0008 km。'),
+  mc('0.5 mm、400 μm、0.0003 m，由大到小排列，哪一個正確？',['0.5 mm、400 μm、0.0003 m','400 μm、0.5 mm、0.0003 m','0.0003 m、400 μm、0.5 mm','0.0003 m、0.5 mm、400 μm'],0,['','單位不同，不能直接比數字。全部換成 μm：0.5 mm＝500 μm，400 μm，0.0003 m＝300 μm。','m 是大單位，但 0.0003 m 只有 300 μm，是三個裡最小的。','0.0003 m＝300 μm，比 400 μm 小，要排在最後。'],'全部換成 μm：0.5 mm＝500 μm；400 μm；0.0003 m＝300 μm。500＞400＞300。'),
+  mc('下列哪一個「由大到小」的順序正確？',['km、m、cm、mm、μm、nm','km、m、mm、cm、μm、nm','km、m、cm、mm、nm、μm','m、km、cm、mm、μm、nm'],0,['','1 cm＝10 mm，cm 比 mm 大，要排在 mm 前面。','1 μm＝1000 nm，μm 比 nm 大，要排在 nm 前面。','1 km＝1000 m，km 比 m 大，要排在最前面。'],'指數由大到小：km 3、m 0、cm −2、mm −3、μm −6、nm −9。'),
+  mc('頭髮粗約 80 μm，某種病毒約 100 nm。頭髮約是病毒的幾倍？',['約 800 倍','約 0.8 倍','約 80,000 倍','約 8 倍'],0,['','單位不同，不能直接 80÷100。要先換成同一個單位。','80 μm＝80,000 nm 是換算，還要再除以 100 才是倍數。','差太少了。1 μm＝1000 nm，不是 10 nm。'],'80 μm＝80,000 nm。80,000÷100＝800 倍。')
+ ]});
+
+A({t:'面積：為什麼不是 ×10、×100？',tag:'重點',src:'自修 p.20 重點7 面積的測量【課外補充】；圖和說明是本講義整理',
+ fig:areaFig(),
+ text:'長度 1 m ＝ 100 cm，這個「100」是<b>一條線</b>上有 100 個 1 cm。<br>面積是一整片：每排 100 個 1 cm²，有 100 排 → <b>100 × 100 ＝ 10,000</b> 個 1 cm²。<br>所以 1 m² ＝ 10,000 cm²。<br>'+AI+'圖中把正方形分成 10×10 的大格，每一大格是 10 cm × 10 cm ＝ 100 cm²，一共 100 格。',
+ qs:[['1 m² 為什麼是 10,000 cm²，不是 100 cm²？','100 是「一邊」有幾個 1 cm。正方形有長和寬兩個方向，要乘兩次：100×100＝10,000。'],['1 m² 是什麼形狀、邊長多少？','邊長 1 m 的正方形，面積 1×1＝1 m²。']]});
+
+A({t:'面積換算：長度單位的「平方」',tag:'重點',src:'自修 p.20 重點7 ①（面積單位＝長度單位的平方）；換算算式是本講義整理',
+ text:'1 cm ＝ '+X('−2')+' m，所以<br>1 cm² ＝ 1 cm × 1 cm ＝（'+X('−2')+' m）² ＝ '+X('−4')+' m²<br>（次方的次方，指數相乘：（−2）× 2 ＝ −4）<br>反過來 1 m² ＝ <b>'+X('4')+' cm²</b>。<div class="eq">長度差 '+X('n')+' 倍 → 面積差（'+X('n')+'）² ＝ '+X('2n')+' 倍</div>'+tbl(['長度的關係','面積的關係'],[['1 cm ＝ 10 mm','1 cm² ＝ 10² mm² ＝ 100 mm²'],['1 m ＝ 10² cm','1 m² ＝ 10⁴ cm² ＝ 10,000 cm²'],['1 km ＝ 10³ m','1 km² ＝ 10⁶ m² ＝ 1,000,000 m²']])+'指數相乘，就是指數律「次方的次方」，不用背 0 的個數。<br>自修 p.20 的表寫的也是這樣：1 km² ＝ 10⁶ m²、1 cm² ＝ 10⁻⁴ m²。',
+ qs:[['1 mm² 是幾 cm²？','1 mm＝10⁻¹ cm，（10⁻¹）²＝10⁻²，所以 1 mm²＝0.01 cm²。'],['5 m² 是幾 cm²？','1 m²＝10⁴ cm²，5×10⁴＝50,000 cm²。']]});
+
+A({t:'🎯 觀念釐清③：面積換算',tag:'觀念釐清',src:'題目自編，依自修 p.20；第 6 題改自 p.22 觀念掃描7',
+ qs:[
+  mc('1 m² 等於多少 cm²？',['10,000 cm²','100 cm²','1,000,000 cm²','1000 cm²'],0,['','100 只是長度（1 m＝100 cm）。面積要平方：100×100。','1,000,000 是體積（1 m³＝10⁶ cm³）。面積只要平方，不是三次方。','面積要乘兩次 100，不是 100×10。'],'長度差 10²，面積差（10²）²＝10⁴＝10,000。'),
+  mc('1 cm² 等於多少 mm²？',['100 mm²','10 mm²','1000 mm²','0.01 mm²'],0,['','10 是長度（1 cm＝10 mm）。面積要平方：10×10＝100。','1000 是體積（1 cm³＝1000 mm³）。','方向反了。cm 是大單位，換成小單位 mm 數字要變大。'],'長度差 10¹，面積差（10¹）²＝10²＝100。'),
+  mc('3 m² 等於多少 cm²？',['30,000 cm²','300 cm²','3,000,000 cm²','0.0003 cm²'],0,['','300 是用了長度的 100 倍。面積是 10,000 倍。','3,000,000 是用了體積的 10⁶。面積是 10⁴。','方向反了。m² 是大單位，換成 cm² 數字要變大。'],'3×10⁴＝30,000 cm²。'),
+  mc('50,000 cm² 等於多少 m²？',['5 m²','500 m²','0.5 m²','50 m²'],0,['','除以 100 是長度的算法。面積要除以 10,000。','除以 10⁵，多除了。cm²→m² 是 10⁴。','除以 1000 不對。cm²→m² 要除以 10⁴。'],'cm²→m² 是除以 10⁴：50,000÷10,000＝5。'),
+  mc('1 km² 等於多少 m²？',['10⁶ m²','10³ m²','10⁹ m²','10² m²'],0,['','10³ 只是長度（1 km＝10³ m）。面積要平方。','10⁹ 是體積（1 km³）。面積是 10⁶。','10² 是 m→cm 的長度關係，和 km、m 無關。']  ,'長度差 10³，面積差（10³）²＝10⁶。'),
+  mc('自修觀念題：面積單位和長度單位的關係是什麼？',['面積單位是長度單位的平方（例：m → m²）','面積單位是長度單位的立方（例：m → m³）','面積單位是長度單位的 2 倍（例：1 m → 2 m）','面積單位和長度單位一樣，都用 m'],0,['','立方是體積的單位（m³）。面積是「長×寬」，只乘兩次，所以是平方。','「平方」是同一個數自己乘自己（m×m＝m²），不是乘 2。','面積要用平方單位（m²、cm²），不是 m、cm。'],'面積＝長×寬，單位也跟著相乘：m × m ＝ m²。（自修 p.22 觀念掃描7 第 1 題：「面積單位是長度單位的立方」是錯的）')]});
+
+A({t:'長寬單位不同：先統一再乘',tag:'練習',src:'自編類題；長方形面積＝長×寬見自修 p.20、p.40',
+ text:RE+'題目：一個長方形長 5 m、寬 200 cm，面積是幾 m²？<br>錯誤做法：5 × 200 ＝ 1000（單位不同不能直接乘）。<br>正確做法（兩種都可以）：<ol><li>統一成 cm：5 m ＝ 500 cm，面積 ＝ 500 × 200 ＝ 100,000 cm²，再換 100,000 ÷ 10,000 ＝ <b>10 m²</b></li><li>統一成 m：200 cm ＝ 2 m，面積 ＝ 5 × 2 ＝ <b>10 m²</b></li></ol>兩種結果一樣，選比較好算的。',
+ qs:[['長 3 m、寬 50 cm 的桌面，面積是幾 m²？','50 cm＝0.5 m。3×0.5＝1.5 m²。（用 cm：300×50＝15,000 cm²＝1.5 m²）'],['長 2 km、寬 500 m 的土地，面積是幾 m²？幾 km²？','500 m＝0.5 km；2×0.5＝1 km²。換成 m²：1 km²＝10⁶ m²。（或 2000×500＝1,000,000 m²）']]});
+
+A({t:'體積：三個方向都要換',tag:'重點',src:'自修 p.20 重點8 ②（1 m³＝10³ L 等）；1 m³＝10⁶ cm³ 的推導是本講義整理',
+ fig:cubeFig('1 m',[['邊長 1 m 的正立方體','lbl2'],['每邊有 100 個 1 cm','lbl'],['長 × 寬 × 高','lbl'],['＝ 100 × 100 × 100','lbl2'],['＝ 1,000,000 個 1 cm³','lbl2'],['所以 1 m³ ＝ 10⁶ cm³','lbl2']],'1 m ＝ 100 cm'),
+ text:'用指數寫更快：1 cm ＝ '+X('−2')+' m，1 cm³ ＝（'+X('−2')+' m）³ ＝ '+X('−6')+' m³，所以 1 m³ ＝ <b>'+X('6')+' cm³</b>。<br>三次方 → 指數乘 3：2 × 3 ＝ 6。',
+ qs:[['1 m³ 為什麼不是 1000 cm³？','1000 是 10 的 3 次方，是「邊長差 10 倍」的體積倍數。但 1 m 是 100 cm（差 10² 倍），三個方向都要乘：100×100×100＝1,000,000。'],['1 cm³ 是幾 mm³？','1 cm＝10 mm，三個方向：10×10×10＝1000 mm³。']]});
+
+A({t:'長度、面積、體積：整理在一張表',tag:'重點',src:'本講義整理（依自修 p.17、p.20 的單位表）',
+ text:'長度單位差 '+X('n')+' 倍時：<div class="eq">長度 '+X('n')+'，面積 '+X('2n')+'，體積 '+X('3n')+'</div>'+tbl(['兩個單位','長度','面積','體積'],[['cm 和 mm（n＝1）','10 倍','10² ＝ 100 倍','10³ ＝ 1000 倍'],['m 和 cm（n＝2）','10² ＝ 100 倍','10⁴ ＝ 10,000 倍','10⁶ ＝ 1,000,000 倍'],['km 和 m（n＝3）','10³ ＝ 1000 倍','10⁶ ＝ 1,000,000 倍','10⁹ 倍（十億）']])+'<br>'+AI+'以前的口訣「長一面二體三」，意思就是「<b>長度的指數乘 1、面積乘 2、體積乘 3</b>」。現在你知道乘出來的 0 是哪來的了。',
+ qs:[['m 和 cm 的面積關係是 10 的幾次方？','長度差 10²（n＝2），面積差 10²ⁿ＝10⁴。'],['km 和 m 的體積關係是 10 的幾次方？','長度差 10³（n＝3），體積差 10³ⁿ＝10⁹。']]});
+
+A({t:'🎯 觀念釐清④：體積換算',tag:'觀念釐清',src:'題目自編，依自修 p.20',
+ qs:[
+  mc('1 m³ 等於多少 cm³？',['1,000,000 cm³','1000 cm³','10,000 cm³','100 cm³'],0,['','1000 是 cm³ 和 mm³ 的關係，或是 1 L 的 cm³。m³ 和 cm³ 要 100×100×100。','10,000 是面積（m² 和 cm²）。體積要再乘一次 100。','100 只是長度。體積三個方向都要乘。'],'長度差 10²，體積差（10²）³＝10⁶＝1,000,000。'),
+  mc('1 cm³ 等於多少 mm³？',['1000 mm³','10 mm³','100 mm³','1,000,000 mm³'],0,['','10 是長度。體積三個方向都要乘。','100 是面積（10×10）。體積要再乘一次 10。','10⁶ 是 m³ 換成 cm³。cm 和 mm 之間只差 10¹。'],'長度差 10，體積差 10³＝1000。'),
+  mc('邊長 2 m 的正立方體，體積是多少 cm³？',['8,000,000 cm³','2,000,000 cm³','6,000,000 cm³','800,000 cm³'],0,['','這是 2 m³ 的換算。但邊長 2 m 的體積是 2×2×2＝8 m³，再換 cm³。','把 2³ 當成 2×3＝6 了。2³＝2×2×2＝8。','200×200×200＝8,000,000，不是 800,000，少了一個 0。'],'2 m＝200 cm。200×200×200＝8,000,000 cm³。（或：2³＝8 m³，8×10⁶ cm³）'),
+  mc('5,000,000 cm³ 等於多少 m³？',['5 m³','50 m³','500 m³','0.5 m³'],0,['','除以 10⁵，多除了。','除以 10⁴，是面積的算法。體積要除以 10⁶。','除以 10⁷，除太多了。'],'cm³→m³ 要除以 10⁶：5,000,000÷1,000,000＝5。')]});
+
+A({t:'容量：L、mL 和 cm³、dm³',tag:'重點',src:'自修 p.20 重點8 ①②（體積單位表）、p.20 老師說（c.c.）、p.21 你知道嗎（度）；推導是本講義整理',
+ fig:cubeFig('10 cm',[['邊長 10 cm（＝ 1 dm）','lbl2'],['10 × 10 × 10','lbl'],['＝ 1000 cm³','lbl2'],['＝ 1 dm³','lbl2'],['剛好裝 1 公升（1 L）','lbl'],['1 L ＝ 1000 cm³','lbl2']]),
+ text:'自修 p.20：<b>體積</b>是物體占的空間，<b>容量</b>是容器裡面的空間，兩種單位可以互換：'+tbl(['體積單位','立方公尺 m³','立方公寸 dm³','立方公分 cm³'],[['流體體積單位','—','公升 L','毫升 mL']])+'同一欄是同一個大小：<b>1 dm³ ＝ 1 L</b>，<b>1 cm³ ＝ 1 mL ＝ 1 c.c.</b>。自修寫的換算：<div class="eq">1 m³ ＝ 10³ L，1 L ＝ 10³ mL，1 cm³ ＝ 1 mL</div>'+AI+'怎麼來的：mL 的 m 是「毫＝'+X('−3')+'」，所以 1 L ＝ 10³ mL。1 L ＝ 1 dm³ ＝（10 cm）³ ＝ 10³ cm³（右圖）。1 m³ ＝（10 dm）³ ＝ 10³ dm³ ＝ 10³ L。<br>自修說明：c.c. 是口語（cubic centimeter 的縮寫），不是正式單位。自來水的「度」：1 度 ＝ 1 m³。',
+ qs:[['250 mL 是幾 L？','1 mL＝10⁻³ L。250×10⁻³＝0.25 L。'],['3 L 是幾 cm³？','1 L＝1000 cm³。3×1000＝3000 cm³。'],['0.5 m³ 是幾 L？','1 m³＝1000 L。0.5×1000＝500 L。'],['1 dm³ 是幾 cm³？','1 dm＝10 cm，三個方向：10×10×10＝1000 cm³（所以 1 dm³＝1 L＝1000 cm³）。']]});
+
+A({t:'體積單位表：mL、L、kL（公秉），還有體積公式',tag:'補充',src:'補習班講義 p.21「D. 體積的測量」2、3、4；和自修 p.20 一致，多了公秉（kL）和圓柱、球的公式',
+ text:DEF('體積與容積','物體<b>占據的空間</b>叫體積；容器內<b>能裝多少</b>叫容積。兩者的單位相同。')+tbl(['單位','符號','等於','與 L 的換算'],[['毫升','mL','1 cm³（＝ 1 c.c.）','10⁻³ L'],['公升','L','1000 cm³（＝ 1 dm³）','1 L'],['公秉','kL','1 m³','10³ L']])+'<b>1 mL ＝ 1 cm³ ＝ 1 cc</b>。體積公式（算出來的單位是長度單位的三次方）：<ul><li>正立方體：V ＝ a³</li><li>長方體：V ＝ 長 × 寬 × 高</li><li>圓柱：V ＝ 底面積 × 高 ＝ πr² × h</li><li>球：V ＝ (4/3)πr³</li></ul>例：邊長 10 cm 的正立方體，V ＝ 10³ ＝ 1000 cm³ ＝ 1000 mL ＝ 1 L。<br>'+AI+'公秉 kL 的 k 是「千」（10³）：1 kL ＝ 1000 L ＝ 1 m³，和自修的 1 m³ ＝ 10³ L 一致。',
+ qs:[['半徑 10 cm、高 20 cm 的圓柱，體積是幾 cm³？幾 L？（π 取 3）','V＝3×10²×20＝6000 cm³＝6 L。'],['2 kL 是幾 m³？幾 L？','2 m³；2000 L。'],['1 mL 和 1 cm³ 一樣嗎？','一樣：1 mL＝1 cm³＝1 c.c.。']]});
+
+A({t:'🎯 觀念釐清⑤：容量換算',tag:'觀念釐清',src:'題目自編，依自修 p.20；第 5 題改自 p.21 體積＝長×寬×高',
+ qs:[
+  mc('1 L 等於多少 cm³？',['1000 cm³','100 cm³','10 cm³','1,000,000 cm³'],0,['','100 是 m 和 cm 的長度倍數，和體積無關。1 L 是邊長 10 cm 的立方體：10×10×10。','10 是邊長，不是體積。','1,000,000 是 1 m³ 的 cm³ 數，不是 1 L。'],'邊長 10 cm 的立方體：10×10×10＝1000 cm³＝1 L。'),
+  mc('250 mL 等於多少 L？',['0.25 L','250 L','2.5 L','0.025 L'],0,['','單位從 mL 換成 L，數字一定要變。mL 是小單位，換成大單位 L，數字要變小。','只往左跳 2 格。1 mL＝10⁻³ L，要跳 3 格。','往左跳了 4 格。要跳 3 格。'],'250×10⁻³＝0.25 L。'),
+  mc('1 m³ 等於多少 L？',['1000 L','1,000,000 L','100 L','10 L'],0,['','10⁶ 是 1 m³ 的 cm³ 數。L 是 1000 cm³，所以要再除以 1000。','100 是長度倍數。','10 比實際少很多。1 m³ 的水桶可以裝 1000 瓶 1 L 的水。'],'1 m³＝10⁶ cm³，每 L＝10³ cm³，10⁶÷10³＝10³ L。'),
+  mc('3 L 的水，體積是多少 cm³？',['3000 cm³','300 cm³','30 cm³','3 cm³'],0,['','少乘一個 10。1 L＝1000 cm³。','少乘兩個 10。','數字沒變。L 換成 cm³ 要乘 1000。'],'3×1000＝3000 cm³。'),
+  mc('一個長 20 cm、寬 10 cm、高 5 cm 的盒子，裝滿水是多少 mL？',['1000 mL','35 mL','100 mL','10,000 mL'],0,['','把三個數字加起來了。體積要三個邊相乘。','只乘了其中兩個邊。20×10×5＝1000，三個邊都要乘。','多一個 0。20×10＝200，200×5＝1000。'],'體積 20×10×5＝1000 cm³，1 cm³＝1 mL，所以是 1000 mL。')]});
+
+A({t:'排水法：mL 就是 cm³',tag:'重點',src:'自修 p.21 重點4 (2)（排水法 圖2、圖3）；1 mL＝1 cm³ 見 p.20；第二個例子是自編類題',
+ text:'不溶於水的固體，體積可以用<b>排水法</b>量：放入水中，水面上升的那一段，就是物體的體積。因為 <b>1 mL ＝ 1 cm³</b>，量筒上讀到幾 mL，體積就是幾 cm³。<br>自修 p.21 圖2：鐵塊放入前水面 20.0 mL，放入後 27.0 mL。體積 ＝ 27.0 − 20.0 ＝ <b>7.0 cm³</b>。<br>'+RE+'量筒最多裝 100 mL，先裝 70 mL 的水，放入金屬塊後，有 10 mL 的水溢出來。金屬塊體積 ＝ 放進去時還能裝下的 ＋ 溢出的 ＝（100 − 70）＋ 10 ＝ <b>40 cm³</b>。',
+ qs:[mc('量筒原本 35.0 mL，放入鐵球後水面是 44.0 mL，鐵球的體積是多少？',['9.0 cm³','79.0 cm³','44.0 cm³','9.0 g'],0,['','要相減，不是相加。水面「上升的那一段」才是鐵球。','44.0 是「水＋鐵球」的總體積，還要扣掉原來的水 35.0。','體積的單位是 cm³（或 mL），不是 g（g 是質量的單位）。'],'44.0 − 35.0 ＝ 9.0 mL ＝ 9.0 cm³。'),
+  mc('1 mL 和 1 cm³ 的關係是什麼？',['一樣大','1 mL 比 1 cm³ 大 10 倍','1 mL 比 1 cm³ 小 1000 倍','1 mL ＝ 1 g'],0,['','1 mL 和 1 cm³ 同一個大小，沒有倍數差。','沒有倍數差。差 1000 倍的是 1 L 和 1 mL。','1 g 是質量，mL 是體積，單位不同。只有「水」每 1 mL 剛好是 1 g。'],'自修 p.20：1 cm³ ＝ 1 mL ＝ 1 c.c.。'),
+  ['量筒 50 mL 的水，放入石頭後水面 68 mL，石頭體積是幾 cm³？','68 − 50 ＝ 18 mL ＝ 18 cm³。']]});
+
+A({t:'排水法補充：沉體、浮體（重錘法）',tag:'補充',src:'補習班講義 p.21～22（排水法、重錘法、精選範例 5、6）；數字是自編類題',
+ text:DEF('排水法','物體<b>在液面下</b>的體積 ＝ 物體<b>排開液體</b>的體積 ＝ 水面<b>上升</b>的體積。')+'<b>沉體</b>（會沉、不溶於水）：<b>V ＝ 放入後的水位 − 放入前的水位</b>。<br>例：量筒水 60 mL，放入螺絲後 75 mL → V ＝ 75 − 60 ＝ <b>15 cm³</b>。<br><b>浮體</b>（會浮，如乒乓球）：直接放會浮起來，水位上升的只是<b>浸在水裡的那一部分</b>，不是整顆的體積。要用<b>重錘法</b>：<ol><li>只放重錘（鐵塊），讀水位 V₂</li><li>把物體和重錘綁在一起沉入水中，讀水位 V₃</li><li>物體體積 ＝ V₃ − V₂</li></ol>例：水 50 mL；放鐵塊後 70 mL；乒乓球綁著鐵塊一起放入 100 mL。鐵塊 ＝ 70 − 50 ＝ 20 cm³；乒乓球 ＝ 100 − 70 ＝ <b>30 cm³</b>。<br>'+AI+'補習班例 6：水位 120 → 135 mL 時乒乓球浮起，這 15 mL 只是浸入水中的體積，所以乒乓球的體積<b>大於</b> 15 cm³。',
+ qs:[['水位 80 mL，放入石塊後 97 mL，石塊體積是多少？','97−80＝17 cm³。'],['水 60 mL，放鐵塊後 85 mL，鐵塊綁乒乓球一起放入 120 mL，乒乓球體積多少？','鐵塊＝85−60＝25 cm³；乒乓球＝120−85＝35 cm³。'],['浮體直接放入，水位上升的值比它的體積大還是小？','小。上升的只有浸在水裡的那一部分。']]});
+
+A({t:'排水法補充：細小顆粒要先放進去、再加水',tag:'補充',src:'補習班講義 p.23（精選範例 7、類題 1）；類題的數字是自編',
+ text:'細砂、黃豆這種小顆粒中間有<b>空隙</b>，直接讀量筒的刻度（顆粒＋空氣），不是顆粒本身的體積。<br>做法：<ol><li>先把乾的細砂放進量筒，輕敲，讀 V₁（＝砂＋空隙）</li><li>另外量一杯水（體積 V水），倒進裝砂的量筒，讀 V₂（＝砂＋水，不含空氣）</li><li>砂的體積 ＝ V₂ − V水；空隙 ＝ V₁ − 砂的體積</li></ol>補習班例：V₁ ＝ 180，水 140，V₂ ＝ 290。砂的體積 ＝ 290 − 140 ＝ <b>150 cm³</b>；空隙 ＝ 180 − 150 ＝ <b>30 cm³</b>。（倒進去的 140 mL 水，有 30 mL 跑進空隙，所以砂面上只剩 290 − 180 ＝ 110 mL 的水。）<br>顆粒必須<b>不溶於水、會沉</b>才能用：圖釘可以；食鹽、蔗糖會溶；木屑會浮。',
+ qs:[['黃豆放入量筒敲平讀 60 mL，再倒入 40 mL 的水，水面 84 mL。黃豆體積和空隙各多少？','黃豆＝84−40＝44 cm³；空隙＝60−44＝16 cm³。'],['食鹽可以用這個方法測體積嗎？為什麼？','不行，食鹽會溶於水。']]});
+
+A({t:'🎯 觀念釐清：排水法與容器',tag:'觀念釐清',src:'題目自編；第 2、4 題的做法來自補習班隨堂演練 3（p.24～25）',
+ qs:[
+  mc('量筒裡有水 62.0 mL，放入一顆石頭後水位升到 68.5 mL，石頭的體積是多少？',['6.5 cm³','130.5 cm³','6.5 m³','68.5 cm³'],0,['','130.5 是把兩個讀數加起來了。要相減：放入後 − 放入前。','數字對，但單位錯了。mL 對應的是 cm³，不是 m³。','68.5 是放入後的總讀數，包含了水。'],'體積＝68.5−62.0＝6.5 mL＝6.5 cm³。'),
+  mc('量筒裡有水 100 mL，放入一塊軟木，軟木浮在水面，水位升到 125 mL。軟木的體積比 25 cm³ 大還是小？',['比 25 cm³ 大','比 25 cm³ 小','剛好 25 cm³','無法判斷'],0,['','方向反了。25 mL 只是軟木泡在水裡的那一部分。','只有完全沉入水中時，上升的體積才剛好等於物體體積。','可以判斷：浮體只有一部分在水裡，所以整個體積比上升量大。'],'浮體只有部分浸入水中，水位上升的 25 mL 只是浸入部分，整個軟木的體積大於 25 cm³。'),
+  mc('量筒水 100 mL，放入石塊後 130 mL。再取出石塊，改放「乒乓球綁著石塊」一起沉入水中，水位 175 mL。乒乓球的體積是多少？',['45 cm³','75 cm³','30 cm³','175 cm³'],0,['','75 是 175−100，包含了石塊。石塊＝130−100＝30，乒乓球要再減掉石塊。','30 是石塊的體積，不是乒乓球。','175 是總讀數。'],'石塊＝130−100＝30 cm³；球＋石塊＝175−100＝75；球＝75−30＝45 cm³。（或 175−130＝45）'),
+  mc('下列哪一種東西可以直接用「排水法」測體積？',['圖釘','食鹽','蔗糖','木屑'],0,['','食鹽會溶於水，量到的體積不對。','蔗糖會溶於水，量到的體積不對。','木屑會浮在水面，不會完全沉入水中。'],'排水法要「不溶於水、會沉」，圖釘符合。'),
+  mc('一個長 40 cm、寬 25 cm、高 10 cm 的容器裝了 6 L 的水。放入金屬塊（完全沉入，水沒溢出）後水面升高 1 cm。還要再加多少 L 的水，才會剛好裝滿？',['3 L','4 L','2 L','9 L'],0,['','容器容積＝40×25×10＝10000 cm³＝10 L。金屬塊占 40×25×1＝1000 cm³＝1 L，要用 10−6−1＝3 L。','2 L 是少算了；10−6−1＝3。','9 L 是把加水量和容積搞混了。'],'容積＝40×25×10＝10000 cm³＝10 L。金屬塊＝40×25×1＝1000 cm³＝1 L。10−6−1＝3 L。')]});
+
+A({t:'質量：t、kg、g、mg',tag:'重點',src:'自修 p.26 重點1 ④（常見的質量國際單位表）；p.27 重點2 註、例；代入的例子是本講義整理',
+ text:'質量的單位也是「字首 ＋ g」。自修 p.26 的表：'+tbl(['單位','符號','與公克換算','與公斤換算'],[['公噸','t','10⁶ g','10³ kg'],['公斤','kg','10³ g','1 kg'],['公克','g','1 g','10⁻³ kg'],['毫克','mg','10⁻³ g','10⁻⁶ kg']])+'例：2.5 kg ＝ 2.5 × '+X('3')+' g ＝ <b>2500 g</b>，450 mg ＝ 450 × '+X('−3')+' g ＝ <b>0.45 g</b>，3 t ＝ 3 × '+X('3')+' kg ＝ <b>3000 kg</b><br>自修 p.27：<b>質量</b>是組成物質的總量，<b>不會隨地點改變</b>（同一個東西在平地、高山、月球用天平量，都是 10 公克）；<b>重量</b>是物體受到的重力，會隨地點改變。g、kg 是<b>質量</b>的單位。',
+ qs:[['0.4 kg 是幾 g？','1 kg＝10³ g。0.4×10³＝400 g。'],['60 mg 是幾 g？','1 mg＝10⁻³ g。60×10⁻³＝0.06 g。'],['1 mg 是幾 kg？','1 mg＝10⁻³ g，1 g＝10⁻³ kg。指數相加：（−3）＋（−3）＝−6。所以 1 mg＝10⁻⁶ kg（和自修表一樣）。']]});
+
+A({t:'🎯 觀念釐清⑥：質量換算',tag:'觀念釐清',src:SRC0,
+ qs:[
+  mc('1.2 kg 等於多少 g？',['1200 g','120 g','12 g','12,000 g'],0,['','只跳了 2 格。1 kg＝10³ g，要跳 3 格。','數字變小了。kg 是大單位，換成小單位 g，數字要變大。','跳了 4 格。要跳 3 格。'],'1.2×10³＝1200 g。'),
+  mc('500 mg 等於多少 g？',['0.5 g','500,000 g','5 g','0.05 g'],0,['','方向反了。mg 是小單位，換成較大的 g，數字要變小。','只往左跳 2 格。mg→g 要跳 3 格。','往左跳了 4 格。要跳 3 格。'],'500×10⁻³＝0.5 g。'),
+  mc('2 t 等於多少 kg？',['2000 kg','200 kg','2,000,000 kg','20 kg'],0,['','1 t＝1000 kg，不是 100 kg。','2,000,000 是 2 t 換成 g 的數字（2×10⁶），不是 kg。','比實際少很多。'],'1 t＝10³ kg，2×10³＝2000 kg。'),
+  mc('3 kg 的鹽再加 400 g 的鹽，共幾 kg？',['3.4 kg','7 kg','3.04 kg','34 kg'],0,['','單位不同不能直接加。400 g 要先換成 0.4 kg。','400 g＝0.4 kg，不是 0.04 kg。','34 是把 400 g 當成 4 kg 了。400 g＝0.4 kg。'],'400 g＝0.4 kg，3＋0.4＝3.4 kg。（或：3 kg＝3000 g，3000＋400＝3400 g＝3.4 kg）')]});
+
+A({t:'質量和重量：單位長得像，意思不一樣',tag:'📌 定義',src:'補習班講義 p.26「1-2 A. 質量與重量」；自修 p.27 也有（質量不隨地點改變）',
+ text:DEF('質量 m　與　重量 W','<b>質量</b>：物體內所含<b>物質</b>的多寡，單位 kg、g、mg，<b>處處相等</b>（不受地點影響）。<br><b>重量</b>：物體在某處所受<b>重力</b>的大小，單位 <b>kgw</b>（公斤重）、gw、mgw，會隨位置改變。')+tbl(['','質量 m','重量 W'],[['是不是力','<b>不是力</b>','<b>是力</b>（重力）'],['單位','kg、g、mg','kgw、gw、mgw'],['會不會變','不會：m地球 ＝ m月球 ＝ m太空','會：W月球 ＝ （1/6）W地球；太空中 W ＝ 0'],['測量工具','天平（槓桿原理）','彈簧秤（虎克定律）']])+'例：60 kg 的人，在地球重 60 kgw；在月球 10 kgw；在太空 0 kgw，<b>但質量一直是 60 kg</b>。<br>'+AI+'天平靠「兩邊受的重力相等」，所以在月球上仍能用天平量出質量；到了太空，兩邊都沒有重力，天平就不能用。',
+ qs:[['60 kg 的物體，在月球上質量和重量各是多少？','質量 60 kg；重量 60×(1/6)＝10 kgw。'],['天平在太空中能不能用？為什麼？','不能。天平靠兩邊的重力相比，太空中沒有重力。'],['1 kg 和 1 kgw 一樣嗎？','不一樣：kg 是質量的單位，kgw 是重量（力）的單位。']]});
+
+A({t:'🎯 觀念釐清：質量與重量',tag:'觀念釐清',src:'題目自編，依補習班講義 p.26',
+ qs:[
+  mc('把 30 kg 的物體從地球帶到月球，下列哪一個會改變？',['重量','質量','密度','體積'],0,['','質量處處相等，不會因地點改變。','同一個物體，質量和體積都不變，密度也不變。','體積不會因為換了地點而改變。'],'質量不變、體積不變、密度不變，只有重量（重力）會變成月球上的 1/6。'),
+  mc('在地球上重 60 kgw 的人，在月球上的重量大約是多少？',['10 kgw','360 kgw','60 kgw','0 kgw'],0,['','乘錯方向。月球的重力比較小，重量要變小。','60 kgw 是在地球的重量。月球重力約是地球的 1/6。','0 kgw 是在太空中沒有重力的情形。'],'60×(1/6)＝10 kgw。'),
+  mc('kgw 是什麼量的單位？',['重量（力）','質量','密度','體積'],0,['','質量的單位是 kg、g、mg，沒有 w。','密度的單位是 g/cm³ 或 kg/m³。','體積的單位是 mL、cm³、L。'],'kgw＝公斤重，是重量（重力大小）的單位。')]});
+
+A({t:'密度：每 1 cm³ 有多少公克',tag:'重點',src:'自修 p.29 重點6 ①～④（密度公式、密度表）；體積→質量的用法是本講義整理',
+ text:DEF('密度（D）','物質<b>每 1 單位體積</b>的質量。常用單位 g/cm³：<b>每 1 cm³ 有幾公克</b>。')+'自修 p.29：<div class="eq">密度（D）＝ '+fr('質量（M）','體積（V）')+'</div>常用單位 <b>g/cm³</b>，意思是「每 1 cm³ 有幾 g」。自修的密度表（常溫常壓，25 °C、1 大氣壓）：'+tbl(['固體','密度 g/cm³','液體、氣體','密度 g/cm³'],[['金','19.30','水銀','13.53'],['銀','10.49','水','1.00'],['銅','8.96','酒精','0.79'],['鐵','7.87','二氧化碳','0.00198'],['鋁','2.70','空氣','約 0.0012'],['冰','0.92','氫氣','0.00009']])+'換算題常用：<b>質量 ＝ 密度 × 體積</b>；<b>體積 ＝ 質量 ÷ 密度</b>。<br>'+AI+'水的密度剛好是 1.00 g/cm³，所以：1 cm³（1 mL）的水 ＝ 1 g；1 L 的水 ＝ 1000 g ＝ 1 kg；1 m³ 的水 ＝ 1000 kg ＝ 1 t。<b>只有水剛好是 1</b>，別的液體不行：酒精 1 mL 只有 0.79 g。',
+ qs:[['100 mL 的酒精（0.79 g/cm³）質量是多少 g？','質量＝密度×體積＝0.79×100＝79 g。'],['5 L 的水質量是幾 kg？','1 L 水＝1 kg，5 L 水＝5 kg。'],['10 cm³ 的鋁（2.70 g/cm³）質量是多少 g？','2.70×10＝27 g。'],['2 m³ 的水質量是幾 t？','1 m³ 水＝1 t，2 m³ 水＝2 t。']]});
+
+A({t:'密度單位：g/cm³ 和 kg/m³',tag:'重點',src:'自修 p.29 重點6 ⑤（1 g/cm³＝0.001 公斤／(0.01 公尺)³＝1000 公斤／立方公尺）',
+ text:'自修 p.29：密度的單位除了 g/cm³，還有 <b>kg/m³</b>，而且<div class="eq">1 g/cm³ ＝ 1000 kg/m³</div>怎麼來的：分子（質量）、分母（體積）<b>各自換</b>：<ul><li>質量：1 g ＝ '+X('−3')+' kg</li><li>體積：1 cm³ ＝（'+X('−2')+' m）³ ＝ '+X('−6')+' m³</li></ul>1 g/cm³ ＝ '+fr(X('−3')+' kg',X('−6')+' m³')+' ＝ '+X('3')+' kg/m³（同底數相除，指數相減：−3 −（−6）＝ 3）<br><b>g/cm³ → kg/m³：×1000，kg/m³ → g/cm³：÷1000</b><br>例：水 1.00 g/cm³ ＝ 1000 kg/m³；鋁 2.70 g/cm³ ＝ 2700 kg/m³；空氣 0.0012 g/cm³ ＝ 1.2 kg/m³。<br>'+AI+'為什麼不是只有 10⁻³？質量換成 kg 數字變小 10⁻³ 倍，但體積換成 m³ 數字也變小，而且小得更多（10⁻⁶），分母縮得比分子多，整個比值就變大。',
+ qs:[['水銀 13.53 g/cm³ 是幾 kg/m³？','×1000：13.53×1000＝13,530 kg/m³。'],['7870 kg/m³ 是幾 g/cm³？','÷1000：7870÷1000＝7.87 g/cm³（是鐵）。'],['1 m³ 的水是 1000 kg，換成密度是幾 kg/m³？幾 g/cm³？','1000 kg ÷ 1 m³ ＝ 1000 kg/m³ ＝ 1 g/cm³，和自修一致。']]});
+
+A({t:'密度補充：比重、特性、沉與浮、混合物',tag:'補充',src:'補習班講義 p.33「1-3 A. 密度的性質」4、5、6；補習班密度表是四捨五入的（鐵 7.86、水銀 13.6），和自修 p.29 稍有不同，以自修為準',
+ text:DEF('比重','物質的密度<b>相對於水</b>的比值，<b>沒有單位</b>。水銀 13.6 g/cm³ ÷ 水 1 g/cm³ ＝ 比重 <b>13.6</b>。')+'<b>特性：</b><ul><li>同溫、同壓、<b>同狀態</b>下，<b>同一種物質的密度一定</b>，和體積、質量的大小無關（鋁塊切成兩半，密度不變）</li><li>不同種類的物質，密度通常不同，可以用密度判斷是什麼物質</li></ul><b>沉與浮：</b>'+tbl(['物體 D物 與液體 D液','結果'],[['D物 &gt; D液','沉底'],['D物 ＝ D液','懸浮在液體中'],['D物 &lt; D液','浮在液面']])+'<b>混合物的密度 ＝ 總質量 ÷ 總體積 ＝ （V₁D₁ ＋ V₂D₂）÷（V₁ ＋ V₂）</b>（<b>不是</b>兩個密度直接平均）。<br>補習班例：A 液體 300 g、密度 1.5 → V ＝ 300÷1.5 ＝ 200 mL；B 液體 100 mL、密度 0.6 → M ＝ 0.6×100 ＝ 60 g。混合：（300＋60）÷（200＋100）＝ <b>1.2 g/cm³</b>。',
+ qs:[['冰的密度 0.92 g/cm³，放進水（1 g/cm³）會沉還是浮？','D冰＜D水，浮。'],['水銀的比重是多少？有單位嗎？','13.6，沒有單位。'],['密度 2 g/cm³ 的液體 100 g，加 50 mL 的水混合，混合後密度？','V1＝100÷2＝50 cm³；M＝100＋50＝150 g；V＝50＋50＝100 cm³；D＝1.5 g/cm³。']]});
+
+A({t:'🎯 觀念釐清⑦：密度',tag:'觀念釐清',src:'題目自編，依自修 p.29；第 5 題改自 p.36 第 11 題',
+ qs:[
+  mc('1 g/cm³ 等於多少 kg/m³？',['1000 kg/m³','1 kg/m³','0.001 kg/m³','1,000,000 kg/m³'],0,['','單位換了，數字不能不變。質量和體積都要換。','只換了質量（g→kg 是 10⁻³）。體積 cm³→m³ 也要換（10⁻⁶），整體要乘 1000。','只換了體積。質量 g→kg 也要換（10⁻³），10⁶×10⁻³＝10³。'],'質量 ×10⁻³，體積 ×10⁻⁶，10⁻³÷10⁻⁶＝10³，所以 1 g/cm³＝1000 kg/m³。'),
+  mc('水銀 13.53 g/cm³，等於多少 kg/m³？',['13,530 kg/m³','13.53 kg/m³','0.01353 kg/m³','13,530,000 kg/m³'],0,['','單位換了，數字不能不變。','方向反了。g/cm³ 換成 kg/m³ 數字要變大，要乘 1000。','乘了 10⁶，只換了體積。要乘 10³。'],'13.53×1000＝13,530 kg/m³。'),
+  mc('鋁的密度 2700 kg/m³，等於多少 g/cm³？',['2.7 g/cm³','2,700,000 g/cm³','0.0027 g/cm³','2700 g/cm³'],0,['','方向反了。kg/m³ 換成 g/cm³ 數字要變小，要除以 1000。','除了 10⁶，除太多了。要除以 10³。','單位換了，數字不能不變。'],'2700÷1000＝2.7 g/cm³。'),
+  mc('100 mL 的酒精（密度 0.79 g/cm³），質量是多少？',['79 g','126.6 g','7900 g','0.79 g'],0,['','100÷0.79 是算體積的方法。質量＝密度×體積。','多乘了 100。0.79×100＝79。','0.79 是 1 cm³ 的質量，要乘上體積 100。'],'100 mL＝100 cm³。質量＝0.79×100＝79 g。'),
+  mc('100 g 的水完全結成冰（冰的密度 0.92 g/cm³），冰的體積最接近多少 cm³？',['約 108.7 cm³（100÷0.92）','92 cm³（0.92×100）','100 cm³','0.0092 cm³（0.92÷100）'],0,['','體積＝質量÷密度，不是乘。冰的密度比水小，同樣質量的體積要變大。','100 cm³ 是 100 g 水的體積。冰的密度比水小，同樣 100 g 體積會比較大。','除反了。體積＝質量÷密度＝100÷0.92。'],'體積＝質量÷密度＝100÷0.92≈108.7 cm³，比水（100 cm³）大。'),
+  mc('一個邊長 10 cm 的鋁立方體（密度 2.70 g/cm³），質量是多少 kg？',['2.7 kg','2700 kg','27 kg','0.27 kg'],0,['','算出 2700 g 之後，要再換成 kg（÷1000）。','把體積當成 10 cm³ 了。邊長 10 cm 的立方體是 10×10×10＝1000 cm³。','把體積當成 100 cm³（10×10）了。立方體要三個邊都乘。'],'體積 10×10×10＝1000 cm³，質量 2.70×1000＝2700 g ＝ 2.7 kg。')
+ ]});
+
+A({t:'🎯 觀念釐清：密度的特性與混合',tag:'觀念釐清',src:'題目自編，依補習班講義 p.33～36',
+ qs:[
+  mc('把一塊鋁塊切成體積相等的兩塊，每一塊的密度會怎樣？',['不變','變成一半','變成 2 倍','不一定'],0,['','質量和體積各變一半，比值不變，所以密度不變。','密度是物質本身的性質，切開不會變大。','同溫同壓同狀態的同一種物質，密度一定。'],'同一種物質的密度一定，與大小無關。'),
+  mc('密度 0.8 g/cm³ 的塑膠球放進水（1 g/cm³）中，會怎樣？',['浮在水面','沉到底','懸浮在水中','無法判斷'],0,['','D物＜D水，不會沉。','懸浮要 D物＝D液。','可以判斷：0.8＜1，浮在水面。'],'D物＜D液，浮在液面。'),
+  mc('50 mL 的水（1 g/cm³）和 150 mL 的酒精（0.8 g/cm³）混合，混合後的密度約是多少？',['0.85 g/cm³','0.9 g/cm³','0.8 g/cm³','1.7 g/cm³'],0,['','0.9 是把兩個密度直接平均（1＋0.8）÷2。體積不一樣，不能直接平均。','0.8 只是酒精的密度。','1.7 是兩個質量相加（50＋120）後忘了除以總體積。'],'M＝50×1＋150×0.8＝50＋120＝170 g；V＝50＋150＝200 mL；D＝170÷200＝0.85。'),
+  mc('水銀的比重是 13.6，表示什麼？',['水銀的密度是水的 13.6 倍','水銀的密度是 13.6 g/cm³ 倍','水銀的質量是 13.6 g','水銀的體積是水的 13.6 倍'],0,['','比重沒有單位，不是「g/cm³」的倍數。','比重是密度的比，不是質量。','比重比的是密度，不是體積。'],'比重＝物質的密度÷水的密度，沒有單位。')]});
+
+A({t:'綜合例題：水池',tag:'練習',src:'自編類題（用到自修 p.20 體積單位、p.26 質量單位、p.29 水的密度）',
+ text:RE+'題目：一個水池長 5 m、寬 4 m、深 2 m，裝滿水。<br>(1) 水的體積是幾 m³？<br>(2) 這是幾 L？<br>(3) 水的質量是幾 kg？幾 t？<br><b>步驟：</b><ol><li>體積 ＝ 5 × 4 × 2 ＝ <b>40 m³</b></li><li>1 m³ ＝ 1000 L → 40 × 1000 ＝ <b>40,000 L</b></li><li>1 L 水 ＝ 1 kg → <b>40,000 kg</b>；1000 kg ＝ 1 t → <b>40 t</b></li></ol>三個小題用到：體積公式、m³→L、水的重量。',
+ qs:[['長 2 m、寬 1 m、高 50 cm 的水箱，裝滿水是幾 L？','50 cm＝0.5 m。體積 2×1×0.5＝1 m³＝1000 L。'],['一個邊長 10 cm 的立方體水槽，裝滿水的質量是多少 g？','體積 10×10×10＝1000 cm³＝1000 mL；1 mL 水＝1 g，所以重 1000 g（＝1 kg）。']]});
+
+A({t:'單位定義總整理：每個單位到底在量什麼',tag:'📌 定義',src:'長度 p.17、面積／體積／容量 p.20、質量 p.26～27、密度 p.29；「正方形、正立方體」的說法是本講義整理',
+ text:'換算會錯，常常是因為<b>不知道這個單位的定義</b>。先把定義讀順，再換算：'+tbl(['量','單位','定義（它到底是什麼）','自修'],[
+  ['長度','m、km、cm…','m 是基本單位；1 km＝10³ m、1 cm＝10⁻² m、1 mm＝10⁻³ m','p.17'],
+  ['面積','m²、cm²','<b>邊長 1 m（1 cm）的正方形</b>的面積。單位是長度單位的平方','p.17'],
+  ['體積','m³、cm³','<b>邊長 1 m（1 cm）的正立方體</b>的體積。單位是長度單位的三次方','p.20'],
+  ['容量','L、mL','1 L ＝ 1 dm³（邊長 10 cm 的正立方體）；<b>1 mL ＝ 1 cm³ ＝ 1 c.c.</b>','p.20'],
+  ['質量','t、kg、g、mg','物質的總量，<b>不隨地點改變</b>；1 kg＝10³ g、1 g＝10³ mg、1 t＝10³ kg','p.26～27'],
+  ['密度','g/cm³、kg/m³','物質<b>每 1 單位體積</b>的質量；<b>1 g/cm³ ＝ 1000 kg/m³</b>','p.29']
+ ])+'<br>'+AI+'只要一個單位的定義說得出來，換算就能自己推：例如「1 mL＝1 cm³」→ 1 L＝1000 mL＝1000 cm³。',
+ qs:[['1 mL 的「定義」是什麼？不要說「是 L 的千分之一」。','1 mL ＝ 1 cm³（邊長 1 cm 的正立方體的體積）。'],['面積的單位 cm²，定義是什麼？','邊長 1 cm 的正方形的面積。'],['密度的單位 g/cm³ 為什麼是「g 除以 cm³」？','因為密度是「每 1 cm³ 有幾 g」，質量放上面、體積放下面。']]});
+
+A({t:'長度・面積・體積・容量・質量 總檢查',tag:'檢查自己',src:'題目自編，依自修 p.17～29',
+ qs:[
+  mc('0.5 km 等於多少 cm？',['50,000 cm','500 cm','5000 cm','5,000,000 cm'],0,['','0.5 km＝500 m，只換到 m，還沒換成 cm。','少乘一個 10。1 km＝10⁵ cm，0.5×10⁵＝50,000。','多乘了 100。'],'1 km＝10⁵ cm，0.5×10⁵＝50,000 cm。'),
+  mc('2 cm² 等於多少 mm²？',['200 mm²','20 mm²','2000 mm²','0.02 mm²'],0,['','20 是用了長度倍數 10。面積要 10²。','2000 是體積倍數。','方向反了。cm² 換成 mm²，數字要變大。'],'1 cm²＝10² mm²＝100 mm²，2×100＝200 mm²。'),
+  mc('4000 cm³ 等於多少 L？',['4 L','40 L','0.4 L','4,000,000 L'],0,['','1 L＝1000 cm³，4000÷1000＝4，不是 40。','1 L＝1000 cm³，不是 10000 cm³。','方向反了。cm³ 比 L 小，換成 L 數字要變小。'],'4000÷1000＝4 L。'),
+  mc('0.2 m³ 等於多少 L？',['200 L','20 L','2000 L','200,000 L'],0,['','1 m³＝1000 L，不是 100 L。','多乘一個 10。0.2×1000＝200。','這是換成 cm³ 的數字（0.2×10⁶＝200,000）。'],'0.2×1000＝200 L。'),
+  mc('邊長 3 cm 的正立方體，體積是多少 mm³？',['27,000 mm³','27 mm³','2700 mm³','27,000,000 mm³'],0,['','27 是 cm³ 的數字，單位還沒換成 mm³。','30×30×3＝2700，只有兩個方向換了單位。三個方向都要換成 30 mm。','27,000,000 是 m³ 換成 cm³ 的倍數。cm 和 mm 只差 10。'],'3 cm＝30 mm。30×30×30＝27,000 mm³。（或 27 cm³ × 10³）'),
+  mc('一瓶水 1.5 L，質量約多少 g？',['1500 g','150 g','1.5 g','15,000 g'],0,['','1 L 水＝1000 g，不是 100 g。','1.5 是 kg 的數字（1.5 kg），題目問 g。','多一個 0。1 L 水＝1000 g。'],'1 L 水＝1000 g，1.5×1000＝1500 g。')]});
+
+/* ================= 主題 B：時間・速度・光速 ================= */
+B({t:'時間・速度・光速：先看有什麼不一樣',tag:'今天的目標',
+ text:'這一塊有四件事：<ol><li><b>時間</b>：秒以上是 60、24（不是 10 進位）；秒以下才是 10 的次方（ms、μs）</li><li><b>速率</b>：每 1 單位時間走多遠。先把「路徑長、位移、速率、速度」的定義分清楚（國三才教，先看懂）</li><li><b>m/s 和 km/h</b>：互換只要記一個數字 <b>3.6</b>，而且知道它怎麼來</li><li><b>光速、光年</b>：自修第 4 章 p.151～152。光速是<b>速率</b>、光年是<b>距離</b>，不要搞混</li></ol>每一個量都先看 📌 <b>定義</b>，定義說得出來，單位就不會搞混。<br><br>'+LEGEND});
+
+B({t:'時間：秒以上不是 10 進位',tag:'重點',src:SRC0,
+ text:tbl(['單位','等於','換成秒'],[['1 分（min）','60 秒','60 s'],['1 時（h）','60 分','3600 s'],['1 日（day）','24 時','86,400 s'],['1 年（約）','365 日','31,536,000 s ≈ 3.15×10⁷ s']])+'秒以下才是 10 的次方：<b>1 ms（毫秒）＝ '+X('−3')+' s</b>，<b>1 μs（微秒）＝ '+X('−6')+' s</b>。<br>'+AI+'算 3600 的方法：60 × 60 ＝ 3600；算 86,400：3600 × 24 ＝ 86,400。<br>小數的小時要用 60 換：2.5 h ＝ 2 h ＋ 0.5 h ＝ 2 h ＋ 0.5 × 60 min ＝ <b>2 h 30 min</b>。',
+ qs:[['1 日有幾分鐘？','24×60＝1440 min。'],['3 ms 是幾 s？','1 ms＝10⁻³ s。3×10⁻³＝0.003 s。']]});
+
+B({t:'🎯 觀念釐清①：時間換算',tag:'觀念釐清',src:SRC0,
+ qs:[
+  mc('1 h 等於多少 s？',['3600 s','60 s','6000 s','360 s'],0,['','60 s 是 1 min。1 h 是 60 min，每 min 60 s，60×60。','把 1 min 當成 100 s 了。時間是 60 進位，不是 100。','少乘一個 10。60×60＝3600。'],'1 h＝60 min，1 min＝60 s，60×60＝3600 s。'),
+  mc('2.5 h 等於幾小時幾分鐘？',['2 h 30 min','2 h 50 min','2 h 5 min','2 h 25 min'],0,['','把 0.5 當成 50 分了。0.5 h＝0.5×60＝30 min。','0.5 h 不是 5 min。0.5 h＝30 min。','0.5 h 是半小時＝30 min，不是 25 min。'],'0.5 h＝0.5×60 min＝30 min。'),
+  mc('5 ms 等於多少 s？',['0.005 s','5000 s','0.05 s','0.000005 s'],0,['','方向反了。ms 是小單位，換成 s 數字要變小。','只往左跳 2 格。ms→s 要跳 3 格（10⁻³）。','0.000005 是 5 μs，跳了 6 格。'],'5×10⁻³＝0.005 s。'),
+  mc('1 日等於多少 s？',['86,400 s','8640 s','24,000 s','3600 s'],0,['','少一個 0。24×60×60＝86,400。','把 1 h 當成 1000 s 了。1 h＝3600 s。','3600 s 只是 1 h。1 日有 24 h。']  ,'1 日＝24 h，1 h＝3600 s，24×3600＝86,400 s。')]});
+
+B({t:'速率與速度：先把名字分清楚',tag:'📌 定義',src:'網路查詢整理（國中理化「速率與速度」教學資料，國三上 1-2：阿賢老師理化教學網站、國三理化「直線運動」講義）；你還沒學到，自修拍到後再對照',
+ text:DEF('平均速率','物體<b>每 1 單位時間</b>走的<b>路徑長</b>。<div class="eq">平均速率 ＝ 路徑長 ÷ 時間</div>單位：<b>m/s</b>（每 1 秒走幾 m）、<b>km/h</b>（每 1 小時走幾 km）。')+tbl(['名稱','意思','有方向嗎？'],[['路徑長','實際走過的路線總長度','沒有（永遠是正的）'],['位移','從起點指向終點的直線','<b>有</b>（要說往哪個方向）'],['平均速率','路徑長 ÷ 時間','沒有'],['平均速度','位移 ÷ 時間','<b>有</b>'],['瞬時速率','極短時間內的速率，像汽車速度表指針現在指的數字','沒有']])+'例：操場一圈 400 m，跑一圈回到起點，用了 80 s。路徑長 ＝ 400 m，平均速率 ＝ 400 ÷ 80 ＝ <b>5 m/s</b>；位移 ＝ 0（回到原點），平均速度 ＝ 0。<br>'+AI+'日常說「時速 60 公里」，指的通常是速率。這份講義主要算速率，名字先分清楚，到國三才不會搞混。',
+ qs:[['先往東走 5 m，再往西走 3 m，路徑長和位移各是多少？','路徑長＝5＋3＝8 m；位移＝5−3＝2 m（向東）。'],['速率和速度，哪一個有方向？','速度有方向（位移÷時間）；速率沒有方向（路徑長÷時間）。'],['汽車的速度表指針指的是平均速率還是瞬時速率？','瞬時速率（此刻的快慢）。']]});
+
+B({t:'🎯 觀念釐清：路徑長、位移、速率',tag:'觀念釐清',src:'題目自編，依上一頁（網路查詢整理）',
+ qs:[
+  mc('小明從家走 300 m 到學校，再走回家。路徑長是多少？',['600 m','300 m','0 m','150 m'],0,['','300 m 只是單程。路徑長是「實際走過的總長度」，來回要加起來。','0 m 是位移（回到起點）。路徑長不是 0。','150 m 是單程的一半，沒有意義。'],'路徑長＝300＋300＝600 m。'),
+  mc('小明從家走 300 m 到學校，再走回家。他的位移是多少？',['0 m','600 m','300 m','150 m'],0,['','600 m 是路徑長。位移只看起點和終點。','300 m 是走到學校的位移，但後來又走回家了。','150 m 沒有意義。'],'起點和終點都是家，位移＝0。'),
+  mc('100 m 賽跑，選手 20 s 跑完，平均速率是多少？',['5 m/s','2000 m/s','0.2 m/s','120 m/s'],0,['','乘錯了。速率＝距離÷時間，不是乘。','把「時間÷距離」算成 20÷100 了。要用距離÷時間（每 1 秒走幾 m）。','加起來沒有意義。'],'100÷20＝5 m/s。'),
+  mc('「速率」和「速度」最大的差別是什麼？',['速度有方向，速率沒有方向','速度比速率快','速率的單位是 m/s，速度的單位是 km/h','沒有差別'],0,['','快慢和名稱無關，差別在有沒有方向。','兩個的單位一樣，m/s、km/h 都可以用。','有差別：速度＝位移÷時間（有方向），速率＝路徑長÷時間（沒有方向）。'],'速度＝位移÷時間（有方向）；速率＝路徑長÷時間（沒有方向）。')]});
+
+B({t:'速率：公式與單位',tag:'重點',src:'網路查詢整理（國三上 1-2：速率＝路徑長÷時間，單位 m/s、km/h）；移項與例子是本講義整理',
+ text:DEF('m/s、km/h 的斜線','斜線 <b>/</b> 讀成「<b>每</b>」：<b>m/s</b> ＝ 每 1 秒走幾 m；<b>km/h</b> ＝ 每 1 小時走幾 km。')+'<div class="eq">速率 ＝ 距離 ÷ 時間</div>例：跑 100 m 用 20 s → 100 ÷ 20 ＝ <b>5 m/s</b>。<br>例：開車 120 km 用 2 h → 120 ÷ 2 ＝ <b>60 km/h</b>。<br>移項：距離 ＝ 速率 × 時間；時間 ＝ 距離 ÷ 速率。<br><b>注意：距離和時間的單位要和速率的單位對上。</b>跑 300 m 用 1 min，要先換成 60 s，才是 300 ÷ 60 ＝ 5 m/s。',
+ qs:[['90 km 開 1.5 h，速率是幾 km/h？','90÷1.5＝60 km/h。'],['300 m 走了 1 min，速率是幾 m/s？','1 min＝60 s。300÷60＝5 m/s。'],['時速 60 km/h，開 2.5 h 走多遠？','距離＝速率×時間＝60×2.5＝150 km。']]});
+
+B({t:'m/s 和 km/h：為什麼是 3.6',tag:'重點',src:'本講義整理：1 km＝10³ m、1 h＝3600 s 代入（m/s、km/h 見網路查詢整理）',
+ text:'1 m/s ＝ 每 1 秒走 1 m。換成 km 和 h：<ul><li>1 m ＝ '+X('−3')+' km（因為 1 km ＝ '+X('3')+' m）</li><li>1 s ＝ '+fr('1','3600')+' h（因為 1 h ＝ 3600 s）</li></ul>1 m/s ＝ '+X('−3')+' km ÷ '+fr('1','3600')+' h ＝ '+X('−3')+' × 3600 km/h ＝ <b>3.6 km/h</b>。<div class="eq">m/s → km/h：× 3.6，km/h → m/s：÷ 3.6</div>例：10 m/s ＝ 10 × 3.6 ＝ <b>36 km/h</b>，72 km/h ＝ 72 ÷ 3.6 ＝ <b>20 m/s</b><br>'+AI+'怎麼不會記反：<b>同一個速度，用 km/h 寫，數字會比較大</b>（20 m/s 和 72 km/h 是同一個速度）。所以從 m/s 換成 km/h，數字要變大，乘 3.6。',
+ qs:[['5 m/s 是幾 km/h？','5×3.6＝18 km/h。'],['108 km/h 是幾 m/s？','108÷3.6＝30 m/s。'],['1 m/s 為什麼是 3.6 km/h，不是 36 或 0.36？','1 m＝10⁻³ km，1 s＝1/3600 h。10⁻³×3600＝3.6。']]});
+
+B({t:'🎯 觀念釐清②：m/s 和 km/h',tag:'觀念釐清',src:SRC0,
+ qs:[
+  mc('10 m/s 等於多少 km/h？',['36 km/h','2.78 km/h','3.6 km/h','600 km/h'],0,['','乘除方向反了。km/h 的數字要比 m/s 大，所以要乘 3.6，不是除。','3.6 是 1 m/s 的答案。題目是 10 m/s，要再乘 10。','10 m/s＝600 m/min，只換了時間，沒有把 m 換成 km。'],'10×3.6＝36 km/h。'),
+  mc('72 km/h 等於多少 m/s？',['20 m/s','259.2 m/s','72,000 m/s','7.2 m/s'],0,['','乘除方向反了。km/h 換成 m/s，數字要變小，所以要除以 3.6。','72 km/h＝72,000 m/h，只換了長度，時間還是 h，還沒除以 3600。','7.2 是除以 10 了。要除以 3.6。'],'72÷3.6＝20 m/s。'),
+  mc('1 km/h 約等於多少 m/s？',['約 0.28 m/s','3.6 m/s','1000 m/s','0.001 m/s'],0,['','乘除方向反了。1 km/h 比 1 m/s 慢，換成 m/s 數字要小於 1。','1000 只換了 km→m，時間 h 也要換成 s（除以 3600）。','km→m 要乘 1000，不是除。而且時間也要換。'],'1 km/h＝1÷3.6≈0.28 m/s。'),
+  mc('火車時速 54 km/h，8 s 走多少 m？',['120 m','432 m','1555.2 m','1.875 m'],0,['','54×8＝432，但速度單位是 km/h，時間是 s，單位沒對上。要先換成 54÷3.6＝15 m/s。','乘 3.6 方向反了。54 km/h 換成 m/s 要除以 3.6＝15 m/s。','距離＝速度×時間，不是速度÷時間。'],'54÷3.6＝15 m/s。距離＝15×8＝120 m。'),
+  mc('自行車 6 m/s，汽車 18 km/h，哪一個比較快？',['自行車較快（6 m/s＝21.6 km/h）','汽車較快（18 比 6 大）','一樣快','單位不同，無法比較'],0,['','單位不同，不能直接比數字。6 m/s＝6×3.6＝21.6 km/h，比 18 km/h 快。','1 m/s 是 3.6 km/h，不是 3 km/h。6 m/s＝21.6 km/h，不是 18。','單位不同可以換算成同一個單位再比。'],'6 m/s＝6×3.6＝21.6 km/h，大於 18 km/h，所以自行車較快。')]});
+
+B({t:'光速：光走多快',tag:'📌 定義',src:'自修第 4 章 p.151 重點4「光速」①②③；換成 km/s、地球周長的算法是本講義整理',
+ text:DEF('光速 c','光在<b>真空</b>中，<b>每 1 秒</b>走的距離：<div class="eq">c ≈ 3×'+X('8')+' m/s ＝ 30 萬公里／秒（3×'+X('5')+' km/s）</div>光速用符號 <b>c</b> 表示。光在空氣中的速率和真空中差不多。')+'自修 p.151：<ul><li>光的傳播<b>不需要介質</b>（是「非力學波」）：陽光能穿過真空的太空到地球，也能穿過玻璃、水、空氣</li><li>打雷時先看到閃電、再聽到雷聲，因為光在空氣中比聲音快得多</li><li>光 1 秒可以繞地球<b>七圈半</b>；太陽到地球大約只要 <b>500 秒</b></li></ul>換成 km/s：1 km ＝ '+X('3')+' m，m 的數字要除以 '+X('3')+'：3×'+X('8')+' ÷ '+X('3')+' ＝ 3×'+X('5')+' km/s（指數相減：8−3＝5）。<br>'+AI+'地球一圈約 4×10⁴ km，光 1 秒走 3×10⁵ km：3×10⁵ ÷ 4×10⁴ ＝ 7.5，剛好是自修說的「七圈半」。',
+ qs:[['光速 3×10⁸ m/s 等於幾 km/s？','除以 10³：3×10⁸÷10³＝3×10⁵ km/s。'],['光 2 秒走多遠（km）？','距離＝速率×時間＝3×10⁵×2＝6×10⁵ km。'],['光速的單位 m/s 是什麼意思？','每 1 秒走 3×10⁸ m。']]});
+
+B({t:'光在不同介質：誰比較快',tag:'重點',src:'自修第 4 章 p.151 重點4 ④（光速表）、p.152 老師說（光與聲波的比較）、觀念掃描 4；「88 萬倍」是本講義算的',
+ text:'自修 p.151 的表（c 就是真空中的光速）：'+tbl(['介質','光速（m/s）','以 c 表示'],[['真空','300,000,000','c'],['空氣','≒ 300,000,000','≒ c'],['水','≒ 225,000,000','≒ '+fr('3','4')+' c'],['玻璃','≒ 200,000,000','≒ '+fr('2','3')+' c']])+'順序：<b>真空 &gt; 氣體 &gt; 液體 &gt; 固體</b>。<br>自修 p.152「老師說」，光和聲波的比較：'+tbl(['','要不要介質','速率','不同介質中的速率'],[['光','不要（非力學波）','快（空氣中約 3×10⁸ m/s）','真空 &gt; 氣體 &gt; 液體 &gt; 固體'],['聲波','要（力學波）','慢（20 °C 空氣中約 340 m/s）','固體 &gt; 液體 &gt; 氣體 &gt; 真空＝0']])+AI+'3×10⁸ ÷ 340 ≈ 8.8×10⁵，光在空氣中比聲音快約 <b>88 萬倍</b>。這就是為什麼先看到閃電、後聽到雷聲。',
+ qs:[['水中的光速大約是真空的幾分之幾？','3/4（約 2.25×10⁸ m/s）。'],['光和聲音，哪一個一定要有介質才能傳播？','聲音（力學波）。光不需要，所以太空的陽光能到地球。'],['光在玻璃中大約是多少 m/s？','約 2×10⁸ m/s（＝ 2/3 c）。']]});
+
+B({t:'光和聲音：相同和不同',tag:'補充',src:'補習班講義 p.158「B. 光的性質與傳播」2；自修 p.152 老師說只列了其中幾項',
+ text:'相同：都以<b>波動</b>的方式傳播、都是<b>能量</b>、都遵循<b>反射定律</b>。<br>不同：'+tbl(['項目','光','聲音'],[['傳播方向','直線傳播','四面八方傳播'],['要不要介質','不需要（非力學波）','需要（力學波）'],['不同介質中的速率','真空 &gt; 氣體 &gt; 液體 &gt; 固體','固體 &gt; 液體 &gt; 氣體 &gt; 真空'],['受溫度、風影響','不受影響','會受影響'],['空氣中的速率','3×10⁸ m/s','約 340 m/s'],['不透明的物質中','無法傳播','可以傳播']])+'<br>'+AI+'伽利略想用兩座山頭互相閃燈來量光速，失敗了，原因是<b>光速太快</b>，量不出時間差。打雷先看到閃電、後聽到雷聲，也是因為光速遠大於聲速。',
+ qs:[['光和聲音，哪一個不需要介質？','光（不是力學波）。'],['在牆壁這種不透明的物質中，光和聲音哪個可以傳播？','聲音可以，光不行。'],['化學工廠 2 公里外爆炸，先感覺到強光、地面震動還是爆炸聲？','先看到強光（光最快），再感覺到地面震動（固體傳聲比空氣快），最後才聽到爆炸聲。']]});
+
+B({t:'🎯 觀念釐清③：光速',tag:'觀念釐清',src:'題目自編；第 4、5 題依自修 p.152 觀念掃描 4',
+ qs:[
+  mc('光速 3×10⁸ m/s，換成 km/s 是？',['3×10⁵ km/s','3×10¹¹ km/s','3×10⁸ km/s','3×10⁹ km/s'],0,['','方向反了。m 換成 km，數字要變小，要除以 10³。','單位換了，數字不能不變。','乘錯方向。換成 km 數字要變小。'],'1 km＝10³ m，數字除以 10³：3×10⁸÷10³＝3×10⁵ km/s。'),
+  mc('光 1 秒走的距離約是地球周長（4×10⁴ km）的幾倍？',['7.5 倍','75 倍','0.75 倍','750 倍'],0,['','3÷4＝0.75，10⁵÷10⁴＝10，0.75×10＝7.5，不是 75。','0.75 還要乘 10（10⁵÷10⁴＝10¹）。','指數多算了。10⁵÷10⁴＝10¹，不是 10³。'],'3×10⁵÷(4×10⁴)＝0.75×10＝7.5。'),
+  mc('光 2 秒走多遠？光速用 3×10⁵ km/s。',['6×10⁵ km','1.5×10⁵ km','6×10¹⁰ km','3×10⁵ km'],0,['','距離＝速率×時間，不是除。','「2」是時間，要乘上去，10 的次方不變。','忘了乘時間 2 秒，這只是 1 秒走的距離。'],'距離＝3×10⁵×2＝6×10⁵ km。'),
+  mc('光在下列哪一種介質中傳播最快？',['真空','水','玻璃','空氣'],0,['','水中的光速約 3/4 c，比真空慢。','玻璃中的光速約 2/3 c，比真空慢。','空氣中的光速接近 c，但排序是「真空 &gt; 氣體 &gt; 液體 &gt; 固體」，真空最快。'],'自修 p.151：光速 真空 &gt; 氣體 &gt; 液體 &gt; 固體。'),
+  mc('下列關於光的敘述，哪一項正確？',['光的傳播不需要介質','光是力學波，一定要有介質','光在水中比在空氣中快','光在玻璃中比在水中快'],0,['','光是非力學波，不需要介質（太空是真空，陽光仍然能傳到地球）。','光在水中（≒ 3/4 c）比在空氣中（≒ c）慢。','光在玻璃中（≒ 2/3 c）比在水中（≒ 3/4 c）慢。'],'自修 p.152 觀念掃描 4：光不是力學波；光速 真空 &gt; 空氣 &gt; 水 &gt; 玻璃。')]});
+
+B({t:'🎯 觀念釐清：光和聲音',tag:'觀念釐清',src:'題目自編，依補習班講義 p.158 與自修 p.152',
+ qs:[
+  mc('下列關於光和聲音的敘述，何者正確？',['光不需要介質，聲音需要','兩者的傳播都需要介質','聲音在空氣中比光快','光和聲音在水中都比在空氣中慢'],0,['','光是非力學波，不需要介質。','光速 3×10⁸ m/s，聲速約 340 m/s，光快得多。','聲音在水中比在空氣中快（液體＞氣體）；只有光在水中比較慢。'],'光（非力學波）不需介質；聲音（力學波）需要。'),
+  mc('陰天時先看見閃電、再聽到雷聲，是因為什麼？',['光速遠大於聲速','閃電比雷聲先產生','閃電離我們比較近','聲音要穿過雲層'],0,['','閃電和雷聲是同時產生的，只是傳到我們這裡的時間不同。','兩者從同一個地方出發，距離一樣。','和雲層無關。'],'光 3×10⁸ m/s、聲音約 340 m/s，光先到。'),
+  mc('在地球上同一個位置，光速和聲速哪一個會受溫度、風速影響？',['聲速會，光速不會','兩者都會','兩者都不會','光速會，聲速不會'],0,['','光速不受溫度與風速影響。','聲速會受溫度、風速影響。','剛好說反了。'],'補習班：光速不受溫度與風速影響；聲速會。')]});
+
+B({t:'光走多久：時間＝距離÷速率',tag:'重點',src:'自修第 4 章 p.151 重點4 ③（太陽到地球約 500 秒）、p.152 你知道嗎（1 au ≈ 1.5×10⁸ km）；算法是本講義整理',
+ fig:sunFig(),
+ text:DEF('天文單位（au）','地球到太陽的<b>平均距離</b>，約 <b>1.5×'+X('8')+' km</b>。（距離單位）補習班說：約等於光走 500 秒的距離。')+'光速 3×'+X('5')+' km/s：<br>時間 ＝ 1.5×'+X('8')+' ÷ 3×'+X('5')+' ＝ 0.5 × '+X('3')+' ＝ <b>500 s ≈ 8.3 min</b>（1.5÷3＝0.5；10⁸÷10⁵＝10³），和自修「約 500 秒」一致。<br>月球到地球約 3.8×'+X('5')+' km：3.8×10⁵ ÷ 3×10⁵ ≈ <b>1.3 s</b>。<br><b>單位要對上：</b>距離用 km，速率就要用 km/s；距離用 m，速率就要用 m/s。',
+ qs:[['月球到地球 3.8×10⁵ km，光要走幾秒？','3.8×10⁵÷(3×10⁵)≈1.27 s，約 1.3 秒。'],['太陽光到地球 500 s，是幾分鐘？','500÷60≈8.3 min。']]});
+
+B({t:'🎯 觀念釐清④：光走多久',tag:'觀念釐清',src:'題目自編；第 3 題是自修 p.152 單題 2',
+ qs:[
+  mc('太陽光到地球約 500 s，等於幾分鐘？',['約 8.3 min','500 min','約 0.14 min','30,000 min'],0,['','秒換成分，不能數字不變。1 min＝60 s。','500÷3600≈0.14，那是換成小時（h）了。','乘 60 方向反了。秒換成分，數字要變小。'],'500÷60≈8.3 min。'),
+  mc('光走 1.5×10⁸ km，光速 3×10⁵ km/s，要多久？',['500 s','0.5 s','5×10⁵ s','50 s'],0,['','10⁸÷10⁵＝10³，不是 10⁰。1.5÷3＝0.5，0.5×10³＝500。','算成 5×10⁵ 是把距離換成 m（1.5×10¹¹）後，卻用 km/s 的速率除。單位要對上。','10⁸÷10⁵＝10³，不是 10²。0.5×10³＝500。'],'1.5×10⁸÷(3×10⁵)＝0.5×10³＝500 s。'),
+  mc('月球到地球約 40 萬公里，光 1 秒走 30 萬公里。從地球發出的光到月球再反射回地球，約需多少秒？',['約 2.67 s','約 1.33 s','約 0.75 s','500 s'],0,['','1.33 s 只是單程（40÷30）。光要去又要回，距離是 2 倍。','30÷40＝0.75，把距離和速率除反了。時間＝距離÷速率。','500 s 是太陽光到地球的時間。'],'來回距離＝2×40 萬＝80 萬 km。時間＝80÷30≈2.67 s。')]});
+
+B({t:'光年：是「距離」，不是時間',tag:'📌 定義',src:'自修第 4 章 p.152「你知道嗎」（光年約 9.46×10¹² 公里；1 au ≈ 1.5×10⁸ 公里）；補習班講義 p.158（光年的算式）；倍數是本講義整理',
+ text:DEF('光年','光在真空中走 <b>1 年</b>的<b>距離</b>。<b>光年是長度（距離）單位，不是時間單位。</b><div class="eq">1 光年 ≈ 9.46×'+X('12')+' km</div>')+'補習班的算法：<b>1 光年 ＝ 365 × 24 × 60 × 60 × 3×10⁸ m</b>。365 日 × 24 時 × 60 分 × 60 秒 ＝ 31,536,000 s，再乘光速：31,536,000 × 3×10⁸ ＝ 9.4608×10¹⁵ m ＝ <b>9.46×10¹² km</b>（1 km ＝ 10³ m，指數減 3）。<br>比一比：1 au ≈ 1.5×10⁸ km，1 光年 ÷ 1 au ≈ 9.46×10¹² ÷ 1.5×10⁸ ≈ <b>6.3×10⁴ 倍</b>（約 6 萬倍）。<br>例：離我們最近的恆星（比鄰星）約 4.2 光年 → 它的光要走 4.2 年才到我們這裡。',
+ qs:[['一顆星距離地球 8 光年，它的光要走幾年才到地球？','光 1 年走 1 光年，所以 8 光年要走 8 年。'],['光年是長度單位、時間單位還是速率單位？為什麼？','長度（距離）單位。因為它是「光走 1 年的距離」，不是 1 年的時間長度。'],['1 au 和 1 光年哪個比較長？','1 光年比較長，約是 1 au 的 6 萬倍。']]});
+
+B({t:'🎯 觀念釐清⑤：光年',tag:'觀念釐清',src:SRC0,
+ qs:[
+  mc('「光年」是什麼單位？',['距離（長度）','時間','速度','亮度'],0,['','名字有「年」，但它是「光走 1 年的距離」。','速度是 m/s、km/h。光速才是速度。','亮度是另一回事，光年和亮度無關。'],'1 光年＝光走 1 年的距離，是距離單位。'),
+  mc('一顆星距離地球 8 光年，它的光走到地球要多久？',['8 年','8 秒','8 小時','要知道光速才能算'],0,['','光年的「年」是光走的時間，不是秒。','光年的「年」是光走的時間，不是小時。','不用再算，1 光年就是「光走 1 年」，8 光年就是 8 年。'],'1 光年＝光走 1 年的距離，8 光年要走 8 年。')]});
+
+B({t:'單位定義總整理：時間・速率・光',tag:'📌 定義',src:'自修第 4 章 p.151～152（光速、光年、天文單位）；時間、速率是本講義整理（速率見網路查詢整理）',
+ text:'先問「它在量什麼？」：量<b>時間</b>、量<b>距離</b>、還是量<b>快慢</b>（速率）：'+tbl(['單位／名詞','它在量','定義','記住這句'],[
+  ['s、min、h','時間','1 min＝60 s；1 h＝60 min；1 日＝24 h','秒以上是 60、24'],
+  ['ms、μs','時間','1 ms＝10⁻³ s；1 μs＝10⁻⁶ s','秒以下才是 10 的次方'],
+  ['m/s、km/h','<b>速率</b>','每 1 秒（1 小時）走幾 m（km）','斜線＝「每」；1 m/s＝3.6 km/h'],
+  ['光速 c','<b>速率</b>','光在真空中每 1 秒走的距離，≈ 3×10⁸ m/s','光速是「快慢」'],
+  ['光年','<b>距離</b>','光走 1 年的距離，≈ 9.46×10¹² km','名字有「年」，但它是距離'],
+  ['天文單位 au','<b>距離</b>','地球到太陽的平均距離，≈ 1.5×10⁸ km','au 也是距離']
+ ])+'<br>'+AI+'最容易混的是：<b>光速（速率）</b>和<b>光年（距離）</b>。看單位就分得出來：光速是 m/s、km/s（有「每秒」），光年是 km、m（長度）。',
+ qs:[['光速和光年，哪一個是距離單位？','光年。光速是速率（m/s）。'],['m/s 的斜線讀成什麼？','讀成「每」：每 1 秒走幾 m。'],['天文單位 au 在量時間、距離還是速率？','距離（地球到太陽的平均距離）。']]});
+
+B({t:'時間・速度・光速 總檢查',tag:'檢查自己',src:SRC0,
+ qs:[
+  mc('36 km/h 等於多少 m/s？',['10 m/s','129.6 m/s','36,000 m/s','100 m/s'],0,['','乘除方向反了。km/h 換成 m/s 要除以 3.6。','只換了長度（km→m），時間還是 h。','除錯了。要除以 3.6，不是 0.36。'],'36÷3.6＝10 m/s。'),
+  mc('3 min 等於多少 s？',['180 s','30 s','300 s','3600 s'],0,['','把 1 min 當成 10 s 了。1 min＝60 s。','把 1 min 當成 100 s 了。1 min＝60 s。','3600 是 1 h，不是 3 min。'],'3×60＝180 s。'),
+  mc('100 m 賽跑 10 s 跑完，平均速度是多少 km/h？',['36 km/h','10 km/h','360 km/h','3.6 km/h'],0,['','10 m/s 要換成 km/h，要乘 3.6。','多乘了 10。10 m/s×3.6＝36，不是 360。','3.6 是 1 m/s 的換算。這題的速度是 10 m/s，要再乘 10。'],'100÷10＝10 m/s，10×3.6＝36 km/h。'),
+  mc('5 μs 等於多少 s？',['5×10⁻⁶ s','5×10⁻³ s','5×10⁶ s','5×10⁻⁹ s'],0,['','10⁻³ 是 ms。μs 是 10⁻⁶。','方向反了，μs 比 s 小，換成 s 數字要變小。','10⁻⁹ 是 ns。μs 是 10⁻⁶。'],'1 μs＝10⁻⁶ s，5 μs＝5×10⁻⁶ s。')]});
+
+/* ================= 主題 C：濃度・ppm ================= */
+C({t:'濃度：% 和 ppm',tag:'今天的目標',
+ text:'這一塊講「溶了多少」（自修第 2 章 p.69～70）：<ol><li><b>百分率濃度 %</b>：每 100 份裡有幾份（'+X('−2')+'）。有兩種：<b>重量（質量）百分率濃度</b>、<b>體積百分率濃度</b>（酒精度）</li><li><b>ppm</b>：每 100 萬份裡有幾份（'+X('−6')+'），用在很稀的溶液，例如農藥殘留、水中的汙染物</li><li>% 和 ppm 互換：<b>1 % ＝ 10,000 ppm</b>，用「指數」算出來，不用死背</li></ol>每個名詞都先看 📌 <b>定義</b>。<br><br>'+LEGEND});
+
+C({t:'什麼是「濃度」？先用顏色和味道比',tag:'重點',src:'自修第 2 章 p.69「7 什麼是濃度？」（含糖水濃度比較示意圖）與觀念掃描 7',
+ text:DEF('濃度','<b>定量溶液中，溶質所占比例的多寡</b>。（看的是溶質，不是溶劑）')+'怎麼比較<b>同一種</b>的兩杯溶液誰比較濃？（例如兩杯茶、兩杯咖啡，不是拿茶去比咖啡，因為溶質不一樣）<ul><li><b>有顏色</b>：顏色愈深，濃度愈大（例：茶、咖啡）</li><li><b>有味道</b>：味道愈苦，濃度愈大（咖啡）；味道愈甜，濃度愈大（糖水）</li><li><b>既無顏色也無味道</b>，或濃度差太小：就要用客觀的數字，也就是 <b>重量百分率濃度、體積百分率濃度、百萬分點（ppm）</b>（生活中常見的三種表示法）</li></ul>自修的圖：A 杯水中只溶 1 顆方糖，糖粒子分布較稀疏，濃度較小，<b>甜度較 B 不甜</b>；B 杯溶 2 顆方糖，糖粒子分布較密集，濃度較大，<b>甜度較 A 甜</b>。<br>'+AI+'顏色、味道只能「粗略」比大小，不能說「濃度是 10 %」。要說出多少，就要用下面三種數字。',
+ qs:[['濃度是指溶液中「溶質」還是「溶劑」所占的比例？','溶質。'],['兩杯無色無味的鹽水，怎麼比誰比較濃？','用重量百分率濃度之類的數字（客觀的方法）。'],['A 杯溶 1 顆糖、B 杯溶 2 顆糖（水量相同），哪一杯比較甜？','B 杯。糖粒子較密集，濃度較大。']]});
+
+C({t:'🎯 觀念釐清：濃度是什麼',tag:'觀念釐清',src:'自修第 2 章 p.69 觀念掃描 7（第 1、2 題）；第 3、4 題是自編',
+ qs:[
+  mc('下列關於「濃度」的敘述，何者正確？',['濃度是指溶液中溶質所占的比例','濃度是指溶液中溶劑所占的比例','濃度只能用顏色深淺判斷','溶液愈多，濃度一定愈大'],0,['','是溶「質」，不是溶「劑」。自修觀念掃描 7 第 1 題就是這樣考（答案是錯）。','顏色只能粗略比較，無色的溶液就要用數字表示。','濃度看的是比例，不是溶液的多少。'],'濃度＝定量溶液中，溶質所占比例的多寡。'),
+  mc('兩杯紅茶（同一種茶葉泡的），要快速比較哪一杯比較濃，最直接的做法是什麼？',['比顏色深淺或味道','秤杯子的重量','量杯子的高度','只能用 ppm 算'],0,['','杯子的重量不能代表溶質占的比例。','高度是溶液的多少，不是濃度。','有顏色、有味道的溶液，可以直接用顏色、味道粗略比較。'],'同一種茶，顏色比較深的那杯，茶比較濃。有顏色、有味道時，可以直接比較顏色深淺、味道苦甜。（注意：要拿「同一種」溶液來比，茶不能和咖啡比。）'),
+  mc('兩杯無色、無味的水溶液濃度很接近，要怎麼比較？',['用重量百分率濃度等客觀的數字','用眼睛看顏色','喝喝看味道','不用比較'],0,['','無色，看不出差別。','無味，也嘗不出差別，而且不能亂喝。','有需要比的時候，要用客觀的方法。'],'既無顏色也無味道（或差太小）時，要用客觀方法，如重量百分率濃度、體積百分率濃度、ppm。'),
+  mc('將 10 g 的糖溶於 90 g 的水中，重量百分率濃度是多少？',['10 %','11.1 %','9 %','100 %'],0,['','11.1 是 10÷90，分母要用整個溶液（10＋90＝100 g）。','9 是 90÷10，把溶質和溶劑弄反了。','100 是整個溶液的 g 數，不是濃度。'],'濃度＝10÷（10＋90）×100 %＝10 %。（自修 p.69 例題）')]});
+
+C({t:'重量百分率濃度：溶質占整個溶液的幾 %',tag:'📌 定義',src:'自修第 2 章 p.69「8 重量百分率濃度」（定義、公式、例：10 g 糖＋90 g 水）與 p.70 觀念掃描 8；糖 20 g、鹽 10 g 的例子是本講義整理',
+ text:DEF('重量百分率濃度','<b>溶質的質量</b>占<b>整個溶液質量</b>的百分比。（自修叫「重量」，算的是質量 g）<div class="eq">濃度（%）＝ '+fr('溶質的質量','溶液的質量')+' × 100 % ＝ '+fr('溶質的質量','溶質的質量 ＋ 溶劑的質量')+' × 100 %</div>也就是<b>每 100 g 的溶液中，含有幾 g 的溶質</b>。')+'<b>溶液 ＝ 溶質 ＋ 溶劑</b>（溶質是被溶掉的，溶劑是拿來溶的）。<br>自修 p.69 的例題：將 <b>10 g 的糖溶於 90 g 的水</b>中，濃度 ＝ 10 ÷ （10＋90）× 100 % ＝ <b>10 %</b>。<br>例：糖 20 g 溶在水 80 g 中。溶液 ＝ 20 ＋ 80 ＝ 100 g。濃度 ＝ 20 ÷ 100 × 100 % ＝ <b>20 %</b>。<br>例：鹽 10 g 溶在水 190 g 中。溶液 ＝ 10 ＋ 190 ＝ 200 g。濃度 ＝ 10 ÷ 200 × 100 % ＝ <b>5 %</b>。<br><b>最容易錯的：</b>分母是整個溶液（溶質＋溶劑），不是只有水。自修 p.70 觀念掃描 8 就考這個：<b>1 g 的糖放進 9 g 的水</b>，溶液 ＝ 10 g，濃度 ＝ 1 ÷ 10 × 100 % ＝ <b>10 %</b>，不是 1 %。',
+ qs:[['糖 30 g 溶在水 120 g 中，濃度幾 %？','溶液＝30＋120＝150 g。30÷150×100%＝20%。'],['糖 5 g、水 95 g，濃度幾 %？','溶液＝100 g，濃度＝5%。'],['1 g 的糖放入 9 g 的水，濃度是 1 % 嗎？','不是。溶液＝1＋9＝10 g，濃度＝1÷10×100%＝10%。（自修 p.70 觀念掃描 8 第 2 題的答案是「錯」）']]});
+
+C({t:'體積百分率濃度：100 毫升溶液裡有幾毫升溶質',tag:'📌 定義',src:'自修第 2 章 p.70 重點9（體積百分率濃度、例題）、老師說（酒精度）、觀念掃描 9',
+ text:DEF('體積百分率濃度','<b>溶質的體積</b>占<b>溶液體積</b>的百分比，也就是「<b>100 毫升的溶液中，所含溶質有幾毫升</b>」。<div class="eq">體積百分率濃度（%）＝ '+fr('溶質的體積','溶液的體積')+' × 100 %</div>')+'自修例：紅酒標示酒精的體積百分率濃度 8 %，一瓶 1200 mL，酒精有多少 mL？<br>酒精的體積 ＝ 8 % × 1200 mL ＝ 0.08 × 1200 ＝ <b>96 mL</b>。<br>自修「老師說」：酒標上的<b>酒精度 19.5 度</b> ＝ 體積百分率濃度 19.5 %，表示每 100 mL 料理米酒中含有 19.5 mL 純酒精。<br>'+AI+'兩種百分率濃度，看「分子分母放什麼」：重量百分率濃度放<b>質量</b>（g），體積百分率濃度放<b>體積</b>（mL）。不能一個放質量、一個放體積。',
+ qs:[['酒精度 12 度的葡萄酒 750 mL，含酒精多少 mL？','12 %×750＝0.12×750＝90 mL。'],['75 % 的消毒酒精 100 mL，含多少 mL 酒精？','75 mL（自修 p.70 觀念掃描 9 第 2 題）。'],['體積百分率濃度的「分母」放什麼？','溶液的體積（整個溶液，不是只有溶劑）。']]});
+
+C({t:'晶體用重量％、酒用體積％；溶質＝溶液×濃度',tag:'補充',src:'補習班講義 p.74「C. 水溶液的濃度」；自修 p.70 的 ppm 與體積百分率；例子是自編',
+ text:'補習班的整理：濃度 ＝ 溶質占溶液的比率（溶液濃淡的程度）。<ul><li>溶質是<b>晶體</b>（糖、鹽）：習慣用<b>重量百分濃度</b>（W %，單位 g）</li><li>溶質是<b>酒類</b>：用<b>體積百分濃度</b>（V %，單位 mL）</li></ul><div class="eq">濃度 ＝ 溶質 ÷ 溶液 × 100 %　→　溶質 ＝ 溶液 × 濃度</div>例：濃度 20 % 的糖水 250 g，糖 ＝ 250 × 0.2 ＝ <b>50 g</b>，水 ＝ 250 − 50 ＝ 200 g。<br>例：酒精度 30 度的酒 500 mL，純酒精 ＝ 500 × 0.3 ＝ <b>150 mL</b>。<br><b>ppm 也有體積版</b>：<div class="eq">ppm ＝ 溶質的質量 ÷ 溶液的質量 × 10⁶　　或　　ppm ＝ 溶質的體積 ÷ 溶液的體積 × 10⁶</div>「Y ppm」＝ 每 1 kg（水溶液約 1 L）中有 Y mg 的溶質。氣體常用體積版，例：某氣體 400 ppm ＝ 每 10⁶ mL 的空氣中有 400 mL 的該氣體。',
+ qs:[['濃度 15 % 的鹽水 200 g，鹽多少 g？水多少 g？','鹽 200×0.15＝30 g；水 200−30＝170 g。'],['酒精度 12 度的酒 750 mL，酒精多少 mL？','750×0.12＝90 mL。'],['某氣體 50 ppm（體積比），2×10⁶ mL 的空氣中有多少 mL？','50×2＝100 mL。']]});
+
+C({t:'🎯 觀念釐清：重量百分率與體積百分率濃度',tag:'觀念釐清',src:'題目自編；第 1、2、4 題改自自修 p.70 觀念掃描 8、9、10',
+ qs:[
+  mc('將 1 g 的糖放入 9 g 的水中，完全溶解後，糖水的濃度是多少？',['10 %','1 %','11.1 %','90 %'],0,['','1 % 是把分母當成 100 g 了。溶液 ＝ 1＋9 ＝ 10 g，1÷10 ＝ 10 %。','11.1 % 是 1÷9，分母用了水。分母要是整個溶液 10 g。','90 % 是水占的比例（9÷10）。題目問的是糖的濃度。'],'溶液＝1＋9＝10 g。濃度＝1÷10×100 %＝10 %。'),
+  mc('濃度 75 % 的消毒用酒精 100 mL 中，含有多少 mL 的酒精？',['75 mL','25 mL','100 mL','7.5 mL'],0,['','25 mL 是其他成分（水等）的體積。','100 mL 是整瓶溶液。','7.5 mL 少乘了 10。75 %×100 mL＝75 mL。'],'體積百分率濃度 75 %＝每 100 mL 溶液有 75 mL 酒精。'),
+  mc('小艾買的紅酒，酒精的體積百分率濃度為 8 %，一瓶 1200 mL，酒精有多少 mL？',['96 mL','9.6 mL','150 mL','8 mL'],0,['','9.6 少乘了 10。0.08×1200＝96。','150 是 1200÷8，把 8 % 當成「每 8 份有 1 份」。要用 0.08 去乘。','8 只是濃度的數字，還要乘上整瓶酒的 1200 mL。'],'8 %×1200 mL＝0.08×1200＝96 mL。'),
+  mc('「百萬分點（ppm）代表 10⁶ 毫克的物質中所含的溶質毫克數。」這句話對不對？',['對','錯，應該是 10⁶ 公克','錯，應該是 10⁶ 公斤','錯，應該是 100 毫克'],0,['','10⁶ 毫克＝1 公斤，不是 10⁶ 公克（那是 1 公噸）。','10⁶ 公斤太大了。ppm 的分母是 10⁶ 毫克（＝1 公斤）。','100 份是 %（百分率）。ppm 是 10⁶ 份。'],'自修 p.70 觀念掃描 10 第 3 題：ppm ＝ 10⁶ 毫克（1 公斤）物質中所含的溶質毫克數。')]});
+
+C({t:'🎯 觀念釐清：溶質＝溶液×濃度、體積版 ppm',tag:'觀念釐清',src:'題目自編，依補習班講義 p.74',
+ qs:[
+  mc('濃度 20 % 的糖水 250 g，含糖多少 g？',['50 g','200 g','12.5 g','5000 g'],0,['','200 g 是水的質量，題目問的是糖。','12.5 是 250÷20，把百分率當成「除以 20」了。濃度 20 % ＝ 0.2，要乘。','5000 是 250×20，百分率要換成 0.2，不是 20。'],'溶質＝溶液×濃度＝250×0.2＝50 g。'),
+  mc('某氣體濃度 400 ppm（體積比），表示每 10⁶ mL 的空氣中有多少 mL 該氣體？',['400 mL','4×10⁻⁴ mL','0.4 mL','400 L'],0,['','ppm 的分母是 10⁶，分子就是 ppm 的數字，不用再乘 10⁻⁶。','0.4 是除以 1000 了。400 ppm＝每 10⁶ mL 有 400 mL。','400 L＝4×10⁵ mL，是 400 ppm 的 1000 倍。'],'ppm＝溶質體積÷溶液體積×10⁶，400 ppm＝每 10⁶ mL 有 400 mL。'),
+  mc('要配 300 g、濃度 5 % 的鹽水，需要鹽和水各多少 g？',['鹽 15 g、水 285 g','鹽 5 g、水 295 g','鹽 15 g、水 300 g','鹽 60 g、水 240 g'],0,['','5 g 是把「5 %」當成 5 g。要用 300×0.05＝15 g。','「300 g」是整個溶液，水要扣掉鹽：300−15＝285 g。','60 是 300÷5，百分率要乘不是除。'],'鹽＝300×0.05＝15 g；水＝300−15＝285 g。')]});
+
+C({t:'ppm：百萬分之一',tag:'📌 定義',src:'自修第 2 章 p.70 重點10（百萬分點 ppm）、註（ppb）、例（萊克多巴胺 0.01 ppm）；「1 kg＝10⁶ mg」的推導是本講義整理',
+ text:DEF('ppm（parts per million，百萬分點）','<b>百萬分之一</b>（'+fr('1',X('6'))+'）：<b>10⁶ 毫克（＝ 1 公斤）</b>的物質中，所含<b>溶質的毫克數</b>。<div class="eq">1 ppm ＝ 1 mg / 1 kg</div>')+'ppm 常用在<b>很稀</b>的溶液。自修例：衛生福利部規定豬肉的瘦肉精「萊克多巴胺」殘留容許量為 <b>0.01 ppm</b>，表示每 1 公斤豬肉中的萊克多巴胺不能超過 <b>0.01 毫克</b>。<br>為什麼是 10⁶ 毫克：1 kg ＝ 10³ g，1 g ＝ 10³ mg，指數相加 3＋3 ＝ 6，所以 1 kg ＝ 10⁶ mg。<br>自修註：<b>ppb</b>（parts per billion）是<b>十億分之一</b>（'+X('−9')+'）：<b>1 ppb ＝ 1 μg/kg</b>（1 公斤物質中有 1 微克溶質）。<br>'+AI+'水溶液很稀，1 kg 約等於 1 L，所以水中 1 ppm ≈ 每 1 L 水中有 1 mg。',
+ qs:[['2 ppm 的水，1 kg 裡有多少溶質？','2 ppm＝每 1 kg 有 2 mg，所以 1 kg 水裡有 2 mg。'],['1 kg 是幾 mg？用指數寫。','1 kg＝10³ g，1 g＝10³ mg，指數相加：3＋3＝6，1 kg＝10⁶ mg。這就是 ppm 的「百萬」。'],['1 ppb 是 1 公斤中有幾微克？','1 μg（1 ppb＝1 μg/kg）。']]});
+
+C({t:'% 和 ppm 互換：用指數算',tag:'重點',src:'自修第 2 章 p.70 老師說（1 % ＝ 10,000 ppm；1 ppm ＝ 1,000 ppb）；用指數算出來、表格是本講義整理',
+ text:'1 % ＝ '+X('−2')+'，1 ppm ＝ '+X('−6')+'<br>1 % ÷ 1 ppm ＝ '+X('−2')+' ÷ '+X('−6')+' ＝ '+X('4')+'（指數相減：−2−（−6）＝4）<div class="eq">1 % ＝ 10,000 ppm</div>'+tbl(['%','ppm','怎麼算'],[['1 %','10,000 ppm','10⁴'],['0.1 %','1000 ppm','0.1×10⁴'],['0.01 %','100 ppm','0.01×10⁴'],['0.0001 %','1 ppm','0.0001×10⁴']])+'例：0.3 % ＝ 0.3 × 10⁴ ppm ＝ <b>3000 ppm</b>；例：5 ppm ＝ 5 ÷ 10⁴ % ＝ <b>0.0005 %</b><br>方向：從 % 換成 ppm，數字<b>變大</b>（ppm 是小單位）；從 ppm 換成 %，數字<b>變小</b>。<br>'+AI+'還有更小的 <b>ppb</b>（十億分之一，'+X('−9')+'）：1 ppm ＝ 1000 ppb。',
+ qs:[['0.05 % 是幾 ppm？','0.05×10⁴＝500 ppm。'],['200 ppm 是幾 %？','200÷10⁴＝0.02 %。'],['1 ppm 是幾 ppb？','1 ppm＝10⁻⁶，1 ppb＝10⁻⁹，指數相減：−6−（−9）＝3，所以 1 ppm＝10³ ppb＝1000 ppb。']]});
+
+C({t:'ppm 的計算：溶質幾 mg、溶液幾 kg',tag:'重點',src:'公式由自修 p.70 的定義（1 ppm ＝ 1 mg/kg）推出；例子是本講義自編',
+ text:'<div class="eq">濃度（ppm）＝ 溶質的 mg 數 ÷ 溶液的 kg 數</div>例 1：2 kg 的水中溶有 10 mg 的某種物質。濃度 ＝ 10 ÷ 2 ＝ <b>5 ppm</b>。<br>例 2：水中氧氣 8 ppm，表示 1 kg（約 1 L）水中有 8 mg 的氧氣。5 L 的水中有 8 × 5 ＝ <b>40 mg</b>。<br><b>單位要先換好：</b>溶質如果是 g，要換成 mg。例：2 kg 的水中溶有 0.01 g → 0.01 g ＝ 10 mg → 10 ÷ 2 ＝ 5 ppm。<br>'+AI+'另一種算法：ppm ＝ （溶質 ÷ 溶液）× 10⁶，不管單位只要上下一樣：0.01 g ÷ 2000 g × 10⁶ ＝ 5 ppm，答案一樣。',
+ qs:[['4 kg 的水中溶有 20 mg 的物質，幾 ppm？','20÷4＝5 ppm。'],['水中某物質 3 ppm，10 L（約 10 kg）水中有多少 mg？','3×10＝30 mg。'],['2 kg 水中溶有 0.04 g 的物質，幾 ppm？','0.04 g＝40 mg；40÷2＝20 ppm。']]});
+
+C({t:'🎯 觀念釐清：% 和 ppm',tag:'觀念釐清',src:'題目自編，依自修 p.70 老師說（1 % ＝ 10,000 ppm）',
+ qs:[
+  mc('1 % 等於多少 ppm？',['10,000 ppm','100 ppm','1,000,000 ppm','1000 ppm'],0,['','100 只差了 10²。% 是 10⁻²，ppm 是 10⁻⁶，兩者差 10⁴。','1,000,000 ppm 是 100 %（全部）。','1000 ppm 是 0.1 %。'],'1 %＝10⁻²，1 ppm＝10⁻⁶，10⁻²÷10⁻⁶＝10⁴，所以 1 %＝10,000 ppm。'),
+  mc('20 ppm 等於多少 %？',['0.002 %','0.2 %','2 %','0.0002 %'],0,['','0.2 % 是 2000 ppm。','2 % 是 20,000 ppm。','0.0002 % 是 2 ppm，少一位。'],'20÷10⁴＝0.002 %。'),
+  mc('水中某汙染物 3 ppm，表示 1 kg 的水裡有多少汙染物？',['3 mg','3 g','0.003 mg','3 kg'],0,['','3 g 是 3000 mg，是 3000 ppm。','方向反了，1 ppm＝1 mg/kg。','3 kg 太多了，ppm 是百萬分之一，溶質非常少。'],'1 ppm＝1 mg/kg，所以 3 ppm＝3 mg/kg。'),
+  mc('2 kg 水中溶了 6 mg 某物質，濃度是多少 ppm？',['3 ppm','12 ppm','6 ppm','0.003 ppm'],0,['','把 6 乘以 2 了。ppm＝mg÷kg，要除以 kg 數。','沒有除以 2 kg。ppm 是每 1 kg 的 mg 數。','0.003 是換成 g 之後的數字，ppm 要用 mg。'],'ppm＝mg÷kg＝6÷2＝3 ppm。'),
+  mc('下列哪一個濃度最大？',['0.5 %','800 ppm','0.02 %','50 ppm'],0,['','800 看起來數字最大，但單位是 ppm。0.5 %＝5000 ppm，比 800 ppm 大。','0.02 %＝200 ppm，比 0.5 % 小。','50 ppm 最小。'],'全部換成 ppm：0.5 %＝5000、800、0.02 %＝200、50。最大是 5000 ppm＝0.5 %。')]});
+
+C({t:'單位定義總整理：% 與 ppm',tag:'📌 定義',src:'自修第 2 章 p.70 重點9、10、註、老師說；表格排版是本講義整理',
+ text:tbl(['名稱','定義','記成'],[['重量百分率濃度 %','溶質質量 ÷ 溶液質量 × 100 %','每 100 g 溶液有幾 g 溶質'],['體積百分率濃度 %','溶質體積 ÷ 溶液體積 × 100 %','每 100 mL 溶液有幾 mL 溶質（酒精度）'],['ppm（百萬分點）','百萬分之一（10⁻⁶）','<b>1 ppm ＝ 1 mg/kg</b>'],['ppb（十億分點）','十億分之一（10⁻⁹）','<b>1 ppb ＝ 1 μg/kg</b>']])+'<br>換算：<b>1 % ＝ 10,000 ppm</b>；<b>1 ppm ＝ 1000 ppb</b>。<br>'+AI+'三個「分母」要看清楚：% 的分母是<b>整個溶液</b>（100 份）；ppm 的分母是 <b>1 kg 的溶液</b>（10⁶ mg）。',
+ qs:[['1 ppm 是「每幾 mg／幾 kg」？','每 1 kg 有 1 mg。'],['酒精度 15 度是什麼意思？','體積百分率濃度 15 %：每 100 mL 的酒含 15 mL 純酒精。']]});
+
+C({t:'濃度・ppm 總檢查',tag:'檢查自己',src:SRC0,
+ qs:[
+  mc('0.0005 % 等於多少 ppm？',['5 ppm','50 ppm','0.5 ppm','500 ppm'],0,['','乘了 10⁵。0.0005×10⁴＝5。','0.0005×10⁴＝5，不是 0.5（少乘了）。','乘了 10⁶。% 換成 ppm 是乘 10⁴。'],'0.0005×10⁴＝5 ppm。'),
+  mc('5 L 的水（約 5 kg），要配成 4 ppm，需要溶質多少 mg？',['20 mg','1.25 mg','0.8 mg','4 mg'],0,['','5÷4＝1.25，是除錯了。mg＝ppm×kg。','4÷5＝0.8，是除錯了。mg＝ppm×kg。','4 mg 只夠 1 kg 的水。5 kg 要乘 5。'],'mg＝ppm×kg＝4×5＝20 mg。'),
+  mc('3000 ppm 等於多少 %？',['0.3 %','30 %','3 %','0.03 %'],0,['','只除了 100。% 和 ppm 差 10⁴，要除以 10⁴。','3000÷10⁴＝0.3，不是 3。','除過頭了。3000÷10⁴＝0.3。'],'3000÷10⁴＝0.3 %。'),
+  mc('糖 25 g 溶在水 75 g 中，濃度是多少 %？',['25 %','33.3 %','75 %','20 %'],0,['','分母用了水 75 g，33.3 % 是 25÷75。分母要是溶液（25＋75＝100 g）。','75 % 是水的百分比，不是糖。','20 % 是分母用了 125 g（多加了一次糖）。溶液是 25＋75＝100 g。'],'溶液＝25＋75＝100 g。25÷100×100 %＝25 %。')]});
+
+/* ================= 主題 D：正比・反比（密度、速率、光走多久、濃度）================= */
+/* 數據表：x、y 地位一樣，所以第一列也是數據，不要用標題列的底色（會讓 x 看起來比 y 重要）。每欄等寬，只有最左邊「名稱欄」淡底 */
+function tblR(h,r){var rows=[h].concat(r),t='<table class="t fx nh">';
+  rows.forEach(function(x){t+='<tr>'+x.map(function(c,k){return '<td'+(k?'':' class="rl"')+'>'+c+'</td>';}).join('')+'</tr>';});
+  return t+'</table>';}
+/* 座標圖：o={xm,ym,xt,yt,xl,yl,items:[{pts,col,dots,lab,name}],cap,aria}；固定 viewBox 640×330，字級 ≥15px */
+function gfig(o){
+  var W=640,H=330,L=84,R=600,Tp=30,B=250;
+  function sx(x){return L+x/o.xm*(R-L);}
+  function sy(y){return B-y/o.ym*(B-Tp);}
+  var s='<svg class="fig big x18" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+o.aria+'">';
+  o.xt.forEach(function(x){
+    if(x>0)s+='<line x1="'+f1(sx(x))+'" y1="'+Tp+'" x2="'+f1(sx(x))+'" y2="'+B+'" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    s+=T(sx(x),B+22,String(x),'lbl','middle');
+  });
+  o.yt.forEach(function(y){
+    if(y>0)s+='<line x1="'+L+'" y1="'+f1(sy(y))+'" x2="'+R+'" y2="'+f1(sy(y))+'" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="4 4"/>';
+    s+=T(L-10,sy(y)+5,String(y),'lbl','end');
+  });
+  s+='<line x1="'+L+'" y1="'+B+'" x2="'+R+'" y2="'+B+'" stroke="currentColor" stroke-width="2.5"/><line x1="'+L+'" y1="'+Tp+'" x2="'+L+'" y2="'+B+'" stroke="currentColor" stroke-width="2.5"/>';
+  s+=T(R,B+46,o.xl,'lbl2','end')+T(8,18,o.yl,'lbl2','start');
+  o.items.forEach(function(it){
+    var d=it.pts.map(function(p,k){return (k?'L':'M')+f1(sx(p[0]))+' '+f1(sy(p[1]));}).join(' ');
+    s+='<path d="'+d+'" fill="none" stroke="'+it.col+'" stroke-width="3.5" stroke-linejoin="round"/>';
+    (it.dots||[]).forEach(function(p){s+='<circle cx="'+f1(sx(p[0]))+'" cy="'+f1(sy(p[1]))+'" r="5.5" fill="'+it.col+'"/>';});
+    if(it.name)s+=T(sx(it.lab[0])+8,sy(it.lab[1])+5,it.name,'lbl2','start');
+  });
+  s+=T(W/2,H-6,o.cap,'lbl2','middle');
+  return s+'</svg>';
+}
+function propFig(){return gfig({xm:6,ym:30,xt:[0,1,2,3,4,5,6],yt:[0,10,20,30],xl:'枝數 x（枝）',yl:'價錢 y（元）',aria:'正比的圖：通過原點的直線',
+  items:[{pts:[[0,0],[6,30]],col:'var(--ac)',dots:[[1,5],[2,10],[3,15],[4,20]]}],cap:'正比：圖是一條通過原點 (0, 0) 的直線'});}
+function invFig(){var p=[],x;for(x=1;x<=12.01;x+=0.5)p.push([x,12/x]);
+  return gfig({xm:12,ym:12,xt:[0,2,4,6,8,10,12],yt:[0,3,6,9,12],xl:'速率 x（km/h）',yl:'時間 y（h）',aria:'反比的圖：彎曲的曲線',
+  items:[{pts:p,col:'var(--ac3)',dots:[[2,6],[3,4],[4,3],[6,2],[12,1]]}],cap:'反比：圖是彎彎的曲線，不會碰到軸'});}
+function denFig(){return gfig({xm:12,ym:80,xt:[0,2,4,6,8,10],yt:[0,20,40,60,80],xl:'體積 V（cm³）',yl:'質量 M（g）',aria:'質量對體積的圖：三條過原點的直線，斜率就是密度',
+  items:[{pts:[[0,0],[10,78.7]],col:'var(--ac)',name:'鐵 7.87',lab:[10,78.7]},{pts:[[0,0],[10,27]],col:'var(--ac3)',name:'鋁 2.70',lab:[10,27]},{pts:[[0,0],[10,10]],col:'var(--ac2)',name:'水 1.00',lab:[10,10]}],cap:'同一種物質是直線；愈陡，密度愈大（斜率＝密度）'});}
+function spdFig(){return gfig({xm:12,ym:55,xt:[0,2,4,6,8,10],yt:[0,10,20,30,40,50],xl:'時間 t（s）',yl:'距離 s（m）',aria:'距離對時間的圖：三條過原點的直線，斜率就是速率',
+  items:[{pts:[[0,0],[10,50]],col:'var(--ac)',name:'騎車 5 m/s',lab:[10,50]},{pts:[[0,0],[10,30]],col:'var(--ac3)',name:'跑步 3 m/s',lab:[10,30]},{pts:[[0,0],[10,10]],col:'var(--ac2)',name:'走路 1 m/s',lab:[10,10]}],cap:'等速運動是直線；愈陡，速率愈快（斜率＝速率）'});}
+
+D({t:'正比・反比：看到公式，馬上知道誰跟誰成什麼比',tag:'今天的目標',
+ text:'理化裡很多公式長得一樣：<div class="eq">A ＝ B ÷ C</div><ul><li>密度 D ＝ 質量 M ÷ 體積 V</li><li>速率 ＝ 距離 ÷ 時間（光走的時間 ＝ 距離 ÷ 光速）</li><li>濃度 ppm ＝ 溶質 mg ÷ 溶液 kg</li></ul>只要弄懂「<b>固定哪一個量</b>，另外兩個量是正比還是反比」，這些公式就不用分開背。<br>正比、反比在國一數學學過，這裡用理化的例子再複習一次。<br><br>'+LEGEND});
+
+D({t:'正比：比值固定，一個變 2 倍，另一個也變 2 倍',tag:'📌 定義',src:'國一數學「正比與反比」複習；圖與例子是本講義整理',
+ fig:propFig(),
+ text:DEF('正比','兩個量 x、y，<b>y ÷ x 的比值固定</b>（y ＝ k × x）。x 變 2 倍，y 也變 2 倍；x 變成一半，y 也變成一半。圖是<b>通過原點的直線</b>。')+'例：1 枝筆 5 元，買 x 枝要 y 元：'+tblR(['x（枝）','1','2','3','4'],[['y（元）','5','10','15','20'],['y ÷ x','5','5','5','5']])+'y ÷ x 都是 5（固定），所以 y 和 x <b>成正比</b>。',
+ qs:[['x 變成 3 倍，y 會變成幾倍？','也變成 3 倍。'],['正比的圖長什麼樣子？','通過原點 (0, 0) 的直線。']]});
+
+D({t:'反比：乘積固定，一個變 2 倍，另一個變成一半',tag:'📌 定義',src:'國一數學「正比與反比」複習；圖與例子是本講義整理',
+ fig:invFig(),
+ text:DEF('反比','兩個量 x、y，<b>x × y 的乘積固定</b>（y ＝ k ÷ x）。x 變 2 倍，y 變成一半；x 變 3 倍，y 變成 1/3。圖是<b>彎彎的曲線</b>（不會碰到軸）。')+'例：走同一段 12 km 的路，速率 x（km/h）和時間 y（h）：'+tblR(['x（km/h）','2','3','4','6','12'],[['y（h）','6','4','3','2','1'],['x × y','12','12','12','12','12']])+'x × y 都是 12（固定），所以 y 和 x <b>成反比</b>。<br>'+AI+'簡單的記法：<b>正比像「同進同退」，反比像「蹺蹺板」</b>（一個上去，另一個就下來）。',
+ qs:[['x 變成 4 倍，y 會變成多少？','變成 1/4（乘積固定）。'],['反比的圖碰得到 x 軸或 y 軸嗎？','碰不到。x、y 都不會是 0（乘積固定不是 0）。']]});
+
+D({t:'怎麼判斷：算比值，還是算乘積',tag:'重點',src:'本講義整理（判斷方法同國一數學）',
+ text:'<b>只問一個問題：算出來的數字，每一格都一樣嗎？</b>'+DEF('判斷的兩步驟','<b>① 算 y ÷ x</b>：每一格都一樣 → <b>正比</b>。<br><b>② 算 x × y</b>：每一格都一樣 → <b>反比</b>。<br>兩個都不是每格一樣 → <b>都不是</b>。')+'<b>例 A：</b>x ＝ 1、2、3，y ＝ 2、4、6'+tblR(['x','1','2','3'],[['y','2','4','6'],['y ÷ x','<b>2</b>','<b>2</b>','<b>2</b>'],['x × y','2','8','18']])+'y ÷ x ＝ 2、2、2（<b>每格都一樣</b>）→ <b>正比</b>。<br><br><b>例 B：</b>x ＝ 1、2、3，y ＝ 6、3、2'+tblR(['x','1','2','3'],[['y','6','3','2'],['y ÷ x','6','1.5','0.67'],['x × y','<b>6</b>','<b>6</b>','<b>6</b>']])+'x × y ＝ 6、6、6（<b>每格都一樣</b>）→ <b>反比</b>。<br><br><b>例 C：</b>x ＝ 1、2、3，y ＝ 3、4、5（y ＝ x ＋ 2）'+tblR(['x','1','2','3'],[['y','3','4','5'],['y ÷ x','3','2','1.67'],['x × y','3','8','15']])+'y ÷ x ＝ 3、2、1.67（不一樣），x × y ＝ 3、8、15（也不一樣）→ <b>都不是</b>。<br>'+AI+'為什麼 y 一直變大，卻<b>不是</b>正比？正比要 x 變 2 倍時 y 也剛好變 2 倍。例 C 的 x 從 1 變成 2（2 倍），y 從 3 變成 4，<b>不是 6</b>，所以不是正比。<br><b>常見迷思：「x 變大，y 也變大」不一定是正比。</b>一定要算 y ÷ x 才知道。',
+ qs:[['x＝1、2、3，y＝2、4、6，是正比還是反比？','y÷x＝2、2、2 固定，正比。'],['x＝1、2、3，y＝6、3、2，是正比還是反比？','x×y＝6、6、6 固定，反比。']]});
+
+D({t:'🎯 觀念釐清：正比、反比、都不是',tag:'觀念釐清',src:'題目自編',
+ qs:[
+  mc('x＝1、2、3、4 時，y＝6、12、18、24。x 和 y 的關係是？',['正比（y÷x 固定＝6）','反比（x×y 固定）','兩者都不是','兩者都是'],0,['','x×y＝6、24、54、96，不固定，不是反比。y÷x 才是固定的。','y÷x 每組都是 6，固定，是正比。','正比和反比不可能同時成立（除非是 0）。'],'y÷x＝6、6、6、6，固定，正比。'),
+  mc('x＝1、2、3、6 時，y＝12、6、4、2。x 和 y 的關係是？',['反比（x×y 固定＝12）','正比（y÷x 固定）','兩者都不是','兩者都是'],0,['','y÷x＝12、3、1.33、0.33，不固定，不是正比。x×y 才是固定的。','x×y＝12、12、12、12 固定，是反比。','正比和反比不可能同時成立。'],'x×y＝12、12、12、12，固定，反比。'),
+  mc('x＝1、2、3 時，y＝5、7、9。x 和 y 的關係是？',['都不是','正比','反比','兩者都是'],0,['','y÷x＝5、3.5、3，不固定，不是正比。','x×y＝5、14、27，不固定，不是反比。','正比和反比不可能同時成立。'],'y÷x 和 x×y 都不固定（y＝2x＋3），所以都不是。'),
+  mc('「x 變大，y 也跟著變大，所以 y 和 x 一定成正比。」這句話對嗎？',['錯，還要看 y÷x 是不是固定','對','只有 x 是整數時才對','錯，變大的一定是反比'],0,['','例：y＝x＋2。x 變大 y 也變大，但 y÷x 不固定，不是正比。','和 x 是不是整數無關。要看 y÷x 是否固定。','反比是「一個變大，另一個變小」。這句話兩個都變大，不是反比。'],'正比的條件是 y÷x 固定，不是「一起變大」。')]});
+
+D({t:'密度 D ＝ M ÷ V：固定哪一個？',tag:'重點',src:'密度公式見自修 p.29（密度表的鐵、鋁、水）；正比、反比的整理與圖是本講義做的',
+ fig:denFig(),
+ text:'密度 <b>D ＝ M ÷ V</b>（M 質量、V 體積）。三個量，<b>固定一個，看另外兩個</b>：'+tbl(['固定哪一個','另外兩個的關係','為什麼'],[['<b>D 固定</b>（同一種物質）','M 和 V 成<b>正比</b>','M ÷ V ＝ D 固定。V 變 2 倍，M 也變 2 倍'],['<b>M 固定</b>（同一塊物質）','D 和 V 成<b>反比</b>','D × V ＝ M 固定。V 變 2 倍，D 變成一半'],['<b>V 固定</b>（一樣大的體積）','M 和 D 成<b>正比</b>','M ＝ D × V。V 固定時 M 跟 D 同進同退']])+'右邊的圖：同一種物質的 M–V 圖是過原點的直線，<b>斜率就是密度</b>（鐵最陡，水最平）。',
+ qs:[['同樣是鐵塊，體積變 3 倍，質量變幾倍？','密度（鐵）固定，M 與 V 成正比：變 3 倍。'],['100 g 的水結成冰，密度變小，體積怎麼變？','質量固定，密度與體積成反比：密度變小，體積變大。'],['1 cm³ 的鐵和 1 cm³ 的鋁，鐵是鋁的幾倍重？','體積固定，M 與 D 成正比。7.87÷2.70≈2.9 倍。']]});
+
+D({t:'🎯 觀念釐清：密度的正比、反比',tag:'觀念釐清',src:'題目自編；密度數值取自自修 p.29 密度表',
+ qs:[
+  mc('一塊鐵體積 10 cm³、質量 78.7 g。同一種鐵，體積 30 cm³，質量是多少？',['236.1 g','26.2 g','78.7 g','787 g'],0,['','26.2 是 78.7÷3，方向反了。同一種物質（密度固定），V 變 3 倍，M 也變 3 倍。','質量會跟著體積變，不會不變。','787 是乘了 10。V 是變成 3 倍，不是 10 倍。'],'M 與 V 成正比：78.7×3＝236.1 g。'),
+  mc('一杯 200 g 的水結成冰，質量不變。冰的密度比水小，所以冰的體積比水怎樣？',['比較大','比較小','一樣大','無法比較'],0,['','M 固定時 D 與 V 成反比：密度變小，體積要變大。','密度不一樣，體積就不會一樣（M 固定時 D×V 不變）。','可以比較：M 固定，D 與 V 成反比。'],'M 固定，D 與 V 成反比。冰的密度較小，所以體積較大（冰會浮在水上）。'),
+  mc('1 cm³ 的金（19.30 g/cm³）與 1 cm³ 的鋁（2.70 g/cm³），金的質量大約是鋁的幾倍？',['約 7 倍','約 0.14 倍','約 52 倍','一樣重'],0,['','0.14 是 2.70÷19.30，把倍數算反了。','52 是把兩個密度相乘。要用相除：19.30÷2.70。','體積一樣，但密度不一樣，質量就不一樣。V 固定時 M 與 D 成正比。'],'V 固定，M 與 D 成正比：19.30÷2.70≈7.1 倍。'),
+  mc('質量固定，把一塊物質壓縮到體積變成原來的 1/4，密度變成原來的幾倍？',['4 倍','1/4 倍','16 倍','不變'],0,['','方向反了。M 固定，D 與 V 成反比：V 變 1/4，D 變 4 倍。','16 是 4×4，多乘了一次。','V 變了，D 就會變（M 固定時 D×V 不變）。'],'D×V＝M 固定，V 變成 1/4，D 變成 4 倍。'),
+  mc('M–V 圖（質量對體積）上，哪一條直線代表密度最大的物質？',['最陡（斜率最大）的那一條','最平的那一條','最長的那一條','最低的那一條'],0,['','最平的斜率最小，是密度最小的。','線的長短只是畫到哪裡，和密度無關。','要看斜率（陡的程度）。斜率就是 M÷V＝密度。'],'斜率＝M÷V＝密度，最陡的密度最大。')]});
+
+D({t:'補習班的寫法：D V ＝ M，圈起固定的那一個',tag:'📌 定義',src:'補習班講義 p.37「B. 密度、體積、質量的正反比關係」（AB＝C，圈住固定的）；M–V 圖比較 D₁、D₂ 也在同一頁',
+ text:DEF('D V ＝ M','先寫出 <b>D × V ＝ M</b>，再把<b>固定</b>的那一個圈起來，另外兩個的關係就出來了。')+tbl(['圈起來（固定）','另外兩個','關係','白話'],[['<b>D</b>（同一種物質）','V 和 M','<b>正比</b>','質量大 → 體積大'],['<b>V</b>（體積相同）','D 和 M','<b>正比</b>','質量大 → 密度大'],['<b>M</b>（質量相同）','D 和 V','<b>反比</b>','體積大 → 密度小']])+'規則：<b>圈 M（等號右邊的）→ D、V 反比（乘起來固定）；圈 D 或 V（等號左邊的）→ 另一個左邊的量和 M 正比。</b>你在補習班講義上寫的「AB＝C，正、反」就是這個意思。<br>圖形：同一種物質的 M–V 圖是過原點的直線；M 固定時 D–V 圖是往下彎的曲線；D 固定時 D–M 圖是水平線（密度不隨質量變）。<br>'+AI+'M–V 圖上有兩條線 D₁、D₂：<b>D₁ 比較陡 → D₁ ＞ D₂</b>。',
+ qs:[['同樣 100 g，鐵和棉花誰的體積大？為什麼？','棉花。M 固定，D 與 V 成反比；棉花的 D 小，所以 V 大。'],['體積相同的金和棉花，誰的質量大？','金。V 固定，M 與 D 成正比。'],['同一種物質，質量加倍，密度變多少？','不變（D 固定，D–M 圖是水平線）。']]});
+
+D({t:'比例題：用 D V ＝ M 列成表格',tag:'重點',src:'補習班講義 p.34、p.38、p.39（精選範例 1、7～10 的做法）；類題的數字是自編',
+ text:'做法：<b>寫出 D V ＝ M，把已知的比填進去，缺的那一個算出來</b>。<br>例 1：甲、乙體積比 2：3，質量比 1：4，密度比？'+tbl(['','D','V','M'],[['甲','（求）','2','1'],['乙','（求）','3','4']])+'D ＝ M ÷ V：甲 ＝ 1÷2 ＝ 1/2；乙 ＝ 4÷3 ＝ 4/3。甲：乙 ＝ 1/2 ： 4/3 ＝ <b>3：8</b>。<br>例 2：甲、乙體積比 4：3，密度比 2：1，質量比？M ＝ D×V：甲 ＝ 2×4 ＝ 8；乙 ＝ 1×3 ＝ 3。質量比 ＝ <b>8：3</b>。<br>例 3：質量相同的水（1）與汽油（0.8），體積比？M 固定，V 與 D 反比：V水 ： V油 ＝ 1/1 ： 1/0.8 ＝ 1 ： 1.25 ＝ <b>4：5</b>。<br>杯子題（補習班）：杯子恰好能裝 500 g 的柳橙汁，改裝 500 g 的蒸餾水。水的密度比柳橙汁小，M 相同 → 水的體積比較大，杯子容積是固定的 → <b>會滿出來</b>。',
+ qs:[['甲、乙體積比 3：2，質量比 6：5，密度比？','D甲＝6÷3＝2；D乙＝5÷2＝2.5；2：2.5＝4：5。'],['質量比 2：3，密度比 4：1，體積比？','V＝M÷D：甲 2÷4＝1/2；乙 3÷1＝3；1/2：3＝1：6。'],['體積比 1：10 的銅塊，質量比是多少？','同一種物質 D 固定，M 與 V 成正比，1：10。']]});
+
+D({t:'🎯 觀念釐清：密度比例題',tag:'觀念釐清',src:'題目自編，做法依補習班講義 p.34、p.37～39',
+ qs:[
+  mc('甲、乙兩物體的體積比 4：1，質量比 2：3，密度比（甲：乙）是多少？',['1：6','6：1','8：3','3：8'],0,['','把比顛倒了。D＝M÷V：甲 2÷4＝1/2；乙 3÷1＝3；甲：乙＝1/2：3＝1：6。','8：3 是 V×M（4×2：1×3），密度要用 M÷V。','3：8 是例題的答案，這題的數字不一樣。'],'D＝M÷V：甲 2/4＝1/2，乙 3/1＝3。比＝1/2：3＝1：6。'),
+  mc('甲、乙的密度比 3：1，體積比 2：5，質量比（甲：乙）是多少？',['6：5','5：6','15：2','3：2'],0,['','比顛倒了。M＝D×V：甲 3×2＝6；乙 1×5＝5。','15：2 是 D÷V（3/2：1/5），質量要用 D×V。','3：2 只用了一半的資訊。'],'M＝D×V：甲 3×2＝6，乙 1×5＝5，質量比＝6：5。'),
+  mc('質量相同的甲（密度 2 g/cm³）與乙（密度 3 g/cm³），體積比（甲：乙）是多少？',['3：2','2：3','6：1','1：6'],0,['','M 固定時 D 和 V 成反比，不是正比，要顛倒：密度大的體積小。','6：1 是 2×3，沒有道理。','1：6 沒有道理。'],'M 固定，V 與 D 反比：甲 1/2，乙 1/3，1/2：1/3＝3：2。'),
+  mc('一個杯子恰好裝滿 400 g 的水。改裝 400 g 的酒精（0.8 g/cm³），會怎樣？',['過滿溢出','裝不滿','恰好裝滿','無法判斷'],0,['','酒精的密度比水小，同樣質量的體積比較大，所以會滿出來。','質量相同，但體積不一樣（體積＝質量÷密度）。','可以判斷：D 小的 V 大。'],'水 400 cm³；酒精 400÷0.8＝500 cm³ ＞ 400 cm³，會溢出。'),
+  mc('三個物體 (V, M)：甲 (3 cm³, 24 g)、乙 (6 cm³, 48 g)、丙 (9 cm³, 63 g)。哪一個和其他兩個的材質不同？',['丙','甲','乙','三個都相同'],0,['','甲 24÷3＝8 g/cm³，和乙一樣。','乙 48÷6＝8 g/cm³，和甲一樣。','丙 63÷9＝7 g/cm³，和甲、乙不同。'],'D 甲＝8、乙＝8、丙＝7，丙不同。'),
+  mc('同一張 M–V 圖上，D₁ 的線比 D₂ 的線陡，哪一個密度比較大？',['D₁','D₂','一樣大','無法比較'],0,['','斜率（陡的程度）＝M÷V＝密度，陡的比較大。','兩條線斜率不一樣，密度不一樣。','可以比較：看斜率。'],'斜率＝M÷V＝密度，D₁ 比較陡，所以 D₁ 的密度較大。')]});
+
+D({t:'速率 v ＝ s ÷ t：固定哪一個？',tag:'重點',src:'速率公式見網路查詢整理（國三上 1-2）；正比、反比的整理與圖是本講義做的',
+ fig:spdFig(),
+ text:'速率 <b>v ＝ s ÷ t</b>（s 距離、t 時間）：'+tbl(['固定哪一個','另外兩個的關係','例子'],[['<b>v 固定</b>（等速）','s 和 t 成<b>正比</b>','5 m/s：10 s 走 50 m，20 s 走 100 m'],['<b>s 固定</b>（同一段路）','v 和 t 成<b>反比</b>','12 km：6 km/h 要 2 h，12 km/h 要 1 h'],['<b>t 固定</b>（同樣時間）','s 和 v 成<b>正比</b>','1 h：30 km/h 走 30 km，60 km/h 走 60 km']])+'右邊的圖：s–t 圖上等速是過原點的直線，<b>斜率就是速率</b>。',
+ qs:[['同一段路，速率變成 3 倍，時間會變成幾倍？','1/3（s 固定，v 與 t 成反比）。'],['速率固定 5 m/s，走 20 s 是多少 m？','5×20＝100 m（v 固定，s 與 t 成正比）。']]});
+
+D({t:'🎯 觀念釐清：速率的正比、反比',tag:'觀念釐清',src:'題目自編',
+ qs:[
+  mc('等速 5 m/s，走 10 s 是 50 m。走 30 s 是多少 m？',['150 m','50 m','16.7 m','1500 m'],0,['','時間變 3 倍，距離也會變 3 倍。v 固定時 s 與 t 成正比。','16.7 是 50÷3，方向反了。','1500 是乘了 30 倍。時間是從 10 s 變成 30 s（3 倍）。'],'v 固定，s 與 t 成正比：50×3＝150 m（或 5×30＝150）。'),
+  mc('同一段路，速率變成 2 倍，所需的時間變成原來的幾倍？',['1/2 倍','2 倍','不變','4 倍'],0,['','方向反了。s 固定，v 與 t 成反比：v 變 2 倍，t 變一半。','速率變了，時間會變（v×t＝s 固定）。','4 倍沒有道理。v×t 要保持不變。'],'s 固定，v×t 不變：v 變 2 倍，t 變 1/2。'),
+  mc('騎車以 20 km/h 騎 3 h。若速率改成 30 km/h，騎同一段路要幾小時？',['2 h','4.5 h','1.5 h','9 h'],0,['','4.5 是 3×30÷20，反比算成正比了。速率變快，時間要變少。','1.5 是 3÷2，沒有道理。路程是 20×3＝60 km，60÷30＝2 h。','9 是 3×3。要先算路程 60 km，再除以 30。'],'路程 s＝20×3＝60 km；時間＝60÷30＝2 h。（或：速率變 3/2 倍，時間變 2/3 倍＝2 h）'),
+  mc('下列哪一個量固定時，距離和時間成正比？',['速率','距離','時間','質量'],0,['','距離本身固定時，距離不會跟時間成正比，而是速率和時間成反比。','時間固定時，距離和速率成正比。','質量和距離、時間無關。'],'A＝B÷C 型：A（速率）固定時，B（距離）和 C（時間）成正比。')]});
+
+D({t:'濃度和光：也有正比、反比',tag:'重點',src:'ppm 的定義見自修 p.70；光速見自修 p.151；稀釋與倍數的整理是本講義做的',
+ text:'<b>ppm ＝ 溶質 mg ÷ 溶液 kg</b>：'+tbl(['固定哪一個','另外兩個的關係','例子'],[['溶液量固定（1 kg）','溶質 mg 和 ppm 成<b>正比</b>','3 ppm 有 3 mg，6 ppm 有 6 mg'],['溶質固定（10 mg）','ppm 和溶液 kg 成<b>反比</b>（加水稀釋）','2 kg：5 ppm；5 kg：2 ppm；10 kg：1 ppm'],['ppm 固定（同一種水）','溶質 mg 和溶液 kg 成<b>正比</b>','3 ppm：1 kg 有 3 mg，6 kg 有 18 mg']])+'<b>光走的時間 t ＝ s ÷ c</b>（c 是光速）：光速固定時，<b>時間和距離成正比</b>。太陽 1.5×10⁸ km 要 500 s；月球 3.8×10⁵ km 只要 1.3 s（距離比約 395 倍，時間比也約 395 倍）。<br>'+AI+'光在水中的速率只有真空的 3/4：同樣的距離，c 變成 3/4 倍，時間就變成 4/3 倍（<b>反比</b>）。',
+ qs:[['溶質 10 mg，溶液從 2 kg 稀釋成 5 kg，濃度怎麼變？','5 ppm 變成 2 ppm（溶質固定，ppm 與溶液量成反比）。'],['光走的距離變成 2 倍，時間變成幾倍？','2 倍（c 固定，t 與 s 成正比）。']]});
+
+D({t:'🎯 觀念釐清：濃度和光',tag:'觀念釐清',src:'題目自編',
+ qs:[
+  mc('10 mg 的鹽溶在 2 kg 的水中是 5 ppm。再加水，使溶液成為 5 kg，濃度變成幾 ppm？',['2 ppm','12.5 ppm','5 ppm','0.5 ppm'],0,['','12.5 是 5×5÷2，方向反了。加水，溶液變多，濃度要變小。','溶液量變了，濃度就會變（溶質 10 mg 固定，ppm 與溶液 kg 成反比）。','0.5 是 10÷20，沒有道理。10 mg÷5 kg＝2 ppm。'],'ppm＝10÷5＝2 ppm（溶質固定，溶液 2 kg→5 kg，濃度變成 2/5）。'),
+  mc('同樣是 1 kg 的水，濃度 3 ppm 含溶質 3 mg。濃度 9 ppm 的含溶質多少 mg？',['9 mg','3 mg','27 mg','1 mg'],0,['','濃度變 3 倍，溶質也要變 3 倍。溶液量固定時，溶質 mg 與 ppm 成正比。','27 是 3×9，多乘了。9 ppm 的 1 kg 水，溶質就是 9 mg。','1 mg 是 1 ppm 的量。'],'1 kg 的水，溶質 mg ＝ ppm，所以 9 ppm 含 9 mg。'),
+  mc('光走 1.5×10⁸ km 要 500 s。光走 3×10⁸ km 要多久？',['1000 s','250 s','500 s','2.5×10⁵ s'],0,['','方向反了。距離變 2 倍，時間也變 2 倍。c 固定時 t 與 s 成正比。','距離變了，時間會變。','2.5×10⁵ 是把 10 的次方也乘進去了。距離只變 2 倍，時間也只變 2 倍。'],'c 固定，t 與 s 成正比：500×2＝1000 s。'),
+  mc('溶質不變，溶液量變成原來的 1/3，濃度變成原來的幾倍？',['3 倍','1/3 倍','9 倍','不變'],0,['','方向反了。溶質固定時 ppm 與溶液量成反比：溶液變 1/3，濃度變 3 倍。','9 是 3×3，多乘了一次。','溶液量變了，濃度就會變。'],'溶質固定，ppm 與溶液量成反比：溶液變成 1/3，濃度變成 3 倍。')]});
+
+D({t:'一張表記住：A ＝ B ÷ C',tag:'📌 定義',src:'本講義整理（密度見自修 p.29、光速見 p.151、ppm 見 p.70；速率見網路查詢整理）',
+ text:DEF('A ＝ B ÷ C 型公式','<b>C 固定</b> → A 和 B 成<b>正比</b>；<b>B 固定</b> → A 和 C 成<b>反比</b>；<b>A 固定</b> → B 和 C 成<b>正比</b>。<br>口訣：<b>「被除數」變 k 倍，商也變 k 倍（正比）；「除數」變 k 倍，商變成 1/k（反比）。</b>')+tbl(['公式','A（商）','B（被除數）','C（除數）'],[['密度 D ＝ M ÷ V','D 密度','M 質量','V 體積'],['速率 v ＝ s ÷ t','v 速率','s 距離','t 時間'],['光走的時間 t ＝ s ÷ c','t 時間','s 距離','c 光速'],['濃度 ppm ＝ mg ÷ kg','ppm','溶質 mg','溶液 kg']])+'<br>'+AI+'「A 固定 → B 和 C 成正比」最容易忘：<b>同一種物質</b>（密度固定），質量和體積成正比；<b>等速</b>（速率固定），距離和時間成正比；<b>同濃度</b>的溶液，溶質和溶液量成正比。',
+ qs:[['用 D＝M÷V：V 固定時，M 和 D 是什麼比？','正比（M＝D×V）。'],['同一段路，光在水中的速率是真空的 3/4，時間會變成幾倍？','4/3 倍（反比：速率變 3/4，時間變 4/3）。']]});
+
+D({t:'正比・反比 總檢查',tag:'檢查自己',src:'題目自編',
+ qs:[
+  mc('x × y ＝ 24（固定）。x 變成 4 倍，y 變成原來的幾倍？',['1/4 倍','4 倍','24 倍','不變'],0,['','方向反了。乘積固定時，x 變 4 倍，y 要變成 1/4。','24 是乘積的數字，不是倍數。','x 變了，y 一定要跟著變，乘積才不變。'],'反比：x×y 固定，x 變 4 倍，y 變 1/4。'),
+  mc('鋁塊（2.70 g/cm³）體積 20 cm³，質量是 54 g。同樣的鋁，體積 5 cm³，質量是多少？',['13.5 g','216 g','54 g','10.8 g'],0,['','216 是 54×4，方向反了。體積變成 1/4，質量也變成 1/4。','體積變了，質量也會變。','10.8 是 54÷5，沒有對應到「體積變成 1/4」。5÷20＝1/4，54÷4＝13.5。'],'D 固定，M 與 V 成正比：V 變 1/4，M 變 1/4：54÷4＝13.5 g（或 2.70×5＝13.5）。'),
+  mc('等速騎車，3 h 走 45 km。騎 5 h 走多遠？',['75 km','27 km','45 km','225 km'],0,['','27 是 45×3÷5，用反比算了。等速時 s 與 t 成正比：時間變多，距離也變多。','時間變了，距離也會變。','225 是 45×5，多乘了。45÷3＝15 km/h，15×5＝75。'],'v＝45÷3＝15 km/h。s＝15×5＝75 km。'),
+  mc('水中的光速約為真空中的 3/4。光走同樣的距離，在水中所需的時間是真空中的幾倍？',['4/3 倍','3/4 倍','不變','3 倍'],0,['','方向反了。距離固定時 t 與 c 成反比：c 變成 3/4，t 變成 4/3。','光速變慢，時間一定會變長。','3 是分子。反比要取倒數：3/4 的倒數是 4/3。'],'s 固定，t 與 c 成反比：c 變成 3/4，t 變成 4/3 倍。'),
+  mc('一瓶 2 kg 的水含 10 mg 汙染物（5 ppm）。同一種水取 6 kg，含汙染物多少 mg？',['30 mg','10 mg','3.33 mg','60 mg'],0,['','溶液量變多了，溶質也要跟著變多。同濃度時 mg 與 kg 成正比。','3.33 是 10÷3，用反比算了。同濃度時溶液量變 3 倍，溶質也變 3 倍。','60 是 10×6，多乘了。6 kg÷2 kg＝3 倍，10×3＝30。'],'5 ppm＝每 1 kg 有 5 mg，6 kg 有 5×6＝30 mg。')]});
+
+/* ================= 主題 E：測量值・最小刻度（補習班講義 p.16～17）================= */
+/* 直尺圖：4～5 cm，最小刻度 0.1 cm（1 mm），筆尖在 4.56 cm。固定 viewBox 640×210，字級 ≥15px */
+function rulerFig(){
+  var W=640,H=210,x0=50,per=54,i,s='<svg class="fig big x18" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="直尺從 4 公分到 5 公分，最小刻度 0.1 公分，物體右端在 4.5 與 4.6 之間">';
+  var tip=x0+5.6*per;
+  s+='<rect x="'+x0+'" y="62" width="'+(10*per)+'" height="62" fill="var(--hi)" stroke="currentColor" stroke-width="2"/>';
+  for(i=0;i<=10;i++){
+    var x=x0+i*per,h=(i===0||i===10)?34:(i===5?26:16);
+    s+='<line x1="'+x+'" y1="62" x2="'+x+'" y2="'+(62+h)+'" stroke="currentColor" stroke-width="2"/>';
+  }
+  s+=T(x0,152,'4','lbl2','middle')+T(x0+5*per,152,'4.5','lbl2','middle')+T(x0+10*per,152,'5 cm','lbl2','middle');
+  s+='<rect x="'+x0+'" y="18" width="'+(tip-x0)+'" height="26" fill="var(--ac)" opacity="0.25"/>';
+  s+='<polygon points="'+(tip)+',58 '+(tip-9)+',40 '+(tip+9)+',40" fill="var(--ac3)"/><line x1="'+tip+'" y1="18" x2="'+tip+'" y2="42" stroke="var(--ac3)" stroke-width="4"/>';
+  s+=T(x0+2.4*per,38,'物體','lbl2','middle');
+  s+=T(tip+14,34,'右端 4.56 cm','lbl2','start');
+  s+=T(W/2,H-12,'準確值 4.5（看得到的刻度）＋ 估計值 0.06（眼睛估）','lbl2','middle');
+  return s+'</svg>';
+}
+
+E({t:'測量值：看一個數字，就知道用了什麼尺',tag:'今天的目標',
+ text:'補習班講義第 16～17 頁的內容。你會遇到兩種題：<ol><li>給你一把尺，問你「這個長度要<b>怎麼記錄</b>」</li><li>給你一個記錄，問你「用的尺<b>最小刻度是多少</b>」</li></ol>兩種題用同一個規則：<div class="eq">估計值 ＝ 最小刻度的<b>下一位</b></div>記住這一句，兩種題都會做。這也是前面單位換算的應用：最小刻度常常是 1 m、1 cm、1 mm 這種 10 的次方。<br><br>'+LEGEND});
+
+E({t:'測量值 ＝ 準確值 ＋ 估計值',tag:'📌 定義',src:'補習班講義（張羽自然）p.16「一個完整的測量結果」與統整 (1)～(4)；1.30、3.00 是該頁類題 1 的答案',
+ fig:rulerFig(),
+ text:DEF('測量值','一個完整的測量結果要有<b>數字</b>和<b>單位</b>。數字＝<b>準確值</b>（刻度上看得到的）＋ <b>估計值</b>（眼睛再估一位）。')+'<b>估計值 ＝ 最小刻度的<b>下一位</b></b>。圖中的尺最小刻度是 0.1 cm（1 mm）：準確值看到 4.5，再估一位 0.06，記成 <b>4.56 cm</b>。<br><b>測量值的最後一位＝估計值，倒數第二位＝最小刻度那一位。</b><br><b>恰好在刻度上</b>：估計值要<b>補 0</b>。最小刻度 0.1 cm 的尺，端點恰好在 1.3 的刻度上，記成 <b>1.30 cm</b>（不是 1.3 cm）；最小刻度 1 cm 的尺，端點恰好在 3 cm，記成 <b>3.0 cm</b>。<br>因為估計，所以<b>有估計就有誤差</b>。',
+ qs:[['4.56 cm 這個測量值，哪一位是估計值？','最後一位「6」（0.01 cm）。'],['最小刻度 0.1 cm 的尺，端點恰好在 2.5 的刻度上，要怎麼記？','2.50 cm（估計值補 0）。'],['最小刻度 1 cm 的尺，量到 12 cm 剛好在刻度上，要怎麼記？','12.0 cm。']]});
+
+E({t:'倒推：由測量值找最小刻度',tag:'重點',src:'補習班講義 p.17「記錄結果的判斷」與類題 1；前五列是該頁的例子，下面「自己練習」的三題是類題 1（答案是本講義算的）',
+ text:'<b>方法：先找「最後一位」（估計值），它的上一位就是最小刻度。</b>最後一位的位置是多少，最小刻度就是它的 10 倍。'+tbl(['測量值','最後一位（估計值）','最小刻度','換成好記的單位'],[['215.3212 km','0.0001 km','0.001 km','1 m'],['100.000 m','0.001 m','0.01 m','1 cm'],['3.5 cm','0.1 cm','1 cm','1 cm'],['25.145 km','0.001 km','0.01 km','10 m（公丈）'],['3.56×10⁴ mm','10² mm','10³ mm','1 m']])+'最後一列用指數：3.56×10⁴ 的 6 在 10² 的位置，估計值 ＝ 10² mm，最小刻度 ＝ 10³ mm ＝ 1 m。<br>自己練習（補習班類題 1）：<b>4.203 m</b> → 最小刻度 0.01 m；<b>10.2 cm</b> → 1 cm；<b>2.41×10³ m</b> → 10² m ＝ 100 m。',
+ qs:[['12.345 m，最小刻度是多少？','最後一位 0.001 m，最小刻度 0.01 m（1 cm）。'],['8.0 cm，最小刻度是多少？','最後一位 0.1 cm，最小刻度 1 cm。'],['4.6×10² m，最小刻度是多少？','6 在 10¹ 的位置，估計值 10 m，最小刻度 10² m ＝ 100 m。']]});
+
+E({t:'單位換算：位數不變，不要亂加 0',tag:'重點',src:'補習班講義 p.16 統整 (4)：單位換算仍維持記錄至最小刻度的下一位（4.56 cm ＝ 0.0456 m ＝ 45.6 mm）；14.0 mm 的例子是自編',
+ text:'換單位的時候，<b>有效的位數不能變多、也不能變少</b>。只是把小數點移位置，數字本身不增不減。<div class="eq">4.56 cm ＝ <b>0.0456</b> m ＝ <b>45.6</b> mm</div>數字都是 4、5、6 三位，只是單位換了。<ul><li>cm → m：除以 100（小數點左移 2 位）：4.56 → 0.0456</li><li>cm → mm：乘以 10（小數點右移 1 位）：4.56 → 45.6</li></ul><b>不要補成 0.04560 或 45.60</b>：多出來的 0 好像量到更小的位數，其實沒量到。<br>例：14.0 mm ＝ <b>1.40 cm</b>（3 位數，最後的 0 要保留，因為那是估計值）。',
+ qs:[['2.35 m ＝ ？cm','235 cm（3 位）。'],['0.0732 m ＝ ？mm','73.2 mm。'],['15.0 cm ＝ ？m','0.150 m（3 位，最後的 0 要留）。']]});
+
+E({t:'怎麼讓測量更準：換小刻度、多次、取平均',tag:'重點',src:'補習班講義 p.16「如何增進測量的準確度」(1)～(3)；數字是自編，捨棄誤差太大的值是補習班畫線強調的',
+ text:'三個方法：<ol><li><b>使用較小的刻度</b>（最小刻度愈小，愈準）</li><li><b>多次、多人、多量測量</b></li><li><b>再求平均值</b>：平均值 ＝ 測量結果總和 ÷ 測量次數。<b>誤差太大的測量值應捨棄</b>。</li></ol>例：同一枝筆量四次，最小刻度 0.1 cm：15.42、15.40、15.44、<b>40.00</b>（cm）。40.00 差太多（可能看錯刻度），要<b>捨棄</b>。剩下三個：<div class="eq">（15.42 ＋ 15.40 ＋ 15.44）÷ 3 ＝ 46.26 ÷ 3 ＝ <b>15.42 cm</b></div>平均值也只記到<b>估計值那一位</b>（小數 2 位），不要寫成 15.4200。',
+ qs:[['量了四次：12.31、12.29、12.33、12.31（cm），平均是多少？','總和 49.24，÷4 ＝ 12.31 cm。'],['其中有一次寫 21.30，要不要算進去？','不要。差太多，是誤差太大的值，要捨棄。']]});
+
+E({t:'🎯 觀念釐清：最小刻度與記錄',tag:'觀念釐清',src:'題目自編，規則依補習班講義 p.16～17',
+ qs:[
+  mc('測量值 36.45 cm，使用的直尺最小刻度是多少？',['0.1 cm（1 mm）','0.01 cm','1 cm','0.5 cm'],0,['','0.01 cm 是估計值那一位，不是最小刻度。最小刻度是估計值的上一位。','1 cm 是小數點前面的位置，這個數字不是估到那裡。','最小刻度只會是 1、10、0.1 這樣 10 的次方，不會是 0.5。'],'最後一位（5）是 0.01 cm，是估計值；最小刻度是上一位 0.1 cm（1 mm）。'),
+  mc('測量值 8.7×10³ m，直尺的最小刻度是多少？',['10³ m（1 km）','10² m','10 m','1 m'],0,['','10² m 是估計值（7 的位置）。最小刻度是它的上一位，10³ m。','10 m 太小了，已經超過了估計值那一位。','1 m 太小了。'],'8.7×10³ 的 7 在 10² 位置（估計值），最小刻度＝10³ m＝1 km。'),
+  mc('測量值 0.550 m，這次測量的最小刻度是多少？',['1 cm','1 mm','1 dm','1 m'],0,['','1 mm（0.001 m）是最後一位，那是估計值。','1 dm（0.1 m）是第一個 5 的位置，比最小刻度大 10 倍。','1 m 是整數位。'],'最後一位 0.001 m（1 mm）是估計值；最小刻度＝0.01 m＝1 cm。'),
+  mc('最小刻度 1 cm 的尺，量一根棍子剛好 2 m（端點恰好在刻度上），應該記成？',['2.000 m','2 m','2.0 m','2.00 m'],0,['','「2 m」沒有估計值，不是完整的測量值。','「2.0 m」只記到 0.1 m，比最小刻度 0.01 m 還粗。','「2.00 m」只記到最小刻度，還要再多一位估計值（補 0）。'],'最小刻度 1 cm＝0.01 m，估計值在 0.001 m，所以記 2.000 m。'),
+  mc('4.56 cm 換成公尺是多少？',['0.0456 m','0.456 m','0.04560 m','4.56×10⁻⁴ m'],0,['','小數點只移 1 位了。1 cm＝10⁻² m，要移 2 位。','多補了一個 0（0.04560）看起來好像量得更細，其實沒有。','10⁻⁴ 多了兩次方。4.56 cm＝4.56×10⁻² m。'],'4.56×10⁻² m＝0.0456 m，位數不變。'),
+  mc('14.0 mm 換成公分，應該記成？',['1.40 cm','14.0 cm','1.4 cm','0.140 cm'],0,['','mm 換 cm 是除以 10，不是原樣。','「1.4 cm」少了最後的 0。測量值的最後一位是估計值，換單位位數不變。','小數點移了 2 位，mm→cm 只移 1 位。'],'14.0 mm＝1.40 cm，3 位數不變。')]});
+
+E({t:'🎯 觀念釐清：誰的記錄方法正確？',tag:'觀念釐清',src:'題目改編自補習班講義 p.17 類題 2（四位同學的記錄表）；數字沿用該頁',
+ qs:[
+  mc('尺的最小刻度是 0.1 cm，哪一個記錄方法正確？',['16.50 cm','16.5 cm','16.500 cm','16 cm'],0,['','只記到最小刻度那一位 0.1 cm，沒有估計值。','記到 0.001 cm，比最小刻度的下一位還小一位，尺不可能量到。','只記到整數，更粗。'],'最小刻度 0.1 cm，估計值在 0.01 cm，記 16.50 cm 才對（補習班判為 O）。'),
+  mc('尺的最小刻度是 10 mm，量到筆長記為 10.38 cm，哪裡錯了？',['最小刻度是 1 cm，只能記到 0.1 cm，應是 10.4 cm','沒有錯','少了單位','應該寫成 10.380 cm'],0,['','最小刻度 10 mm＝1 cm，估計值在 0.1 cm，10.38 多了一位 0.01 cm（補習班判為 X）。','有單位 cm，是位數寫太多。','再多寫一位更不對，只會更不準。'],'最小刻度 1 cm，估計值只能到 0.1 cm，位數要像 10.4 cm，不能多寫一位。'),
+  mc('最小刻度 0.01 cm 的尺，量鉛筆盒，下列哪一個記錄正確？',['178.30 mm','178.3 mm','178 mm','17.83 cm'],0,['','最小刻度 0.01 cm＝0.1 mm，估計值要在 0.01 mm，少一位。','只記到 1 mm，更粗。','17.83 cm 只記到 0.01 cm，沒有估計值。178.30 mm＝17.830 cm 才對。'],'最小刻度 0.1 mm，估計值 0.01 mm，記 178.30 mm（＝17.830 cm）。')]});
+
+E({t:'測量值・最小刻度 總檢查',tag:'總檢查',src:'題目自編，依補習班講義 p.16～17 與單位換算',
+ qs:[
+  mc('下列哪一個「不是」一個完整的測量結果的必要部分？',['小數一定要有三位','數字','單位','估計值'],0,['','小數要幾位，要看最小刻度，不是固定三位。','測量結果必須包含數字。','測量結果必須包含單位。'],'完整的測量結果＝數字＋單位。位數看最小刻度。'),
+  mc('測量值 100.000 m，最小刻度是 0.01 m，也就是多少？',['1 cm','1 mm','1 dm','1 m'],0,['','1 mm＝0.001 m，是估計值那一位。','1 dm＝0.1 m，比 0.01 m 大 10 倍。','1 m 比 0.01 m 大 100 倍。'],'0.01 m＝10⁻² m＝1 cm。'),
+  mc('量了三次：15.4、15.2、15.3（cm），再量一次得 51.3，平均要怎麼算？',['捨棄 51.3，平均 15.3 cm','全部加起來平均 24.3 cm','只取最大的','只取最小的'],0,['','51.3 很可能是看錯刻度，誤差太大，要捨棄，不能算進去。','取最大或最小不是平均。','取最大或最小不是平均。'],'誤差太大的值要捨棄。（15.4＋15.2＋15.3）÷3＝15.3 cm。'),
+  mc('100 nm 等於多少 cm？',['10⁻⁵ cm','10⁻⁷ cm','10⁻² cm','10⁻⁹ cm'],0,['','10⁻⁷ 是換成 m 的結果。再換 cm 要乘 10²：10⁻⁷×10²＝10⁻⁵。','10⁻² 忘了 nm 是 10⁻⁹ m。','10⁻⁹ 只是 1 nm 換成 m。'],'100 nm＝10²×10⁻⁹ m＝10⁻⁷ m＝10⁻⁷×10² cm＝10⁻⁵ cm。'),
+  mc('「4.56 cm」和「45.6 mm」的差別是什麼？',['只是單位不同，位數一樣','45.6 mm 比較準','4.56 cm 比較準','45.6 mm 是另一次測量'],0,['','位數都是三位，準確程度一樣。','位數一樣，一樣準。','是同一個測量值換單位而已。'],'4.56 cm＝45.6 mm，只是換單位，位數不變。')]});
+
+/* ===== 播放 ===== */
+var deck='A',cur=0,QM={};
+function pageMarked(d,n){var p=d+n;for(var k in QM)if(k===p||k.indexOf(p+':')===0)return true;return false;}
+function el(i){return document.getElementById(i);}
+var h='';
+Object.keys(DECKS).forEach(function(k){
+  DECKS[k].SL.forEach(function(s,i){
+    h+='<section class="slide" id="s'+k+i+'"><span class="tag'+(s.tag&&/^(📌|💡)/.test(s.tag)?' sup':'')+'">'+(s.tag||('步驟 '+(i+1)))+'</span><h1>'+s.t+'</h1><button class="mk" data-k="'+k+i+'">❓ 這頁有問題</button>'+(s.src?'<div class="src">📖 出處：'+s.src+'</div>':'');
+    /* 橫放平板：有圖的頁圖在左、文字在右；沒圖但有文字＋想一想：文字在左、想一想在右（見 CSS .sbody.two） */
+    var tq=!s.fig&&s.qs&&s.text;
+    h+='<div class="sbody'+(s.fig?' two':(tq?' two tq':''))+'">';
+    if(s.fig)h+='<div class="sfig">'+s.fig+'</div>';
+    else if(tq)h+='<div class="sfig"><div class="txt">'+s.text+'</div>'+(s.sheet?'<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>':'')+'</div>';
+    h+='<div class="stxt">';
+    if(s.text&&!tq)h+='<div class="txt">'+s.text+'</div>';
+    if(s.sheet&&!tq)h+='<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>';
+    if(s.qs){h+='<div class="qs'+(s.qs.length>2&&!s.fig&&!tq?' qgrid':'')+'">';s.qs.forEach(function(q,qi){h+='<div class="q" id="q'+k+i+'_'+qi+'"><button class="mk mq" data-k="'+k+i+':'+qi+'">❓</button><div class="p">'+(q[2]?'觀念釐清：':'想一想：')+q[0]+'</div>'+(q[2]?'<div class="mc">'+q[2].o.map(function(o,oi){return '<button class="mo" data-i="'+oi+'"><b>'+'ABCDE'.charAt(oi)+'.</b> '+o+'</button>';}).join('')+'</div><div class="mcf" aria-live="polite"></div><details><summary>直接看正解</summary><div class="a">✅ 答：'+'ABCDE'.charAt(q[2].a)+'. '+q[2].o[q[2].a]+'<br><span class="ex">'+q[1]+'</span></div></details>':'<details><summary>看答案</summary><div class="a">'+q[1]+'</div></details>')+'</div>';});h+='</div>';}
+    if(s.note)h+='<div class="note"><details><summary>👂 上課聽這裡</summary>'+s.note+'</details></div>';
+    h+='</div></div></section>';
+  });
+});
+el('slides').innerHTML=h;
+Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s){if(s.init)s.init();});});
+if(Object.keys(DECKS).length<2)el('tabs').style.display='none';
+el('tabs').innerHTML=Object.keys(DECKS).map(function(k){return '<button data-d="'+k+'">'+DECKS[k].name+'</button>';}).join('');
+function curId(){return 's'+deck+cur;}
+function go(d,i){
+  deck=d;var SL=DECKS[d].SL;cur=Math.max(0,Math.min(SL.length-1,i));
+  Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s,n){el('s'+k+n).classList.toggle('cur',k===d&&n===cur);});});
+  Array.prototype.forEach.call(el('tabs').children,function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});
+  el('jump').innerHTML=SL.map(function(s,n){return '<option value="'+n+'">'+(pageMarked(d,n)?'❓ ':'')+(n+1)+'. '+s.t.replace(/<[^>]+>/g,'')+'</option>';}).join('');
+  el('jump').value=String(cur);
+  el('pb').style.width=((cur+1)/SL.length*100)+'%';
+  el('prev').disabled=cur===0;
+  el('next').textContent=cur===SL.length-1?'完成 ✓':'下一步 ▶';
+  try{history.replaceState(null,'','#'+d+(cur+1));}catch(e){}
+  window.scrollTo(0,0);
+  if(INK.cv[curId()])canvasFor(curId());
+}
+
+/* ===== 手寫層 =====
+   每一頁各自一張透明畫布，筆跡存成向量（換頁再回來還在，重新整理才會消失）。
+   「只有筆能寫」：觸控筆（或滑鼠）寫字，手指照常捲動、按「看答案」。 */
+var INK={on:false,color:'pu',erase:false,penOnly:true,strokes:{},cv:{}};
+try{var pp=localStorage.getItem('handout_ink_pen_only');if(pp!==null)INK.penOnly=(pp==='1');}catch(e){}
+/* 手寫顏色刻意避開圖形用的橘、綠、藍、磚紅、深灰 */
+var INKC={pu:['#7b1fa2','#ce93d8'],pk:['#e91e63','#f48fb1'],cy:['#0097a7','#4dd0e1']};
+function inkColor(c){var dk=false;try{dk=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';}catch(e){}return (INKC[c]||INKC.pu)[dk?1:0];}
+function canvasFor(id){
+  var sec=el(id),cv=INK.cv[id];
+  if(!cv){cv=document.createElement('canvas');cv.className='ink-cv';sec.appendChild(cv);INK.cv[id]=cv;}
+  if(!INK.strokes[id])INK.strokes[id]=[];
+  var w=sec.clientWidth,hh=sec.clientHeight,r=window.devicePixelRatio||1;
+  if(w&&hh&&(cv._w!==w||cv._h!==hh||cv._r!==r)){cv._w=w;cv._h=hh;cv._r=r;cv.width=Math.round(w*r);cv.height=Math.round(hh*r);cv.style.width=w+'px';cv.style.height=hh+'px';redraw(id);}
+  return cv;
+}
+function seg(ctx,s,a,b){ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+function redraw(id){
+  var cv=INK.cv[id];if(!cv||!cv._w)return;var ctx=cv.getContext('2d'),r=cv._r||1;
+  ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,cv._w,cv._h);
+  (INK.strokes[id]||[]).forEach(function(s){
+    if(s.p.length===1){seg(ctx,s,s.p[0],[s.p[0][0]+0.1,s.p[0][1]]);return;}
+    ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.p[0][0],s.p[0][1]);
+    for(var k=1;k<s.p.length;k++)ctx.lineTo(s.p[k][0],s.p[k][1]);ctx.stroke();
+  });
+}
+function eraseAt(x,y){
+  function near(p,q){var vx=q[0]-p[0],vy=q[1]-p[1],L=vx*vx+vy*vy,t=L?Math.max(0,Math.min(1,((x-p[0])*vx+(y-p[1])*vy)/L)):0,dx=p[0]+t*vx-x,dy=p[1]+t*vy-y;return dx*dx+dy*dy<196;}
+  var id=curId(),a=INK.strokes[id]||[],keep=a.filter(function(s){for(var k=0;k<s.p.length;k++)if(near(s.p[k],s.p[Math.min(k+1,s.p.length-1)]))return false;return true;});
+  if(keep.length!==a.length){INK.strokes[id]=keep;redraw(id);}
+}
+var drawing=null,finger=null;
+function pos(e){var rc=INK.cv[curId()].getBoundingClientRect();return [Math.round((e.clientX-rc.left)*10)/10,Math.round((e.clientY-rc.top)*10)/10];}
+el('slides').addEventListener('pointerdown',function(e){
+  if(!INK.on)return;
+  var penLike=(e.pointerType==='pen'||e.pointerType==='mouse');
+  if(!penLike&&INK.penOnly){finger={id:e.pointerId,y:e.clientY};return;}
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();var id=curId();canvasFor(id);
+  var p=pos(e),er=INK.erase||(e.buttons&32)===32;
+  drawing={id:e.pointerId,erase:er,sec:id};
+  try{el('slides').setPointerCapture(e.pointerId);}catch(_){}
+  if(er){eraseAt(p[0],p[1]);return;}
+  drawing.s={c:INK.color,w:e.pointerType==='pen'?3:4,p:[p]};INK.strokes[id].push(drawing.s);redraw(id);
+});
+el('slides').addEventListener('pointermove',function(e){
+  if(finger&&e.pointerId===finger.id){window.scrollBy(0,finger.y-e.clientY);finger.y=e.clientY;return;}
+  if(!drawing||e.pointerId!==drawing.id)return;
+  e.preventDefault();
+  var evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e],ctx=INK.cv[drawing.sec].getContext('2d');
+  evs.forEach(function(ev){
+    var p=pos(ev);
+    if(drawing.erase){eraseAt(p[0],p[1]);return;}
+    var pts=drawing.s.p,last=pts[pts.length-1];
+    if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<1)return;
+    pts.push(p);seg(ctx,drawing.s,last,p);
+  });
+});
+function endInk(e){if(finger&&e.pointerId===finger.id)finger=null;if(drawing&&e.pointerId===drawing.id)drawing=null;}
+el('slides').addEventListener('pointerup',endInk);
+el('slides').addEventListener('pointercancel',endInk);
+function setInk(on){
+  INK.on=on;document.body.classList.toggle('ink',on);
+  el('inkBtn').classList.toggle('inkon',on);el('inkBtn').setAttribute('aria-pressed',on?'true':'false');
+  el('inkBtn').innerHTML=on?'✏️<span class="lb"> 手寫中</span>':'✏️<span class="lb"> 手寫</span>';
+  if(on)canvasFor(curId());
+}
+function markTool(){
+  el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.classList.toggle('on',!INK.erase&&b.dataset.c===INK.color);});
+  el('inkErase').classList.toggle('on',INK.erase);
+}
+el('inkBtn').onclick=function(){setInk(!INK.on);if(INK.on)setQP(false);};
+el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){INK.color=b.dataset.c;INK.erase=false;markTool();};});
+el('inkErase').onclick=function(){INK.erase=!INK.erase;markTool();};
+el('inkUndo').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length){a.pop();redraw(id);}};
+el('inkClear').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length&&confirm('清除這一頁的手寫？')){INK.strokes[id]=[];redraw(id);}};
+el('inkSpace').onclick=function(){var sec=el(curId()),pb=parseInt(sec.style.paddingBottom||'18',10);sec.style.paddingBottom=(pb+320)+'px';canvasFor(curId());window.scrollBy(0,320);};
+el('inkPen').checked=INK.penOnly;
+el('inkPen').onchange=function(){INK.penOnly=el('inkPen').checked;try{localStorage.setItem('handout_ink_pen_only',INK.penOnly?'1':'0');}catch(e){}};
+window.addEventListener('resize',function(){if(INK.cv[curId()])canvasFor(curId());});
+el('slides').addEventListener('toggle',function(){if(INK.cv[curId()])canvasFor(curId());},true);
+
+/* ===== ❓ 標記有問題的頁、題 =====
+   點頁面上的「❓ 這頁有問題」或想一想右上角的「❓」標記；下方「❓ 問題」列出全部，點了直接跳過去。
+   存在這台裝置的瀏覽器（localStorage），重新整理還在。 */
+var QKEY='handout_marks_'+document.title;
+try{QM=JSON.parse(localStorage.getItem(QKEY)||'{}')||{};}catch(e){QM={};}
+function saveQM(){try{localStorage.setItem(QKEY,JSON.stringify(QM));}catch(e){}}
+function plain(x){return String(x).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();}
+function cut(x,n){return x.length>n?x.slice(0,n)+'…':x;}
+function mkParse(k){return k.match(/^([A-Z])(\d+)(?::(\d+))?$/);}
+function paintMarks(){
+  el('slides').querySelectorAll('.mk').forEach(function(b){var on=!!QM[b.dataset.k];b.classList.toggle('on',on);if(!b.classList.contains('mq'))b.textContent=on?'❗ 已標記有問題':'❓ 這頁有問題';b.setAttribute('aria-pressed',on?'true':'false');});
+  var n=Object.keys(QM).length;el('qpBtn').innerHTML='❓<span class="lb"> 問題</span>'+(n?'（'+n+'）':'');
+  var SL=DECKS[deck].SL;Array.prototype.forEach.call(el('jump').options,function(o,i){o.textContent=(pageMarked(deck,i)?'❓ ':'')+(i+1)+'. '+plain(SL[i].t);});
+  var multi=Object.keys(DECKS).length>1,keys=Object.keys(QM).filter(mkParse).sort(function(a,b){var pa=mkParse(a),pb=mkParse(b);if(pa[1]!==pb[1])return pa[1]<pb[1]?-1:1;return (+pa[2]-pb[2])||((pa[3]===undefined?-1:+pa[3])-(pb[3]===undefined?-1:+pb[3]));});
+  var out='',lastPage='';
+  keys.forEach(function(k){
+    var m=mkParse(k);if(!DECKS[m[1]])return;var s=DECKS[m[1]].SL[+m[2]];if(!s)return;
+    var head=(multi?DECKS[m[1]].name.split('｜')[0]+'　':'')+'第 '+(+m[2]+1)+' 頁　'+cut(plain(s.t),22);
+    if(m[3]===undefined){out+='<a data-go="'+k+'">📄 '+head+'</a>';lastPage=m[1]+m[2];}
+    else{var q=s.qs&&s.qs[+m[3]];if(!q)return;if(lastPage!==m[1]+m[2])out+='<a data-go="'+m[1]+m[2]+'">📄 '+head+'</a>';lastPage=m[1]+m[2];out+='<a class="sub" data-go="'+k+'">└ 想一想：'+cut(plain(q[0]),30)+'</a>';}
+  });
+  el('qpList').innerHTML=out||'<div class="empty">還沒有標記。看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」。</div>';
+}
+function setQP(on){document.body.classList.toggle('qp',on);el('qpBtn').classList.toggle('qon',on);if(on&&INK.on)setInk(false);}
+el('slides').addEventListener('click',function(e){var b=e.target.closest('.mk');if(!b)return;e.preventDefault();var k=b.dataset.k;if(QM[k])delete QM[k];else QM[k]=1;saveQM();paintMarks();});
+/* 選擇題：點選項 → 立刻顯示對錯；答錯的題自動標 ❓ */
+el('slides').addEventListener('click',function(e){
+  var b=e.target.closest('.mo');if(!b)return;
+  var box=b.closest('.q'),m=box.id.match(/^q([A-Z])(\d+)_(\d+)$/);if(!m)return;
+  var q=DECKS[m[1]].SL[+m[2]].qs[+m[3]],i=+b.dataset.i,mc=q[2],ok=(i===mc.a),f=box.querySelector('.mcf');
+  Array.prototype.forEach.call(box.querySelectorAll('.mo'),function(x){x.classList.remove('ok','no');});
+  b.classList.add(ok?'ok':'no');
+  if(ok){f.className='mcf good';f.innerHTML='✅ 答對了！'+q[1];}
+  else{f.className='mcf bad';f.innerHTML='❌ '+mc.w[i]+'<br><span class="try">再選選看，或按下面「直接看正解」。</span>';var k=m[1]+m[2]+':'+m[3];if(!QM[k]){QM[k]=1;saveQM();paintMarks();}}
+});
+el('qpBtn').onclick=function(){setQP(!document.body.classList.contains('qp'));};
+el('qpClose').onclick=function(){setQP(false);};
+el('qpClear').onclick=function(){if(Object.keys(QM).length&&confirm('清除全部的「有問題」標記？')){QM={};saveQM();paintMarks();}};
+el('qpList').onclick=function(e){var a=e.target.closest('a[data-go]');if(!a)return;var m=mkParse(a.dataset.go);go(m[1],+m[2]);setQP(false);
+  if(m[3]!==undefined){var q=el('q'+m[1]+m[2]+'_'+m[3]);if(q){q.scrollIntoView({block:'center'});q.classList.add('flash');setTimeout(function(){q.classList.remove('flash');},1600);}}};
+
+el('tabs').onclick=function(e){var b=e.target.closest('button');if(b)go(b.getAttribute('data-d'),0);};
+el('prev').onclick=function(){go(deck,cur-1);};
+el('next').onclick=function(){if(cur<DECKS[deck].SL.length-1)go(deck,cur+1);};
+el('jump').onchange=function(){go(deck,Number(el('jump').value));};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(deck,cur+1);else if(e.key==='ArrowLeft')go(deck,cur-1);});
+var m=(location.hash||'').match(/^#([AB])(\d+)$/);
+go(m?m[1]:'A',m?parseInt(m[2],10)-1:0);
+paintMarks();
+})();
+</script>
+</body>
+</html>
