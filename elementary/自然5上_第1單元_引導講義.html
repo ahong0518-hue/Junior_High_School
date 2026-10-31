@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>自然5上 第1單元 引導講義</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%E2%98%80%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#333;--sub:#555;--line:#e0d8ca;--ac:#c0704a;--ac2:#4a7a6b;--ac3:#4a6b9a;--bad:#b0442e;--soft:#f3ece0;--hi:#fff7e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1f1d1a;--card:#2a2723;--ink:#eee;--sub:#bbb;--line:#4a443c;--ac:#e0916b;--ac2:#7fc4ad;--ac3:#8fb0e0;--bad:#ee8a74;--soft:#38342d;--hi:#3a3322}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;line-height:1.7;font-size:1.2rem}
+.wrap{max-width:860px;margin:0 auto;padding:10px 16px 110px}
+.tabs{display:flex;gap:6px;margin:2px 0 8px;flex-wrap:wrap}
+.tabs button{flex:1 1 0;min-width:0;font-family:inherit;font-size:1.05rem;padding:9px 8px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--sub)}
+.top select{font-family:inherit;font-size:.9rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:62%}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac2);width:0;transition:width .25s}
+.slide{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.slide.cur{display:block}
+.tag{display:inline-block;background:var(--ac3);color:#fff;border-radius:99px;padding:0 12px;font-size:.95rem}
+.tag.sup{background:var(--ac2)}.tag.pr{background:var(--ac)}
+h1{font-size:1.6rem;margin:6px 0 10px;line-height:1.35}
+.fig{max-width:100%;height:auto;display:block;margin:8px auto;max-height:330px;color:var(--ink)}
+.figs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+.figs .fig{max-width:48%}
+.fig.big .lbl,.fig.big .lbl2,.fig.big .tI,.fig.big .tR,.fig.big .tF,.fig.big .tB{font-size:16px}
+@media (orientation:portrait) and (min-width:600px){.fig{max-height:46vh}}
+.txt{margin:8px 0}
+.txt b{color:var(--ac)}
+.txt ol,.txt ul{margin:6px 0;padding-left:1.4em}
+.txt li{margin:4px 0}
+.eq{font-size:1.5rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.5}
+table.t{border-collapse:collapse;width:100%;font-size:1.02rem;margin:8px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+table.t th{background:var(--soft)}
+.q{background:var(--hi);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:10px 0}
+.q .p{font-weight:700}
+details summary{cursor:pointer;color:var(--ac3);font-size:1rem}
+.q .a{padding:4px 0;color:var(--ac2);font-weight:700}
+.sheet{background:#fffbe3;border:2px dashed #d9b84a;border-radius:12px;padding:8px 12px;margin:10px 0;font-size:1rem;color:#3d3a2c}
+.sheet b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sheet{background:#3b3722;border-color:#a88c2f;color:#eee}:root:not([data-theme=light]) .sheet b{color:#f0c860}}
+.src{font-size:.95rem;color:var(--sub);margin:-4px 0 10px}
+.ai{display:inline-block;background:#e6f0eb;color:#2f5d4f;border:1px solid var(--ac2);border-radius:6px;padding:0 6px;font-size:.95rem;font-weight:700;line-height:1.5;white-space:nowrap}
+.ai.re{background:#e8edf6;color:#344e78;border-color:var(--ac3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .ai{background:#24352f;color:#9fd6c2}:root:not([data-theme=light]) .ai.re{background:#262f40;color:#a9c2ea}}
+.note{margin-top:12px;font-size:.95rem;color:var(--sub)}
+.note details{border-top:1px dashed var(--line);padding-top:6px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:12px;justify-content:center;z-index:5}
+.nav button{font-family:inherit;font-size:1.2rem;padding:12px 28px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:130px}
+.nav button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.nav button:disabled{opacity:.4}
+/* SVG 圖形 */
+.lbl{fill:currentColor;font-size:14px}.lbl2{fill:currentColor;font-size:15px;font-weight:700}
+.lbl,.lbl2,.tI,.tR,.tF{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.tI,.tR,.tF{font-size:14px;font-weight:700}
+.tI{fill:var(--ac)}.tR{fill:var(--ac3)}.tF{fill:var(--ac2)}
+.rI{stroke:var(--ac);stroke-width:3;fill:none}.rR{stroke:var(--ac3);stroke-width:3;fill:none}
+.rF{stroke:var(--ac2);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.nl{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.ifc{stroke:currentColor;stroke-width:2.5}
+.ghostL{stroke:var(--sub);stroke-width:2;stroke-dasharray:4 4;fill:none}
+.q1,.q2,.q3,.q1d,.q2d,.q3d{stroke-width:2.4;fill:none}.q1,.q1d{stroke:var(--ac)}.q2,.q2d{stroke:var(--ac2)}.q3,.q3d{stroke:var(--ac3)}.q1d,.q2d,.q3d{stroke-dasharray:5 4;stroke-width:1.8}
+.axis{stroke:currentColor;stroke-width:1.5}.obj{stroke:currentColor;stroke-width:3.5}.img{stroke:var(--bad);stroke-width:3.5}.imgd{stroke:var(--bad);stroke-width:3;stroke-dasharray:6 4}
+.tB{fill:var(--bad);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.arcI{stroke:var(--ac);stroke-width:2;fill:none}.arcR{stroke:var(--ac3);stroke-width:2;fill:none}.arcF{stroke:var(--ac2);stroke-width:2;fill:none}.arcX{stroke:var(--sub);stroke-width:1.6;fill:none}
+@media print{body{background:#fff;color:#000}.nav,.top select,.bar,.tabs{display:none}.slide{display:block!important;break-inside:avoid;page-break-after:always;border:0}.wrap{padding:0}details{display:block}details>summary{display:none}}
+@media (max-width:560px){body{font-size:1.08rem}h1{font-size:1.4rem}.figs .fig{max-width:100%}.tabs button{font-size:.88rem;padding:8px 4px}.top{flex-direction:column;align-items:stretch;gap:4px}.top select{max-width:100%;width:100%}.nav{gap:8px;padding:8px 10px}.nav button{min-width:0;flex:1;padding:12px 6px;font-size:1.05rem;white-space:nowrap}}
+/* 手寫層 */
+.slide{position:relative}
+.ink-cv{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+body.ink .wrap{touch-action:none;padding-bottom:190px}
+.nav button.sm{min-width:0;padding:12px 16px}
+.nav button.inkon{background:var(--ac3);border-color:var(--ac3);color:#fff}
+.inkbar{position:fixed;left:0;right:0;bottom:68px;z-index:6;display:none;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:8px 10px;background:var(--card);border-top:1px solid var(--line)}
+body.ink .inkbar{display:flex}
+.inkbar button{font-family:inherit;font-size:1rem;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.inkbar button.on{border-color:var(--ac);background:var(--hi)}
+.inkbar label{font-size:.95rem;display:flex;align-items:center;gap:4px}
+.inkbar input{width:20px;height:20px}
+@media print{.inkbar{display:none!important}}
+/* 橫放（寬螢幕）：版面加寬，有圖的頁分左右兩欄，圖的高度跟著螢幕高度 */
+@media (orientation:landscape) and (min-width:900px){
+  .wrap{max-width:1280px;padding-top:6px}
+  .tabs{margin:0 0 4px}
+  .bar{margin:4px 0 8px}
+  .slide{padding:12px 22px}
+  .slide>h1{display:inline-block;margin:0 0 4px 10px;vertical-align:middle;font-size:1.5rem}
+  .src{margin:0 0 6px}
+  .slide>.tag{vertical-align:middle}
+  .sbody.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+  .sbody.tq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .sbody.two .fig{max-height:calc(100vh - 280px);margin-top:4px}
+  .sbody.two .figs .fig{max-height:calc(50vh - 110px)}
+  .sbody:not(.two) .stxt{max-width:1000px;margin:0 auto}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+}
+/* 橫放、螢幕比較矮（高解析平板、網址列佔掉高度）：字稍微縮小 */
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){
+  body{font-size:1.08rem;line-height:1.6}
+  .slide>h1{font-size:1.35rem}
+  .tabs button{padding:6px 8px;font-size:.98rem}
+  .q{padding:6px 12px;margin:7px 0}
+  .eq{font-size:1.35rem;margin:4px 0}
+  .sheet{padding:6px 10px;margin:7px 0}
+  .sbody.two .fig{max-height:calc(100vh - 265px)}
+  table.t{font-size:.95rem}table.t th,table.t td{padding:4px 6px}
+  .nav{padding:6px 14px}.nav button{padding:9px 24px}
+  .inkbar{bottom:58px}
+}
+
+/* 手寫顏色圓點 */
+.inkbar .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* ❓ 標記有問題 */
+.mk{font-family:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:99px;padding:1px 12px;cursor:pointer;vertical-align:middle;margin:0 0 4px 8px;line-height:1.6}
+.mk.on{background:#fde7ee;border-color:#e91e63;color:#ad1457;font-weight:700}
+.q .mq{float:right;margin:0 0 4px 8px;padding:0 10px}
+.q.flash{outline:3px solid #e91e63;outline-offset:2px}
+.qpanel{position:fixed;left:0;right:0;bottom:68px;z-index:7;display:none;max-height:55vh;overflow:auto;background:var(--card);border-top:2px solid #e91e63;padding:8px 16px 12px}
+body.qp .qpanel{display:block}
+.qph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qph button{font-family:inherit;font-size:.95rem;margin-left:6px;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qpanel a{display:block;padding:8px 6px;border-bottom:1px dashed var(--line);color:var(--ink);text-decoration:none;cursor:pointer;font-size:1rem}
+.qpanel a.sub{padding-left:26px;color:var(--sub)}
+.qpanel .empty{color:var(--sub);padding:8px 6px;font-size:1rem}
+.nav button.qon{background:#e91e63;border-color:#e91e63;color:#fff}
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){.qpanel{bottom:58px}}
+@media print{.qpanel,.mk{display:none!important}}
+@media (max-width:560px){.nav button.sm{flex:0 0 auto;padding:12px 12px}.nav .lb{display:none}}
+
+/* 觀念釐清選擇題 */
+.mc{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+.mo{font-family:inherit;font-size:1.05rem;text-align:left;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.5}
+.mo b{color:var(--ac3);margin-right:4px}
+.mo.ok{background:#e3f3ea;border-color:#2e8b57}
+.mo.no{background:#fde9e4;border-color:var(--bad)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mo.ok{background:#1f3a2c}:root:not([data-theme=light]) .mo.no{background:#4a2a24}}
+.mcf{font-size:1rem;margin:4px 0}
+.mcf.good{color:#1f6b45}.mcf.bad{color:var(--bad)}.mcf .try{color:var(--sub)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mcf.good{color:#8fe0b4}}
+/* 數學：分數、指數 */
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.25;margin:0 2px}
+.fr>span{padding:0 4px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.fp{font-size:1.6em;vertical-align:middle;line-height:1}
+sup{line-height:0;font-size:.72em}
+.c1{color:var(--ac);font-weight:700}.c2{color:var(--ac3);font-weight:700}.c3{color:var(--ac2);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+.big-eq{font-size:1.6rem;text-align:center;margin:8px 0;line-height:1.9}
+.q .a .ex{font-weight:400;color:var(--ink)}
+
+/* 📌 定義卡 */
+.def{border:2px solid var(--ac);border-left-width:9px;background:var(--hi);border-radius:10px;padding:8px 14px;margin:8px 0 12px}
+.def .dh{font-weight:700;color:var(--ac);margin-bottom:2px}
+.def .eq{margin:4px 0 2px}
+/* 數學講義：圖在 1138×620 這類較窄的橫放畫面會縮到約 0.85 倍，圖內字放大到 18px 才不會低於 15px */
+.fig.big.x18 .lbl,.fig.big.x18 .lbl2{font-size:18px}
+
+/* 上下兩排逐欄對齊（COLS） */
+.cols{max-width:30em;margin:6px auto}
+.cols .cr{display:grid;text-align:center}
+.cols .cr{margin-bottom:8px;column-gap:8px}
+.cols .r1{font-size:1rem;white-space:nowrap}
+.hl{color:var(--ac3);font-weight:700}
+.pa{color:var(--sub);font-weight:400;font-size:.85em}
+
+.txt .rd,.rd{color:#d32f2f;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .txt .rd,:root:not([data-theme=light]) .rd{color:#ff8a80}}
+:root[data-theme=dark] .txt .rd,:root[data-theme=dark] .rd{color:#ff8a80}
+
+/* 全形逗號「，」：微軟正黑體把它放在字格正中間，看起來像乘號「·」。只有這個字改用微軟雅黑（逗號在左下角），其他字不變 */
+@font-face{font-family:"逗號";src:local("Microsoft YaHei"),local("微软雅黑"),local("Noto Sans SC"),local("PingFang SC");unicode-range:U+FF0C}
+body{font-family:"逗號","Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif}
+
+.t.fx{table-layout:fixed}
+.t.fx td,.t.fx th{text-align:center}
+.t.nh td.rl{background:var(--soft);font-weight:700;width:24%}
+
+/* 引導講義專用 */
+.shl{stroke:var(--bad);stroke-width:9;stroke-linecap:round;opacity:.7}
+.spath{fill:none;stroke:var(--ac);stroke-width:3;stroke-dasharray:7 5}
+.ptx{fill:#fff;font-size:15px;font-weight:700}
+.fig .lbl{font-size:16px}.fig .lbl2{font-size:17px}.fig .tI,.fig .tR,.fig .tF,.fig .tB{font-size:16px}
+.selring{stroke:var(--ac);stroke-width:0;stroke-dasharray:4 3}
+g.sel .selring{stroke-width:3}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.btns button,.btn2,.dirgrid button{font-family:inherit;font-size:1.05rem;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btns button.on,.dirgrid button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.btn2{margin:8px 0}
+.dirgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:320px;margin:8px auto}
+.dirgrid .mid{display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ctl{margin:8px 0}.rng{width:100%;height:40px}
+.ro{background:var(--hi);border:2px solid var(--line);border-radius:12px;padding:8px 12px;margin:8px 0;font-size:1.05rem;line-height:1.6;min-height:3.2em}
+.hint{font-size:.9rem;color:var(--sub)}
+.mn{border:2px solid var(--ac2);border-left-width:9px;background:#e6f0eb;border-radius:10px;padding:8px 14px;margin:8px 0}
+.mn .mh{font-weight:700;color:var(--ac2)}
+.kj{font-size:1.3rem;font-weight:700;text-align:center;color:var(--ac);margin:6px 0;line-height:1.6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mn{background:#24352f}}
+
+</style>
+</head>
+<body><nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">🎒 國小</a>&nbsp;›&nbsp; 五上 › 自然5上 第1單元 引導講義</nav>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="top"><span>自然5上 第1單元　太陽的祕密（引導講義）</span><select id="jump" aria-label="跳到某一頁"></select></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div id="slides"></div>
+</div>
+<div class="inkbar" id="inkbar">
+  <button data-c="pu" class="on"><span class="dot" style="background:#7b1fa2"></span>紫</button><button data-c="pk"><span class="dot" style="background:#e91e63"></span>桃紅</button><button data-c="cy"><span class="dot" style="background:#0097a7"></span>青</button>
+  <button id="inkErase">🧽 橡皮擦</button><button id="inkUndo">↶ 復原</button><button id="inkClear">🗑 清這頁</button><button id="inkSpace">＋ 空白計算區</button>
+  <label><input type="checkbox" id="inkPen"> 只有筆能寫（手指用來捲動）</label>
+</div>
+<div class="qpanel" id="qpanel"><div class="qph"><b>❓ 標記有問題的地方</b><span><button id="qpClear">清除全部</button><button id="qpClose">✕ 關閉</button></span></div><div id="qpList"></div></div>
+<div class="nav"><button id="qpBtn" class="sm">❓<span class="lb"> 問題</span></button><button id="inkBtn" class="sm" aria-pressed="false">✏️<span class="lb"> 手寫</span></button><button id="prev">◀ 上一步</button><button id="next" class="go">下一步 ▶</button></div>
+
+<script>
+(function(){
+/* ===== 共用工具（自然5上 第1單元 引導講義）===== */
+var UID=0,D2R=Math.PI/180,PHI=23.5;
+function f1(x){return (Math.round(x*10)/10).toString();}
+function $(i){return document.getElementById(i);}
+function mk(id){
+  var c=[['a','var(--ac)'],['b','var(--ac3)'],['c','var(--ac2)'],['d','var(--sub)'],['e','var(--bad)'],['k','currentColor']];
+  return '<defs>'+c.map(function(m){return '<marker id="'+id+m[0]+'" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto-start-reverse"><path d="M0,1 L12,6.5 L0,12 Z" fill="'+m[1]+'"/></marker>';}).join('')+'</defs>';
+}
+function L(x1,y1,x2,y2,cls,id,m,both){
+  return '<line class="'+cls+'" x1="'+f1(x1)+'" y1="'+f1(y1)+'" x2="'+f1(x2)+'" y2="'+f1(y2)+'"'+(m?' marker-end="url(#'+id+m+')"':'')+(both?' marker-start="url(#'+id+m+')"':'')+'/>';
+}
+function T(x,y,t,cls,anchor){return '<text class="'+(cls||'lbl')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'">'+t+'</text>';}
+function eye(x,y){return '<ellipse cx="'+x+'" cy="'+y+'" rx="17" ry="10" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="'+x+'" cy="'+y+'" r="5.5" fill="#333"/>';}
+function sunDot(x,y,r,id){return '<circle'+(id?' id="'+id+'"':'')+' cx="'+f1(x)+'" cy="'+f1(y)+'" r="'+(r||14)+'" fill="#f6b21b" stroke="#c77f00" stroke-width="2.5"/>';}
+function tbl(head,rows){
+  var h='<table class="t"><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(x){return '<td>'+x+'</td>';}).join('')+'</tr>';});
+  return h+'</table>';
+}
+function eq(h){return '<div class="eq">'+h+'</div>';}
+function mc(q,o,a,w,exp){
+  var h=7,i,idx=o.map(function(_,k){return k;});
+  for(i=0;i<q.length;i++)h=(h*31+q.charCodeAt(i))>>>0;
+  for(i=idx.length-1;i>0;i--){h=(Math.imul(h,1103515245)+12345)>>>0;var j=(h>>>8)%(i+1),t=idx[i];idx[i]=idx[j];idx[j]=t;}
+  return [q,exp,{o:idx.map(function(k){return o[k];}),w:idx.map(function(k){return w[k];}),a:idx.indexOf(a)}];
+}
+function DEF(term,body){return '<div class="def"><div class="dh">📌 '+term+'</div>'+body+'</div>';}
+function HL(x){return '<b class="hl">'+x+'</b>';}
+var AI='<span class="ai">💡 補充說明</span> ',RE='<span class="ai re">🔁 類題</span> ';
+/* 口訣卡 */
+function MN(h){return '<div class="mn"><div class="mh">🧠 記憶方法</div>'+h+'</div>';}
+
+/* ===== 太陽位置計算（嘉義約北緯 23.5°，太陽時；decl＝赤緯：春秋分 0、夏至 +23.44、冬至 −23.44）===== */
+function sunPos(t,dec){
+  var H=15*(t-12)*D2R,d=dec*D2R,p=PHI*D2R;
+  var alt=Math.asin(Math.sin(p)*Math.sin(d)+Math.cos(p)*Math.cos(d)*Math.cos(H))/D2R;
+  var az=Math.atan2(-Math.cos(d)*Math.sin(H),Math.sin(d)*Math.cos(p)-Math.cos(d)*Math.cos(H)*Math.sin(p))/D2R;
+  return {az:(az+360)%360,alt:alt};
+}
+function halfDay(dec){return Math.acos(-Math.tan(PHI*D2R)*Math.tan(dec*D2R))/D2R/15;}
+var DIRS=['北','東北','東','東南','南','西南','西','西北'];
+function dir8(az){return DIRS[Math.round(az/45)%8];}
+function fmtT(t){var h=Math.floor(t),m=Math.round((t-h)*60);if(m===60){h++;m=0;}return h+':'+(m<10?'0':'')+m;}
+/* 天球俯視圖：圓心＝頭頂，圓周＝地平線；上北右東（像地圖）。alt 越大越靠近圓心 */
+function domePt(cx,cy,R,az,alt){var r=R*(90-alt)/90;return [cx+r*Math.sin(az*D2R),cy-r*Math.cos(az*D2R)];}
+function domePath(cx,cy,R,dec){
+  var h=halfDay(dec),t0=12-h,pts=[],n=48,k;
+  for(k=0;k<=n;k++){var t=t0+(2*h)*k/n,s=sunPos(t,dec),a=Math.max(s.alt,0),p=domePt(cx,cy,R,s.az,a);pts.push(f1(p[0])+','+f1(p[1]));}
+  return pts.join(' ');
+}
+/* 羅盤底圖（上北下南左西右東）；diag＝是否標八方位 */
+function compassBase(cx,cy,R,diag){
+  var s='<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--soft)" stroke="currentColor" stroke-width="2"/>';
+  s+=L(cx,cy-R,cx,cy+R,'nl')+L(cx-R,cy,cx+R,cy,'nl');
+  s+=T(cx,cy-R-9,'北','lbl2','middle')+T(cx,cy+R+24,'南','lbl2','middle')+T(cx+R+10,cy+6,'東','lbl2','start')+T(cx-R-10,cy+6,'西','lbl2','end');
+  if(diag){var d=R*0.7071+8;
+    s+=T(cx+d,cy-d+4,'東北','lbl','start')+T(cx+d,cy+d+10,'東南','lbl','start')+T(cx-d,cy+d+10,'西南','lbl','end')+T(cx-d,cy-d+4,'西北','lbl','end');}
+  return s;
+}
+function setA(id,o){var e=$(id);if(!e)return;for(var k in o)e.setAttribute(k,o[k]);}
+function setTxt(id,t){var e=$(id);if(e)e.textContent=t;}
+function setHtml(id,t){var e=$(id);if(e)e.innerHTML=t;}
+function figs(a){return '<div class="figs">'+a.join('')+'</div>';}
+/* 控制列：按鈕群、拉桿 */
+function BTNS(id,names){return '<div class="btns" id="'+id+'">'+names.map(function(n,i){return '<button data-i="'+i+'">'+n+'</button>';}).join('')+'</div>';}
+function RNG(id,min,max,step,val){return '<input type="range" class="rng" id="'+id+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'">';}
+function onBtns(id,fn,init){
+  var box=$(id);if(!box)return;var bs=box.querySelectorAll('button');
+  function sel(i){Array.prototype.forEach.call(bs,function(b){b.classList.toggle('on',+b.dataset.i===i);});fn(i);}
+  Array.prototype.forEach.call(bs,function(b){b.onclick=function(){sel(+b.dataset.i);};});
+  sel(init||0);
+}
+
+/* ===== 互動小工具（W1～W8）與靜態圖 ===== */
+/* 方位名稱（8 方位大略分段，和課本 9 時東南、12 時南、15 時西南一致） */
+function dirName(az){return az<100?'東':az<170?'東南':az<190?'南':az<260?'西南':'西';}
+var OPP={'東':'西','東南':'西北','南':'北','西南':'東北','西':'東'};
+var SUNC={
+  '東':'太陽剛從東邊升起，還很低','東南':'太陽在東南方，慢慢升高','南':'太陽在正南方，爬到最高','西南':'太陽在西南方，慢慢降低','西':'太陽快要從西邊落下，很低'};
+
+/* W1：太陽在哪個方位，影子就在相反的方位 */
+function W1(){
+  var cx=230,cy=190,R=135;
+  var fig='<svg class="fig" viewBox="0 0 460 380" role="img" aria-label="太陽方位與影子方位相反">'+compassBase(cx,cy,R,true)
+    +'<line id="w1sh" class="shl" x1="'+cx+'" y1="'+cy+'" x2="'+cx+'" y2="'+(cy+90)+'"/>'
+    +sunDot(cx,cy-95,17,'w1sun')
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="14" fill="var(--ac)" stroke="#fff" stroke-width="2"/><text class="ptx" x="'+cx+'" y="'+(cy+6)+'" text-anchor="middle">人</text>'
+    +'<text id="w1sunL" class="lbl2" x="'+cx+'" y="'+(cy-125)+'" text-anchor="middle">太陽</text>'
+    +'<text id="w1shL" class="lbl2" x="'+cx+'" y="'+(cy+115)+'" text-anchor="middle">影子</text></svg>';
+  var ctl='<div class="dirgrid" id="w1b"><button data-i="7">西北</button><button data-i="0">北</button><button data-i="1">東北</button><button data-i="6">西</button><span class="mid">☀→</span><button data-i="2">東</button><button data-i="5">西南</button><button data-i="4">南</button><button data-i="3">東南</button></div><div class="ro" id="w1ro"></div>';
+  function init(){
+    onBtns('w1b',function(i){
+      var a=i*45*D2R,s=Math.sin(a),c=Math.cos(a);
+      setA('w1sun',{cx:f1(cx+95*s),cy:f1(cy-95*c)});setA('w1sunL',{x:f1(cx+125*s),y:f1(cy-125*c+5)});
+      setA('w1sh',{x2:f1(cx-90*s),y2:f1(cy+90*c)});setA('w1shL',{x:f1(cx-118*s),y:f1(cy+118*c+5)});
+      setHtml('w1ro','太陽在【<b>'+DIRS[i]+'</b>】→ 影子在【<b class="bad">'+DIRS[(i+4)%8]+'</b>】');
+    },3);
+  }
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W2：太陽高度角 ↔ 影子長度（側面圖，竿子在右、影子往左） */
+function W2(){
+  var X0=360,G=250,H=120;
+  var fig='<svg class="fig" viewBox="0 0 480 300" role="img" aria-label="太陽高度角越大，影子越短">'
+    +'<rect x="0" y="0" width="480" height="'+G+'" fill="var(--soft)"/><rect x="0" y="'+G+'" width="480" height="50" fill="#b9a27a" fill-opacity=".35"/>'+L(0,G,480,G,'ifc')
+    +'<line id="w2ray" class="rI" x1="0" y1="0" x2="0" y2="0"/>'
+    +'<line id="w2sh" class="shl" x1="0" y1="'+(G+6)+'" x2="'+X0+'" y2="'+(G+6)+'"/>'
+    +'<line x1="'+X0+'" y1="'+G+'" x2="'+X0+'" y2="'+(G-H)+'" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>'
+    +sunDot(0,0,15,'w2sun')+'<path id="w2arc" class="arcX" d=""/>'
+    +'<text id="w2al" class="lbl2" x="0" y="0">α</text>'
+    +'<text id="w2len" class="lbl2" x="0" y="'+(G+38)+'" text-anchor="middle">影子</text>'
+    +T(X0+14,G-H/2+5,'竿子','lbl2')+'</svg>';
+  var ctl='<div class="ctl"><b>太陽高度角 α</b>　<span class="hint">往左拉＝太陽越低，往右拉＝太陽越高</span>'+RNG('w2r',20,90,1,45)+'</div><div class="ro" id="w2ro"></div>';
+  function upd(a){
+    var r=a*D2R,s=Math.sin(r),c=Math.cos(r),Lh=H/Math.tan(r),xe=X0-Lh,S=Math.min(100/c,100/s),top=G-H;
+    setA('w2sun',{cx:f1(X0+S*c),cy:f1(top-S*s)});
+    setA('w2ray',{x1:f1(X0+S*c),y1:f1(top-S*s),x2:f1(xe),y2:G});
+    setA('w2sh',{x1:f1(xe),x2:X0});
+    setA('w2arc',{d:'M'+f1(xe+44)+' '+G+' A44 44 0 0 0 '+f1(xe+44*c)+' '+f1(G-44*s)});
+    setA('w2al',{x:f1(xe+68*Math.cos(r/2)-6),y:f1(G-68*Math.sin(r/2)+6)});
+    setA('w2len',{x:f1((xe+X0)/2)});
+    var tip=a<=35?'太陽很低（像早上、傍晚）→ 影子<b>很長</b>':a>=70?'太陽很高（像中午）→ 影子<b>很短</b>':'太陽高度中等 → 影子長度中等';
+    setHtml('w2ro','α＝<b>'+a+'°</b>　影子長度＝竿子的 <b>'+(1/Math.tan(r)).toFixed(1)+'</b> 倍<br>'+tip);
+  }
+  function init(){var e=$('w2r');e.oninput=function(){upd(+e.value);};upd(45);}
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W3：一天中，太陽方位與影子（從上往下看的地圖；春分日示意） */
+function W3(){
+  var cx=230,cy=190,R=135,U=42,dec=0;
+  var mark='';[9,12,15].forEach(function(t){var s=sunPos(t,dec),p=domePt(cx,cy,R,s.az,s.alt),o=[Math.sin(s.az*D2R),-Math.cos(s.az*D2R)];
+    mark+='<circle cx="'+f1(p[0])+'" cy="'+f1(p[1])+'" r="4" fill="var(--sub)"/>'+T(p[0]+o[0]*24,p[1]+o[1]*24+5,t+' 時','lbl','middle');});
+  var fig='<svg class="fig" viewBox="0 0 460 380" role="img" aria-label="一天中太陽方位與影子的變化">'+compassBase(cx,cy,R,true)
+    +'<polyline class="spath" points="'+domePath(cx,cy,R,dec)+'"/>'+mark
+    +'<line id="w3sh" class="shl" x1="'+cx+'" y1="'+cy+'" x2="'+cx+'" y2="'+cy+'"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="14" fill="var(--ac)" stroke="#fff" stroke-width="2"/><text class="ptx" x="'+cx+'" y="'+(cy+6)+'" text-anchor="middle">竿</text>'
+    +sunDot(cx,cy,14,'w3sun')+'</svg>';
+  var ctl='<div class="ctl"><b>時間</b>　<span class="hint">往右拉＝時間往後走（上午→中午→下午）</span>'+RNG('w3r',8,16,0.5,9)+'</div><div class="ro" id="w3ro"></div><div class="hint">這是從上往下看的地圖：中間是竿子，太陽越高越靠近中間，越低越靠近邊緣。</div>';
+  function upd(t){
+    var s=sunPos(t,dec),p=domePt(cx,cy,R,s.az,s.alt),sa=Math.sin(s.az*D2R),ca=Math.cos(s.az*D2R),ratio=1/Math.tan(s.alt*D2R),Ls=Math.min(U*ratio,R-18),dn=dirName(s.az);
+    setA('w3sun',{cx:f1(p[0]),cy:f1(p[1])});setA('w3sh',{x2:f1(cx-Ls*sa),y2:f1(cy+Ls*ca)});
+    setHtml('w3ro',fmtT(t)+'　太陽在【<b>'+dn+'</b>】，高度角約 <b>'+Math.round(s.alt)+'°</b><br>影子在【<b class="bad">'+OPP[dn]+'</b>】，長度是竿子的 <b>'+ratio.toFixed(1)+'</b> 倍');
+  }
+  function init(){var e=$('w3r');e.oninput=function(){upd(+e.value);};upd(9);}
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W4：一天中太陽的路線（面向南方看天空：左手邊東、右手邊西） */
+function W4(){
+  var X=function(az){return 240+190*(az-180)/90;},Y=function(alt){return 235-170*alt/90;};
+  var pts=[],k,dec=0;for(k=0;k<=48;k++){var t=6+12*k/48,s=sunPos(t,dec);pts.push(f1(X(s.az))+','+f1(Y(Math.max(s.alt,0))));}
+  var fig='<svg class="fig" viewBox="0 0 480 300" role="img" aria-label="一天中太陽從東邊升起、中午在南方最高、西邊落下">'
+    +'<rect x="0" y="0" width="480" height="235" fill="var(--soft)"/><rect x="0" y="235" width="480" height="65" fill="#b9a27a" fill-opacity=".35"/>'+L(0,235,480,235,'ifc')
+    +'<polyline class="spath" points="'+pts.join(' ')+'"/>'
+    +'<line id="w4drop" class="nl" x1="0" y1="0" x2="0" y2="235"/>'+sunDot(0,0,15,'w4sun')
+    +T(40,268,'東','lbl2','middle')+T(240,268,'南','lbl2','middle')+T(440,268,'西','lbl2','middle')
+    +T(240,26,'面向南方站著，看天空','lbl','middle')+'</svg>';
+  var ctl='<div class="ctl"><b>時間</b>　<span class="hint">往右拉＝時間往後走</span>'+RNG('w4r',6,18,0.25,6)+'</div><div class="ro" id="w4ro"></div>';
+  function upd(t){
+    var s=sunPos(t,dec),x=X(s.az),y=Y(Math.max(s.alt,0)),dn=dirName(s.az);
+    setA('w4sun',{cx:f1(x),cy:f1(y)});setA('w4drop',{x1:f1(x),y1:f1(y),x2:f1(x)});
+    var txt=(t<=6.5||t>=17.5)?'太陽在地平線附近（日出或日落），高度角接近 0°':SUNC[dn]+'，高度角約 <b>'+Math.round(s.alt)+'°</b>';
+    setHtml('w4ro',fmtT(t)+'　'+txt);
+  }
+  function init(){var e=$('w4r');e.oninput=function(){upd(+e.value);};upd(6);}
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W5：四季太陽路線（天球俯視圖；路線用嘉義緯度算出） */
+var SEAS=[
+  {n:'夏至',dec:23.44,c:'var(--ac)',info:'日出：<b>東偏北</b>（東北方）　日落：<b>西偏北</b>（西北方）<br>日出約 5:12、日落約 18:47（嘉義）→ 白天最長<br>中午 12 時高度角：<b>90°</b>（太陽在頭頂）'},
+  {n:'春分／秋分',dec:0,c:'var(--ac2)',info:'日出：<b>正東</b>　日落：<b>正西</b>（春分、秋分路線一樣）<br>春分日出 6:02、日落 18:09；秋分 5:47、17:53（嘉義）→ 白天、黑夜差不多長<br>中午 12 時高度角：<b>66°</b>（在夏至和冬至中間）'},
+  {n:'冬至',dec:-23.44,c:'var(--ac3)',info:'日出：<b>東偏南</b>（東南方）　日落：<b>西偏南</b>（西南方）<br>日出約 6:35、日落約 17:17（嘉義）→ 白天最短<br>中午 12 時高度角：<b>43°</b>（全年最低）'}];
+function W5(){
+  var cx=230,cy=190,R=135,fig='<svg class="fig" viewBox="0 0 460 380" role="img" aria-label="四季太陽路線比較">'+compassBase(cx,cy,R,true);
+  SEAS.forEach(function(s,i){fig+='<polyline id="w5p'+i+'" class="spath" stroke="'+s.c+'" points="'+domePath(cx,cy,R,s.dec)+'"/>';});
+  fig+='<circle id="w5ri" r="7" cx="0" cy="0" fill="var(--ac)" stroke="#fff" stroke-width="2"/><circle id="w5se" r="7" cx="0" cy="0" fill="var(--bad)" stroke="#fff" stroke-width="2"/>'
+    +'<text id="w5riL" class="lbl2" x="0" y="0" text-anchor="middle">日出</text><text id="w5seL" class="lbl2" x="0" y="0" text-anchor="middle">日落</text>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="5" fill="var(--sub)"/>'+T(cx+8,cy+22,'頭頂','lbl')+'</svg>';
+  var ctl=BTNS('w5b',['夏至','春分／秋分','冬至','三條一起比'])+'<div class="ro" id="w5ro"></div><div class="hint">從上往下看的地圖：圓心是頭頂，圓周是地平線，線越靠近中間代表太陽越高。</div>';
+  function ends(dec){var h=halfDay(dec),a=sunPos(12-h,dec),b=sunPos(12+h,dec);return [domePt(cx,cy,R,a.az,0),domePt(cx,cy,R,b.az,0)];}
+  function init(){
+    onBtns('w5b',function(i){
+      SEAS.forEach(function(s,k){var on=(i===3)||(i===k);setA('w5p'+k,{'stroke-width':on?(i===3?4:6):2,opacity:on?1:.25});});
+      if(i===3){['w5ri','w5se','w5riL','w5seL'].forEach(function(id){setA(id,{opacity:0});});
+        setHtml('w5ro','<span style="color:var(--ac)">■</span> 夏至：最偏北、最高、路線最長<br><span style="color:var(--ac2)">■</span> 春分／秋分：正中間<br><span style="color:var(--ac3)">■</span> 冬至：最偏南、最低、路線最短');return;}
+      var e=ends(SEAS[i].dec);['w5ri','w5se','w5riL','w5seL'].forEach(function(id){setA(id,{opacity:1});});
+      setA('w5ri',{cx:f1(e[0][0]),cy:f1(e[0][1])});setA('w5se',{cx:f1(e[1][0]),cy:f1(e[1][1])});
+      function inward(p){var dx=cx-p[0],dy=cy-p[1],l=Math.sqrt(dx*dx+dy*dy);return [p[0]+dx/l*26,p[1]+dy/l*26+5];}
+      var a=inward(e[0]),b=inward(e[1]);setA('w5riL',{x:f1(a[0]),y:f1(a[1])});setA('w5seL',{x:f1(b[0]),y:f1(b[1])});
+      setHtml('w5ro','<b style="color:'+SEAS[i].c+'">'+SEAS[i].n+'</b><br>'+SEAS[i].info);
+    },1);
+  }
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W6：公轉＋地軸傾斜 → 四季 */
+function W6(){
+  var P=[[62,170],[230,272],[398,170],[230,68]],NM=['夏至（6月）','秋分（9月）','冬至（12月）','春分（3月）'],R=26,SX=230,SY=170,tilt=23.5*D2R,nx=Math.sin(tilt),ny=-Math.cos(tilt);
+  var INFO=[
+    '<b>夏至</b>：北半球這一邊<b>靠向太陽</b>，太陽直射<b>北回歸線</b>。<br>北半球：夏天，白天最長。南半球：冬天。',
+    '<b>秋分</b>：地軸歪的方向和太陽「不偏不倚」，太陽直射<b>赤道</b>。<br>北半球：秋天，白天和黑夜差不多長。',
+    '<b>冬至</b>：北半球這一邊<b>背向太陽</b>，太陽直射<b>南回歸線</b>。<br>北半球：冬天，白天最短。南半球：夏天。',
+    '<b>春分</b>：太陽又直射<b>赤道</b>。<br>北半球：春天，白天和黑夜差不多長。'];
+  var fig='<svg class="fig" viewBox="0 0 460 340" role="img" aria-label="地球繞太陽公轉，地軸傾斜方向不變">'
+    +'<ellipse cx="'+SX+'" cy="'+SY+'" rx="168" ry="102" fill="none" stroke="var(--sub)" stroke-width="2" stroke-dasharray="6 5"/>'
+    +sunDot(SX,SY,30)+T(SX,SY+6,'太陽','lbl','middle');
+  P.forEach(function(p,i){
+    var vx=SX-p[0],vy=SY-p[1],l=Math.sqrt(vx*vx+vy*vy),dx=vx/l,dy=vy/l,px=-dy,py=dx,x=p[0],y=p[1];
+    fig+='<g id="w6e'+i+'"><circle cx="'+x+'" cy="'+y+'" r="'+(R+8)+'" class="selring" fill="none"/>'
+      +'<circle cx="'+x+'" cy="'+y+'" r="'+R+'" fill="#fff3c4" stroke="currentColor" stroke-width="2.5"/>'
+      +'<path d="M'+f1(x+R*px)+' '+f1(y+R*py)+' A'+R+' '+R+' 0 0 1 '+f1(x-R*px)+' '+f1(y-R*py)+' Z" fill="#2c3e66" fill-opacity=".85"/>'
+      +'<ellipse cx="'+x+'" cy="'+y+'" rx="'+R+'" ry="'+f1(R*.28)+'" transform="rotate(23.5 '+x+' '+y+')" fill="none" stroke="#ff7043" stroke-width="2"/>'
+      +L(x-nx*1.45*R,y-ny*1.45*R,x+nx*1.45*R,y+ny*1.45*R,'axis')
+      +T(x+nx*1.45*R+3,y+ny*1.45*R-4,'北','lbl','middle')
+      +T(p[0],i===1?y+R+30:(i===3?y+R+28:y+R+28),NM[i],'lbl2','middle');
+    fig+='<line class="sunray" x1="'+f1(x+dx*(R+44))+'" y1="'+f1(y+dy*(R+44))+'" x2="'+f1(x+dx*(R+8))+'" y2="'+f1(y+dy*(R+8))+'" stroke="#e08a00" stroke-width="4" marker-end="url(#w6ma)"/>';
+    fig+='</g>';
+  });
+  fig+='<defs><marker id="w6ma" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto"><path d="M0,1 L12,6.5 L0,12 Z" fill="#e08a00"/></marker></defs>';
+  fig+='<circle id="w6dot" r="6" cx="0" cy="0" fill="#e53935" stroke="#fff" stroke-width="2"/></svg>';
+  var ctl=BTNS('w6b',['夏至','秋分','冬至','春分'])+'<button class="btn2" id="w6play">▶ 繞一圈看看</button><div class="ro" id="w6ro"></div><div class="hint">橘色圈＝赤道；紅點＝太陽直射的地方；地球上深色的半邊是黑夜。注意：每個位置的地軸都歪向<b>同一邊</b>。</div>';
+  function dot(i){
+    var p=P[i],vx=SX-p[0],vy=SY-p[1],l=Math.sqrt(vx*vx+vy*vy),dx=vx/l,dy=vy/l,x,y;
+    if(i===0||i===2){x=p[0]+R*dx;y=p[1]+R*dy;}
+    else{var q=R*.28*(i===1?-1:1);x=p[0]-q*Math.sin(tilt);y=p[1]+q*Math.cos(tilt);}
+    setA('w6dot',{cx:f1(x),cy:f1(y)});
+  }
+  function init(){
+    var timer=null,cur=0;
+    onBtns('w6b',function(i){cur=i;P.forEach(function(_,k){var g=$('w6e'+k);g.classList.toggle('sel',k===i);});dot(i);setHtml('w6ro',INFO[i]);},0);
+    $('w6play').onclick=function(){
+      if(timer){clearInterval(timer);timer=null;$('w6play').textContent='▶ 繞一圈看看';return;}
+      $('w6play').textContent='■ 停止';
+      timer=setInterval(function(){var b=$('w6b').querySelectorAll('button');b[(cur+1)%4].click();},1700);
+    };
+  }
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W7：地球自轉，從北極上方往下看 */
+function W7(){
+  var cx=200,cy=175,R=105;
+  var fig='<svg class="fig" viewBox="0 0 460 350" role="img" aria-label="從北極上方看地球自轉，站在地球上的人經歷日出、中午、日落、黑夜">'+mk('w7')
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="#2c3e66" fill-opacity=".9" stroke="currentColor" stroke-width="2.5"/>'
+    +'<path d="M'+cx+' '+(cy-R)+' A'+R+' '+R+' 0 0 1 '+cx+' '+(cy+R)+' Z" fill="#fff3c4"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="currentColor" stroke-width="2.5"/>'
+    +[-70,-35,35,70].map(function(d){var ex=cx+Math.sqrt(R*R-d*d);return L(418,cy+d,ex+8,cy+d,'rI','w7','a');}).join('')
+    +sunDot(440,cy,16)+T(440,cy+40,'太陽','lbl2','middle')
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="27" fill="#fff" stroke="#555" stroke-width="2"/><text x="'+cx+'" y="'+(cy+10)+'" text-anchor="middle" style="font-size:30px;fill:#333">↺</text>'
+    +'<text class="lblw" x="'+(cx+66)+'" y="'+(cy-40)+'" text-anchor="middle" style="fill:#5a4300;stroke:none">白天</text><text class="lblw" x="'+(cx-66)+'" y="'+(cy-40)+'" text-anchor="middle">黑夜</text>'
+    +T(cx+R+10,cy+6,'12點','lbl2','start')+T(cx,cy+R+26,'6點','lbl2','middle')+T(cx,cy-R-10,'18點','lbl2','middle')+T(cx-R-10,cy+6,'0點','lbl2','end')
+    +'<circle id="w7me" cx="0" cy="0" r="14" fill="var(--bad)" stroke="#fff" stroke-width="2.5"/><text id="w7meT" class="ptx" x="0" y="0" text-anchor="middle">你</text></svg>';
+  var ctl='<div class="ctl"><b>現在幾點？</b>　<span class="hint">往右拉＝時間往後走，你會跟著地球轉</span>'+RNG('w7r',0,24,0.5,6)+'</div><div class="ro" id="w7ro"></div><div class="hint">從<b>北極上方</b>往下看：地球是<b>逆時針</b>轉（也就是<b>由西向東</b>轉）。圖上 6 點、12 點…是「站在那個位置的人」的時間。</div>';
+  function upd(t){
+    var th=15*(t-12)*D2R,x=cx+R*Math.cos(th),y=cy-R*Math.sin(th);
+    setA('w7me',{cx:f1(x),cy:f1(y)});setA('w7meT',{x:f1(x),y:f1(y+6)});
+    var m;
+    if(t<5||t>19)m='<b>黑夜</b>：你背向太陽，看不到太陽。';
+    else if(t<7)m='<b>日出</b>：你剛轉進有光的那一半，太陽從<b>東邊</b>升起。';
+    else if(t<11)m='<b>上午</b>：太陽在<b>東南方</b>，越升越高。';
+    else if(t<=13)m='<b>中午</b>：你正對著太陽，太陽在<b>南方</b>最高。';
+    else if(t<17)m='<b>下午</b>：太陽在<b>西南方</b>，越降越低。';
+    else m='<b>日落</b>：你快要轉出有光的那一半，太陽從<b>西邊</b>落下。';
+    setHtml('w7ro',fmtT(t%24)+'　'+m);
+  }
+  function init(){var e=$('w7r');e.oninput=function(){upd(+e.value);};upd(6);}
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* W8：放大鏡成像（物體到放大鏡的距離） */
+function W8(){
+  var F=90,LX=250,AY=150;
+  var fig='<svg class="fig" viewBox="0 0 480 330" role="img" aria-label="物體離放大鏡的遠近，影像的大小與正倒不同">'
+    +L(20,AY,460,AY,'axis')
+    +'<path d="M'+LX+' '+(AY-70)+' Q'+(LX+30)+' '+AY+' '+LX+' '+(AY+70)+' Q'+(LX-30)+' '+AY+' '+LX+' '+(AY-70)+' Z" fill="var(--ac3)" fill-opacity=".3" stroke="currentColor" stroke-width="2.5"/>'
+    +T(LX,AY-80,'放大鏡','lbl2','middle')
+    +'<line id="w8ob" x1="0" y1="'+AY+'" x2="0" y2="'+(AY-46)+'" stroke="var(--ac)" stroke-width="7" stroke-linecap="round"/>'
+    +'<path id="w8oh" d="" fill="var(--ac)"/>'
+    +T(0,AY+26,'物體','lbl2','middle').replace('<text','<text id="w8obL"')
+    +eye(430,AY-4)+T(430,AY+34,'眼睛','lbl','middle')
+    +'<rect x="30" y="215" width="420" height="105" rx="10" fill="var(--hi)" stroke="var(--line)" stroke-width="2"/>'
+    +T(46,244,'你看到的樣子：','lbl2')
+    +'<g id="w8g"><text id="w8gt" x="0" y="0" text-anchor="middle" style="font-size:34px;font-weight:700;fill:var(--ac)">F</text></g>'
+    +'<text id="w8gm" class="lbl2" x="436" y="272" text-anchor="end"></text></svg>';
+  var ctl='<div class="ctl"><b>物體離放大鏡的距離</b>　<span class="hint">往左拉＝物體靠近放大鏡，往右拉＝物體離放大鏡越遠</span>'+RNG('w8r',20,300,10,40)+'</div><div class="ro" id="w8ro"></div>';
+  function upd(u){
+    var x=LX-u,near=u<F,inv=!near,m,txt,hide=(u===F);
+    setA('w8ob',{x1:f1(x),x2:f1(x)});setA('w8oh',{d:'M'+f1(x-9)+' '+(AY-42)+' L'+f1(x)+' '+(AY-56)+' L'+f1(x+9)+' '+(AY-42)+' Z'});
+    var ol=$('w8obL');ol.setAttribute('x',f1(x));
+    if(hide){m=0;}else m=near?F/(F-u):F/(u-F);
+    var mm=Math.min(m,4),g=$('w8g'),gt=$('w8gt');
+    if(hide){g.style.opacity=0;}else{g.style.opacity=1;
+      var sc=mm*0.9,h=24.5*sc;
+      gt.setAttribute('transform','scale('+(inv?-sc:sc)+','+(inv?-sc:sc)+')');
+      g.setAttribute('transform','translate(300,'+f1(inv?270-h/2:270+h/2)+')');}
+    var kind;
+    if(hide)kind='物體剛好在焦點：光線互相平行，看不到清楚的影像。';
+    else if(near)kind='<b>正立</b>、<b>放大</b>（放大約 '+Math.min(m,9).toFixed(1)+' 倍）　← 這就是「看近物」，像用放大鏡看課本';
+    else if(u<2*F)kind='<b>倒立</b>、<b>放大</b>　← 介於中間，國中才會學，課本只考近物和遠物';
+    else kind='<b>倒立</b>、<b>縮小</b>（約 '+m.toFixed(1)+' 倍）　← 這就是「看遠物」，像用放大鏡看遠處的班級牌';
+    setHtml('w8ro',kind);setTxt('w8gm',hide?'':(near?'正立 放大':(u<2*F?'倒立 放大':'倒立 縮小')));
+  }
+  function init(){var e=$('w8r');e.oninput=function(){upd(+e.value);};upd(40);}
+  return {fig:fig,ctl:ctl,init:init};
+}
+
+/* ===== 靜態圖 ===== */
+/* 八方位：相反方位配成四對 */
+function pairsFig(){
+  var cx=230,cy=190,R=130,C=['var(--ac3)','var(--ac2)','var(--ac)','#8e24aa'],s='<svg class="fig" viewBox="0 0 460 380" role="img" aria-label="八方位，相反的方位配成四對">'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--soft)" stroke="currentColor" stroke-width="2"/>';
+  var pairs=[[2,6],[0,4],[1,5],[3,7]];
+  pairs.forEach(function(p,k){var a=p[0]*45*D2R,b=p[1]*45*D2R;
+    s+='<line x1="'+f1(cx+R*Math.sin(a))+'" y1="'+f1(cy-R*Math.cos(a))+'" x2="'+f1(cx+R*Math.sin(b))+'" y2="'+f1(cy-R*Math.cos(b))+'" stroke="'+C[k]+'" stroke-width="5" stroke-linecap="round" opacity=".85"/>';});
+  var col={0:1,4:1,2:0,6:0,1:2,5:2,3:3,7:3},d=R*0.7071,
+      lp=[[cx,cy-R-12,'middle'],[cx+d+8,cy-d-4,'start'],[cx+R+10,cy+6,'start'],[cx+d+8,cy+d+18,'start'],[cx,cy+R+26,'middle'],[cx-d-8,cy+d+18,'end'],[cx-R-10,cy+6,'end'],[cx-d-8,cy-d-4,'end']];
+  for(var i=0;i<8;i++)s+='<text class="lbl2" x="'+f1(lp[i][0])+'" y="'+f1(lp[i][1])+'" text-anchor="'+lp[i][2]+'" style="fill:'+C[col[i]]+'">'+DIRS[i]+'</text>';
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="currentColor"/></svg>';
+  return s;
+}
+/* 中午影子：夏至／春秋分／冬至（從東邊看，南在左、北在右） */
+function noonFig(){
+  var G=230,H=110,xs=[60,190,320],al=[90,66,43],nm=['夏至','春分／秋分','冬至'],s='<svg class="fig" viewBox="0 0 480 320" role="img" aria-label="中午 12 時，夏至、春秋分、冬至的太陽高度角與影子長度">'
+    +'<rect x="0" y="0" width="480" height="'+G+'" fill="var(--soft)"/><rect x="0" y="'+G+'" width="480" height="90" fill="#b9a27a" fill-opacity=".35"/>'+L(0,G,480,G,'ifc');
+  xs.forEach(function(x,i){var r=al[i]*D2R,Ls=H/Math.tan(r),sx=x-80*Math.cos(r),sy=G-H-80*Math.sin(r);
+    s+='<line x1="'+f1(sx)+'" y1="'+f1(sy)+'" x2="'+f1(x+Ls)+'" y2="'+G+'" class="rI"/>';
+    if(i>0)s+='<line x1="'+x+'" y1="'+G+'" x2="'+f1(x+Ls)+'" y2="'+G+'" class="shl"/>';
+    s+='<line x1="'+x+'" y1="'+G+'" x2="'+x+'" y2="'+(G-H)+'" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>'+sunDot(sx,sy,12);
+    s+=T(x+(i===0?0:Ls/2),G+32,i===0?'沒有影子':'影子','lbl','middle')+T(x+(i===0?0:Ls/2),G+60,nm[i]+' '+al[i]+'°','lbl2','middle');});
+  s+=T(10,22,'南','lbl2')+T(470,22,'北','lbl2','end')+T(240,22,'（從東邊看）','lbl','middle');
+  return s+'</svg>';
+}
+/* 手電筒：垂直照 vs 斜著照 */
+function flashFig(){
+  var G=215,s='<svg class="fig" viewBox="0 0 480 300" role="img" aria-label="同樣的光，垂直照射集中在小範圍，斜著照射散在大範圍">'
+    +'<rect x="0" y="'+G+'" width="480" height="40" fill="#b9a27a" fill-opacity=".4"/>'+L(0,G,480,G,'ifc');
+  s+='<polygon points="110,40 85,'+G+' 135,'+G+'" fill="#f6b21b" fill-opacity=".35"/><circle cx="110" cy="38" r="12" fill="#f6b21b" stroke="#c77f00" stroke-width="2"/>'
+    +'<line x1="85" y1="'+(G+6)+'" x2="135" y2="'+(G+6)+'" stroke="#e53935" stroke-width="8" stroke-linecap="round"/>'
+    +T(110,G+36,'光集中在小範圍','lbl2','middle')+T(110,G+62,'→ 很亮、很熱','lbl','middle');
+  s+='<polygon points="270,40 330,'+G+' 450,'+G+'" fill="#f6b21b" fill-opacity=".35"/><circle cx="270" cy="38" r="12" fill="#f6b21b" stroke="#c77f00" stroke-width="2"/>'
+    +'<line x1="330" y1="'+(G+6)+'" x2="450" y2="'+(G+6)+'" stroke="#e53935" stroke-width="8" stroke-linecap="round"/>'
+    +T(390,G+36,'光散開在大範圍','lbl2','middle')+T(390,G+62,'→ 沒那麼熱','lbl','middle');
+  s+=T(140,100,'垂直照','lbl2')+T(340,100,'斜著照','lbl2');
+  return s+'</svg>';
+}
+/* 三稜鏡：白光分散成七色（示意） */
+function prismFig(){
+  var cols=[['紅','#e53935'],['橙','#fb8c00'],['黃','#fdd835'],['綠','#43a047'],['藍','#1e88e5'],['靛','#3949ab'],['紫','#8e24aa']],ox=235,oy=150,s='<svg class="fig" viewBox="0 0 480 370" role="img" aria-label="白色陽光通過三稜鏡，分散成紅橙黃綠藍靛紫七色">'
+    +'<polygon points="190,70 100,230 280,230" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>'
+    +'<line x1="20" y1="150" x2="145" y2="150" stroke="currentColor" stroke-width="5" opacity=".8"/><line x1="145" y1="150" x2="'+ox+'" y2="150" stroke="currentColor" stroke-width="3" opacity=".5"/>'
+    +T(20,132,'陽光（白色）','lbl2')+T(190,255,'三稜鏡','lbl2','middle');
+  var ly=0;
+  cols.forEach(function(c,k){var a=(15+k*7.5)*D2R,ex=ox+190*Math.cos(a),ey=oy+190*Math.sin(a);ly=Math.max(ey+5,ly+22);
+    s+='<line x1="'+ox+'" y1="'+oy+'" x2="'+f1(ex)+'" y2="'+f1(ey)+'" stroke="'+c[1]+'" stroke-width="5" stroke-linecap="round"/>'+T(ex+7,ly,c[0],'lbl2');});
+  return s+T(20,352,'（示意：真實的色光靠得更近）','lbl')+'</svg>';
+}
+/* 折射：斜射偏折、垂直不偏折 */
+function refractFig(){
+  var id='rf',y0=150,ox=150,i=45,r=Math.asin(Math.sin(i*D2R)/1.333)/D2R,s='<svg class="fig" viewBox="0 0 480 320" role="img" aria-label="光斜著從空氣進入水會偏折，垂直射入不偏折">'+mk(id)
+    +'<rect x="0" y="0" width="480" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="480" height="170" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,480,y0,'ifc')
+    +T(10,24,'空氣','lbl2')+T(10,310,'水','lbl2');
+  s+=L(ox-110*Math.sin(i*D2R),y0-110*Math.cos(i*D2R),ox,y0,'rI',id,'a')+L(ox,y0,ox+120*Math.sin(r*D2R),y0+120*Math.cos(r*D2R),'rR',id,'b')
+    +L(ox,y0,ox+120*Math.sin(i*D2R),y0+120*Math.cos(i*D2R),'ghostL');
+  s+=T(ox+120*Math.sin(i*D2R)+6,y0+120*Math.cos(i*D2R)+4,'沒轉彎的話','lbl','start')+T(ox+120*Math.sin(r*D2R)-4,y0+120*Math.cos(r*D2R)+22,'轉彎了！','tR','middle');
+  s+=L(390,20,390,285,'rI',id,'a')+T(398,230,'垂直射入：','lbl2')+T(398,252,'不轉彎','lbl2');
+  return s+T(86,58,'斜斜射入','tI')+'</svg>';
+}
+/* 筷子斜插水中 */
+function stickFig(){
+  var W=380,H=250,y0=100,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="筷子斜插入水中，看起來在水面處折斷">';
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'空氣','lbl2')+T(10,H-10,'水','lbl2');
+  s+='<line x1="200" y1="100" x2="140" y2="180" stroke="var(--sub)" stroke-width="3" stroke-dasharray="5 4"/>';
+  s+='<line x1="266" y1="12" x2="200" y2="100" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/>';
+  s+='<line x1="200" y1="100" x2="140" y2="148" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/>';
+  s+=T(10,205,'虛線：筷子真正的位置','lbl')+T(128,128,'眼睛看到的樣子','lbl2','end');
+  s+=eye(330,50);
+  return s+'</svg>';
+}
+/* 魚看起來比較淺 */
+function depthFig(){
+  var id='d'+(++UID),W=400,H=290,y0=105,px=170,py=235,dep=py-y0,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="水中的魚看起來比實際位置淺">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'空氣','lbl2')+T(10,H-10,'水','lbl2');
+  var a=[10,14],py2=0;
+  s+='<ellipse cx="'+px+'" cy="'+py+'" rx="15" ry="8" fill="var(--ac)"/><polygon points="'+(px-14)+','+py+' '+(px-26)+','+(py-8)+' '+(px-26)+','+(py+8)+'" fill="var(--ac)"/><circle cx="'+(px+7)+'" cy="'+(py-2)+'" r="1.8" fill="#fff"/>';
+  s+=T(px,py+26,'魚真正的位置','lbl2','middle');
+  a.forEach(function(d){
+    var hx=px+dep*Math.tan(d*D2R),r=Math.asin(Math.sin(d*D2R)*1.333)/D2R,tr=Math.tan(r*D2R),back=(hx-px)/tr;
+    s+=L(px,py,hx,y0,'rI')+L(hx,y0,hx+75*Math.sin(r*D2R),y0-75*Math.cos(r*D2R),'rR',id,'b')+L(hx,y0,px,y0+back,'ghostL');py2+=y0+back;});
+  py2=py2/2;
+  s+='<circle cx="'+px+'" cy="'+f1(py2)+'" r="5" fill="none" stroke="var(--bad)" stroke-width="2.5"/>'+T(px+16,py2+6,'眼睛看到的位置','lbl2');
+  s+=L(48,y0,48,py2,'arcX',id,'d',true)+T(42,(y0+py2)/2+5,'看起來','lbl2','end');
+  s+=L(100,y0,100,py,'arcX',id,'d',true)+T(94,y0+(py-y0)*.78,'實際','lbl','end');
+  s+=eye(308,38);
+  return s+'</svg>';
+}
+/* 推車比喻 */
+function cartFig(){
+  var id='c'+(++UID),W=380,H=250,y0=130,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="推車斜進沙地的比喻">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="#c9a86a" fill-opacity=".35"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'柏油路（跑得快）','lbl2')+T(10,H-12,'沙地（跑得慢）','lbl2');
+  s+='<line x1="150" y1="165" x2="230" y2="85" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>';
+  s+='<circle cx="150" cy="165" r="10" fill="var(--bad)"/><circle cx="230" cy="85" r="10" fill="var(--ac2)"/>';
+  s+=L(158,173,176,191,'rI',id,'a')+L(238,93,296,151,'rR',id,'b');
+  s+=T(170,208,'左輪先進沙地：變慢','tI')+T(372,62,'右輪還在柏油路：仍然快','tR','end');
+  return s+'</svg>';
+}
+/* 凸透鏡把平行光聚成一點 */
+function convergeFig(){
+  var id='cv',AY=150,LX=200,FX=370,s='<svg class="fig" viewBox="0 0 480 300" role="img" aria-label="平行光通過放大鏡後聚集成一個光點">'+mk(id)+L(20,AY,460,AY,'axis');
+  [-60,-30,0,30,60].forEach(function(h){
+    if(h===0)s+=L(20,AY,FX,AY,'rI',id,'a');
+    else s+=L(20,AY+h,LX,AY+h,'rI')+L(LX,AY+h,FX,AY,'rI',id,'a');});
+  s+='<path d="M'+LX+' '+(AY-80)+' Q'+(LX+30)+' '+AY+' '+LX+' '+(AY+80)+' Q'+(LX-30)+' '+AY+' '+LX+' '+(AY-80)+' Z" fill="var(--ac3)" fill-opacity=".3" stroke="currentColor" stroke-width="2.5"/>'
+    +'<circle cx="'+FX+'" cy="'+AY+'" r="6" fill="var(--bad)"/>'+T(FX,AY+32,'光點（聚光）','lbl2','middle')
+    +T(LX,AY-92,'放大鏡（凸透鏡）','lbl2','middle')+T(24,AY-72,'太陽光','lbl2')+T(LX,AY+114,'中間厚、周圍薄','lbl','middle');
+  return s+'</svg>';
+}
+
+/* ===== 投影片資料 ===== */
+var DECKS={A:{name:'1-1 太陽與生活',SL:[]},B:{name:'1-2 影子與方位',SL:[]},C:{name:'1-2 一天與四季',SL:[]},D:{name:'1-2 自轉與公轉',SL:[]},E:{name:'1-3 光與折射',SL:[]}};
+function add(d,o){DECKS[d].SL.push(o);}
+var A=function(o){add('A',o);},B=function(o){add('B',o);},C=function(o){add('C',o);},D=function(o){add('D',o);},E=function(o){add('E',o);};
+var LEGEND='<b>頁面上的標記：</b><ul><li>📖 <b>出處</b>：這一頁的內容在課本第幾頁（印在課本上的頁碼）</li><li>✍️ <b>對照課本</b>：課本上的原文</li><li>'+AI+'：課本<b>沒有</b>寫，是額外幫你理解的比喻、口訣或推理</li><li>'+RE+'：題型和課本類似，內容是新編的</li><li>🧠 <b>記憶方法</b>：幫你背的口訣或小技巧</li><li>❓ <b>有問題</b>：看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按右上角的「❓」；下方「❓ 問題」按鈕會列出全部</li></ul>';
+
+/* ================= 1-1 太陽與生活 ================= */
+A({t:'單元一怎麼學：先想，再看答案',tag:'今天的目標',
+ text:'<b>單元一「太陽的祕密」只有三個問題：</b><ol><li><b>1-1</b>　太陽對我們有什麼用？（光和熱）</li><li><b>1-2</b>　太陽在天空的什麼位置？一天怎麼走？一年四季一樣嗎？為什麼？</li><li><b>1-3</b>　陽光為什麼能分出彩虹的顏色？光為什麼會「轉彎」？</li></ol><b>最容易搞混的是 1-2：</b>方位、時間、高度角、影子、季節、自轉、公轉。所以後面我們<b>一次只弄懂一件事</b>，而且大部分都有可以拉的小工具。<br><b>怎麼用：</b>每頁先自己想「想一想」，再按「看答案」。選擇題答錯會自動標 ❓，之後回來複習。<br><br>'+LEGEND,
+ note:'不用一次看完，每次 15 分鐘就好。右上角的下拉選單可以跳到任何一頁，上面的分頁是五個主題。'});
+
+A({t:'太陽給了我們什麼？光和熱',src:'課本 p.5、p.8',
+ text:'白天太陽升起，晚上太陽落下，這就是<b>晝夜</b>。<br>以前沒有電燈，人們「日出而作、日落而息」。',
+ qs:[['白天和夜晚，哪些事情不一樣？（至少想三項）','白天：有陽光照射、看得清楚景色、氣溫比較<b>高</b>。夜晚：沒有陽光、要開燈才看得清楚、氣溫比較<b>低</b>。'],
+     ['太陽除了「光」，還有什麼？它會讓天氣怎麼樣？','還有<b>熱</b>。太陽的熱會促進大自然的<b>水循環</b>（水蒸發、凝結、下雨），形成不同的<b>天氣變化</b>。']],
+ sheet:'「太陽的熱可以促進大自然的水循環，形成不同的天氣變化。」',
+ note:MN('<div class="kj">太陽＝「光」＋「熱」</div>光 → 晝夜、看得清楚；熱 → 氣溫、水循環、天氣。以後遇到太陽的題目，先問：這是用到它的<b>光</b>還是<b>熱</b>？')});
+
+A({t:'太陽對人、動物、植物有什麼用？',src:'課本 p.6',
+ text:'如果沒有太陽，地球上大多數的生物就無法生存。',
+ qs:[['人晒太陽，身體會產生什麼？','<b>維生素 D</b>（適當晒太陽）。'],['動物需要太陽的什麼？','太陽的熱提供動物活動需要的<b>能量</b>，也讓動物<b>溫暖</b>。'],['植物需要陽光做什麼？','進行<b>光合作用</b>，製造養分、維持生長。']],
+ note:MN('<div class="kj">人補 D、動物取暖、植物做養分</div>三種生物各一件事，念成一句話就不會漏。')});
+
+A({t:'生活中怎麼用太陽？直接用 vs 科技用',src:'課本 p.6～7、p.8',
+ text:'<b>直接用太陽的熱</b>（讓水分蒸發）：晒鹽、晒衣服、晒乾食物（蝦乾、魚乾、柿餅）。<br><b>用科技把太陽能轉換</b>：<ul><li>太陽能<b>光電板</b>（由太陽能電池組成）：光能 → <b>電能</b>（路燈、電動車充電）</li><li>太陽能<b>集熱器</b>：用太陽的<b>熱能</b>把水加熱 → 熱水</li></ul><b>太陽能的好處：</b>是綠色能源，取之不盡、用之不竭，污染較小。',
+ sheet:'「太陽能光電板由太陽能電池組成，將太陽光能轉換成電能；太陽能集熱器利用太陽的熱能將水加熱。」',
+ qs:[mc('哪一個是「集熱器」的功能？',['把太陽光變成電','用太陽的熱把水加熱','讓衣服變乾','讓路燈自動亮'],1,['那是光電板，不是集熱器。','','晒衣服是直接用太陽的熱，不需要集熱器這個裝置。','路燈用的是光電板發的電。'],'集熱器＝收集<b>熱</b>、燒<b>水</b>。'),
+     ['晒鹽、晒衣服是用太陽的光還是熱？','<b>熱</b>：熱把水分蒸發掉，鹽才留下、衣服才乾。']],
+ note:MN('<div class="kj">光電板發電，集熱器燒水</div>名字裡有「電」的發電，有「熱」的燒水。')});
+
+A({t:'1-1 快問快答',tag:'📌 小測',src:'🔁 題型取自課本 p.8「重點整理」',
+ qs:[mc('下面哪一件事，是太陽的「熱」造成的？',['白天看得清楚景色','植物行光合作用的光','衣服晒乾','路燈的光'],2,['看得清楚是靠太陽的光。','光合作用主要利用陽光。','','路燈是靠電。'],'衣服上的水分被太陽的熱蒸發，所以變乾。'),
+     mc('太陽能光電板是把什麼轉換成什麼？',['熱能變電能','光能變電能','光能變熱水','電能變光能'],1,['光電板利用的是太陽「光」，不是熱。','','把水加熱的是集熱器。','方向反了。'],'光電板：太陽光能 → 電能。'),
+     ['說出太陽對生物的三種影響（人、動物、植物）。','人：維生素 D；動物：能量和溫暖；植物：光合作用製造養分。']]});
+
+/* ================= 1-2（上）影子與方位 ================= */
+function sundialFig(){
+  var cx=230,cy=185,R=130,a=45*D2R;
+  return '<svg class="fig" viewBox="0 0 460 380" role="img" aria-label="日晷：晷針的影子落在晷面上">'+compassBase(cx,cy,R,false)
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--hi)" stroke="currentColor" stroke-width="2.5"/>'
+    +'<line class="shl" x1="'+cx+'" y1="'+cy+'" x2="'+f1(cx+85*Math.sin(a))+'" y2="'+f1(cy-85*Math.cos(a))+'"/>'
+    +'<circle cx="'+cx+'" cy="'+cy+'" r="8" fill="var(--ac)" stroke="#fff" stroke-width="2"/>'
+    +T(cx-14,cy+30,'晷針','lbl2','end')+T(cx+70,cy-78,'影子','lbl2')+T(cx-82,cy+86,'晷面','lbl2')+'</svg>';
+}
+var W1o=W1(),W2o=W2(),W3o=W3();
+
+B({t:'先分清楚三個詞：方位、高度角、時間',tag:'📌 先備觀念',src:'課本 p.11（觀測太陽位置）',
+ text:'要說太陽在哪裡，需要<b>兩個數字</b>：<ul><li><b>方位</b>：太陽在「哪一邊」？（東、南、西、北…）像指南針，是<b>左右轉</b>的方向。</li><li><b>高度角</b>：太陽「抬多高」？像抬頭看，是<b>上下</b>的角度。</li></ul>'+AI+'<b>手臂比喻：</b>先轉身面向太陽（方位），再把手臂往上抬指向太陽，手臂和地面的夾角就是高度角（手臂平放＝0°，指向頭頂＝90°）。<br><b>時間</b>只是用來問「那個時候」，太陽會在哪裡。',
+ sheet:'「利用方位和高度角來進行觀察。」「太陽刺眼，不可以用眼睛直視太陽觀察！」',
+ qs:[mc('「太陽在東南方」說的是哪一個？',['方位','高度角','時間','影子長度'],0,['','高度角是一個「度數」，像 43°。','時間是幾點鐘。','影子長度是公分或幾倍。'],'東南方是「哪一邊」，是方位。'),
+     mc('「太陽高度角是 68°」說的是哪一個？',['太陽在東邊還是西邊','太陽離地平線有多高','現在是幾點','影子在哪個方向'],1,['東邊西邊是方位。','','幾點是時間。','影子方向要再由方位推出來。'],'高度角越大，太陽越高。')],
+ note:'實驗觀測時不可以直視太陽，要用影子或儀器間接觀察。'});
+
+B({t:'八方位：每個方位都有「相反」的方位',tag:'📌 先備觀念',src:'課本 p.11（八方位法）',
+ fig:pairsFig(),
+ text:'八方位：東、西、南、北、東南、西南、西北、東北。<br>同顏色的線連著<b>相反</b>的兩個方位，共四對：<br>東↔西　南↔北　東南↔西北　東北↔西南',
+ qs:[['東南的相反是哪裡？怎麼想最快？','<b>西北</b>。方法：把每一個字都換成相反的字 —— 東換成西、南換成北。'],['西南的相反呢？','<b>東北</b>（西→東、南→北）。']],
+ note:MN('<div class="kj">每個字都換成相反字：東↔西，南↔北</div>東南 → 西北；西南 → 東北；北 → 南。下一頁的「影子」就用這個規則。')});
+
+B({t:'踩影子遊戲：太陽在哪，影子在對面',src:'課本 p.9（踩影子遊戲）、p.11（竿影相反方向）',
+ fig:W1o.fig,
+ text:'點下面的方位，看太陽和影子怎麼變：'+W1o.ctl,
+ sheet:'「影子出現的方向在太陽的另一邊。」「在太陽下，人或物品所形成的影子會和太陽的位置相反。」',
+ qs:[['太陽在西北方，影子在哪裡？','<b>東南方</b>（西→東、北→南）。'],['影子在北方，太陽在哪裡？','<b>南方</b>。']],
+ init:W1o.init,
+ note:MN('<div class="kj">影子永遠躲在太陽的對面</div>題目只給影子方位時，把每個字換成相反字，就是太陽方位。')});
+
+B({t:'同一個時間，大家的影子都往同一邊',src:'課本 p.9',
+ text:'操場上，小明面向東站著，小華面向西站著，同一個時間太陽在<b>南方</b>。',
+ qs:[mc('小明和小華的影子，會怎麼樣？',['都在北方','小明在西邊，小華在東邊','都跟著自己面對的方向','都在南方'],0,['','影子不是跟著面向走，而是跟著「太陽」走。','影子和人面向哪裡無關。','影子在太陽的對面，不是同一邊。'],'太陽在南方 → 所有人的影子都在<b>北方</b>。影子的方向只由<b>太陽的位置</b>決定，和你面向哪裡無關。'),
+     ['影子「跟著人移動」，是因為什麼？','因為影子是人擋住光形成的；人走到哪，擋光的位置就跟到哪。方向仍然在太陽的另一邊。']],
+ sheet:'「不管面向哪一邊，同一時間大家的影子都會在同一方向。」'});
+
+B({t:'太陽高度角越大，影子越短',src:'課本 p.10（日晷原理）',
+ fig:W2o.fig,
+ text:'拉下面的拉桿，改變太陽的高度角 α：'+W2o.ctl+'<div class="hint">α 就是「太陽高度角」：太陽光線和地面的夾角。</div>',
+ sheet:'「太陽高度角愈大，晷針影子愈短；太陽高度角愈小，晷針影子愈長。」',
+ qs:[['太陽快到頭頂（α 接近 90°）時，影子怎麼樣？','影子變得<b>很短</b>，快要縮在竿子底下。'],['早上或傍晚太陽很低時，影子怎麼樣？為什麼？','影子<b>很長</b>。'+AI+'太陽很低時光斜斜地照過來，竿子擋住光後，影子會被斜斜拉得很長。']],
+ init:W2o.init,
+ note:MN('<div class="kj">角大影短，角小影長</div>想像「太陽越高，越像從頭頂往下照，影子被壓在腳下」。')});
+
+B({t:'怎麼量太陽高度角？（實驗做法）',src:'課本 p.11、p.12（實驗）',
+ text:'<b>定義：</b>把<b>太陽、竿子頂端、竿影末端</b>連成一條直線，這條線和<b>地面</b>的夾角，就是當時的太陽高度角。<br><b>工具：</b>量角器。<br><b>材料：</b>指北針、棉線、吸管、吸管底座、方位盤、量角器。<br><b>步驟：</b><ol><li>棉線穿過吸管，吸管插進底座固定。</li><li>底座黏在方位盤圓心，檢查吸管和地面<b>垂直</b>。</li><li>指北針放在方位盤上，讓方位盤的南北和指北針一致，轉動方位盤使「北」字對準指針箭頭。</li><li>把棉線拉到吸管<b>影子末端</b>，用量角器量出太陽高度角。</li></ol><b>不可以直視太陽！</b>',
+ sheet:'「將太陽、立起的竿子頂端和地面的竿影末端連成一直線，直線和地面所形成的夾角，就是當時的太陽高度角。」',
+ qs:[['量高度角時，吸管為什麼要和地面垂直？','因為高度角是和「地面」的夾角；吸管要像竿子一樣直直立起，棉線才能代表從竿頂到影子末端的線。'],['測方位時，先用指北針找什麼？','先找出<b>竿影的方位</b>；竿影相反的方向，就是太陽的方位。例：竿影在西北方，太陽在<b>東南方</b>。']]});
+
+B({t:'一天中，太陽和影子怎麼走？（拉拉看）',src:'課本 p.9（樹影）、p.13（紀錄表）',
+ fig:W3o.fig,
+ text:'拉時間拉桿（早上八點到下午四點）：'+W3o.ctl,
+ qs:[['影子什麼時候最短？這時太陽在哪？','<b>中午 12 點</b>，太陽在<b>南方</b>，也是一天中高度角<b>最大</b>的時候。'],['從上午到下午，影子的位置從哪邊移到哪邊？','從<b>西邊</b>（西北）經過北方，移到<b>東邊</b>（東北）。和太陽的移動方向相反。']],
+ init:W3o.init,
+ note:'這個小工具用春分日、嘉義的緯度算出來，是示意；課本上的數字（9 時 43°、12 時 68°、15 時 40°）是另一天實測，不用拿來和圖比。'});
+
+B({t:'整理成表：時間、太陽方位、影子方位',src:'課本 p.9、p.10、p.13',
+ text:tbl(['時間','太陽方位','影子方位','影子長度'],[['9:00','東南','西北','愈來愈短'],['12:00','南','北','最短'],['15:00','西南','東北','愈來愈長']])+'<div class="hint">課本觀測記錄：9:00 高度角 43°、12:00 68°、15:00 40°（影子長度和高度角方向相反）。</div>',
+ sheet:'樹影觀測表：9:00 太陽在東偏南、樹影在西偏北；12:00 太陽在南方、樹影在北方；15:00 太陽在西偏南、樹影在東偏北。',
+ qs:[['先把表蓋起來，自己填：15:00 太陽在哪？影子在哪？影子長度呢？','太陽在<b>西南</b>，影子在<b>東北</b>，影子長度從中午以後愈來愈<b>長</b>。'],['為什麼 9 點和 15 點的高度角差不多（43° 和 40°），影子長度也差不多？','高度角差不多，影子長度就差不多。9 點在東南、15 點在西南，左右對稱。']],
+ note:MN('<div class="kj">太陽：東南 → 南 → 西南<br>影子：西北 → 北 → 東北</div>太陽順著「早到晚」是 東南、南、西南；影子把每個字換成相反字就是西北、北、東北。')});
+
+B({t:'日晷：用影子看時間的古人工具',src:'課本 p.10',
+ fig:sundialFig(),
+ text:'<b>日晷</b>是古人發現影子的方位和長度有規律，做成的<b>計時</b>工具。<br>日晷有<b>晷針</b>（立起來的針）和<b>晷面</b>（刻度盤），看晷針的影子落在晷面哪裡，就知道時間。<br>日晷<b>只能在有太陽時使用</b>：陰天、雨天和夜晚不能用。',
+ sheet:'「日晷是古人經長期觀察太陽後，發現一天中影子的方位與長度有規律性的變化，便利用此原理所製作出的計時工具。」',
+ qs:[['圖中晷針的影子在東北方。太陽在哪？大概是上午還是下午？','太陽在<b>西南</b>（相反）。西南是下午的方位，所以大概是<b>下午</b>（約 3 點）。'],['陰天或晚上，日晷為什麼不能用？','因為沒有太陽就沒有影子。']],
+ note:MN('<div class="kj">影子在西邊偏北 → 上午；影子在東邊偏北 → 下午</div>影子「由西往東」走：上午影子偏西、下午影子偏東。')});
+
+B({t:'1-2（上）快問快答',tag:'📌 小測',src:'🔁 題型取自課本 p.20「小試一下」',
+ qs:[mc('樹影在西北方，太陽在哪？',['東北方','西南方','東南方','正南方'],2,['東北的相反是西南，不是西北。','西南的相反是東北。','','正南的相反是正北。'],'西北 → 把每個字換成相反字 → 東南。'),
+     mc('一天之中，影子最短的時候，太陽高度角是？',['最小','最大','不一定','等於 0'],1,['最小的時候影子最長。','','影子長度和高度角有固定關係。','高度角 0° 時影子最長。'],'角大影短：中午高度角最大，影子最短。'),
+     mc('下午 3 點，太陽和影子分別在哪？',['太陽東南、影子西北','太陽西南、影子東北','太陽東北、影子西南','太陽西北、影子東南'],1,['這是上午 9 點。','','太陽不會在東北方（臺灣）。','太陽不會在西北方（臺灣）。'],'下午太陽在西南，影子在東北。')]});
+
+B({t:'1-2（上）四句話',tag:'📌 小結',src:'課本 p.20（重點整理）',
+ text:'<ol><li><b>影子在太陽的另一邊</b>（相反方位）。</li><li><b>角大影短，角小影長</b>（高度角越大，影子越短）。</li><li><b>太陽：早東南、中南、午後西南</b>；影子相反：西北、北、東北。</li><li><b>中午太陽在南方、高度角最大、影子最短。</b></li></ol><div class="hint">每看到影子或日晷的題目，先用第 1 句找太陽，再用第 2 句判斷長短。</div>'});
+
+/* ================= 1-2（中）一天的太陽、四季的太陽 ================= */
+var W4o=W4(),W5o=W5();
+
+C({t:'太陽一天走哪條路？（拉拉看）',src:'課本 p.13（討論與結論）、p.14（太陽在天空中怎麼移動）',
+ fig:W4o.fig,
+ text:'想像你<b>面向南方</b>站著，抬頭看天空，像一個半圓形的圓頂。拉時間拉桿，看太陽怎麼走：'+W4o.ctl,
+ sheet:'「一天之中，太陽的方位由東向西移動，大約中午 12 時會在南方天空。」',
+ qs:[['太陽從哪邊升起、哪邊落下？中午在哪一邊？','從<b>東</b>邊升起，從<b>西</b>邊落下，中午在<b>南</b>方天空。'],['高度角怎麼變？','上午愈來愈<b>大</b>，中午<b>最大</b>，下午愈來愈<b>小</b>。']],
+ init:W4o.init,
+ note:MN('<div class="kj">東升西落，中午在南，中午最高</div>方位是「東 → 南 → 西」，高度角是「小 → 大 → 小」。')});
+
+C({t:'小心！地圖和抬頭看天空，左右是相反的',tag:'💡 補充說明',src:'課本和講義都沒有寫，是幫你避開常見混亂',
+ text:'<b>兩種看法：</b><ol><li><b>地圖（從上往下看）</b>：上北、下南、<b>左西、右東</b>。前面影子的小工具是這種。</li><li><b>你面向南方、抬頭看天空</b>：<b>左手邊是東、右手邊是西</b>。上一頁的太陽路線是這種。</li></ol>兩種看法的東西剛好左右相反，不是你記錯。<br><b>判斷方法：</b>先問自己「現在是用地圖，還是我站在地上面向某個方向？」',
+ qs:[mc('你面向南方站著，早上太陽在你的哪一邊？',['左手邊','右手邊','正前方','正後方'],0,['','太陽早上在東邊，面向南時，右手邊是西。','正前方是南邊，早上太陽在東邊。','正後方是北邊。'],'面向南：左東、右西。早上太陽在東邊，也就是你的<b>左手邊</b>。'),
+     ['地圖上，東邊在左邊還是右邊？','<b>右邊</b>（上北下南、左西右東）。']],
+ note:MN('<div class="kj">面向南：左東右西。看地圖：左西右東</div>')});
+
+C({t:'一天中，太陽高度角的變化（課本數字）',src:'課本 p.13（觀測紀錄表）',
+ text:tbl(['時間','影子方位','太陽方位','高度角'],[['9:00','西北','東南','43°'],['12:00','北','南','68°'],['15:00','東北','西南','40°']])+'<b>結論：</b>一天之中，太陽的方位由<b>東</b>向<b>西</b>移動，中午 12 時在<b>南</b>方天空；上午高度角愈來愈<b>大</b>，中午<b>最大</b>，下午愈來愈<b>小</b>。',
+ sheet:'太陽觀測紀錄表（範例）：09:00 影子西北、太陽東南、43 度；12:00 影子北、太陽南、68 度；15:00 影子東北、太陽西南、40 度。',
+ qs:[['課本表格裡，哪一個時間的高度角最大？影子呢？','12:00，高度角 <b>68°</b> 最大，影子最短。'],['驗證假設時，如果結果和假設不一樣，要怎麼辦？','重新提出<b>假設</b>，再實驗。']]});
+
+C({t:'一年四季，太陽的路線一樣嗎？',src:'課本 p.15（四季日出日落）、p.18（天球圖）',
+ fig:W5o.fig,
+ text:'比較夏至、春分／秋分、冬至：'+W5o.ctl,
+ sheet:'「春分和秋分太陽差不多從正東方升起，夏至日出的位置偏東北方，冬至日出的位置偏東南方。」「夏至日落位置會偏北，冬至日落位置會偏南。」',
+ qs:[['夏至的路線，和冬至比，哪個比較偏北？哪個比較高？','<b>夏至</b>：日出日落都偏北，路線最高、最長。冬至偏南、最低、最短。'],['春分和秋分的路線有什麼特別？','路線<b>差不多一樣</b>，從正東升、正西落，在夏至和冬至中間。']],
+ init:W5o.init,
+ note:MN('<div class="kj">夏北冬南，春秋正中</div>夏至偏北、冬至偏南、春分秋分正東正西。夏天太陽爬得高、走得遠。')});
+
+C({t:'日出日落的位置：背口訣＋練習',src:'課本 p.15、p.20',
+ text:tbl(['','日出','日落','中午高度角'],[['夏至','東偏北（東北）','西偏北（西北）','最大'],['春分、秋分','正東','正西','中間'],['冬至','東偏南（東南）','西偏南（西南）','最小']])+'<div class="hint">夏天太陽偏北、冬天偏南；日出和日落是「對稱」的：日出偏北，日落也偏北。</div>',
+ qs:[mc('冬至的太陽，從哪裡升起、哪裡落下？',['東北升、西北落','正東升、正西落','東南升、西南落','正南升、正北落'],2,['那是夏至。','那是春分、秋分。','','太陽不會從南方升起。'],'冬至日出、日落都<b>偏南</b>：東南升、西南落。'),
+     mc('哪一天太陽從正東升起？',['夏至','冬至','春分','只有秋分'],2,['夏至偏東北。','冬至偏東南。','','秋分也是，春分、秋分都是正東。'],'春分和秋分，日出都在正東方（秋分也是）。')],
+ note:MN('<div class="kj">夏北、冬南；日出日落一起偏</div>夏至：升東北、落西北。冬至：升東南、落西南。')});
+
+C({t:'日出日落的時間，白天有多長？',src:'課本 p.16（嘉義四季太陽觀測資料）',
+ text:tbl(['','日出','日落','白天長度*'],[['春分','6:02','18:09','約 12 小時 7 分'],['夏至','5:12','18:47','約 13 小時 35 分'],['秋分','5:47','17:53','約 12 小時 6 分'],['冬至','6:35','17:17','約 10 小時 42 分']])+'<div class="hint">*白天長度是用「日落 − 日出」算的（'+AI+'）。</div>',
+ sheet:'嘉義：春分日出 6:02、日落 18:09；夏至 5:12、18:47；秋分 5:47、17:53；冬至 6:35、17:17。',
+ qs:[['日出時間，哪一天最早？哪一天最晚？','<b>夏至</b>最早（5:12），<b>冬至</b>最晚（6:35）；春分、秋分差不多。'],['夏至的白天是不是比冬至長？長多少？','是。夏至約 13 小時 35 分，冬至約 10 小時 42 分，差約<b>近 3 小時</b>。']],
+ note:MN('<div class="kj">夏至：日出最早、日落最晚、白天最長</div>')});
+
+C({t:'中午 12 時：四季的太陽高度角和影子',src:'課本 p.16（高度角）、p.17（折線圖結論）',
+ fig:noonFig(),
+ text:'<b>中午 12 時的太陽高度角（嘉義）：</b>夏至 <b>90°</b>（頭頂）、春分和秋分 <b>66°</b>、冬至 <b>43°</b>（最小）。<br>角大影短：夏至中午幾乎沒有影子，冬至中午的影子最長。',
+ sheet:'「夏至 12 時，太陽在頭頂上，高度角 90 度。」「春分、秋分 12 時：方位南、高度角 66 度。」「冬至 12 時：高度角 43 度。」',
+ qs:[['四天中午，哪一天高度角最大？從春分到夏至，高度角怎麼變？','<b>夏至</b>最大；從春分到夏至愈來愈<b>大</b>，從夏至到冬至愈來愈<b>小</b>。'],['冬至中午的影子比夏至中午長還是短？為什麼？','比夏至<b>長</b>，因為冬至高度角較小（角小影長）。']]});
+
+C({t:'為什麼高度角大，天氣比較熱？',tag:'💡 補充說明',src:'課本 p.19（放大鏡：太陽高度角與氣溫）；比喻是補充',
+ fig:flashFig(),
+ text:'手電筒的光，<b>垂直</b>照桌面，光集中在小圓點；<b>斜著</b>照，光散在大橢圓。光的總量一樣，散在大範圍就沒那麼亮、沒那麼熱。<br>夏天中午太陽高度角大（光像垂直照），地面接收的熱集中，所以氣溫較<b>高</b>；冬天高度角小（光斜照、散開），氣溫較<b>低</b>。',
+ sheet:'「太陽高度角較大時，氣溫也會較高，四季氣溫的變化和太陽的高度角有密切的關係。」',
+ qs:[['同一個季節（例如都是夏季）不同月分，高度角愈高，氣溫一定愈高嗎？','<b>不一定</b>。氣溫還會受到<b>地形</b>、<b>緯度</b>、空氣中的<b>水蒸氣</b>含量等因素影響。'],['一般幾月是春、夏、秋、冬？','春 3～5 月，夏 6～8 月，秋 9～11 月，冬 12 月到隔年 2 月。']]});
+
+C({t:'四季太陽總表：自己填填看',src:'課本 p.20（重點整理）',
+ text:'先自己填，再看答案：'+tbl(['','日出時間','日出方位','日落方位','中午12時高度角'],[['夏至','？','？','？','？'],['春分、秋分','？','？','？','？'],['冬至','？','？','？','？']]),
+ qs:[['夏至那一列','日出時間<b>最早</b>、日出<b>東偏北</b>、日落<b>西偏北</b>、中午高度角<b>最大</b>。'],['春分、秋分那一列','日出時間<b>介於夏至和冬至之間</b>、日出<b>正東</b>、日落<b>正西</b>、中午高度角<b>介於夏至和冬至之間</b>。'],['冬至那一列','日出時間<b>最晚</b>、日出<b>東偏南</b>、日落<b>西偏南</b>、中午高度角<b>最小</b>。']],
+ sheet:'重點整理表：夏至——最早、東偏北方、西偏北方、最大；春分秋分——介於夏至和冬至之間、東方、西方、介於夏至和冬至之間；冬至——最晚、東偏南方、西偏南方、最小。'});
+
+C({t:'1-2（中）快問快答',tag:'📌 小測',src:'🔁 題型取自課本 p.20「小試一下」',
+ qs:[mc('一年中，哪一天日出的時間最晚？',['春分','夏至','秋分','冬至'],3,['春分日出約 6:02，不是最晚。','夏至日出最早。','秋分日出約 5:47。',''],'冬至 6:35 日出，全年最晚。'),
+     mc('從春分到秋分，中午 12 時的太陽高度角，會怎麼變？',['一直變大','先變大再變小','先變小再變大','一直不變'],1,['春分到夏至變大，但夏至到秋分又變小。','','夏至是最大，不是最小。','不同季節高度角不同。'],'春分 66° → 夏至 90° → 秋分 66°：先變大，再變小。'),
+     mc('同一天，下列哪個時間太陽高度角最大？',['上午 9 點','中午 12 點','下午 3 點','下午 5 點'],1,['9 點還在上升。','','3 點已經在下降。','5 點更低。'],'中午 12 點，太陽在南方，高度角最大。')]});
+
+/* ================= 1-2（下）自轉、公轉與四季成因 ================= */
+var W7o=W7(),W6o=W6();
+
+D({t:'先分清楚：自轉 和 公轉',tag:'📌 最容易混',src:'課本 p.14（地球自轉）、p.19（為什麼會有四季）',
+ text:tbl(['','轉什麼？','多久一圈？','造成什麼？'],[['自轉','地球自己轉','約 1 天（24 小時）','晝夜、太陽東升西落'],['公轉','地球繞著太陽轉','約 1 年','四季（配合地軸傾斜）']])+'<div class="hint">「約 1 天」「約 1 年」是'+AI+'，課本沒有寫圈數，記住自轉快、公轉慢就好。</div>',
+ sheet:'「白天黑夜的產生是因為地球自轉所形成，而四季的變化則是因為地球繞著太陽公轉的緣故。」',
+ qs:[mc('下面哪一個是「公轉」造成的？',['白天和黑夜','太陽東升西落','春夏秋冬','影子一天中變長變短'],2,['白天黑夜是自轉。','東升西落是自轉的結果。','','一天中的影子變化也是自轉。'],'四季是地球<b>公轉</b>（再加地軸傾斜）造成的；一天內的變化都是<b>自轉</b>。')],
+ note:MN('<div class="kj">自轉轉自己，一天一圈，晝夜<br>公轉繞公公（太陽公公），一年一圈，四季</div>'+AI+'「公轉」的「公」想成「太陽公公」，繞著太陽公公轉就是公轉。')});
+
+D({t:'自轉：你站在地球上，會經歷日出、中午、日落',src:'課本 p.14（放大鏡：地球自轉）；轉動方向為補充',
+ fig:W7o.fig,
+ text:'拉時間拉桿，看站在地球上的「你」怎麼被轉到有光的一邊、再轉到黑夜的一邊：'+W7o.ctl,
+ sheet:'「太陽每天東升西落，實際上並不是太陽在移動，而是地球自轉造成的現象。當地球自轉時，被陽光照射的那一面是白天，另一面則是黑夜。」',
+ qs:[['地球自轉時，被陽光照到的那一面是什麼？另一面呢？','照到的是<b>白天</b>，另一面是<b>黑夜</b>。'],['拉到「6 點」和「18 點」，你的位置在哪裡？這時看到什麼？','6 點：你剛轉進有光的那一半，看到<b>日出</b>（東邊）。18 點：你快轉出光的那一半，看到<b>日落</b>（西邊）。']],
+ init:W7o.init});
+
+D({t:'為什麼看起來是「太陽」在動？',tag:'💡 補充說明',src:'課本只說「是地球自轉造成」；下面的比喻是補充',
+ text:'坐在行駛的火車上看窗外，樹會向後退，但其實是<b>你</b>在動。<br>地球自轉也一樣：是<b>我們</b>跟著地球往<b>東</b>轉，所以覺得太陽從東邊升起、往<b>西</b>邊走。<br>地球從北極上方看是<b>逆時針</b>轉（由西向東）。',
+ qs:[['真正在動的是太陽還是地球？','是<b>地球自轉</b>。太陽東升西落只是看起來這樣。'],mc('地球自轉的方向是？',['由東向西','由西向東','由南向北','由北向南'],1,['這是「看起來太陽」的方向，不是地球的方向。','','自轉是繞軸轉，不是南北移動。','自轉是繞軸轉，不是南北移動。'],'地球由<b>西向東</b>轉，所以看起來太陽由<b>東向西</b>走。')]});
+
+D({t:'公轉：地球繞太陽轉，地軸歪著不變',src:'課本 p.19（生活便利貼：為什麼會有四季）、p.18（二十四節氣）',
+ fig:W6o.fig,
+ text:'按按鈕看四個位置，或按「繞一圈看看」：'+W6o.ctl,
+ sheet:'「地球自轉軸與繞行太陽公轉的黃道面之間有 23.5 度的傾斜，使得太陽直射地球的地區，隨著地球繞太陽公轉時不斷改變，因而產生四季變化。」',
+ qs:[['四個位置，地軸歪的方向有沒有改變？','<b>沒有</b>，都歪向同一邊（傾斜約 23.5°）。是地球「位置」變了，所以對太陽的「角度」變了。'],['夏至那個位置，北半球是靠向太陽還是背向太陽？','<b>靠向</b>太陽，太陽直射北回歸線。']],
+ init:W6o.init});
+
+D({t:'四個位置：直射哪裡？北半球是什麼季節？',src:'課本 p.18（二十四節氣）、p.19',
+ text:tbl(['位置','直射','北半球','白天長短'],[['夏至','北回歸線','夏季','最長'],['秋分','赤道','秋季','和黑夜差不多長'],['冬至','南回歸線','冬季','最短'],['春分','赤道','春季','和黑夜差不多長']])+'<div class="hint">順序：夏至 → 秋分 → 冬至 → 春分 → 夏至……（地球公轉一圈，太陽直射點南北來回一次）</div>',
+ sheet:'「春分、秋分是太陽直射赤道的日子，當天，北半球的畫與夜等長。」「夏至時太陽直射北回歸線，當天北半球白天最長、夜晚最短。」「冬至時太陽直射南回歸線，當天北半球白天最短、夜晚最長。」',
+ qs:[mc('太陽直射赤道的日子是？',['夏至和冬至','春分和秋分','只有夏至','只有冬至'],1,['夏至直射北回歸線、冬至直射南回歸線。','','夏至直射北回歸線。','冬至直射南回歸線。'],'春分、秋分直射赤道，晝夜等長。'),
+     ['太陽直射點的移動順序（北半球）：夏至在北回歸線 → 接著往哪移？','往南移，到<b>赤道（秋分）</b>，再到南回歸線（冬至），再往北回到赤道（春分），再回北回歸線（夏至）。']],
+ note:MN('<div class="kj">夏至北回、冬至南回、春秋在赤道</div>「北半球夏天」＝直射北邊。直射哪邊，哪邊就是夏天。')});
+
+D({t:'如果地軸不傾斜，會怎麼樣？',tag:'💡 補充說明',src:'課本只說「傾斜 + 公轉 = 四季」；下面是推理，幫你理解為什麼兩個條件缺一不可',
+ text:'課本說四季要靠兩件事：<b>公轉</b>＋<b>地軸傾斜 23.5°</b>。為什麼少了哪個都不行？',
+ qs:[mc('如果地軸<b>完全不傾斜</b>（直立），地球一樣繞太陽公轉，會怎麼樣？',['還是有四季','太陽一年到頭都直射赤道，沒有四季','永遠是夏天','永遠是冬天'],1,['四季是因為直射點會南北移動。','','夏天要直射北回歸線附近。','冬天要直射南回歸線附近。'],'軸直立時，太陽一直直射赤道，直射點不會移動，各地一年中太陽高度角幾乎不變，就沒有四季。'),
+     mc('如果地軸傾斜，但地球<b>不公轉</b>，會怎麼樣？',['還是有四季','直射點永遠固定，季節不會變','每天都是春分','永遠是黑夜'],1,['不公轉，直射點不會移動，季節就不會變。','','春分是公轉到特定位置才有。','自轉仍然有晝夜。'],'不公轉，直射點永遠在同一緯度，同一個地方永遠是同一個季節。')]});
+
+D({t:'二十四節氣，還有永晝、永夜',src:'課本 p.18（二十四節氣）、p.19（永晝與永夜）',
+ text:'<b>二十四節氣</b>：古人長期觀測太陽，訂出地球在公轉軌道上的<b>二十四個位置</b>。春分、夏至、秋分、冬至是其中四個。<br><b>永晝</b>：一天 24 小時都是白天。<b>永夜</b>：一整天都是黑夜。只出現在<b>北極、南極</b>附近。<br>北半球夏至：北極<b>永晝</b>、南極<b>永夜</b>；冬至相反。北極圈在北緯 <b>66.5</b> 度，緯度愈高，永晝永夜愈久。',
+ sheet:'「夏至時，太陽直射北回歸線，北半球晝長夜短，南半球晝短夜長，北極是永晝、南極是永夜；冬至時，太陽直射南回歸線，北極是永夜、南極是永晝。」',
+ qs:[mc('夏至時，南半球是什麼季節？',['夏季','冬季','春季','不一定'],1,['夏至時直射北回歸線，南半球是冬天。','','春分才是春。','南北半球季節相反。'],'南北半球季節相反：北半球夏至，南半球就是冬至（冬季）。'),
+     ['冬至時，北極是永晝還是永夜？','<b>永夜</b>（南極是永晝）。']]});
+
+D({t:'四季的「因果鏈」：一條線串起來',tag:'📌 總整理',src:'整理自課本 p.14、p.17～19',
+ text:'<div class="kj">自轉 → 晝夜、東升西落（一天內）</div><div class="kj">公轉 ＋ 地軸傾斜 23.5°<br>→ 太陽直射點南北移動<br>→ 太陽高度角改變<br>→ 氣溫改變 → 四季</div>',
+ qs:[mc('為什麼夏天比較熱？',['因為地球離太陽最近','因為太陽高度角大，地面接收的熱較集中','因為地球自轉比較快','因為月亮在夏天比較亮'],1,['課本的說法是高度角，不是距離。','','自轉速度全年一樣，和季節無關。','月亮和天氣冷熱無關。'],'夏天太陽高度角大 → 光集中 → 氣溫高；背後的原因是公轉＋地軸傾斜。'),
+     ['用自己的話說：晝夜和四季分別是什麼造成的？','晝夜：地球<b>自轉</b>。四季：地球<b>公轉</b>＋地軸<b>傾斜</b>，讓太陽直射的地方一直變。']]});
+
+/* ================= 1-3 光與折射 ================= */
+var W8o=W8();
+
+E({t:'彩虹怎麼出現？條件和七種顏色',src:'課本 p.21、p.22（動手做：製造美麗的彩虹）',
+ text:'生活中會看到彩虹般的顏色：雨後陽光照到天空的<b>小水滴</b>、陽光照到<b>噴水池</b>旁的水霧、陽光通過<b>三稜鏡</b>。<br><b>三個條件：</b>有<b>陽光</b>、附近有大量<b>小水滴</b>、你要<b>背向</b>太陽站。<br><b>七種色光：</b>紅、橙、黃、綠、藍、靛、紫。',
+ sheet:'「必須有陽光照射，且附近有大量小水滴，站在背向陽光的方向，才有機會看到彩虹的色光。」「太陽光是由紅、橙、黃、綠、藍、靛、紫等色光所組成，共七種。」',
+ qs:[['看彩虹要「背向」還是「面向」太陽？','<b>背向</b>太陽。'],['製造噴水彩虹，怎麼做更容易成功？','找一邊有<b>陽光</b>、一邊有<b>陰影</b>的地方，<b>背向</b>太陽朝陰影處噴水；用<b>數個</b>噴水器同時噴同一處更清楚。']],
+ note:MN('<div class="kj">紅橙黃，綠藍靛紫</div>先記前三個暖色「紅橙黃」，再記後四個「綠藍靛紫」；七種色光。')});
+
+E({t:'為什麼要「背向」太陽才看到彩虹？',tag:'💡 補充說明',src:'課本只說要背向；下面的原因是補充',
+ text:'陽光從你的<b>背後</b>射出去，照到前方的小水滴。光在水滴裡<b>折射</b>、分成七色，再傳回你的眼睛。<br>如果你面向太陽，光是從前面直接射進你的眼睛，沒有經過前方水滴「分色再送回來」，就看不到彩虹。<br>所以記：<b>太陽在背後、水滴在前方</b>。',
+ qs:[mc('下午太陽在西邊，要看到彩虹，你該朝哪個方向看？',['朝西邊','朝東邊','朝南邊','朝哪邊都一樣'],1,['朝西邊是面向太陽，要背向。','','南邊不是背向太陽。','要「背向」太陽。'],'太陽在西邊，背向太陽就是朝<b>東邊</b>看（水滴要在東邊）。'),
+     ['為什麼彩虹常在雨後出現？','雨後天空有大量<b>小水滴</b>，又出了<b>陽光</b>，兩個條件都有。']]});
+
+E({t:'三稜鏡：陽光分成七種顏色',src:'課本 p.21～22（陽光通過三稜鏡；如何證明陽光由不同色光組成）',
+ fig:prismFig(),
+ text:'白色陽光通過<b>三稜鏡</b>，會<b>分散</b>成紅、橙、黃、綠、藍、靛、紫。<br>所以可以推測：<b>陽光是由七種不同的色光組成的</b>。<br>'+AI+'分開的原因：不同顏色的光偏折程度不一樣，課本 p.22 提到<b>紫光偏折最大</b>，所以紫色在最下面。',
+ sheet:'「當陽光由空氣射入水珠再穿透出來，白色的太陽光會分散成不同顏色的色光，形成美麗的彩虹。因此，可以推測陽光是由不同的色光所組成。」',
+ qs:[mc('下列哪種光偏折最大？',['紅光','黃光','綠光','紫光'],3,['紅光偏折最小。','黃光在中間。','綠光在中間。',''],'課本放大鏡：色散現象中以<b>紫光</b>偏折程度最大。'),
+     ['為什麼說「陽光是由不同色光組成」？','因為陽光通過水珠或三稜鏡後，分散成七種顏色。']]});
+
+E({t:'先想一想：水裡的筷子為什麼「斷」了？',src:'課本 p.23（浸在水中的腳、吸管）',
+ fig:stickFig(),
+ text:'把筷子斜插進水，從旁邊看，筷子在水面的地方好像斷成兩截。浸在水中的腳，看起來也變<b>短</b>了。',
+ qs:[['筷子真的斷了嗎？','沒有！筷子好好的。光線經過水和空氣的分界時會「轉彎」，眼睛看到的位置就不對了。這種現象叫<b>折射</b>。']]});
+
+E({t:'折射是什麼？什麼時候才會轉彎？',src:'課本 p.23',
+ fig:refractFig(),
+ text:'<b>介質</b>：光走過的物質（空氣、水）。<b>折射</b>：光經過不同的物質會偏折。<ul><li>光在<b>同一種</b>介質中走<b>直線</b>。</li><li>光從空氣<b>斜斜</b>進入水（或從水斜斜進入空氣）會偏折。</li><li><b>垂直</b>射入不會偏折。</li></ul>',
+ sheet:'「光經過不同的物質（例如：空氣和水）會產生偏折，這個現象就稱為折射現象。空氣和水等光經過的物質，就稱為介質。」',
+ qs:[mc('哪一種情況光「不會」轉彎？',['光在空氣中直直前進','光斜斜從空氣進入水','光斜斜從水進入空氣','光斜斜從空氣進入玻璃'],0,['','換了介質又是斜射，會折射。','換了介質又是斜射，會折射。','空氣到玻璃是不同的介質，斜射會折射。'],'光在同一種介質中直線前進，不會折射；垂直射入也不折射。'),
+     ['折射需要同時有哪兩個條件？','兩種<b>不同的介質</b>，而且光要<b>斜斜</b>射入。']],
+ note:MN('<div class="kj">換介質、斜著進，才轉彎</div>')});
+
+E({t:'水中的東西，看起來比較淺',src:'課本 p.24（折射現象與生活）',
+ fig:depthFig(),
+ text:'從空氣看水中，水底和水中的魚<b>看起來比較淺</b>，實際上水比較<b>深</b>。<br>眼睛看到的魚比實際的魚離水面<b>近</b>。所以撈魚時，朝眼睛看到魚的地方撈，會<b>撈不到</b>；也不能因為水看起來淺就貿然下水。',
+ sheet:'「眼睛看到的魚，會在離水面比較近的位置，但實際上魚會在水面下比較深的位置，這個現象就稱為折射現象。」',
+ qs:[mc('池塘看起來很淺，實際上通常？',['一樣深','比較深','比較淺','不一定看起來是淺還是深'],1,['折射讓水底看起來比較淺。','','實際比看起來更深。','看水底時總是看起來比較淺。'],'折射讓水看起來比實際<b>淺</b>，所以不能貿然進入未知的水域。'),
+     ['為什麼朝看到魚的地方撈，會撈不到？','因為眼睛看到的是折射後的位置，魚實際在更<b>深</b>的地方。']]});
+
+E({t:'為什麼光會轉彎？速度不一樣',tag:'💡 補充說明',src:'課本 p.24（放大鏡：波的折射現象）；推車比喻是補充',
+ fig:cartFig(),
+ text:'課本說：波在不同介質中<b>速度不同</b>，導致前進方向偏折，這叫波的折射。光、水波、聲波都會。<br>'+AI+'想像推車斜著從柏油路進入沙地：先進沙地的那個輪子<b>變慢</b>，另一個輪子還很快，車子就<b>轉彎</b>了。光也是這樣。',
+ sheet:'「波在不同介質中行進的速度不同，導致前進方向發生偏折，稱為波的折射現象。」',
+ qs:[['光轉彎的真正原因是什麼？','光在不同介質中的<b>速度不同</b>。'],['只有光會折射嗎？','不是，<b>水波、聲波、光波</b>等波都會折射。']]});
+
+E({t:'放大鏡＝凸透鏡：把光聚成一點',src:'課本 p.25（放大鏡如何聚光和成像）',
+ fig:convergeFig(),
+ text:'放大鏡的鏡片<b>中間厚、周圍薄</b>，叫<b>凸透鏡</b>。<br>光通過放大鏡會<b>折射</b>，往<b>中間聚集</b>，在適當的距離聚成一個<b>光點</b>，這叫<b>聚光</b>。<br><b>不可以</b>用放大鏡看太陽，會灼傷眼睛。',
+ sheet:'「放大鏡的鏡片中間比較厚，周圍比較薄，是一種凸透鏡。」「不可以用放大鏡觀察太陽，以免灼傷眼睛。」',
+ qs:[['光從空氣進入透明玻璃，會直線前進嗎？進入放大鏡呢？','進入透明玻璃片仍直線前進；進入放大鏡後，路線往<b>中間</b>聚集。'],mc('放大鏡聚光的光點很燙，為什麼不能用它看太陽？',['光點會灼傷眼睛','放大鏡會壞掉','太陽光太弱','看不清楚'],0,['','放大鏡不會壞。','太陽光很強，聚在一點更強。','重點是安全，不是看不清楚。'],'光和熱聚在一點，會灼傷眼睛。')]});
+
+E({t:'放大鏡成像：近物 vs 遠物（拉拉看）',src:'課本 p.26（用放大鏡觀察物體）',
+ fig:W8o.fig,
+ text:'拉距離拉桿，看你透過放大鏡看到的樣子：'+W8o.ctl,
+ sheet:'「看近物（例如課本）：正立放大的影像；看遠物（例如班級牌）：倒立縮小的影像。」',
+ qs:[['看課本上的字（近物），影像是正立放大還是倒立縮小？','<b>正立放大</b>。'],['看遠處的班級牌（遠物）呢？','<b>倒立縮小</b>（上下左右都顛倒）。'],['影響成像的兩個距離是什麼？','<b>物體到放大鏡</b>的距離（影響大小、正倒），和<b>觀察者眼睛到放大鏡</b>的距離（影響是否清晰）。']],
+ init:W8o.init,
+ note:MN('<div class="kj">近物正立放大，遠物倒立縮小</div>')});
+
+E({t:'1-3 快問快答',tag:'📌 小測',src:'🔁 題型取自課本 p.20、p.26 重點整理',
+ qs:[mc('陽光通過三稜鏡會分散成幾種色光？',['三種','五種','七種','九種'],2,['','','',''],'紅橙黃綠藍靛紫，共<b>七種</b>。'),
+     mc('光從空氣斜斜進入水中，會？',['直線前進','產生折射現象','變成黑色','消失'],1,['同一種介質才直線前進。','','光不會變成黑色。','光沒有消失。'],'光進入不同介質且斜射 → <b>折射</b>。'),
+     mc('用放大鏡看遠處的班級牌，會看到？',['正立放大','正立縮小','倒立縮小','倒立放大'],2,['那是看近物。','課本沒有這種影像。','','課本只考近物和遠物兩種。'],'看遠物：<b>倒立縮小</b>。')]});
+
+E({t:'單元一總整理：用三句話串起來',tag:'📌 總整理',src:'課本 p.4（單元結構）、p.8、p.20',
+ text:'<ol><li><b>1-1</b>：太陽提供<b>光和熱</b>，影響晝夜、天氣、生物，也讓我們發展太陽能科技。</li><li><b>1-2</b>：一天中太陽<b>東升、中午在南、西落</b>，中午最高；一年四季，<b>夏北冬南、夏高冬低</b>；晝夜是<b>自轉</b>，四季是<b>公轉＋傾斜</b>。</li><li><b>1-3</b>：陽光由<b>七色光</b>組成；光斜斜經過不同<b>介質</b>會<b>折射</b>；放大鏡是<b>凸透鏡</b>，能<b>聚光</b>和<b>成像</b>。</li></ol><div class="hint">最後一步：回去用「互動複習講義」的填空把這些字寫出來。</div>'});
+
+/* ===== 播放 ===== */
+var deck='A',cur=0,QM={};
+function pageMarked(d,n){var p=d+n;for(var k in QM)if(k===p||k.indexOf(p+':')===0)return true;return false;}
+function el(i){return document.getElementById(i);}
+var h='';
+Object.keys(DECKS).forEach(function(k){
+  DECKS[k].SL.forEach(function(s,i){
+    h+='<section class="slide" id="s'+k+i+'"><span class="tag'+(s.tag&&/^(📌|💡)/.test(s.tag)?' sup':'')+'">'+(s.tag||('步驟 '+(i+1)))+'</span><h1>'+s.t+'</h1><button class="mk" data-k="'+k+i+'">❓ 這頁有問題</button>'+(s.src?'<div class="src">📖 出處：'+s.src+'</div>':'');
+    /* 橫放平板：有圖的頁圖在左、文字在右；沒圖但有文字＋想一想：文字在左、想一想在右（見 CSS .sbody.two） */
+    var tq=!s.fig&&s.qs&&s.text;
+    h+='<div class="sbody'+(s.fig?' two':(tq?' two tq':''))+'">';
+    if(s.fig)h+='<div class="sfig">'+s.fig+'</div>';
+    else if(tq)h+='<div class="sfig"><div class="txt">'+s.text+'</div>'+(s.sheet?'<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>':'')+'</div>';
+    h+='<div class="stxt">';
+    if(s.text&&!tq)h+='<div class="txt">'+s.text+'</div>';
+    if(s.sheet&&!tq)h+='<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>';
+    if(s.qs){h+='<div class="qs'+(s.qs.length>2&&!s.fig&&!tq?' qgrid':'')+'">';s.qs.forEach(function(q,qi){h+='<div class="q" id="q'+k+i+'_'+qi+'"><button class="mk mq" data-k="'+k+i+':'+qi+'">❓</button><div class="p">'+(q[2]?'觀念釐清：':'想一想：')+q[0]+'</div>'+(q[2]?'<div class="mc">'+q[2].o.map(function(o,oi){return '<button class="mo" data-i="'+oi+'"><b>'+'ABCDE'.charAt(oi)+'.</b> '+o+'</button>';}).join('')+'</div><div class="mcf" aria-live="polite"></div><details><summary>直接看正解</summary><div class="a">✅ 答：'+'ABCDE'.charAt(q[2].a)+'. '+q[2].o[q[2].a]+'<br><span class="ex">'+q[1]+'</span></div></details>':'<details><summary>看答案</summary><div class="a">'+q[1]+'</div></details>')+'</div>';});h+='</div>';}
+    if(s.note)h+='<div class="note"><details><summary>👂 上課聽這裡</summary>'+s.note+'</details></div>';
+    h+='</div></div></section>';
+  });
+});
+el('slides').innerHTML=h;
+Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s){if(s.init)s.init();});});
+if(Object.keys(DECKS).length<2)el('tabs').style.display='none';
+el('tabs').innerHTML=Object.keys(DECKS).map(function(k){return '<button data-d="'+k+'">'+DECKS[k].name+'</button>';}).join('');
+function curId(){return 's'+deck+cur;}
+function go(d,i){
+  deck=d;var SL=DECKS[d].SL;cur=Math.max(0,Math.min(SL.length-1,i));
+  Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s,n){el('s'+k+n).classList.toggle('cur',k===d&&n===cur);});});
+  Array.prototype.forEach.call(el('tabs').children,function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});
+  el('jump').innerHTML=SL.map(function(s,n){return '<option value="'+n+'">'+(pageMarked(d,n)?'❓ ':'')+(n+1)+'. '+s.t.replace(/<[^>]+>/g,'')+'</option>';}).join('');
+  el('jump').value=String(cur);
+  el('pb').style.width=((cur+1)/SL.length*100)+'%';
+  el('prev').disabled=cur===0;
+  el('next').textContent=cur===SL.length-1?'完成 ✓':'下一步 ▶';
+  try{history.replaceState(null,'','#'+d+(cur+1));}catch(e){}
+  window.scrollTo(0,0);
+  if(INK.cv[curId()])canvasFor(curId());
+}
+
+/* ===== 手寫層 =====
+   每一頁各自一張透明畫布，筆跡存成向量（換頁再回來還在，重新整理才會消失）。
+   「只有筆能寫」：觸控筆（或滑鼠）寫字，手指照常捲動、按「看答案」。 */
+var INK={on:false,color:'pu',erase:false,penOnly:true,strokes:{},cv:{}};
+try{var pp=localStorage.getItem('handout_ink_pen_only');if(pp!==null)INK.penOnly=(pp==='1');}catch(e){}
+/* 手寫顏色刻意避開圖形用的橘、綠、藍、磚紅、深灰 */
+var INKC={pu:['#7b1fa2','#ce93d8'],pk:['#e91e63','#f48fb1'],cy:['#0097a7','#4dd0e1']};
+function inkColor(c){var dk=false;try{dk=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';}catch(e){}return (INKC[c]||INKC.pu)[dk?1:0];}
+function canvasFor(id){
+  var sec=el(id),cv=INK.cv[id];
+  if(!cv){cv=document.createElement('canvas');cv.className='ink-cv';sec.appendChild(cv);INK.cv[id]=cv;}
+  if(!INK.strokes[id])INK.strokes[id]=[];
+  var w=sec.clientWidth,hh=sec.clientHeight,r=window.devicePixelRatio||1;
+  if(w&&hh&&(cv._w!==w||cv._h!==hh||cv._r!==r)){cv._w=w;cv._h=hh;cv._r=r;cv.width=Math.round(w*r);cv.height=Math.round(hh*r);cv.style.width=w+'px';cv.style.height=hh+'px';redraw(id);}
+  return cv;
+}
+function seg(ctx,s,a,b){ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+function redraw(id){
+  var cv=INK.cv[id];if(!cv||!cv._w)return;var ctx=cv.getContext('2d'),r=cv._r||1;
+  ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,cv._w,cv._h);
+  (INK.strokes[id]||[]).forEach(function(s){
+    if(s.p.length===1){seg(ctx,s,s.p[0],[s.p[0][0]+0.1,s.p[0][1]]);return;}
+    ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.p[0][0],s.p[0][1]);
+    for(var k=1;k<s.p.length;k++)ctx.lineTo(s.p[k][0],s.p[k][1]);ctx.stroke();
+  });
+}
+function eraseAt(x,y){
+  function near(p,q){var vx=q[0]-p[0],vy=q[1]-p[1],L=vx*vx+vy*vy,t=L?Math.max(0,Math.min(1,((x-p[0])*vx+(y-p[1])*vy)/L)):0,dx=p[0]+t*vx-x,dy=p[1]+t*vy-y;return dx*dx+dy*dy<196;}
+  var id=curId(),a=INK.strokes[id]||[],keep=a.filter(function(s){for(var k=0;k<s.p.length;k++)if(near(s.p[k],s.p[Math.min(k+1,s.p.length-1)]))return false;return true;});
+  if(keep.length!==a.length){INK.strokes[id]=keep;redraw(id);}
+}
+var drawing=null,finger=null;
+function pos(e){var rc=INK.cv[curId()].getBoundingClientRect();return [Math.round((e.clientX-rc.left)*10)/10,Math.round((e.clientY-rc.top)*10)/10];}
+el('slides').addEventListener('pointerdown',function(e){
+  if(!INK.on)return;
+  var penLike=(e.pointerType==='pen'||e.pointerType==='mouse');
+  if(!penLike&&INK.penOnly){finger={id:e.pointerId,y:e.clientY};return;}
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();var id=curId();canvasFor(id);
+  var p=pos(e),er=INK.erase||(e.buttons&32)===32;
+  drawing={id:e.pointerId,erase:er,sec:id};
+  try{el('slides').setPointerCapture(e.pointerId);}catch(_){}
+  if(er){eraseAt(p[0],p[1]);return;}
+  drawing.s={c:INK.color,w:e.pointerType==='pen'?3:4,p:[p]};INK.strokes[id].push(drawing.s);redraw(id);
+});
+el('slides').addEventListener('pointermove',function(e){
+  if(finger&&e.pointerId===finger.id){window.scrollBy(0,finger.y-e.clientY);finger.y=e.clientY;return;}
+  if(!drawing||e.pointerId!==drawing.id)return;
+  e.preventDefault();
+  var evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e],ctx=INK.cv[drawing.sec].getContext('2d');
+  evs.forEach(function(ev){
+    var p=pos(ev);
+    if(drawing.erase){eraseAt(p[0],p[1]);return;}
+    var pts=drawing.s.p,last=pts[pts.length-1];
+    if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<1)return;
+    pts.push(p);seg(ctx,drawing.s,last,p);
+  });
+});
+function endInk(e){if(finger&&e.pointerId===finger.id)finger=null;if(drawing&&e.pointerId===drawing.id)drawing=null;}
+el('slides').addEventListener('pointerup',endInk);
+el('slides').addEventListener('pointercancel',endInk);
+function setInk(on){
+  INK.on=on;document.body.classList.toggle('ink',on);
+  el('inkBtn').classList.toggle('inkon',on);el('inkBtn').setAttribute('aria-pressed',on?'true':'false');
+  el('inkBtn').innerHTML=on?'✏️<span class="lb"> 手寫中</span>':'✏️<span class="lb"> 手寫</span>';
+  if(on)canvasFor(curId());
+}
+function markTool(){
+  el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.classList.toggle('on',!INK.erase&&b.dataset.c===INK.color);});
+  el('inkErase').classList.toggle('on',INK.erase);
+}
+el('inkBtn').onclick=function(){setInk(!INK.on);if(INK.on)setQP(false);};
+el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){INK.color=b.dataset.c;INK.erase=false;markTool();};});
+el('inkErase').onclick=function(){INK.erase=!INK.erase;markTool();};
+el('inkUndo').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length){a.pop();redraw(id);}};
+el('inkClear').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length&&confirm('清除這一頁的手寫？')){INK.strokes[id]=[];redraw(id);}};
+el('inkSpace').onclick=function(){var sec=el(curId()),pb=parseInt(sec.style.paddingBottom||'18',10);sec.style.paddingBottom=(pb+320)+'px';canvasFor(curId());window.scrollBy(0,320);};
+el('inkPen').checked=INK.penOnly;
+el('inkPen').onchange=function(){INK.penOnly=el('inkPen').checked;try{localStorage.setItem('handout_ink_pen_only',INK.penOnly?'1':'0');}catch(e){}};
+window.addEventListener('resize',function(){if(INK.cv[curId()])canvasFor(curId());});
+el('slides').addEventListener('toggle',function(){if(INK.cv[curId()])canvasFor(curId());},true);
+
+/* ===== ❓ 標記有問題的頁、題 =====
+   點頁面上的「❓ 這頁有問題」或想一想右上角的「❓」標記；下方「❓ 問題」列出全部，點了直接跳過去。
+   存在這台裝置的瀏覽器（localStorage），重新整理還在。 */
+var QKEY='handout_marks_'+document.title;
+try{QM=JSON.parse(localStorage.getItem(QKEY)||'{}')||{};}catch(e){QM={};}
+function saveQM(){try{localStorage.setItem(QKEY,JSON.stringify(QM));}catch(e){}}
+function plain(x){return String(x).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();}
+function cut(x,n){return x.length>n?x.slice(0,n)+'…':x;}
+function mkParse(k){return k.match(/^([A-Z])(\d+)(?::(\d+))?$/);}
+function paintMarks(){
+  el('slides').querySelectorAll('.mk').forEach(function(b){var on=!!QM[b.dataset.k];b.classList.toggle('on',on);if(!b.classList.contains('mq'))b.textContent=on?'❗ 已標記有問題':'❓ 這頁有問題';b.setAttribute('aria-pressed',on?'true':'false');});
+  var n=Object.keys(QM).length;el('qpBtn').innerHTML='❓<span class="lb"> 問題</span>'+(n?'（'+n+'）':'');
+  var SL=DECKS[deck].SL;Array.prototype.forEach.call(el('jump').options,function(o,i){o.textContent=(pageMarked(deck,i)?'❓ ':'')+(i+1)+'. '+plain(SL[i].t);});
+  var multi=Object.keys(DECKS).length>1,keys=Object.keys(QM).filter(mkParse).sort(function(a,b){var pa=mkParse(a),pb=mkParse(b);if(pa[1]!==pb[1])return pa[1]<pb[1]?-1:1;return (+pa[2]-pb[2])||((pa[3]===undefined?-1:+pa[3])-(pb[3]===undefined?-1:+pb[3]));});
+  var out='',lastPage='';
+  keys.forEach(function(k){
+    var m=mkParse(k);if(!DECKS[m[1]])return;var s=DECKS[m[1]].SL[+m[2]];if(!s)return;
+    var head=(multi?DECKS[m[1]].name.split('｜')[0]+'　':'')+'第 '+(+m[2]+1)+' 頁　'+cut(plain(s.t),22);
+    if(m[3]===undefined){out+='<a data-go="'+k+'">📄 '+head+'</a>';lastPage=m[1]+m[2];}
+    else{var q=s.qs&&s.qs[+m[3]];if(!q)return;if(lastPage!==m[1]+m[2])out+='<a data-go="'+m[1]+m[2]+'">📄 '+head+'</a>';lastPage=m[1]+m[2];out+='<a class="sub" data-go="'+k+'">└ 想一想：'+cut(plain(q[0]),30)+'</a>';}
+  });
+  el('qpList').innerHTML=out||'<div class="empty">還沒有標記。看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」。</div>';
+}
+function setQP(on){document.body.classList.toggle('qp',on);el('qpBtn').classList.toggle('qon',on);if(on&&INK.on)setInk(false);}
+el('slides').addEventListener('click',function(e){var b=e.target.closest('.mk');if(!b)return;e.preventDefault();var k=b.dataset.k;if(QM[k])delete QM[k];else QM[k]=1;saveQM();paintMarks();});
+/* 選擇題：點選項 → 立刻顯示對錯；答錯的題自動標 ❓ */
+el('slides').addEventListener('click',function(e){
+  var b=e.target.closest('.mo');if(!b)return;
+  var box=b.closest('.q'),m=box.id.match(/^q([A-Z])(\d+)_(\d+)$/);if(!m)return;
+  var q=DECKS[m[1]].SL[+m[2]].qs[+m[3]],i=+b.dataset.i,mc=q[2],ok=(i===mc.a),f=box.querySelector('.mcf');
+  Array.prototype.forEach.call(box.querySelectorAll('.mo'),function(x){x.classList.remove('ok','no');});
+  b.classList.add(ok?'ok':'no');
+  if(ok){f.className='mcf good';f.innerHTML='✅ 答對了！'+q[1];}
+  else{f.className='mcf bad';f.innerHTML='❌ '+mc.w[i]+'<br><span class="try">再選選看，或按下面「直接看正解」。</span>';var k=m[1]+m[2]+':'+m[3];if(!QM[k]){QM[k]=1;saveQM();paintMarks();}}
+});
+el('qpBtn').onclick=function(){setQP(!document.body.classList.contains('qp'));};
+el('qpClose').onclick=function(){setQP(false);};
+el('qpClear').onclick=function(){if(Object.keys(QM).length&&confirm('清除全部的「有問題」標記？')){QM={};saveQM();paintMarks();}};
+el('qpList').onclick=function(e){var a=e.target.closest('a[data-go]');if(!a)return;var m=mkParse(a.dataset.go);go(m[1],+m[2]);setQP(false);
+  if(m[3]!==undefined){var q=el('q'+m[1]+m[2]+'_'+m[3]);if(q){q.scrollIntoView({block:'center'});q.classList.add('flash');setTimeout(function(){q.classList.remove('flash');},1600);}}};
+
+el('tabs').onclick=function(e){var b=e.target.closest('button');if(b)go(b.getAttribute('data-d'),0);};
+el('prev').onclick=function(){go(deck,cur-1);};
+el('next').onclick=function(){if(cur<DECKS[deck].SL.length-1)go(deck,cur+1);};
+el('jump').onchange=function(){go(deck,Number(el('jump').value));};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(deck,cur+1);else if(e.key==='ArrowLeft')go(deck,cur-1);});
+var m=(location.hash||'').match(/^#([A-E])(\d+)$/);
+go(m?m[1]:'A',m?parseInt(m[2],10)-1:0);
+paintMarks();
+})();
+</script>
+</body>
+</html>
