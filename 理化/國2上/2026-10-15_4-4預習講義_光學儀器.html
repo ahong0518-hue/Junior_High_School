@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4-4 預習講義 光學儀器</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%94%AC%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#333;--sub:#555;--line:#e0d8ca;--ac:#c0704a;--ac2:#4a7a6b;--ac3:#4a6b9a;--bad:#b0442e;--soft:#f3ece0;--hi:#fff7e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1f1d1a;--card:#2a2723;--ink:#eee;--sub:#bbb;--line:#4a443c;--ac:#e0916b;--ac2:#7fc4ad;--ac3:#8fb0e0;--bad:#ee8a74;--soft:#38342d;--hi:#3a3322}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;line-height:1.7;font-size:1.2rem}
+.wrap{max-width:860px;margin:0 auto;padding:10px 16px 110px}
+.tabs{display:flex;gap:8px;margin:2px 0 8px}
+.tabs button{flex:1;font-family:inherit;font-size:1.05rem;padding:9px 8px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--sub)}
+.top select{font-family:inherit;font-size:.9rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:62%}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac2);width:0;transition:width .25s}
+.slide{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.slide.cur{display:block}
+.tag{display:inline-block;background:var(--ac3);color:#fff;border-radius:99px;padding:0 12px;font-size:.95rem}
+.tag.sup{background:var(--ac2)}.tag.pr{background:var(--ac)}
+h1{font-size:1.6rem;margin:6px 0 10px;line-height:1.35}
+.fig{max-width:100%;height:auto;display:block;margin:8px auto;max-height:330px;color:var(--ink)}
+.figs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+.figs .fig{max-width:48%}
+.fig.big .lbl,.fig.big .lbl2,.fig.big .tI,.fig.big .tR,.fig.big .tF,.fig.big .tB{font-size:16px}
+@media (orientation:portrait) and (min-width:600px){.fig{max-height:46vh}}
+.txt{margin:8px 0}
+.txt b{color:var(--ac)}
+.txt ol,.txt ul{margin:6px 0;padding-left:1.4em}
+.txt li{margin:4px 0}
+.eq{font-size:1.5rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.5}
+table.t{border-collapse:collapse;width:100%;font-size:1.02rem;margin:8px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+table.t th{background:var(--soft)}
+.q{background:var(--hi);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:10px 0}
+.q .p{font-weight:700}
+details summary{cursor:pointer;color:var(--ac3);font-size:1rem}
+.q .a{padding:4px 0;color:var(--ac2);font-weight:700}
+.sheet{background:#fffbe3;border:2px dashed #d9b84a;border-radius:12px;padding:8px 12px;margin:10px 0;font-size:1rem;color:#3d3a2c}
+.sheet b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sheet{background:#3b3722;border-color:#a88c2f;color:#eee}:root:not([data-theme=light]) .sheet b{color:#f0c860}}
+.src{font-size:.95rem;color:var(--sub);margin:-4px 0 10px}
+.ai{display:inline-block;background:#e6f0eb;color:#2f5d4f;border:1px solid var(--ac2);border-radius:6px;padding:0 6px;font-size:.95rem;font-weight:700;line-height:1.5;white-space:nowrap}
+.ai.re{background:#e8edf6;color:#344e78;border-color:var(--ac3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .ai{background:#24352f;color:#9fd6c2}:root:not([data-theme=light]) .ai.re{background:#262f40;color:#a9c2ea}}
+.note{margin-top:12px;font-size:.95rem;color:var(--sub)}
+.note details{border-top:1px dashed var(--line);padding-top:6px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:12px;justify-content:center;z-index:5}
+.nav button{font-family:inherit;font-size:1.2rem;padding:12px 28px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:130px}
+.nav button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.nav button:disabled{opacity:.4}
+/* SVG 圖形 */
+.lbl{fill:currentColor;font-size:14px}.lbl2{fill:currentColor;font-size:15px;font-weight:700}
+.lbl,.lbl2,.tI,.tR,.tF{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.tI,.tR,.tF{font-size:14px;font-weight:700}
+.tI{fill:var(--ac)}.tR{fill:var(--ac3)}.tF{fill:var(--ac2)}
+.rI{stroke:var(--ac);stroke-width:3;fill:none}.rR{stroke:var(--ac3);stroke-width:3;fill:none}
+.rF{stroke:var(--ac2);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.nl{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.ifc{stroke:currentColor;stroke-width:2.5}
+.ghostL{stroke:var(--sub);stroke-width:2;stroke-dasharray:4 4;fill:none}
+.q1,.q2,.q3,.q1d,.q2d,.q3d{stroke-width:2.4;fill:none}.q1,.q1d{stroke:var(--ac)}.q2,.q2d{stroke:var(--ac2)}.q3,.q3d{stroke:var(--ac3)}.q1d,.q2d,.q3d{stroke-dasharray:5 4;stroke-width:1.8}
+.axis{stroke:currentColor;stroke-width:1.5}.obj{stroke:currentColor;stroke-width:3.5}.img{stroke:var(--bad);stroke-width:3.5}.imgd{stroke:var(--bad);stroke-width:3;stroke-dasharray:6 4}
+.tB{fill:var(--bad);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.arcI{stroke:var(--ac);stroke-width:2;fill:none}.arcR{stroke:var(--ac3);stroke-width:2;fill:none}.arcF{stroke:var(--ac2);stroke-width:2;fill:none}.arcX{stroke:var(--sub);stroke-width:1.6;fill:none}
+@media print{body{background:#fff;color:#000}.nav,.top select,.bar,.tabs{display:none}.slide{display:block!important;break-inside:avoid;page-break-after:always;border:0}.wrap{padding:0}details{display:block}details>summary{display:none}}
+@media (max-width:560px){body{font-size:1.08rem}h1{font-size:1.4rem}.figs .fig{max-width:100%}.tabs button{font-size:.88rem;padding:8px 4px}.top{flex-direction:column;align-items:stretch;gap:4px}.top select{max-width:100%;width:100%}.nav{gap:8px;padding:8px 10px}.nav button{min-width:0;flex:1;padding:12px 6px;font-size:1.05rem;white-space:nowrap}}
+/* 手寫層 */
+.slide{position:relative}
+.ink-cv{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+body.ink .wrap{touch-action:none;padding-bottom:190px}
+.nav button.sm{min-width:0;padding:12px 16px}
+.nav button.inkon{background:var(--ac3);border-color:var(--ac3);color:#fff}
+.inkbar{position:fixed;left:0;right:0;bottom:68px;z-index:6;display:none;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:8px 10px;background:var(--card);border-top:1px solid var(--line)}
+body.ink .inkbar{display:flex}
+.inkbar button{font-family:inherit;font-size:1rem;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.inkbar button.on{border-color:var(--ac);background:var(--hi)}
+.inkbar label{font-size:.95rem;display:flex;align-items:center;gap:4px}
+.inkbar input{width:20px;height:20px}
+@media print{.inkbar{display:none!important}}
+/* 橫放（寬螢幕）：版面加寬，有圖的頁分左右兩欄，圖的高度跟著螢幕高度 */
+@media (orientation:landscape) and (min-width:900px){
+  .wrap{max-width:1280px;padding-top:6px}
+  .tabs{margin:0 0 4px}
+  .bar{margin:4px 0 8px}
+  .slide{padding:12px 22px}
+  .slide>h1{display:inline-block;margin:0 0 4px 10px;vertical-align:middle;font-size:1.5rem}
+  .src{margin:0 0 6px}
+  .slide>.tag{vertical-align:middle}
+  .sbody.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+  .sbody.tq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .sbody.two .fig{max-height:calc(100vh - 280px);margin-top:4px}
+  .sbody.two .figs .fig{max-height:calc(50vh - 110px)}
+  .sbody:not(.two) .stxt{max-width:1000px;margin:0 auto}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+}
+/* 橫放、螢幕比較矮（高解析平板、網址列佔掉高度）：字稍微縮小 */
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){
+  body{font-size:1.08rem;line-height:1.6}
+  .slide>h1{font-size:1.35rem}
+  .tabs button{padding:6px 8px;font-size:.98rem}
+  .q{padding:6px 12px;margin:7px 0}
+  .eq{font-size:1.35rem;margin:4px 0}
+  .sheet{padding:6px 10px;margin:7px 0}
+  .sbody.two .fig{max-height:calc(100vh - 265px)}
+  table.t{font-size:.95rem}table.t th,table.t td{padding:4px 6px}
+  .nav{padding:6px 14px}.nav button{padding:9px 24px}
+  .inkbar{bottom:58px}
+}
+
+/* 手寫顏色圓點 */
+.inkbar .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* ❓ 標記有問題 */
+.mk{font-family:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:99px;padding:1px 12px;cursor:pointer;vertical-align:middle;margin:0 0 4px 8px;line-height:1.6}
+.mk.on{background:#fde7ee;border-color:#e91e63;color:#ad1457;font-weight:700}
+.q .mq{float:right;margin:0 0 4px 8px;padding:0 10px}
+.q.flash{outline:3px solid #e91e63;outline-offset:2px}
+.qpanel{position:fixed;left:0;right:0;bottom:68px;z-index:7;display:none;max-height:55vh;overflow:auto;background:var(--card);border-top:2px solid #e91e63;padding:8px 16px 12px}
+body.qp .qpanel{display:block}
+.qph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qph button{font-family:inherit;font-size:.95rem;margin-left:6px;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qpanel a{display:block;padding:8px 6px;border-bottom:1px dashed var(--line);color:var(--ink);text-decoration:none;cursor:pointer;font-size:1rem}
+.qpanel a.sub{padding-left:26px;color:var(--sub)}
+.qpanel .empty{color:var(--sub);padding:8px 6px;font-size:1rem}
+.nav button.qon{background:#e91e63;border-color:#e91e63;color:#fff}
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){.qpanel{bottom:58px}}
+@media print{.qpanel,.mk{display:none!important}}
+@media (max-width:560px){.nav button.sm{flex:0 0 auto;padding:12px 12px}.nav .lb{display:none}}
+
+</style>
+</head>
+<body><nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">⚗️ 國2上 理化</a>&nbsp;›&nbsp; 第二次段考 › 4-4 預習講義 光學儀器</nav>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="top"><span>4-4 預習講義　光學儀器</span><select id="jump" aria-label="跳到某一頁"></select></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div id="slides"></div>
+</div>
+<div class="inkbar" id="inkbar">
+  <button data-c="pu" class="on"><span class="dot" style="background:#7b1fa2"></span>紫</button><button data-c="pk"><span class="dot" style="background:#e91e63"></span>桃紅</button><button data-c="cy"><span class="dot" style="background:#0097a7"></span>青</button>
+  <button id="inkErase">🧽 橡皮擦</button><button id="inkUndo">↶ 復原</button><button id="inkClear">🗑 清這頁</button><button id="inkSpace">＋ 空白計算區</button>
+  <label><input type="checkbox" id="inkPen"> 只有筆能寫（手指用來捲動）</label>
+</div>
+<div class="qpanel" id="qpanel"><div class="qph"><b>❓ 標記有問題的地方</b><span><button id="qpClear">清除全部</button><button id="qpClose">✕ 關閉</button></span></div><div id="qpList"></div></div>
+<div class="nav"><button id="qpBtn" class="sm">❓<span class="lb"> 問題</span></button><button id="inkBtn" class="sm" aria-pressed="false">✏️<span class="lb"> 手寫</span></button><button id="prev">◀ 上一步</button><button id="next" class="go">下一步 ▶</button></div>
+
+<script>
+(function(){
+/* ===== 圖形工具 ===== */
+var UID=0,D2R=Math.PI/180;
+function sn(i,k){var s=Math.sin(i*D2R)*k;return s>=1?null:Math.asin(s)/D2R;}
+function f1(x){return (Math.round(x*10)/10).toString();}
+function mk(id){
+  var c=[['a','var(--ac)'],['b','var(--ac3)'],['c','var(--ac2)'],['d','var(--sub)'],['e','var(--bad)'],['k','currentColor']];
+  return '<defs>'+c.map(function(m){return '<marker id="'+id+m[0]+'" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto-start-reverse"><path d="M0,1 L12,6.5 L0,12 Z" fill="'+m[1]+'"/></marker>';}).join('')+'</defs>';
+}
+function L(x1,y1,x2,y2,cls,id,m,both){
+  return '<line class="'+cls+'" x1="'+f1(x1)+'" y1="'+f1(y1)+'" x2="'+f1(x2)+'" y2="'+f1(y2)+'"'+(m?' marker-end="url(#'+id+m+')"':'')+(both?' marker-start="url(#'+id+m+')"':'')+'/>';
+}
+function T(x,y,t,cls,anchor){return '<text class="'+(cls||'lbl')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'">'+t+'</text>';}
+function arc(cx,cy,ax,ay,bx,by,R,sweep,cls){
+  return '<path class="'+cls+'" d="M'+f1(cx+ax*R)+' '+f1(cy+ay*R)+' A'+R+' '+R+' 0 0 '+sweep+' '+f1(cx+bx*R)+' '+f1(cy+by*R)+'"/>';
+}
+function eye(x,y){return '<ellipse cx="'+x+'" cy="'+y+'" rx="17" ry="10" fill="#fff" stroke="currentColor" stroke-width="2"/><circle cx="'+x+'" cy="'+y+'" r="5.5" fill="#333"/>';}
+
+/* 折射示意圖：上介質 → 下介質，入射線一律從左上射入
+   o: i入射角 r折射角 top bot(介質名稱) refl(畫反射線) names(畫線名) li lr lf(角度標籤) ai ar(與界面夾角)
+      vert(垂直入射) pts(標A,O,B) both(雙向箭頭) */
+function rayFig(o){
+  var id='r'+(++UID),W=380,H=290,cx=190,cy=145,Ln=120,i=o.i,r=o.r;
+  var si=Math.sin(i*D2R),ci=Math.cos(i*D2R),sr=Math.sin(r*D2R),cr=Math.cos(r*D2R),R=o.R||42;
+  var s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(o.aria||'光的折射示意圖')+'">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+cy+'" fill="var(--soft)"/><rect x="0" y="'+cy+'" width="'+W+'" height="'+(H-cy)+'" fill="var(--ac3)" fill-opacity=".16"/>';
+  s+=L(0,cy,W,cy,'ifc')+L(cx,12,cx,H-10,'nl');
+  s+=T(10,24,o.top,'lbl2')+T(10,H-12,o.bot,'lbl2');
+  s+=T(cx+6,24,'法線','lbl')+T(W-8,cy-7,'界面','lbl','end');
+  if(o.vert){
+    s+=L(cx-9,30,cx-9,cy,'rI',id,'a')+L(cx+9,cy,cx+9,30,'rF',id,'c')+L(cx,cy,cx,H-22,'rR',id,'b');
+    s+=T(cx-16,62,'入射線','tI','end')+T(cx+17,62,'反射線','tF')+T(cx+8,H-30,'折射線','tR');
+    return s+'</svg>';
+  }
+  var ix=cx-Ln*si,iy=cy-Ln*ci,rx=cx+Ln*sr,ry=cy+Ln*cr;
+  s+=L(ix,iy,cx,cy,'rI',id,'a',o.both)+L(cx,cy,rx,ry,'rR',id,'b',o.both);
+  if(o.refl)s+=L(cx,cy,cx+Ln*.78*si,cy-Ln*.78*ci,'rF',id,'c');
+  s+=arc(cx,cy,0,-1,-si,-ci,R,0,'arcI')+arc(cx,cy,0,1,sr,cr,R,0,'arcR');
+  if(o.refl)s+=arc(cx,cy,0,-1,si,-ci,R,1,'arcF');
+  var ga=Math.min(i+24,84)*D2R,gb=Math.min(r+24,84)*D2R,RR=R+44;
+  if(o.li){if(o.ai){var a=i/2*D2R;s+=T(cx-(R+16)*Math.sin(a)-4,cy-(R+16)*Math.cos(a)+4,o.li,'tI','start');}
+    else s+=T(cx-RR*Math.sin(ga),cy-RR*Math.cos(ga)+4,o.li,'tI','end');}
+  if(o.lr){if(o.ai)s+=T(cx-8,cy+R+24,o.lr,'tR','end');
+    else s+=T(cx+RR*Math.sin(gb),cy+RR*Math.cos(gb)+8,o.lr,'tR');}
+  if(o.refl&&o.lf)s+=T(cx+RR*Math.sin(ga)+2,cy-RR*Math.cos(ga)+4,o.lf,'tF');
+  if(o.ai){var R2=R+30,vx=-1-si,vy=-ci,vl=Math.sqrt(vx*vx+vy*vy);
+    s+=arc(cx,cy,-1,0,-si,-ci,R2,1,'arcX')+T(cx+vx/vl*(R2+16),cy+vy/vl*(R2+16)+5,o.ai,'lbl2','middle');}
+  if(o.ar){var R3=R+30,ux=1+sr,uy=cr,ul=Math.sqrt(ux*ux+uy*uy);
+    s+=arc(cx,cy,1,0,sr,cr,R3,1,'arcX')+T(cx+ux/ul*(R3+16),cy+uy/ul*(R3+16)+5,o.ar,'lbl2','middle');}
+  if(o.names){
+    s+=T(ix+6,iy-6,'入射線','tI')+T(rx+4,Math.min(ry+16,H-4),'折射線','tR','start');
+    if(o.refl)s+=T(cx+Ln*.78*si+6,cy-Ln*.78*ci-4,'反射線','tF');
+  }
+  if(o.pts){s+=T(ix-4,iy+2,'A','tI','end')+T(cx-12,cy-8,'O','lbl2','end')+T(rx+8,ry+4,'B','tR');}
+  return s+'</svg>';
+}
+
+/* 全反射：光源 P 在水中，入射角 20°、40°、臨界角、60° */
+function tirFig(){
+  var id='t'+(++UID),W=440,H=275,y0=120,Px=36,Py=225,dep=Py-y0,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="全反射示意圖">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'空氣（光速快）','lbl2')+T(W-10,H-10,'水（光速慢）','lbl2','end');
+  var th=[20,40,48.8,60],nm=['①','②','③','④'],hx;
+  s+='<circle cx="'+Px+'" cy="'+Py+'" r="6" fill="var(--ac)"/>'+T(Px+10,Py+20,'光源 P','lbl2');
+  th.forEach(function(a,k){
+    hx=Px+dep*Math.tan(a*D2R);
+    s+=L(Px,Py,hx,y0,'rI');
+    if(k===0||k===1){var r=Math.asin(Math.min(.9999,Math.sin(a*D2R)*1.333))/D2R,ex=hx+85*Math.sin(r*D2R),ey=y0-85*Math.cos(r*D2R);
+      s+=L(hx,y0,ex,ey,'rR',id,'b')+T(ex+6,ey+4,nm[k],'tR');}
+    if(k===2){s+=L(hx,y0-3,hx+105,y0-3,'rR',id,'b')+T(hx+60,y0-12,'③ 折射角 90°','tR');
+      s+=L(hx,12,hx,Py,'nl')+arc(hx,y0,0,1,-Math.sin(a*D2R),Math.cos(a*D2R),34,1,'arcI')+T(hx+6,y0+40,'48.8°','tI');}
+    if(k===3){var ex2=hx+125*Math.sin(a*D2R),ey2=y0+125*Math.cos(a*D2R);
+      s+=L(hx,y0,ex2,ey2,'rF',id,'c')+T(ex2-4,ey2+14,'④ 全反射','tF','end');}
+  });
+  s+=T(W-10,60,'入射角越大，折射線越貼近水面','lbl','end');
+  return s+'</svg>';
+}
+
+/* 視深：水中 P 看起來變淺 */
+function depthFig(){
+  var id='d'+(++UID),W=400,H=290,y0=105,px=170,py=235,dep=py-y0,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="視深示意圖">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'空氣','lbl2')+T(10,H-10,'水','lbl2');
+  var a=[10,14],tops=[],py2=0;
+  s+='<ellipse cx="'+px+'" cy="'+py+'" rx="15" ry="8" fill="var(--ac)"/><polygon points="'+(px-14)+','+py+' '+(px-26)+','+(py-8)+' '+(px-26)+','+(py+8)+'" fill="var(--ac)"/><circle cx="'+(px+7)+'" cy="'+(py-2)+'" r="1.8" fill="#fff"/>';
+  s+=T(px,py+24,'魚（實際位置 P）','lbl2','middle');
+  a.forEach(function(d,k){
+    var hx=px+dep*Math.tan(d*D2R),r=Math.asin(Math.sin(d*D2R)*1.333)/D2R,tr=Math.tan(r*D2R),back=(hx-px)/tr;
+    s+=L(px,py,hx,y0,'rI');
+    s+=L(hx,y0,hx+75*Math.sin(r*D2R),y0-75*Math.cos(r*D2R),'rR',id,'b');
+    s+=L(hx,y0,px,y0+back,'ghostL');
+    py2+=y0+back;
+  });
+  py2=py2/2;
+  s+='<circle cx="'+px+'" cy="'+f1(py2)+'" r="5" fill="none" stroke="var(--bad)" stroke-width="2.5"/>'+T(px+16,py2+16,"P' 眼睛看到的位置",'lbl2');
+  s+=L(48,y0,48,py2,'arcX',id,'d',true)+T(42,(y0+py2)/2+5,'視深','lbl2','end');
+  s+=L(100,y0,100,py,'arcX',id,'d',true)+T(94,y0+(py-y0)*.78,'實際深度','lbl','end');
+  s+=eye(308,38);
+  return s+'</svg>';
+}
+
+/* 筷子斜插水中 */
+function stickFig(){
+  var W=380,H=250,y0=100,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="筷子斜插入水中，看起來在水面處折斷">';
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="var(--ac3)" fill-opacity=".16"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'空氣','lbl2')+T(10,H-10,'水','lbl2');
+  s+='<line x1="200" y1="100" x2="140" y2="180" stroke="var(--sub)" stroke-width="3" stroke-dasharray="5 4"/>';
+  s+='<line x1="266" y1="12" x2="200" y2="100" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/>';
+  s+='<line x1="200" y1="100" x2="140" y2="148" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/>';
+  s+=T(10,205,'虛線：筷子真正的位置','lbl')+T(128,128,'眼睛看到的樣子','lbl2','end');
+  s+=eye(330,50);
+  return s+'</svg>';
+}
+
+/* 推車比喻：一個輪子先進沙地 */
+function cartFig(){
+  var id='c'+(++UID),W=380,H=250,y0=130,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="推車斜進沙地的比喻">'+mk(id);
+  s+='<rect x="0" y="0" width="'+W+'" height="'+y0+'" fill="var(--soft)"/><rect x="0" y="'+y0+'" width="'+W+'" height="'+(H-y0)+'" fill="#c9a86a" fill-opacity=".35"/>'+L(0,y0,W,y0,'ifc');
+  s+=T(10,22,'柏油路（跑得快）','lbl2')+T(10,H-12,'沙地（跑得慢）','lbl2');
+  s+='<line x1="150" y1="165" x2="230" y2="85" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>';
+  s+='<circle cx="150" cy="165" r="10" fill="var(--bad)"/><circle cx="230" cy="85" r="10" fill="var(--ac2)"/>';
+  s+=L(158,173,176,191,'rI',id,'a')+L(238,93,296,151,'rR',id,'b');
+  s+=T(170,208,'左輪進沙地：變慢','tI')+T(372,62,'右輪還在柏油路：仍然快','tR','end');
+  return s+'</svg>';
+}
+
+/* 光速排行長條圖 */
+function speedFig(){
+  var s='<svg class="fig" viewBox="0 0 400 190" role="img" aria-label="光在不同介質中的速度示意長條圖">',rows=[['真空',300,'var(--ac)'],['空氣',298,'var(--ac)'],['水',225,'var(--ac3)'],['玻璃',200,'var(--ac2)']];
+  rows.forEach(function(r,k){var y=14+k*42;s+=T(62,y+22,r[0],'lbl2','end')+'<rect x="72" y="'+y+'" width="'+r[1]+'" height="30" rx="6" fill="'+r[2]+'" fill-opacity=".75"/>';});
+  return s+T(380,186,'（長條只是示意，不用背數字）','lbl','end')+'</svg>';
+}
+
+/* 光纖：光一直全反射 */
+function fiberFig(){
+  var s='<svg class="fig" viewBox="0 0 400 170" role="img" aria-label="光纖中的全反射">';
+  s+='<rect x="20" y="50" width="360" height="70" rx="8" fill="var(--ac3)" fill-opacity=".2" stroke="currentColor" stroke-width="2"/>';
+  s+='<polyline points="20,70 70,52 120,118 170,52 220,118 270,52 320,118 380,68" fill="none" stroke="var(--ac)" stroke-width="3.5"/>';
+  s+=T(200,22,'光纖：光在管壁一直「全反射」','lbl2','middle')+T(200,42,'光不會漏出去，一路傳到終點','lbl2','middle');
+  s+=T(20,150,'光訊號入口','lbl')+T(380,150,'出口','lbl','end');
+  return s+'</svg>';
+}
+
+/* 平行玻璃 */
+function slabFig(){
+  var id='s'+(++UID),W=400,H=310,yt=90,yb=190,x1=140,n=1.5,i=50,r=sn(i,1/n),s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光通過平行玻璃">'+mk(id);
+  var si=Math.sin(i*D2R),ci=Math.cos(i*D2R),x2=x1+(yb-yt)*Math.tan(r*D2R);
+  s+='<rect x="0" y="'+yt+'" width="'+W+'" height="'+(yb-yt)+'" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>';
+  s+=T(10,yt+(yb-yt)/2+5,'玻璃','lbl2')+T(10,24,'空氣','lbl2')+T(10,H-10,'空氣','lbl2');
+  s+=L(x1,30,x1,yt+130,'nl')+L(x2,yt+30,x2,H-14,'nl');
+  s+=L(x1-100*si,yt-100*ci,x1,yt,'rI',id,'a')+L(x1,yt,x2,yb,'rR',id,'b')+L(x2,yb,x2+90*si,yb+90*ci,'rI',id,'a');
+  s+=L(x1,yt,x1+(yb+90*ci-yt)*Math.tan(i*D2R),yb+90*ci,'ghostL');
+  s+=T(x1-6,yt-52,'入射角大','tI','end')+T(x1+8,yt+58,'折射角較小','tR')+T(x2-10,yb+62,'離開：折射角大','tI','end');
+  s+=T(W-8,H-28,'虛線＝沒有玻璃時會走的路','lbl','end')+T(W-8,H-8,'出射光與入射光互相平行','lbl2','end');
+  return s+'</svg>';
+}
+
+/* 半圓玻璃（平面向上，O 為圓心） */
+function halfFigA(){
+  var id='h'+(++UID),W=380,H=330,Ox=190,Oy=70,R=100,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="平行光垂直射入半圓玻璃的平面">'+mk(id);
+  s+='<path d="M'+(Ox-R)+' '+Oy+' L'+(Ox+R)+' '+Oy+' A'+R+' '+R+' 0 0 1 '+(Ox-R)+' '+Oy+' Z" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>';
+  s+=T(Ox,Oy-4-18,'O','lbl2','middle');
+  [-50,0,50].forEach(function(d){
+    var hy=Oy+Math.sqrt(R*R-d*d),x=Ox+d;
+    s+=L(x,14,x,Oy,'rI',id,'a');
+    if(d===0){s+=L(x,Oy,x,H-14,'rR',id,'b');return;}
+    var phi=Math.asin(d/R)/D2R,r=Math.asin(Math.sin(phi*D2R)*1.5)/D2R,dir=(phi-r)*D2R,dx=Math.sin(dir),dy=Math.cos(dir);
+    s+=L(x,Oy,x,hy,'rI')+L(x,hy,x+dx*172,hy+dy*172,'rR',id,'b');
+  });
+  var hx=Ox+50,hy2=Oy+Math.sqrt(R*R-2500);
+  s+=L(Ox,Oy,hx+(hx-Ox)*.35,hy2+(hy2-Oy)*.35,'nl')+T(hx+34,hy2+30,'法線＝半徑','lbl');
+  s+=T(10,H-12,'平行光 → 往中間靠攏','lbl2');
+  return s+'</svg>';
+}
+function halfFigB(){
+  var id='g'+(++UID),W=380,H=285,Ox=190,Oy=95,R=100,i=45,r=sn(i,1/1.5),s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光線斜射向半圓玻璃的圓心O">'+mk(id);
+  var si=Math.sin(i*D2R),ci=Math.cos(i*D2R),sr=Math.sin(r*D2R),cr=Math.cos(r*D2R);
+  s+='<path d="M'+(Ox-R)+' '+Oy+' L'+(Ox+R)+' '+Oy+' A'+R+' '+R+' 0 0 1 '+(Ox-R)+' '+Oy+' Z" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>';
+  s+=L(Ox,25,Ox,Oy+95,'nl')+T(Ox+6,36,'法線','lbl');
+  s+=L(Ox-90*si,Oy-90*ci,Ox,Oy,'rI',id,'a')+L(Ox,Oy,Ox+R*sr,Oy+R*cr,'rR')+L(Ox+R*sr,Oy+R*cr,Ox+(R+70)*sr,Oy+(R+70)*cr,'rR',id,'b');
+  s+=T(Ox-90*si-4,Oy-90*ci+4,'C','lbl2','end')+T(Ox-8,Oy-8,'O','lbl2','end');
+  s+=T(Ox+30,Oy+30,'玻璃','lbl2');
+  s+=T(10,H-40,'① 空氣→玻璃：偏向法線','lbl');
+  s+=T(10,H-18,'② 射向圓心 → 沿半徑出去 → 不偏折','lbl2');
+  return s+'</svg>';
+}
+
+/* ===== 主題二圖形工具 ===== */
+/* 向量折射：d 入射方向(單位)，n 指向入射側的法線(單位)，eta=n1/n2 */
+function refr(d,n,eta){var ci=-(d[0]*n[0]+d[1]*n[1]),k=1-eta*eta*(1-ci*ci);if(k<0)return null;var a=eta*ci-Math.sqrt(k);return [eta*d[0]+a*n[0],eta*d[1]+a*n[1]];}
+function hitSeg(p,d,a,b){var ex=b[0]-a[0],ey=b[1]-a[1],den=d[0]*ey-d[1]*ex;if(Math.abs(den)<1e-9)return null;var t=((a[0]-p[0])*ey-(a[1]-p[1])*ex)/den,u=((a[0]-p[0])*d[1]-(a[1]-p[1])*d[0])/den;return (t>1e-6&&u>=-1e-9&&u<=1+1e-9)?t:null;}
+function edgeN(a,b,d){var ex=b[0]-a[0],ey=b[1]-a[1],l=Math.sqrt(ex*ex+ey*ey),n=[ey/l,-ex/l];if(n[0]*d[0]+n[1]*d[1]>0)n=[-n[0],-n[1]];return n;}
+function nearest(tri,p,d,skip){var best=null;for(var k=0;k<3;k++){if(k===skip)continue;var t=hitSeg(p,d,tri[k],tri[(k+1)%3]);if(t!==null&&(!best||t<best.t))best={t:t,k:k};}return best;}
+function norm(v){var l=Math.sqrt(v[0]*v[0]+v[1]*v[1]);return [v[0]/l,v[1]/l];}
+/* 光線穿過三角形玻璃（折射率 n）：回傳入射點、出射點、兩面法線、出射方向 */
+function traceTri(tri,p,d,n){
+  var h1=nearest(tri,p,d,-1);if(!h1)return null;
+  var e1=[p[0]+d[0]*h1.t,p[1]+d[1]*h1.t],n1=edgeN(tri[h1.k],tri[(h1.k+1)%3],d),d2=refr(d,n1,1/n);
+  var h2=nearest(tri,e1,d2,h1.k);if(!h2)return null;
+  var e2=[e1[0]+d2[0]*h2.t,e1[1]+d2[1]*h2.t],n2=edgeN(tri[h2.k],tri[(h2.k+1)%3],d2),d3=refr(d2,n2,n);
+  return {e1:e1,e2:e2,n1:n1,n2:n2,d3:d3};
+}
+function poly(pts){return '<polygon points="'+pts.map(function(q){return f1(q[0])+','+f1(q[1]);}).join(' ')+'" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2"/>';}
+function clipTo(x0,y0,dx,dy,W,H){var t=1e9;if(dx>1e-9)t=Math.min(t,(W-6-x0)/dx);if(dx<-1e-9)t=Math.min(t,(6-x0)/dx);if(dy>1e-9)t=Math.min(t,(H-6-y0)/dy);if(dy<-1e-9)t=Math.min(t,(6-y0)/dy);return [x0+dx*t,y0+dy*t];}
+
+/* 單一三稜鏡：光線向底部偏折（實際用 n=1.5 計算） */
+function prismFig(){
+  var id='p'+(++UID),W=430,H=250,tri=[[210,25],[310,200],[110,200]],p=[12,152],d=norm([1,-0.12]),r=traceTri(tri,p,d,1.5);
+  var s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光線通過三稜鏡，向底部偏折">'+mk(id)+poly(tri);
+  s+=L(r.e1[0],r.e1[1],r.e1[0]+d[0]*230,r.e1[1]+d[1]*230,'ghostL');
+  [[r.e1,r.n1],[r.e2,r.n2]].forEach(function(q){s+=L(q[0][0]-q[1][0]*34,q[0][1]-q[1][1]*34,q[0][0]+q[1][0]*34,q[0][1]+q[1][1]*34,'nl');});
+  s+=L(p[0],p[1],r.e1[0],r.e1[1],'rI')+L(r.e1[0],r.e1[1],r.e2[0],r.e2[1],'rI')+L(r.e2[0],r.e2[1],r.e2[0]+r.d3[0]*125,r.e2[1]+r.d3[1]*125,'rI',id,'a');
+  s+=T(210,165,'玻璃','lbl2','middle');
+  s+=T(12,128,'① 進去：偏向法線','lbl');
+  s+=T(W-6,90,'虛線＝原本的方向','lbl','end');
+  s+=T(W-6,H-14,'② 出來：偏離法線 → 往底部偏','tI','end');
+  return s+'</svg>';
+}
+
+/* 兩個三稜鏡組合：mode='conv' 底對底會聚；'div' 尖對尖發散 */
+function prismCombo(mode){
+  var id='q'+(++UID),W=420,H=330,ay=165,cx=170,s,tris,ys;
+  if(mode==='conv'){tris=[[[cx,ay-140],[cx+65,ay],[cx-65,ay]],[[cx-65,ay],[cx+65,ay],[cx,ay+140]]];ys=[ay-45,ay+45];}
+  else{tris=[[[cx-65,ay-140],[cx+65,ay-140],[cx,ay]],[[cx,ay],[cx+65,ay+140],[cx-65,ay+140]]];ys=[ay-75,ay+75];}
+  s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(mode==='conv'?'兩個三稜鏡底對底，光線會聚':'兩個三稜鏡尖對尖，光線發散')+'">'+mk(id)+poly(tris[0])+poly(tris[1]);
+  ys.forEach(function(y,k){
+    var p=[10,y],r=traceTri(tris[k],p,[1,0],1.5),e=clipTo(r.e2[0],r.e2[1],r.d3[0],r.d3[1],W,H-28);
+    s+=L(p[0],p[1],r.e1[0],r.e1[1],'rI')+L(r.e1[0],r.e1[1],r.e2[0],r.e2[1],'rI')+L(r.e2[0],r.e2[1],e[0],e[1],'rI',id,'a');
+  });
+  s+=L(10,ay,W-8,ay,'rI',id,'a');
+  s+=T(W/2,H-8,mode==='conv'?'底對底 → 光往中間會聚（像凸透鏡）':'尖對尖 → 光往外發散（像凹透鏡）','lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 六種透鏡外形 */
+function lensTypes(){
+  var W=480,H=170,y=88,hh=46,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="六種透鏡的外形">';
+  var it=[['雙凸',3,12,12,1],['平凸',3,0,16,1],['凹凸',3,-8,18,1],['雙凹',12,-9,-9,0],['平凹',10,0,-12,0],['凸凹',10,8,-18,0]];
+  it.forEach(function(q,k){
+    var x=46+k*78+(k>2?18:0),e=q[1],cL=q[2],cR=q[3];
+    s+='<path d="M'+(x-e)+' '+(y-hh)+' Q'+(x-e-2*cL)+' '+y+' '+(x-e)+' '+(y+hh)+' L'+(x+e)+' '+(y+hh)+' Q'+(x+e+2*cR)+' '+y+' '+(x+e)+' '+(y-hh)+' Z" fill="'+(q[4]?'var(--ac3)':'var(--ac2)')+'" fill-opacity=".3" stroke="currentColor" stroke-width="2"/>';
+    s+=T(x,y+hh+24,q[0],'lbl2','middle');
+  });
+  s+=T(124,22,'凸透鏡：中間厚','tR','middle')+T(376,22,'凹透鏡：中間薄','tF','middle');
+  s+=L(240,10,240,H-6,'nl');
+  return s+'</svg>';
+}
+
+/* 透鏡成像作圖（依 1/f = 1/物距 + 1/像距 計算像的位置）
+   o: type('convex'/'concave') f d(物距px) h(物高) inf(平行光) srcF(光源在焦點) rays([1,2,3]) num(標①②③)
+      W H ay lx hh names sides dist il(像的標籤) note(底部說明) */
+function lensFig(o){
+  var id='l'+(++UID),W=o.W||460,H=o.H||280,ay=o.ay||150,lx=o.lx||W/2,f=o.f||60,cv=o.type!=='concave',h=o.h||45;
+  var HC=o.note?H-30:H;
+  var rays=o.rays||[1,2,3],s='',xo,yt,xi=null,yi=null,real=false,y2=null,hh=o.hh||0,fixHH=!!o.hh;
+  function seg(x1,y1,x2,y2_,c,m){return L(x1,y1,x2,y2_,c,id,m);}
+  var body='';
+  if(o.inf){
+    [ay-45,ay,ay+45].forEach(function(y0,k){
+      var c='q'+(k+1),m=['a','c','b'][k];
+      body+=seg(8,y0,lx,y0,c);
+      var dir=cv?[f,ay-y0]:[f,y0-ay],e=clipTo(lx,y0,dir[0],dir[1],W,HC);
+      body+=seg(lx,y0,e[0],e[1],c,m);
+      if(!cv&&y0!==ay)body+=L(lx,y0,lx-f,ay,c+'d');
+    });
+    hh=hh||60;
+  }else if(o.srcF){
+    body+='<circle cx="'+(lx-f)+'" cy="'+ay+'" r="6" fill="var(--bad)"/>';
+    [ay-45,ay,ay+45].forEach(function(y0,k){var c='q'+(k+1),m=['a','c','b'][k];body+=seg(lx-f,ay,lx,y0,c)+seg(lx,y0,W-8,y0,c,m);});
+    hh=hh||60;
+  }else if(o.d){
+    var d=o.d;xo=lx-d;yt=ay-h;
+    if(cv){if(Math.abs(d-f)>1e-6){var di=d*f/(d-f);xi=lx+di;yi=ay+h*di/d;real=di>0;}}
+    else{var di2=-d*f/(d+f);xi=lx+di2;yi=ay+h*di2/d;}
+    var virt=(xi!==null&&!real);
+    if(rays.indexOf(1)>=0){
+      body+=seg(xo,yt,lx,yt,'q1');
+      var d1=cv?[f,ay-yt]:[f,yt-ay],e1=clipTo(lx,yt,d1[0],d1[1],W,HC);
+      body+=seg(lx,yt,e1[0],e1[1],'q1','a');
+      if(cv&&virt)body+=L(lx,yt,xi,yi,'q1d');
+      if(!cv)body+=L(lx,yt,lx-f,ay,'q1d');
+      if(o.num)body+=T(xo+(lx-xo)*.5,yt-7,'①','tI','middle');
+    }
+    if(rays.indexOf(3)>=0){
+      var e3=clipTo(lx,ay,lx-xo,ay-yt,W,HC);
+      body+=seg(xo,yt,lx,ay,'q3')+seg(lx,ay,e3[0],e3[1],'q3','b');
+      if(cv&&virt)body+=L(xo,yt,xi,yi,'q3d');
+      if(o.num)body+=T(xo+(lx-xo)*.62+6,yt+(ay-yt)*.62-4,'③','tR');
+    }
+    if(rays.indexOf(2)>=0){
+      if(cv&&Math.abs(d-f)>1e-6){
+        var s2=f/(f-d);y2=ay-s2*h;
+        if(!(fixHH&&Math.abs(y2-ay)>hh)){
+          body+=seg(xo,yt,lx,y2,'q2')+seg(lx,y2,W-6,y2,'q2','c');
+          if(d<f)body+=L(lx-f,ay,xo,yt,'q2d');
+          if(virt)body+=L(lx,y2,xi,y2,'q2d');
+          if(o.num)body+=T(xo+(lx-xo)*.35-4,yt+(y2-yt)*.35+14,'②','tF','end');
+        }else y2=null;
+      }else if(!cv){
+        y2=ay-h*f/(d+f);
+        body+=seg(xo,yt,lx,y2,'q2')+L(lx,y2,lx+f,ay,'q2d')+seg(lx,y2,W-6,y2,'q2','c')+L(lx,y2,xi,y2,'q2d');
+        if(o.num)body+=T(xo+(lx-xo)*.5,yt+(y2-yt)*.5-8,'②','tF','middle');
+      }
+    }
+    if(!fixHH)hh=Math.max(60,Math.abs(yt-ay)+14,y2!==null?Math.abs(y2-ay)+14:0);
+    body+=L(xo,ay,xo,yt,'obj',id,'k')+T(xo,yt-8,'物體','lbl2','middle');
+    if(xi!==null&&xi>8&&xi<W-8&&yi>8&&yi<H-8){
+      body+=L(xi,ay,xi,yi,real?'img':'imgd',id,'e');
+      body+=real?T(xi,yi+18,o.il||'實像','tB','middle'):T(xi-8,yi+4,o.il||'虛像','tB','end');
+    }
+  }
+  hh=Math.min(hh,ay-8);
+  s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(o.aria||((cv?'凸':'凹')+'透鏡作圖'))+'">'+mk(id);
+  s+=L(6,ay,W-6,ay,'axis');
+  if(cv)s+='<ellipse cx="'+lx+'" cy="'+ay+'" rx="10" ry="'+hh+'" fill="var(--ac3)" fill-opacity=".22" stroke="currentColor" stroke-width="2"/>';
+  else s+='<path d="M'+(lx-13)+' '+(ay-hh)+' L'+(lx+13)+' '+(ay-hh)+' Q'+(lx+1)+' '+ay+' '+(lx+13)+' '+(ay+hh)+' L'+(lx-13)+' '+(ay+hh)+' Q'+(lx-1)+' '+ay+' '+(lx-13)+' '+(ay-hh)+' Z" fill="var(--ac2)" fill-opacity=".22" stroke="currentColor" stroke-width="2"/>';
+  s+=L(lx,ay-hh-6,lx,ay+hh+6,'nl');
+  [-2,-1,1,2].forEach(function(k){
+    var x=lx+k*f;if(x<10||x>W-10||(o.no2F&&Math.abs(k)===2))return;
+    var up=(xi!==null&&real&&Math.abs(xi-x)<8);s+='<circle cx="'+x+'" cy="'+ay+'" r="3.5" fill="currentColor"/>'+T(x,up?ay-10:ay+20,(Math.abs(k)===2?'2F':'F'),'lbl','middle');
+  });
+  if(o.names)s+=T(W-8,ay-8,'主軸','lbl','end')+T(lx+8,ay+20,'鏡心','lbl');
+  if(o.sides)s+=T(lx-14,22,'← 鏡前（物體這一側）','lbl2','end')+T(lx+14,22,'鏡後 →','lbl2');
+  s+=body;
+  if(o.dist&&xo!==undefined){
+    var yb=H-30;s+=L(xo,yb,lx,yb,'arcX',id,'d',true)+T((xo+lx)/2,yb-6,'物距','lbl2','middle');
+    if(real&&xi<W-8)s+=L(lx,yb,xi,yb,'arcX',id,'d',true)+T((lx+xi)/2,yb-6,'像距','lbl2','middle');
+  }
+  if(o.note)s+=T(W/2,H-8,o.note,'lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 光具座實驗裝置 */
+function benchFig(){
+  var id='b'+(++UID),W=460,H=210,y=150,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光具座：光源、凸透鏡、紙屏">'+mk(id);
+  s+='<rect x="10" y="'+y+'" width="440" height="12" rx="3" fill="var(--sub)" fill-opacity=".5"/>';
+  s+='<rect x="64" y="'+(y-58)+'" width="14" height="58" fill="var(--bad)" fill-opacity=".85"/><path d="M71 '+(y-78)+' Q63 '+(y-64)+' 71 '+(y-58)+' Q79 '+(y-64)+' 71 '+(y-78)+' Z" fill="#f0b030"/>';
+  s+='<ellipse cx="230" cy="'+(y-60)+'" rx="8" ry="40" fill="var(--ac3)" fill-opacity=".3" stroke="currentColor" stroke-width="2"/>'+L(230,y-20,230,y,'axis');
+  s+='<rect x="362" y="'+(y-110)+'" width="8" height="110" fill="var(--soft)" stroke="currentColor" stroke-width="2"/>';
+  s+=L(362,y-142,374,y-142,'axis')+L(338,y-130,394,y-130,'arcX',id,'d',true)+T(366,y-138,'前後移動','lbl','middle');
+  s+=T(71,y-86,'光源','lbl2','middle')+T(230,y-108,'凸透鏡','lbl2','middle')+T(395,y-86,'紙屏','lbl2');
+  s+=L(71,y+32,230,y+32,'arcX',id,'d',true)+T(150,y+50,'物距','lbl2','middle');
+  s+=L(230,y+32,366,y+32,'arcX',id,'d',true)+T(298,y+50,'像距','lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 實像：上下顛倒＋左右相反（＝轉 180°） */
+function flipFig(){
+  var s='<svg class="fig" viewBox="0 0 420 170" role="img" aria-label="原物 L 與實像（旋轉180度）">';
+  var Lp='M0 0 L0 80 L50 80 L50 64 L16 64 L16 0 Z';
+  s+='<path d="'+Lp+'" transform="translate(70,40)" fill="var(--ac)"/>';
+  s+='<path d="'+Lp+'" transform="translate(330,120) rotate(180)" fill="var(--bad)"/>';
+  s+=T(95,150,'原來的物體','lbl2','middle')+T(305,150,'紙屏上的實像','lbl2','middle');
+  s+='<path d="M170 80 Q210 40 250 80" fill="none" stroke="var(--sub)" stroke-width="2" stroke-dasharray="5 4"/>'+T(210,50,'轉 180°','lbl','middle');
+  return s+'</svg>';
+}
+
+/* 三層介質（主題一用） */
+function layersFig(angs,names){
+  var id='y'+(++UID),W=380,H=300,top=20,lh=88,x=120,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光依序通過三層介質">'+mk(id);
+  var fills=['var(--soft)','var(--ac3)','var(--ac2)'],ops=['1','.18','.22'];
+  for(var k=0;k<3;k++){s+='<rect x="0" y="'+(top+k*lh)+'" width="'+W+'" height="'+lh+'" fill="'+fills[k]+'" fill-opacity="'+ops[k]+'"/>'+T(10,top+k*lh+24,names[k],'lbl2');if(k)s+=L(0,top+k*lh,W,top+k*lh,'ifc');}
+  var px=x,py=top;
+  angs.forEach(function(a,k){
+    var nx=px+lh*Math.tan(a*D2R),ny=py+lh;
+    s+=L(px,py,nx,ny,'rI',id,k===2?'a':'');
+    if(k>0){s+=L(px,py-34,px,py+46,'nl');s+=arc(px,py,0,1,Math.sin(a*D2R),Math.cos(a*D2R),30,0,'arcR')+T(px-6,py+44,a+'°','tR','end');}
+    if(k===0){s+=arc(nx,ny,0,-1,-Math.sin(a*D2R),-Math.cos(a*D2R),30,0,'arcI')+T(nx-34,ny-12,a+'°','tI','end');}
+    px=nx;py=ny;
+  });
+  return s+'</svg>';
+}
+
+/* 圓形水滴：光從球心上方穿過，n=1.33，兩次折射都往球心彎 */
+function dropFig(){
+  var id='w'+(++UID),W=430,H=260,cx=200,cy=135,R=85,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="光穿過圓形水滴">'+mk(id);
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="var(--ac3)" fill-opacity=".2" stroke="currentColor" stroke-width="2"/>'+T(cx,cy+R-18,'水滴','lbl2','middle');
+  var d=norm([1,-0.12]),y0=cy-38,p0=[10,y0+0.12*(0)];
+  /* 入射點：直線 p0 + t d 與圓的交點 */
+  var ox=p0[0]-cx,oy=p0[1]-cy,b=ox*d[0]+oy*d[1],c=ox*ox+oy*oy-R*R,t=-b-Math.sqrt(b*b-c),e1=[p0[0]+d[0]*t,p0[1]+d[1]*t];
+  var n1=[(e1[0]-cx)/R,(e1[1]-cy)/R],d2=refr(d,n1,1/1.33);
+  var t2=-2*((e1[0]-cx)*d2[0]+(e1[1]-cy)*d2[1]),e2=[e1[0]+d2[0]*t2,e1[1]+d2[1]*t2];
+  var n2=[-(e2[0]-cx)/R,-(e2[1]-cy)/R],d3=refr(d2,n2,1.33);
+  [[e1,n1],[e2,[-n2[0],-n2[1]]]].forEach(function(q){s+=L(cx,cy,q[0][0]+q[1][0]*32,q[0][1]+q[1][1]*32,'nl');});
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="3" fill="currentColor"/>'+T(cx+6,cy+16,'球心','lbl');
+  s+=L(e1[0],e1[1],e1[0]+d[0]*330,e1[1]+d[1]*330,'ghostL');
+  s+=L(p0[0],p0[1],e1[0],e1[1],'rI')+L(e1[0],e1[1],e2[0],e2[1],'rI')+L(e2[0],e2[1],e2[0]+d3[0]*120,e2[1]+d3[1]*120,'rI',id,'a');
+  s+=T(W-6,24,'虛線＝原本的方向','lbl','end')+T(W-6,H-12,'出來後往下偏（往球心那邊）','tI','end');
+  s+=T(10,y0-12,'空氣','lbl2');
+  return s+'</svg>';
+}
+
+function tbl(head,rows){
+  var h='<table class="t"><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(x){return '<td>'+x+'</td>';}).join('')+'</tr>';});
+  return h+'</table>';
+}
+function eq(h){return '<div class="eq">'+h+'</div>';}
+function figs(a){return '<div class="figs">'+a.join('')+'</div>';}
+
+/* ===== 4-4／4-5 圖形工具 ===== */
+function arrowUp(x,y0,y1,cls,id,m){return L(x,y0,x,y1,cls,id,m);}
+
+/* 複式顯微鏡兩段成像（依 1/f=1/物距+1/像距 計算）
+   物鏡 x=130 f=40，標本在 60（F~2F）→ 實像在 250，放大 2 倍倒立
+   目鏡 x=330 f=110，實像距目鏡 80（焦點內）→ 虛像在 x≈37，再放大約 3.7 倍 */
+function microFig(){
+  var id='m'+(++UID),W=540,H=250,ay=90,s='<svg class="fig big" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="複式顯微鏡成像原理">'+mk(id);
+  var lo=130,fo=40,le=330,fe=110,xo=70,ho=16,xi=250,yi=ay+32,xf=36.7,yf=ay+117.3;
+  s+=L(6,ay,W-6,ay,'axis');
+  s+='<ellipse cx="'+lo+'" cy="'+ay+'" rx="7" ry="36" fill="var(--ac3)" fill-opacity=".25" stroke="currentColor" stroke-width="2"/>';
+  s+='<ellipse cx="'+le+'" cy="'+ay+'" rx="9" ry="56" fill="var(--ac2)" fill-opacity=".25" stroke="currentColor" stroke-width="2"/>';
+  [[lo-fo,'F物'],[lo+fo,'F物'],[le-fe,'F目'],[le+fe,'F目']].forEach(function(q){s+='<circle cx="'+q[0]+'" cy="'+ay+'" r="3.5" fill="currentColor"/>'+T(q[0],ay-9,q[1],'lbl2','middle');});
+  s+=T(lo,ay-44,'物鏡','lbl2','middle')+T(le,ay-64,'目鏡','lbl2','middle');
+  s+=L(xo,ay-ho,lo,ay-ho,'q1')+L(lo,ay-ho,xi,yi,'q1');
+  s+=L(xo,ay-ho,xi,yi,'q3');
+  s+=L(xo,ay,xo,ay-ho-2,'obj',id,'k')+T(xo,ay-ho-10,'標本','lbl2','middle');
+  s+=L(xi,ay,xi,yi,'img',id,'e')+T(xi+4,yi+20,'① 倒立放大實像','tB','middle');
+  s+=L(xi,yi,le,yi,'q2')+L(le,yi,470,81.3,'q2',id,'c')+L(le,yi,xf,yf,'q2d');
+  s+=L(xi,yi,le,ay,'q3')+L(le,ay,420,54,'q3',id,'b')+L(xi,yi,xf,yf,'q3d');
+  s+=L(xf,ay,xf,yf,'imgd',id,'e')+T(xf+8,yf+2,'② 最後看到的虛像','tB');
+  s+=eye(W-28,ay-30);
+  s+=T(W-8,H-8,'虛線＝光線往回延長，眼睛覺得像在那裡','lbl2','end');
+  return s+'</svg>';
+}
+
+/* 相機構造示意 */
+function cameraFig(){
+  var id='c'+(++UID),W=480,H=230,ay=118,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="相機構造與成像示意">'+mk(id);
+  s+='<rect x="190" y="50" width="250" height="140" rx="12" fill="var(--soft)" stroke="currentColor" stroke-width="2"/>';
+  s+='<ellipse cx="210" cy="'+ay+'" rx="9" ry="46" fill="var(--ac3)" fill-opacity=".3" stroke="currentColor" stroke-width="2"/>';
+  s+='<rect x="250" y="'+(ay-48)+'" width="6" height="30" fill="var(--sub)"/><rect x="250" y="'+(ay+18)+'" width="6" height="30" fill="var(--sub)"/>';
+  s+='<rect x="330" y="'+(ay-50)+'" width="5" height="100" fill="var(--ac)" fill-opacity=".6"/>';
+  s+='<rect x="400" y="'+(ay-55)+'" width="10" height="110" fill="var(--ac2)" fill-opacity=".5" stroke="currentColor" stroke-width="1.5"/>';
+  /* 樹（物體）與光線：物在 2F 外，像在底片上倒立縮小 */
+  s+='<polygon points="40,'+(ay-60)+' 20,'+(ay)+' 60,'+(ay)+'" fill="var(--ac2)"/><rect x="36" y="'+ay+'" width="8" height="18" fill="#8a5a2b"/>';
+  s+=L(40,ay-60,210,ay-24,'q1')+L(210,ay-24,404,ay+30,'q1','');
+  s+=L(40,ay+18,210,ay+20,'q3')+L(210,ay+20,404,ay-14,'q3','');
+  s+=T(210,40,'鏡頭（凸透鏡）','lbl2','middle')+T(253,206,'光圈','lbl2','middle')+T(332,38,'快門','lbl2','middle')+T(420,206,'底片／感光元件','lbl2','middle');
+  s+=T(6,H-10,'物體（在 2F 外）','lbl');
+  return s+'</svg>';
+}
+
+/* 眼睛：mode = normal / myopia / hyper / myopiaFix / hyperFix / parts */
+function eyeFig(mode,cap){
+  var id='e'+(++UID),W=440,H=230,cx=290,cy=112,R=80,lx=228,rx=cx+R-4,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="眼睛成像示意">'+mk(id);
+  var longEye=(mode==='myopia'||mode==='myopiaFix'),shortEye=(mode==='hyper'||mode==='hyperFix');
+  var Rx=longEye?R+14:(shortEye?R-12:R);rx=cx+Rx-4;
+  s+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+Rx+'" ry="'+R+'" fill="#fff" fill-opacity=".9" stroke="currentColor" stroke-width="2"/>';
+  s+='<path d="M'+(cx+Rx*0.5)+' '+(cy-R*0.86)+' A'+Rx+' '+R+' 0 0 1 '+(cx+Rx*0.5)+' '+(cy+R*0.86)+'" fill="none" stroke="var(--bad)" stroke-width="5" stroke-opacity=".7"/>';
+  s+='<ellipse cx="'+lx+'" cy="'+cy+'" rx="'+(mode==='hyper'?6:9)+'" ry="30" fill="var(--ac3)" fill-opacity=".35" stroke="currentColor" stroke-width="2"/>';
+  var ys=[cy-22,cy,cy+22],fx;
+  if(mode==='parts'||mode==='normal'||mode==='myopia'||mode==='myopiaFix'){
+    fx=(mode==='myopia')?cx+20:rx;
+    ys.forEach(function(y,k){
+      var c='q'+(k+1);
+      if(mode==='myopiaFix'){var y2=cy+(y-cy)*1.45;s+=L(14,y,120,y,c)+L(120,y,lx,y2,c)+L(lx,y2,rx,cy,c);}
+      else{s+=L(14,y,lx,y,c)+L(lx,y,fx,cy,c);if(mode==='myopia'&&y!==cy){var kk=(rx-8-fx)/(fx-lx);s+=L(fx,cy,fx+(fx-lx)*kk,cy+(cy-y)*kk,c);}}
+    });
+    if(mode==='myopiaFix')s+='<path d="M114 '+(cy-44)+' L126 '+(cy-44)+' Q119 '+cy+' 126 '+(cy+44)+' L114 '+(cy+44)+' Q121 '+cy+' 114 '+(cy-44)+' Z" fill="var(--ac2)" fill-opacity=".3" stroke="currentColor" stroke-width="2"/>'+T(120,cy+64,'凹透鏡','lbl2','middle');
+    s+=T(14,cy-34,'遠處來的光（平行光）','lbl');
+  }else{
+    var sx=40;s+='<circle cx="'+sx+'" cy="'+cy+'" r="5" fill="var(--bad)"/>'+T(sx,cy+22,'近物','lbl2','middle');
+    ys.forEach(function(y,k){
+      var c='q'+(k+1),y1=y;
+      if(mode==='hyperFix'){var yg=cy+(y-cy)*0.64,yl=cy+(y-cy)*0.72;s+=L(sx,cy,120,yg,c)+L(120,yg,lx,yl,c)+L(lx,yl,rx,cy,c);}
+      else{fx=rx+66;var tt=(rx-lx)/(fx-lx);s+=L(sx,cy,lx,y,c)+L(lx,y,lx+(fx-lx)*tt,y+(cy-y)*tt,c)+L(lx+(fx-lx)*tt,y+(cy-y)*tt,fx,cy,c+'d');}
+    });
+    if(mode==='hyperFix')s+='<ellipse cx="120" cy="'+cy+'" rx="7" ry="44" fill="var(--ac3)" fill-opacity=".3" stroke="currentColor" stroke-width="2"/>'+T(120,cy+64,'凸透鏡','lbl2','middle');
+    else s+='<circle cx="'+(rx+66)+'" cy="'+cy+'" r="4" fill="var(--bad)"/>';
+  }
+  if(mode==='parts'){
+    s+=T(lx,cy-40,'水晶體','lbl2','middle')+T(cx+Rx*0.62,cy-R*0.9,'視網膜','lbl2','start')+T(lx-14,cy+52,'瞳孔','lbl','end');
+  }else{
+    var pt=(mode==='myopia')?[cx+20,'焦點在視網膜「前」']:(mode==='hyper')?[rx+66,'焦點在視網膜「後」']:[rx,'剛好落在視網膜上'];
+    s+='<circle cx="'+pt[0]+'" cy="'+cy+'" r="4.5" fill="var(--bad)"/>'+T(cx,cy+R+26,pt[1],'tB','middle');
+  }
+  if(cap)s+=T(W/2,18,cap,'lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 色散：白光經三稜鏡分成七色（折射率差距誇大以便看清楚） */
+var RAINBOW=[['紅','#e53935'],['橙','#fb8c00'],['黃','#f2c200'],['綠','#43a047'],['藍','#1e88e5'],['靛','#3949ab'],['紫','#8e24aa']];
+function dispFig(set){
+  var id='d'+(++UID),W=470,H=280,tri=[[190,30],[285,200],[95,200]],p=[8,178],d=norm([1,-0.42]);
+  var cols=set||RAINBOW,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="白光經三稜鏡色散">'+mk(id)+poly(tri);
+  var e1=null,ly=-1e9,sx=W-40;
+  cols.forEach(function(c,k){
+    var n=1.44+k*(0.22/(Math.max(cols.length-1,1))),r=traceTri(tri,p,d,n);if(!r)return;e1=r.e1;
+    var t=(sx-r.e2[0])/r.d3[0],e=[sx,r.e2[1]+r.d3[1]*t];
+    s+='<line x1="'+f1(r.e1[0])+'" y1="'+f1(r.e1[1])+'" x2="'+f1(r.e2[0])+'" y2="'+f1(r.e2[1])+'" stroke="'+c[1]+'" stroke-width="1.6" stroke-opacity=".7"/>';
+    s+='<line x1="'+f1(r.e2[0])+'" y1="'+f1(r.e2[1])+'" x2="'+f1(e[0])+'" y2="'+f1(e[1])+'" stroke="'+c[1]+'" stroke-width="2.6"/>';
+    ly=Math.max(e[1]+5,ly+15);
+    s+='<text x="'+f1(W-6)+'" y="'+f1(ly)+'" text-anchor="end" font-size="14" font-weight="700" fill="'+c[1]+'">'+c[0]+'</text>';
+  });
+  s+=L(p[0],p[1],e1[0],e1[1],'axis')+T(14,p[1]+20,'白光','lbl2');
+  s+=L(sx,20,sx,H-40,'axis')+T(sx,H-26,'屏幕','lbl','middle');
+  s+=T(190,240,'紅光偏折最小、紫光偏折最大','lbl2','middle');
+  return s+'</svg>';
+}
+
+/* 三原色文氏圖：mode light（色光，越混越亮）/ pig（顏料，越混越暗） */
+function vennFig(mode){
+  var lt=mode==='light',W=260,H=250,cx=130,cy=128,r=62,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(lt?'光的三原色':'顏料三原色')+'" style="isolation:isolate">';
+  s+='<rect x="0" y="0" width="'+W+'" height="'+H+'" rx="10" fill="'+(lt?'#111':'#fff')+'" stroke="var(--line)"/>';
+  var C=lt?[['#ff0000',cx,cy-38],['#0000ff',cx-40,cy+28],['#00ff00',cx+40,cy+28]]:[['#ff00ff',cx,cy-38],['#00ffff',cx-40,cy+28],['#ffff00',cx+40,cy+28]];
+  C.forEach(function(c){s+='<circle cx="'+c[1]+'" cy="'+c[2]+'" r="'+r+'" fill="'+c[0]+'" style="mix-blend-mode:'+(lt?'screen':'multiply')+'"/>';});
+  var lab=lt?[['紅',cx,cy-70],['藍',cx-70,cy+52],['綠',cx+70,cy+52],['洋紅',cx-44,cy-14],['黃',cx+44,cy-14],['青',cx,cy+62],['白',cx,cy+12]]
+            :[['洋紅',cx,cy-70],['青',cx-70,cy+52],['黃',cx+70,cy+52],['紫',cx-44,cy-14],['紅',cx+44,cy-14],['綠',cx,cy+62],['黑',cx,cy+12]];
+  lab.forEach(function(q){var dark=lt?(q[0]==='白'||q[0]==='黃'||q[0]==='青'||q[0]==='綠'):(q[0]!=='黃');
+    s+='<text x="'+q[1]+'" y="'+(q[2]+5)+'" text-anchor="middle" font-size="16" font-weight="700" fill="'+(lt?(dark?'#000':'#fff'):(q[0]==='黑'||q[0]==='紫'||q[0]==='綠'||q[0]==='紅'?'#fff':'#000'))+'">'+q[0]+'</text>';});
+  s+='<text x="'+cx+'" y="'+(H-8)+'" text-anchor="middle" font-size="14" font-weight="700" fill="'+(lt?'#fff':'#333')+'">'+(lt?'光的三原色（越混越亮）':'顏料三原色（越混越暗）')+'</text>';
+  return s+'</svg>';
+}
+
+/* 不透明物體反射／透明物體透過 */
+function objColorFig(type){
+  var id='o'+(++UID),W=440,H=200,s='<svg class="fig" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(type==='opaque'?'不透明物體反射色光':'透明物體讓色光通過')+'">'+mk(id);
+  var C=[['#e53935',-10],['#43a047',0],['#1e88e5',10]];
+  if(type==='opaque'){
+    s+='<ellipse cx="220" cy="160" rx="110" ry="22" fill="#43a047" fill-opacity=".85"/>'+T(220,166,'綠葉','lbl2','middle');
+    C.forEach(function(c){s+='<line x1="'+(40+c[1])+'" y1="'+(20+c[1])+'" x2="210" y2="140" stroke="'+c[0]+'" stroke-width="3"/>';});
+    s+='<line x1="230" y1="140" x2="380" y2="34" stroke="#43a047" stroke-width="4" marker-end="url(#'+id+'c)"/>';
+    s+=T(30,16,'白光（紅＋綠＋藍）','lbl2')+T(318,112,'只反射綠光','tF')+T(220,196,'紅光、藍光被吸收','lbl','middle');
+    s+=eye(410,52);
+  }else{
+    s+='<rect x="200" y="40" width="26" height="120" fill="#e53935" fill-opacity=".55" stroke="currentColor" stroke-width="2"/>'+T(213,30,'紅色玻璃紙','lbl2','middle');
+    C.forEach(function(c,k){var y=80+k*20;s+='<line x1="30" y1="'+y+'" x2="200" y2="'+y+'" stroke="'+c[0]+'" stroke-width="3"/>';});
+    s+='<line x1="226" y1="80" x2="390" y2="80" stroke="#e53935" stroke-width="4" marker-end="url(#'+id+'e)"/>';
+    s+=T(30,66,'白光','lbl2')+T(300,64,'只有紅光通過','tB','middle')+T(300,130,'綠光、藍光被吸收','lbl','middle');
+    s+=eye(412,80);
+  }
+  return s+'</svg>';
+}
+
+/* 色光計算：光和物體共同有的原色才看得到 */
+var CSET={'白':'rgb','紅':'r','綠':'g','藍':'b','黃':'rg','青':'gb','洋紅':'rb','黑':''};
+var CHEX={'白':'#ffffff','紅':'#e53935','綠':'#43a047','藍':'#1e88e5','黃':'#f2c200','青':'#00bcd4','洋紅':'#d81b9c','黑':'#111111'};
+function cmix(light,obj){var a=CSET[light],b=CSET[obj],o='';'rgb'.split('').forEach(function(ch){if(a.indexOf(ch)>=0&&b.indexOf(ch)>=0)o+=ch;});for(var k in CSET)if(CSET[k]===o)return k;return '黑';}
+function swatch(name,label,big){var dark=(name==='黑'||name==='藍'||name==='洋紅'||name==='紅'||name==='綠');return '<div style="display:inline-block;text-align:center;margin:4px"><div style="width:'+(big?84:64)+'px;height:'+(big?64:48)+'px;border-radius:10px;border:2px solid var(--line);background:'+CHEX[name]+';color:'+(dark?'#fff':'#000')+';display:flex;align-items:center;justify-content:center;font-weight:700">'+name+'</div><div style="font-size:.95rem;color:var(--sub)">'+label+'</div></div>';}
+
+/* ===== 投影片資料 ===== */
+var DECKS={A:{name:'4-4 光學儀器',SL:[]}};
+function add(d,o){DECKS[d].SL.push(o);}
+var A=function(o){add('A',o);};
+var AI='<span class="ai">💡 補充說明</span> ',RE='<span class="ai re">🔁 類題</span> ';
+var LEGEND='<b>頁面上的標記：</b><ul><li>📖 <b>出處</b>：這一頁的內容來自講義或自修（課本）的哪一頁</li><li>✍️ <b>對照講義</b>：講義上的原文和空格答案</li><li>'+AI+'：講義和課本<b>都沒有</b>，是額外幫你理解的比喻、口訣或推理</li><li>'+RE+'：題型來自講義，數字是換過的，不是原題</li><li>👂 <b>上課聽這裡</b>：預習時的提醒。老師實際怎麼上，以課堂為準</li><li>❓ <b>有問題</b>：看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」；下方「❓ 問題」按鈕會列出全部，點一下就跳過去</li></ul>';
+
+A({t:'光學儀器：先看懂，再去上課',tag:'今天的目標',
+ text:'這一節把 4-3 學的<b>凸透鏡成像</b>拿來用，看看三種「儀器」怎麼運作：<ol><li><b>複式顯微鏡</b>：兩片凸透鏡，放大兩次</li><li><b>照相機</b>：凸透鏡在感光元件上成倒立縮小實像</li><li><b>眼睛</b>：和相機很像；近視、遠視、老花怎麼矯正</li></ol>對照補習班講義 <b>p.201～207</b>、自修 p.184～189。<br><br>'+LEGEND,
+ note:'開始前先確定 4-3 的「凸透鏡成像統整表」還記得：2F 外倒立縮小實像、F～2F 倒立放大實像、F 內正立放大虛像。這一節每個儀器都是在用這張表。'});
+
+A({t:'先複習：凸透鏡成像表',tag:'4-3 複習',src:'講義 p.190（4-3 凸透鏡成像統整）',
+ text:tbl(['物體位置','像的性質','這一節的哪個儀器用到'],[['2F 外','倒立縮小實像','照相機、眼睛'],['F～2F','倒立放大實像','顯微鏡的物鏡、放映機'],['F 內','正立放大虛像','放大鏡、顯微鏡的目鏡']])+AI+'右邊那一欄是把這一節的內容先對應好，讀完後面再回來看會更清楚。',
+ qs:[['物體在凸透鏡 F 內，成什麼像？','正立放大虛像。'],['物體在 F～2F 之間呢？','倒立放大實像。']]});
+
+A({t:'複式顯微鏡的構造',src:'講義 p.201（A. 1. 構造）、自修 p.184',
+ text:'複式顯微鏡用<b>兩片凸透鏡</b>：'+tbl(['部位','是什麼','特點'],[['物鏡','凸透鏡','靠近標本，<b>焦距較短</b>'],['目鏡','凸透鏡','靠近眼睛，<b>焦距較長</b>'],['反光鏡','凹面鏡','把光聚集起來照亮標本']]),
+ sheet:'講義 p.201：(1) 物鏡：焦距較短的凸透鏡　(2) 目鏡：焦距較長的凸透鏡　(3) 反光鏡：為凹面鏡，有聚光功能。',
+ qs:[['顯微鏡的物鏡和目鏡都是凸透鏡嗎？','是。（課本觀念掃描 1-1）'],['反光鏡是哪一種面鏡？為什麼？','凹面鏡，因為凹面鏡可以把光聚集起來（4-2 學過）。']],
+ note:'反光鏡是「面鏡」不是「透鏡」，容易混。'});
+
+A({t:'複式顯微鏡的成像原理：放大兩次',tag:'重點',src:'講義 p.201（A. 2. 成像原理）、自修 p.184（你知道嗎）',
+ fig:microFig(),
+ text:'<ol><li><b>第一次（物鏡）</b>：標本放在物鏡的 <b>F～2F</b> 之間 → 成<b>倒立放大實像</b>，而且這個實像剛好落在<b>目鏡的焦點內</b>。</li><li><b>第二次（目鏡）</b>：第一次的實像在目鏡焦點內 → 目鏡把它再成<b>正立放大虛像</b>（相對於第一次的像）。</li><li>結果：經過<b>兩次放大</b>，眼睛看到的是和原標本<b>上下顛倒、左右相反</b>的<b>虛像</b>。</li></ol>',
+ sheet:'講義 p.201：(1) 物體在物鏡的【<b>F～2F</b>】之間，成像為「倒立放大實像」，落在目鏡的【<b>焦點</b>】內。(2) 經過目鏡第二次成像，得到「正立放大虛像」。(3) 眼睛透過顯微鏡所觀察到的像，是經過【<b>2</b>】次放大，並與「原標本」互為上下顛倒、左右相反的虛像。',
+ qs:[['第一次成像是實像還是虛像？','實像（倒立放大）。'],['最後看到的像，和標本比是正立還是倒立？','倒立（上下顛倒、左右相反）。因為第一次已經倒過來了，第二次目鏡沒有再翻回來。'],['「複式顯微鏡最後所成的像與實物方向完全相同」對嗎？','不對，上下顛倒、左右相反。（課本觀念掃描 1-2）']],
+ note:'圖是依透鏡公式算出來畫的。上課講到「兩次成像」時，對照圖上的 ① 和 ② 兩個像。'});
+
+A({t:'練習：顯微鏡的焦距題',tag:'練習',src:'講義 p.201 精選範例 1；講義 p.205 隨堂演練 24 第 5 題',
+ text:RE+'用 4-3 的成像表就能算：',
+ qs:[['物鏡焦距 3 公分。標本要放在物鏡前多遠？','要成倒立放大實像 → F～2F → 3～6 公分之間。'],['目鏡焦距 8 公分。物鏡成的實像要落在目鏡前多遠，才能得到最後的虛像？','要在目鏡焦點內 → 8 公分以內。'],['「目鏡可以用凸透鏡，也可以用凹透鏡」對嗎？','不對。凹透鏡只能成縮小的像，不能放大，目鏡一定是凸透鏡。'],['眼睛最後看到的是虛像，那視網膜上的像是實像還是虛像？','實像。眼睛的水晶體會把進來的光在視網膜上會聚成實像（後面眼睛那段會學）。']]});
+
+A({t:'顯微鏡下的字會怎樣？',tag:'常考題型',src:'講義 p.201 類題 1；p.206 隨堂演練 24 第 15 題；自修 p.188 第 6 題、p.203 第 7 題',
+ text:'顯微鏡的像<b>上下顛倒、左右相反</b>＝<b>轉了 180°</b>。'+tbl(['放在載玻片上','顯微鏡下看到'],[['b','q'],['d','p'],['F','<span style="display:inline-block;transform:rotate(180deg)">F</span>']])+'<b>移動方向也相反：</b>載玻片往東南移 → 像往<b>西北</b>移。',
+ qs:[[RE+'在顯微鏡下看到「p」，載玻片上寫的是什麼字？','把 p 轉 180° → d。'],['視野中的生物偏在右下方，要讓它回到中央，載玻片要往哪裡推？','往<b>右下</b>推。像偏哪邊，載玻片就往哪邊推（因為像和物移動方向相反，推右下，像會往左上回到中央）。']],
+ note:AI+'「像偏哪邊，就往哪邊推」是常見記法；它的原因是像的移動方向和載玻片相反。'});
+
+A({t:'照相機的構造',src:'講義 p.202（B. 相機）、自修 p.185',
+ fig:cameraFig(),
+ text:tbl(['部位','功能'],[['鏡頭','單一凸透鏡或透鏡組（功能相當於凸透鏡）'],['光圈','調節進入相機的光量（光圈大，進光量大）'],['快門','控制底片／感光元件的曝光時間'],['底片／感光元件','傳統底片：塗有溴化銀，遇光產生化學變化<br>感光元件：把光的影像轉成數位訊號，存在記憶體']]),
+ sheet:'講義 p.202：鏡頭 為單一凸透鏡或是透鏡組；光圈 調節進入機內光線量；底片 (1) 傳統底片：塗有溴化銀，遇光產生化學變化 (2) 感光元件：記錄影像的光線變化，以畫素為單位，儲存在記憶體中；快門 控制底片曝光時間。',
+ qs:[['「相機鏡頭中的透鏡組具有發散光線的功能」對嗎？','不對，功能相當於凸透鏡，是會聚光線。（課本觀念掃描 2-1）'],['快門開久一點，照片會怎樣？','曝光時間長，進來的光比較多；拍動的東西會出現「流動」的效果。（隨堂演練 24 第 3 題）']]});
+
+A({t:'照相機的成像原理',tag:'重點',src:'講義 p.202（相機 原理）、自修 p.185',
+ fig:lensFig({type:'convex',d:150,il:'底片上的像',note:'物體在 2F 外 → 像在 F～2F，倒立縮小實像'}),
+ text:'物體放在鏡頭的 <b>2F 外</b> → 在<b>焦點～2 倍焦距之間</b>成<b>倒立縮小實像</b>，剛好落在底片（感光元件）上。<br><br><b>對焦：</b>'+tbl(['拍什麼','像跑到哪','怎麼調'],[['拍遠物','像比較靠近鏡頭','縮短鏡頭和底片的距離；或用焦距長的鏡頭'],['拍近物','成像在底片後','伸長鏡頭和底片的距離；或用焦距短的鏡頭']])+AI+'為什麼？4-3 學過「物遠像近、物近像遠」：拍近的東西，像會往後跑，所以要把底片往後（伸長距離）才接得到。',
+ sheet:'講義 p.202 原理：(1) 物體置於「2 倍焦距外」，會在「焦點～2 倍焦距間」得到倒立實像，恰好落在底片上。(2) 拍遠物 → 縮短鏡頭和底片的距離、使用焦距長的鏡頭　(3) 拍近物 → 成像在底片後 → 伸長鏡頭和底片的距離、使用焦距短的鏡頭',
+ qs:[['照片上的像是正立還是倒立？實像還是虛像？','倒立縮小實像。（「照相機的像是倒立的虛像」是錯的）'],['手機拍出來的照片為什麼是正的？','感光元件上的像是倒立的，手機內建程式把它轉正再顯示。（自修 p.185 你知道嗎）']],
+ note:'表格中的「像跑到哪」那一欄，講義 p.202 拍遠物那一行字在掃描裡看不完整，上課時注意聽老師怎麼補。'});
+
+A({t:'練習：照相機',tag:'練習',src:'講義 p.203 精選範例 3；講義 p.205 隨堂演練 24 第 3 題',
+ text:RE+'相機鏡頭焦距 25 公分。',
+ qs:[['被拍的東西要在鏡頭前多遠，才能清楚拍到？(A) 20 公分 (B) 40 公分 (C) 80 公分','(C)。要在 2F 外，2 × 25 ＝ 50，要大於 50 公分。'],['底片上的像在鏡頭後方哪裡？','焦點到兩倍焦距之間，也就是 25～50 公分。'],['照相機的光圈相當於眼睛的哪一部分？','瞳孔（下一頁會學）。'],['「鏡頭可以用凸透鏡或凹透鏡，因為都能成縮小的像」對嗎？','不對。凹透鏡只能成虛像，底片接不到，鏡頭一定要能會聚光線。']]});
+
+A({t:'眼睛的構造',src:'講義 p.202（B. 眼睛 vs. 相機）、自修 p.185',
+ fig:eyeFig('parts','眼睛的構造（示意圖）'),
+ text:tbl(['部位','功能'],[['水晶體','相當於<b>凸透鏡</b>；靠<b>睫狀肌</b>調節焦距'],['瞳孔','調節進入的光量：光強 → 縮小；光弱 → 放大'],['視網膜','成<b>倒立縮小實像</b> → 大腦再解釋成正立的像']]),
+ sheet:'講義 p.202：水晶體 可利用睫狀肌調節焦距；瞳孔 調節入射光量：光強→縮小；光弱→放大；視網膜 視網膜上成倒立縮小實像 → 大腦解釋成正立的像。',
+ qs:[['眼睛的哪個構造相當於凸透鏡？','水晶體。（隨堂演練 24 第 2 題）'],['視網膜上的像是什麼像？','倒立縮小實像。（「正立縮小虛像」是錯的，課本觀念掃描 3-2）'],['看遠的樹，視網膜上的樹是正的還是倒的？','倒的（倒立縮小）。是大腦把它解讀成正的。（講義 p.203 範例 2）']]});
+
+A({t:'眼睛 vs 照相機',tag:'重點',src:'講義 p.202（眼睛 vs. 相機 表格）',
+ text:tbl(['眼睛','照相機','做什麼'],[['水晶體','鏡頭','凸透鏡，成像'],['瞳孔','光圈','調節進光量'],['視網膜','底片／感光元件','接收影像'],['（沒有）','快門','控制曝光時間']])+'<b>對焦方式不一樣：</b><ul><li><b>眼睛</b>：像距（水晶體到視網膜）<b>固定</b>，靠睫狀肌<b>改變水晶體的焦距</b><ul><li>看遠物 → 水晶體<b>較平</b> → 焦距<b>變大</b></li><li>看近物 → 水晶體<b>較凸</b> → 焦距<b>縮小</b></li></ul></li><li><b>相機</b>：改變鏡頭和底片的距離（或換鏡頭）</li></ul>',
+ sheet:'講義 p.202 原理：(1) 眼睛像距一定，可利用睫狀肌調節水晶體焦距　(2) 看遠物 → 水晶體較平 → 焦距變大；看近物 → 水晶體較凸 → 焦距縮小',
+ qs:[['「人眼睛中的水晶體，功能相當於相機的感光元件」對嗎？','不對。水晶體相當於鏡頭；視網膜才相當於感光元件。（課本觀念掃描 3-1）'],['視力正常的人，哪個構造會自動調整，讓遠近都看得清楚？','水晶體（由睫狀肌調節）。（隨堂演練 24 第 13 題）']],
+ note:'表格最後一列：眼睛沒有快門，講義上那一格是「X」。'});
+
+A({t:'近視眼',tag:'重點',src:'講義 p.204（C. 眼睛與眼鏡）、自修 p.186',
+ fig:eyeFig('myopia','近視：遠物成像在視網膜前'),
+ text:'<b>成因</b>：水晶體焦距<b>過短</b>（曲度過大），或眼球前後徑<b>過長</b> → 遠處物體的光，在還沒到視網膜之前就聚在一起了，像落在視網膜<b>前方</b>，所以看不清楚遠的東西。',
+ sheet:'講義 p.204 近視：(1) 水晶體焦距過短　(2) 前後徑過長　(3) 遠處物體在視網膜的前方成像',
+ qs:[['近視的人，遠的東西成像在視網膜前還是後？','前方。（講義 p.204 類題 1）']]});
+
+A({t:'近視眼的矯正：凹透鏡',tag:'重點',src:'講義 p.204（C. 眼睛與眼鏡）、自修 p.186',
+ fig:eyeFig('myopiaFix','戴凹透鏡：先發散，再落到視網膜上'),
+ text:'<b>矯正</b>：戴適當焦距的<b>凹透鏡</b>，讓光線進入眼睛前先<b>發散</b>一點，聚起來的位置就往後移，剛好落在視網膜上。',
+ sheet:'講義 p.204 近視矯正：佩戴適當焦距的凹透鏡。',
+ qs:[['光線通過某人的水晶體，最清晰的成像位置在視網膜之前。這是什麼眼疾？要戴什麼鏡片？','近視；凹透鏡。（隨堂演練 24 第 16 題）'],['「有近視眼的人，物體成像在視網膜前，須配戴凸透鏡矯正」對嗎？','不對，要配戴凹透鏡。（課本觀念掃描 3-4）']],
+ note:AI+'記法：近視是「太會聚」（焦點太前面），所以要用會「發散」的凹透鏡抵消。'});
+
+A({t:'遠視眼與老花眼',tag:'重點',src:'講義 p.204、自修 p.186',
+ fig:eyeFig('hyper','遠視：近物成像在視網膜後'),
+ text:'<b>遠視</b>：水晶體焦距<b>過長</b>（曲度過小），或眼球前後徑<b>過短</b> → 近處物體的光到了視網膜還沒聚在一起，像落在視網膜<b>後方</b>，所以看不清楚近的東西。<br><b>老花</b>：年紀大，水晶體變硬、<b>調節能力衰退</b>，看近的東西很吃力。不論原本有沒有近視或遠視，都可能老花。',
+ sheet:'講義 p.204 遠視／老花：(1) 水晶體焦距過長　(2) 前後徑過短　(3) 水晶體調節衰退　(4) 近處物體會在視網膜的後方成像',
+ qs:[['「看遠物還可以，看近物時反而模糊」，是哪一種問題？','遠視或老花。（隨堂演練 24 第 1 題）']]});
+
+A({t:'遠視、老花的矯正：凸透鏡',tag:'重點',src:'講義 p.204、自修 p.186',
+ fig:eyeFig('hyperFix','戴凸透鏡：先會聚，再落到視網膜上'),
+ text:'<b>矯正</b>：遠視和老花都戴適當焦距的<b>凸透鏡</b>，讓光線進入眼睛前先<b>會聚</b>一點，聚起來的位置就往前移，剛好落在視網膜上。',
+ sheet:'講義 p.204 遠視／老花矯正：佩戴適當焦距的凸透鏡。',
+ qs:[['「遠視眼鏡只要把近視眼鏡翻面就好」對嗎？','不對。凹透鏡翻面還是中間薄，還是凹透鏡。（隨堂演練 24 第 10 題）'],['透過爺爺的眼鏡看他的眼睛，眼睛變大了。爺爺戴的是什麼眼鏡？','老花眼鏡（凸透鏡）。眼睛在鏡片焦點內，看到正立放大虛像。（隨堂演練 24 第 9 題）']]});
+
+A({t:'視力問題總整理',src:'講義 p.204（C. 眼睛與眼鏡 表格）、自修 p.186（表格）',
+ text:tbl(['','近視','遠視／老花'],[['看不清楚的是','遠的東西','近的東西'],['成像位置','視網膜<b>前</b>','視網膜<b>後</b>'],['水晶體焦距','過短','過長（老花：調節衰退）'],['眼球前後徑','過長','過短'],['矯正鏡片','<b>凹透鏡</b>（先發散）','<b>凸透鏡</b>（先會聚）']])+AI+'記法：<b>「近視前、凹；遠視後、凸」</b>。',
+ qs:[['平行光穿過哪些東西後會「會聚」？凹透鏡、凸透鏡、近視眼鏡、遠視眼鏡','凸透鏡和遠視眼鏡（都是凸透鏡）。（自修 p.188 經典試題 2，102 會考）'],['物體放在遠視眼鏡鏡片的焦點和 2 倍焦距之間，成什麼像？','遠視眼鏡是凸透鏡 → F～2F → 倒立放大實像。（講義 p.204 類題 2、隨堂演練 24 第 6 題）']]});
+
+A({t:'實驗設計題：模擬近視眼',tag:'會考題型',src:'講義 p.207 隨堂演練 24 第 18 題；自修 p.188 經典試題 1（105 會考）',
+ text:'有人設計實驗：<ul><li>步驟 1：用<b>凸透鏡甲</b>代表正常的水晶體，屏幕代表視網膜，調到成像清楚。</li><li>步驟 2：把凸透鏡甲換成<b>凹透鏡乙</b>，代表近視的水晶體。</li><li>步驟 3：在乙前面放凹透鏡丙當近視眼鏡，讓屏幕再次清楚。</li></ul>這個設計<b>有一個錯誤</b>。',
+ qs:[['錯在哪裡？要怎麼改？','近視的人水晶體還是<b>凸透鏡</b>，只是焦距<b>太短</b>。所以步驟 2 應該把凹透鏡乙改成「焦距比甲短的凸透鏡」。'],['步驟 3 的眼鏡為什麼放在蠟燭和水晶體之間？','眼鏡戴在眼睛前面，光先經過眼鏡、再進入水晶體，所以放在中間是對的。']],
+ note:'這題考的是「近視的水晶體是什麼透鏡」。抓住：近視 ＝ 凸透鏡焦距太短，不是變成凹透鏡。'});
+
+A({t:'儀器與鏡子大整理',tag:'綜合',src:'講義 p.205～207 隨堂演練 24 第 4、7、8、11、12、17 題',
+ text:tbl(['東西','用什麼','像的性質'],[['放大鏡','凸透鏡（物在 F 內）','正立放大虛像'],['顯微鏡物鏡','凸透鏡（物在 F～2F）','倒立放大實像'],['顯微鏡目鏡','凸透鏡（實像在 F 內）','正立放大虛像'],['照相機','凸透鏡（物在 2F 外）','倒立縮小實像'],['眼睛','水晶體＝凸透鏡','視網膜上倒立縮小實像'],['電影放映機','凸透鏡（影片在 F～2F）','倒立放大實像'],['近視眼鏡','凹透鏡','—'],['遠視／老花眼鏡','凸透鏡','—']])+AI+'這張表是把講義各題的答案整理在一起。',
+ qs:[['「經由放大鏡看到的像一定是放大的」對嗎？','不對。放大鏡是凸透鏡，物體在 2F 外就會看到倒立縮小的實像。（隨堂演練 24 第 8 題）'],['凹透鏡和凸面鏡都會讓光發散，都能做近視眼鏡嗎？','不行。眼鏡要讓光「穿過去」，只能用透鏡；凸面鏡會把光反射回去。（隨堂演練 24 第 4 題）'],['下列哪個是虛像？視網膜上的像、針孔成像、照片、從空氣中看到水中的魚','從空氣中看到水中的魚。其他三個都是實像。（隨堂演練 24 第 12 題）'],['斜插入水中的筆看起來彎折，眼睛視網膜上的像是虛像嗎？','不是。我們「看到」的筆是虛像，但視網膜上的成像一定是實像。（隨堂演練 24 第 11 題的陷阱）']]});
+
+A({t:'📌補充：望遠鏡',tag:'📌 補充',src:'自修 p.186（老師說、你知道嗎）、p.189（智慧櫥窗）；講義沒有',
+ text:'課本補充：除了顯微鏡和眼鏡，<b>望遠鏡、攝影機、單槍投影機</b>也都是運用透鏡的光學儀器。'+tbl(['','折射式（克卜勒式）','反射式（牛頓式）'],[['主鏡','凸透鏡（物鏡）','凹面鏡'],['目鏡','凸透鏡','凸透鏡'],['看到的像','上下顛倒、左右相反的虛像','放大的虛像']])+'伽利略式望遠鏡用凸透鏡當物鏡、<b>凹透鏡</b>當目鏡，看到的是<b>正立</b>的像。',
+ note:'這段補習班講義沒有，是課本的補充資料，知道有這些就好。'});
+
+A({t:'小試身手',tag:'檢查自己',src:'自己出的題目，題型來自講義隨堂演練 24 和自修學力測驗',
+ text:RE+'六題，看懂上面就能答。',
+ qs:[['1. 顯微鏡的物鏡和目鏡，誰的焦距比較短？','物鏡。'],['2. 用顯微鏡看到的像和標本比，方向如何？','上下顛倒、左右相反（轉 180°）。'],['3. 照相機拍照時，物體要放在鏡頭的哪裡？','2 倍焦距外。'],['4. 眼睛看近物時，水晶體變凸還是變平？焦距變長還是變短？','變凸；焦距變短。'],['5. 近視的人遠物成像在哪裡？要戴什麼鏡片？','視網膜前；凹透鏡。'],['6. 老花眼要戴什麼鏡片？','凸透鏡。']]});
+
+A({t:'小結：4-4 你應該帶走的',tag:'完成',
+ text:'<ol><li>顯微鏡：兩片凸透鏡（物鏡焦距短、目鏡焦距長）；物在物鏡 F～2F → 倒立放大實像落在目鏡焦點內 → 目鏡再放大成虛像。看到的像<b>上下顛倒、左右相反</b>，放大兩次。</li><li>照相機：物在 2F 外 → 底片上倒立縮小實像。光圈調光量、快門調曝光時間。</li><li>眼睛：水晶體＝鏡頭、瞳孔＝光圈、視網膜＝底片。眼睛靠改變<b>焦距</b>對焦，看近較凸、看遠較平。</li><li>近視：成像在視網膜前，戴凹透鏡；遠視／老花：成像在視網膜後，戴凸透鏡。</li></ol>',
+ note:'下一節 4-5 光與顏色在另一個檔案。'});
+
+/* ===== 播放 ===== */
+var deck='A',cur=0,QM={};
+function pageMarked(d,n){var p=d+n;for(var k in QM)if(k===p||k.indexOf(p+':')===0)return true;return false;}
+function el(i){return document.getElementById(i);}
+var h='';
+Object.keys(DECKS).forEach(function(k){
+  DECKS[k].SL.forEach(function(s,i){
+    h+='<section class="slide" id="s'+k+i+'"><span class="tag'+(s.tag&&/^(📌|💡)/.test(s.tag)?' sup':'')+'">'+(s.tag||('步驟 '+(i+1)))+'</span><h1>'+s.t+'</h1><button class="mk" data-k="'+k+i+'">❓ 這頁有問題</button>'+(s.src?'<div class="src">📖 出處：'+s.src+'</div>':'');
+    /* 橫放平板：有圖的頁圖在左、文字在右；沒圖但有文字＋想一想：文字在左、想一想在右（見 CSS .sbody.two） */
+    var tq=!s.fig&&s.qs&&s.text;
+    h+='<div class="sbody'+(s.fig?' two':(tq?' two tq':''))+'">';
+    if(s.fig)h+='<div class="sfig">'+s.fig+'</div>';
+    else if(tq)h+='<div class="sfig"><div class="txt">'+s.text+'</div>'+(s.sheet?'<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>':'')+'</div>';
+    h+='<div class="stxt">';
+    if(s.text&&!tq)h+='<div class="txt">'+s.text+'</div>';
+    if(s.sheet&&!tq)h+='<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>';
+    if(s.qs){h+='<div class="qs'+(s.qs.length>2&&!s.fig&&!tq?' qgrid':'')+'">';s.qs.forEach(function(q,qi){h+='<div class="q" id="q'+k+i+'_'+qi+'"><button class="mk mq" data-k="'+k+i+':'+qi+'">❓</button><div class="p">想一想：'+q[0]+'</div><details><summary>看答案</summary><div class="a">'+q[1]+'</div></details></div>';});h+='</div>';}
+    if(s.note)h+='<div class="note"><details><summary>👂 上課聽這裡</summary>'+s.note+'</details></div>';
+    h+='</div></div></section>';
+  });
+});
+el('slides').innerHTML=h;
+Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s){if(s.init)s.init();});});
+if(Object.keys(DECKS).length<2)el('tabs').style.display='none';
+el('tabs').innerHTML=Object.keys(DECKS).map(function(k){return '<button data-d="'+k+'">'+DECKS[k].name+'</button>';}).join('');
+function curId(){return 's'+deck+cur;}
+function go(d,i){
+  deck=d;var SL=DECKS[d].SL;cur=Math.max(0,Math.min(SL.length-1,i));
+  Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s,n){el('s'+k+n).classList.toggle('cur',k===d&&n===cur);});});
+  Array.prototype.forEach.call(el('tabs').children,function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});
+  el('jump').innerHTML=SL.map(function(s,n){return '<option value="'+n+'">'+(pageMarked(d,n)?'❓ ':'')+(n+1)+'. '+s.t.replace(/<[^>]+>/g,'')+'</option>';}).join('');
+  el('jump').value=String(cur);
+  el('pb').style.width=((cur+1)/SL.length*100)+'%';
+  el('prev').disabled=cur===0;
+  el('next').textContent=cur===SL.length-1?'完成 ✓':'下一步 ▶';
+  try{history.replaceState(null,'','#'+d+(cur+1));}catch(e){}
+  window.scrollTo(0,0);
+  if(INK.cv[curId()])canvasFor(curId());
+}
+
+/* ===== 手寫層 =====
+   每一頁各自一張透明畫布，筆跡存成向量（換頁再回來還在，重新整理才會消失）。
+   「只有筆能寫」：觸控筆（或滑鼠）寫字，手指照常捲動、按「看答案」。 */
+var INK={on:false,color:'pu',erase:false,penOnly:true,strokes:{},cv:{}};
+try{var pp=localStorage.getItem('handout_ink_pen_only');if(pp!==null)INK.penOnly=(pp==='1');}catch(e){}
+/* 手寫顏色刻意避開圖形用的橘、綠、藍、磚紅、深灰 */
+var INKC={pu:['#7b1fa2','#ce93d8'],pk:['#e91e63','#f48fb1'],cy:['#0097a7','#4dd0e1']};
+function inkColor(c){var dk=false;try{dk=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';}catch(e){}return (INKC[c]||INKC.pu)[dk?1:0];}
+function canvasFor(id){
+  var sec=el(id),cv=INK.cv[id];
+  if(!cv){cv=document.createElement('canvas');cv.className='ink-cv';sec.appendChild(cv);INK.cv[id]=cv;}
+  if(!INK.strokes[id])INK.strokes[id]=[];
+  var w=sec.clientWidth,hh=sec.clientHeight,r=window.devicePixelRatio||1;
+  if(w&&hh&&(cv._w!==w||cv._h!==hh||cv._r!==r)){cv._w=w;cv._h=hh;cv._r=r;cv.width=Math.round(w*r);cv.height=Math.round(hh*r);cv.style.width=w+'px';cv.style.height=hh+'px';redraw(id);}
+  return cv;
+}
+function seg(ctx,s,a,b){ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+function redraw(id){
+  var cv=INK.cv[id];if(!cv||!cv._w)return;var ctx=cv.getContext('2d'),r=cv._r||1;
+  ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,cv._w,cv._h);
+  (INK.strokes[id]||[]).forEach(function(s){
+    if(s.p.length===1){seg(ctx,s,s.p[0],[s.p[0][0]+0.1,s.p[0][1]]);return;}
+    ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.p[0][0],s.p[0][1]);
+    for(var k=1;k<s.p.length;k++)ctx.lineTo(s.p[k][0],s.p[k][1]);ctx.stroke();
+  });
+}
+function eraseAt(x,y){
+  function near(p,q){var vx=q[0]-p[0],vy=q[1]-p[1],L=vx*vx+vy*vy,t=L?Math.max(0,Math.min(1,((x-p[0])*vx+(y-p[1])*vy)/L)):0,dx=p[0]+t*vx-x,dy=p[1]+t*vy-y;return dx*dx+dy*dy<196;}
+  var id=curId(),a=INK.strokes[id]||[],keep=a.filter(function(s){for(var k=0;k<s.p.length;k++)if(near(s.p[k],s.p[Math.min(k+1,s.p.length-1)]))return false;return true;});
+  if(keep.length!==a.length){INK.strokes[id]=keep;redraw(id);}
+}
+var drawing=null,finger=null;
+function pos(e){var rc=INK.cv[curId()].getBoundingClientRect();return [Math.round((e.clientX-rc.left)*10)/10,Math.round((e.clientY-rc.top)*10)/10];}
+el('slides').addEventListener('pointerdown',function(e){
+  if(!INK.on)return;
+  var penLike=(e.pointerType==='pen'||e.pointerType==='mouse');
+  if(!penLike&&INK.penOnly){finger={id:e.pointerId,y:e.clientY};return;}
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();var id=curId();canvasFor(id);
+  var p=pos(e),er=INK.erase||(e.buttons&32)===32;
+  drawing={id:e.pointerId,erase:er,sec:id};
+  try{el('slides').setPointerCapture(e.pointerId);}catch(_){}
+  if(er){eraseAt(p[0],p[1]);return;}
+  drawing.s={c:INK.color,w:e.pointerType==='pen'?3:4,p:[p]};INK.strokes[id].push(drawing.s);redraw(id);
+});
+el('slides').addEventListener('pointermove',function(e){
+  if(finger&&e.pointerId===finger.id){window.scrollBy(0,finger.y-e.clientY);finger.y=e.clientY;return;}
+  if(!drawing||e.pointerId!==drawing.id)return;
+  e.preventDefault();
+  var evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e],ctx=INK.cv[drawing.sec].getContext('2d');
+  evs.forEach(function(ev){
+    var p=pos(ev);
+    if(drawing.erase){eraseAt(p[0],p[1]);return;}
+    var pts=drawing.s.p,last=pts[pts.length-1];
+    if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<1)return;
+    pts.push(p);seg(ctx,drawing.s,last,p);
+  });
+});
+function endInk(e){if(finger&&e.pointerId===finger.id)finger=null;if(drawing&&e.pointerId===drawing.id)drawing=null;}
+el('slides').addEventListener('pointerup',endInk);
+el('slides').addEventListener('pointercancel',endInk);
+function setInk(on){
+  INK.on=on;document.body.classList.toggle('ink',on);
+  el('inkBtn').classList.toggle('inkon',on);el('inkBtn').setAttribute('aria-pressed',on?'true':'false');
+  el('inkBtn').innerHTML=on?'✏️<span class="lb"> 手寫中</span>':'✏️<span class="lb"> 手寫</span>';
+  if(on)canvasFor(curId());
+}
+function markTool(){
+  el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.classList.toggle('on',!INK.erase&&b.dataset.c===INK.color);});
+  el('inkErase').classList.toggle('on',INK.erase);
+}
+el('inkBtn').onclick=function(){setInk(!INK.on);if(INK.on)setQP(false);};
+el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){INK.color=b.dataset.c;INK.erase=false;markTool();};});
+el('inkErase').onclick=function(){INK.erase=!INK.erase;markTool();};
+el('inkUndo').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length){a.pop();redraw(id);}};
+el('inkClear').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length&&confirm('清除這一頁的手寫？')){INK.strokes[id]=[];redraw(id);}};
+el('inkSpace').onclick=function(){var sec=el(curId()),pb=parseInt(sec.style.paddingBottom||'18',10);sec.style.paddingBottom=(pb+320)+'px';canvasFor(curId());window.scrollBy(0,320);};
+el('inkPen').checked=INK.penOnly;
+el('inkPen').onchange=function(){INK.penOnly=el('inkPen').checked;try{localStorage.setItem('handout_ink_pen_only',INK.penOnly?'1':'0');}catch(e){}};
+window.addEventListener('resize',function(){if(INK.cv[curId()])canvasFor(curId());});
+el('slides').addEventListener('toggle',function(){if(INK.cv[curId()])canvasFor(curId());},true);
+
+/* ===== ❓ 標記有問題的頁、題 =====
+   點頁面上的「❓ 這頁有問題」或想一想右上角的「❓」標記；下方「❓ 問題」列出全部，點了直接跳過去。
+   存在這台裝置的瀏覽器（localStorage），重新整理還在。 */
+var QKEY='handout_marks_'+document.title;
+try{QM=JSON.parse(localStorage.getItem(QKEY)||'{}')||{};}catch(e){QM={};}
+function saveQM(){try{localStorage.setItem(QKEY,JSON.stringify(QM));}catch(e){}}
+function plain(x){return String(x).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();}
+function cut(x,n){return x.length>n?x.slice(0,n)+'…':x;}
+function mkParse(k){return k.match(/^([A-Z])(\d+)(?::(\d+))?$/);}
+function paintMarks(){
+  el('slides').querySelectorAll('.mk').forEach(function(b){var on=!!QM[b.dataset.k];b.classList.toggle('on',on);if(!b.classList.contains('mq'))b.textContent=on?'❗ 已標記有問題':'❓ 這頁有問題';b.setAttribute('aria-pressed',on?'true':'false');});
+  var n=Object.keys(QM).length;el('qpBtn').innerHTML='❓<span class="lb"> 問題</span>'+(n?'（'+n+'）':'');
+  var SL=DECKS[deck].SL;Array.prototype.forEach.call(el('jump').options,function(o,i){o.textContent=(pageMarked(deck,i)?'❓ ':'')+(i+1)+'. '+plain(SL[i].t);});
+  var multi=Object.keys(DECKS).length>1,keys=Object.keys(QM).filter(mkParse).sort(function(a,b){var pa=mkParse(a),pb=mkParse(b);if(pa[1]!==pb[1])return pa[1]<pb[1]?-1:1;return (+pa[2]-pb[2])||((pa[3]===undefined?-1:+pa[3])-(pb[3]===undefined?-1:+pb[3]));});
+  var out='',lastPage='';
+  keys.forEach(function(k){
+    var m=mkParse(k);if(!DECKS[m[1]])return;var s=DECKS[m[1]].SL[+m[2]];if(!s)return;
+    var head=(multi?DECKS[m[1]].name.split('｜')[0]+'　':'')+'第 '+(+m[2]+1)+' 頁　'+cut(plain(s.t),22);
+    if(m[3]===undefined){out+='<a data-go="'+k+'">📄 '+head+'</a>';lastPage=m[1]+m[2];}
+    else{var q=s.qs&&s.qs[+m[3]];if(!q)return;if(lastPage!==m[1]+m[2])out+='<a data-go="'+m[1]+m[2]+'">📄 '+head+'</a>';lastPage=m[1]+m[2];out+='<a class="sub" data-go="'+k+'">└ 想一想：'+cut(plain(q[0]),30)+'</a>';}
+  });
+  el('qpList').innerHTML=out||'<div class="empty">還沒有標記。看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」。</div>';
+}
+function setQP(on){document.body.classList.toggle('qp',on);el('qpBtn').classList.toggle('qon',on);if(on&&INK.on)setInk(false);}
+el('slides').addEventListener('click',function(e){var b=e.target.closest('.mk');if(!b)return;e.preventDefault();var k=b.dataset.k;if(QM[k])delete QM[k];else QM[k]=1;saveQM();paintMarks();});
+el('qpBtn').onclick=function(){setQP(!document.body.classList.contains('qp'));};
+el('qpClose').onclick=function(){setQP(false);};
+el('qpClear').onclick=function(){if(Object.keys(QM).length&&confirm('清除全部的「有問題」標記？')){QM={};saveQM();paintMarks();}};
+el('qpList').onclick=function(e){var a=e.target.closest('a[data-go]');if(!a)return;var m=mkParse(a.dataset.go);go(m[1],+m[2]);setQP(false);
+  if(m[3]!==undefined){var q=el('q'+m[1]+m[2]+'_'+m[3]);if(q){q.scrollIntoView({block:'center'});q.classList.add('flash');setTimeout(function(){q.classList.remove('flash');},1600);}}};
+
+el('tabs').onclick=function(e){var b=e.target.closest('button');if(b)go(b.getAttribute('data-d'),0);};
+el('prev').onclick=function(){go(deck,cur-1);};
+el('next').onclick=function(){if(cur<DECKS[deck].SL.length-1)go(deck,cur+1);};
+el('jump').onchange=function(){go(deck,Number(el('jump').value));};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(deck,cur+1);else if(e.key==='ArrowLeft')go(deck,cur-1);});
+var m=(location.hash||'').match(/^#([AB])(\d+)$/);
+go(m?m[1]:'A',m?parseInt(m[2],10)-1:0);
+paintMarks();
+})();
+</script>
+</body>
+</html>
