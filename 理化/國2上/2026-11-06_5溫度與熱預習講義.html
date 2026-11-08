@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第5章 溫度與熱 預習講義</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle'%3E%F0%9F%8C%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#333;--sub:#555;--line:#e0d8ca;--ac:#c0704a;--ac2:#4a7a6b;--ac3:#4a6b9a;--bad:#b0442e;--soft:#f3ece0;--hi:#fff7e6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1f1d1a;--card:#2a2723;--ink:#eee;--sub:#bbb;--line:#4a443c;--ac:#e0916b;--ac2:#7fc4ad;--ac3:#8fb0e0;--bad:#ee8a74;--soft:#38342d;--hi:#3a3322}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;line-height:1.7;font-size:1.2rem}
+.wrap{max-width:860px;margin:0 auto;padding:10px 16px 110px}
+.tabs{display:flex;gap:8px;margin:2px 0 8px}
+.tabs button{flex:1;font-family:inherit;font-size:1.05rem;padding:9px 8px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ac3);border-color:var(--ac3);color:#fff;font-weight:700}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--sub)}
+.top select{font-family:inherit;font-size:.9rem;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:62%}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--ac2);width:0;transition:width .25s}
+.slide{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.slide.cur{display:block}
+.tag{display:inline-block;background:var(--ac3);color:#fff;border-radius:99px;padding:0 12px;font-size:.95rem}
+.tag.sup{background:var(--ac2)}.tag.pr{background:var(--ac)}
+h1{font-size:1.6rem;margin:6px 0 10px;line-height:1.35}
+.fig{max-width:100%;height:auto;display:block;margin:8px auto;max-height:330px;color:var(--ink)}
+.figs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:flex-end}
+.figs .fig{max-width:48%}
+.fig.big .lbl,.fig.big .lbl2,.fig.big .tI,.fig.big .tR,.fig.big .tF,.fig.big .tB{font-size:16px}
+@media (orientation:portrait) and (min-width:600px){.fig{max-height:46vh}}
+.txt{margin:8px 0}
+.txt b{color:var(--ac)}
+.txt ol,.txt ul{margin:6px 0;padding-left:1.4em}
+.txt li{margin:4px 0}
+.eq{font-size:1.5rem;font-weight:700;text-align:center;margin:8px 0;line-height:1.5}
+table.t{border-collapse:collapse;width:100%;font-size:1.02rem;margin:8px 0}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+table.t th{background:var(--soft)}
+.q{background:var(--hi);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:10px 0}
+.q .p{font-weight:700}
+details summary{cursor:pointer;color:var(--ac3);font-size:1rem}
+.q .a{padding:4px 0;color:var(--ac2);font-weight:700}
+.sheet{background:#fffbe3;border:2px dashed #d9b84a;border-radius:12px;padding:8px 12px;margin:10px 0;font-size:1rem;color:#3d3a2c}
+.sheet b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .sheet{background:#3b3722;border-color:#a88c2f;color:#eee}:root:not([data-theme=light]) .sheet b{color:#f0c860}}
+.src{font-size:.95rem;color:var(--sub);margin:-4px 0 10px}
+.ai{display:inline-block;background:#e6f0eb;color:#2f5d4f;border:1px solid var(--ac2);border-radius:6px;padding:0 6px;font-size:.95rem;font-weight:700;line-height:1.5;white-space:nowrap}
+.ai.re{background:#e8edf6;color:#344e78;border-color:var(--ac3)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .ai{background:#24352f;color:#9fd6c2}:root:not([data-theme=light]) .ai.re{background:#262f40;color:#a9c2ea}}
+.note{margin-top:12px;font-size:.95rem;color:var(--sub)}
+.note details{border-top:1px dashed var(--line);padding-top:6px}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 14px;display:flex;gap:12px;justify-content:center;z-index:5}
+.nav button{font-family:inherit;font-size:1.2rem;padding:12px 28px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:130px}
+.nav button.go{background:var(--ac);border-color:var(--ac);color:#fff}
+.nav button:disabled{opacity:.4}
+/* SVG 圖形 */
+.lbl{fill:currentColor;font-size:14px}.lbl2{fill:currentColor;font-size:15px;font-weight:700}
+.lbl,.lbl2,.tI,.tR,.tF{paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.tI,.tR,.tF{font-size:14px;font-weight:700}
+.tI{fill:var(--ac)}.tR{fill:var(--ac3)}.tF{fill:var(--ac2)}
+.rI{stroke:var(--ac);stroke-width:3;fill:none}.rR{stroke:var(--ac3);stroke-width:3;fill:none}
+.rF{stroke:var(--ac2);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.nl{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+.ifc{stroke:currentColor;stroke-width:2.5}
+.ghostL{stroke:var(--sub);stroke-width:2;stroke-dasharray:4 4;fill:none}
+.q1,.q2,.q3,.q1d,.q2d,.q3d{stroke-width:2.4;fill:none}.q1,.q1d{stroke:var(--ac)}.q2,.q2d{stroke:var(--ac2)}.q3,.q3d{stroke:var(--ac3)}.q1d,.q2d,.q3d{stroke-dasharray:5 4;stroke-width:1.8}
+.axis{stroke:currentColor;stroke-width:1.5}.obj{stroke:currentColor;stroke-width:3.5}.img{stroke:var(--bad);stroke-width:3.5}.imgd{stroke:var(--bad);stroke-width:3;stroke-dasharray:6 4}
+.tB{fill:var(--bad);font-size:14px;font-weight:700;paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round}
+.arcI{stroke:var(--ac);stroke-width:2;fill:none}.arcR{stroke:var(--ac3);stroke-width:2;fill:none}.arcF{stroke:var(--ac2);stroke-width:2;fill:none}.arcX{stroke:var(--sub);stroke-width:1.6;fill:none}
+@media print{body{background:#fff;color:#000}.nav,.top select,.bar,.tabs{display:none}.slide{display:block!important;break-inside:avoid;page-break-after:always;border:0}.wrap{padding:0}details{display:block}details>summary{display:none}}
+@media (max-width:560px){body{font-size:1.08rem}h1{font-size:1.4rem}.figs .fig{max-width:100%}.tabs button{font-size:.88rem;padding:8px 4px}.top{flex-direction:column;align-items:stretch;gap:4px}.top select{max-width:100%;width:100%}.nav{gap:8px;padding:8px 10px}.nav button{min-width:0;flex:1;padding:12px 6px;font-size:1.05rem;white-space:nowrap}}
+/* 手寫層 */
+.slide{position:relative}
+.ink-cv{position:absolute;left:0;top:0;pointer-events:none;z-index:3}
+body.ink .wrap{touch-action:none;padding-bottom:190px}
+.nav button.sm{min-width:0;padding:12px 16px}
+.nav button.inkon{background:var(--ac3);border-color:var(--ac3);color:#fff}
+.inkbar{position:fixed;left:0;right:0;bottom:68px;z-index:6;display:none;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;padding:8px 10px;background:var(--card);border-top:1px solid var(--line)}
+body.ink .inkbar{display:flex}
+.inkbar button{font-family:inherit;font-size:1rem;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.inkbar button.on{border-color:var(--ac);background:var(--hi)}
+.inkbar label{font-size:.95rem;display:flex;align-items:center;gap:4px}
+.inkbar input{width:20px;height:20px}
+@media print{.inkbar{display:none!important}}
+/* 橫放（寬螢幕）：版面加寬，有圖的頁分左右兩欄，圖的高度跟著螢幕高度 */
+@media (orientation:landscape) and (min-width:900px){
+  .wrap{max-width:1280px;padding-top:6px}
+  .tabs{margin:0 0 4px}
+  .bar{margin:4px 0 8px}
+  .slide{padding:12px 22px}
+  .slide>h1{display:inline-block;margin:0 0 4px 10px;vertical-align:middle;font-size:1.5rem}
+  .src{margin:0 0 6px}
+  .slide>.tag{vertical-align:middle}
+  .sbody.two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:start}
+  .sbody.tq{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+  .sbody.two .fig{max-height:calc(100vh - 280px);margin-top:4px}
+  .sbody.two .figs .fig{max-height:calc(50vh - 110px)}
+  .sbody:not(.two) .stxt{max-width:1000px;margin:0 auto}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+}
+/* 橫放、螢幕比較矮（高解析平板、網址列佔掉高度）：字稍微縮小 */
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){
+  body{font-size:1.08rem;line-height:1.6}
+  .slide>h1{font-size:1.35rem}
+  .tabs button{padding:6px 8px;font-size:.98rem}
+  .q{padding:6px 12px;margin:7px 0}
+  .eq{font-size:1.35rem;margin:4px 0}
+  .sheet{padding:6px 10px;margin:7px 0}
+  .sbody.two .fig{max-height:calc(100vh - 265px)}
+  table.t{font-size:.95rem}table.t th,table.t td{padding:4px 6px}
+  .nav{padding:6px 14px}.nav button{padding:9px 24px}
+  .inkbar{bottom:58px}
+}
+
+/* 手寫顏色圓點 */
+.inkbar .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+/* ❓ 標記有問題 */
+.mk{font-family:inherit;font-size:.95rem;border:1.5px solid var(--line);background:var(--card);color:var(--sub);border-radius:99px;padding:1px 12px;cursor:pointer;vertical-align:middle;margin:0 0 4px 8px;line-height:1.6}
+.mk.on{background:#fde7ee;border-color:#e91e63;color:#ad1457;font-weight:700}
+.q .mq{float:right;margin:0 0 4px 8px;padding:0 10px}
+.q.flash{outline:3px solid #e91e63;outline-offset:2px}
+.qpanel{position:fixed;left:0;right:0;bottom:68px;z-index:7;display:none;max-height:55vh;overflow:auto;background:var(--card);border-top:2px solid #e91e63;padding:8px 16px 12px}
+body.qp .qpanel{display:block}
+.qph{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qph button{font-family:inherit;font-size:.95rem;margin-left:6px;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qpanel a{display:block;padding:8px 6px;border-bottom:1px dashed var(--line);color:var(--ink);text-decoration:none;cursor:pointer;font-size:1rem}
+.qpanel a.sub{padding-left:26px;color:var(--sub)}
+.qpanel .empty{color:var(--sub);padding:8px 6px;font-size:1rem}
+.nav button.qon{background:#e91e63;border-color:#e91e63;color:#fff}
+@media (orientation:landscape) and (min-width:900px) and (max-height:760px){.qpanel{bottom:58px}}
+@media print{.qpanel,.mk{display:none!important}}
+@media (max-width:560px){.nav button.sm{flex:0 0 auto;padding:12px 12px}.nav .lb{display:none}}
+
+/* 觀念釐清選擇題 */
+.mc{display:flex;flex-direction:column;gap:6px;margin:6px 0}
+.mo{font-family:inherit;font-size:1.05rem;text-align:left;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.5}
+.mo b{color:var(--ac3);margin-right:4px}
+.mo.ok{background:#e3f3ea;border-color:#2e8b57}
+.mo.no{background:#fde9e4;border-color:var(--bad)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mo.ok{background:#1f3a2c}:root:not([data-theme=light]) .mo.no{background:#4a2a24}}
+.mcf{font-size:1rem;margin:4px 0}
+.mcf.good{color:#1f6b45}.mcf.bad{color:var(--bad)}.mcf .try{color:var(--sub)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .mcf.good{color:#8fe0b4}}
+/* 數學：分數、指數 */
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.25;margin:0 2px}
+.fr>span{padding:0 4px}.fr>span:first-child{border-bottom:1.5px solid currentColor}
+.fp{font-size:1.6em;vertical-align:middle;line-height:1}
+sup{line-height:0;font-size:.72em}
+.c1{color:var(--ac);font-weight:700}.c2{color:var(--ac3);font-weight:700}.c3{color:var(--ac2);font-weight:700}
+.bad{color:var(--bad);font-weight:700}
+.big-eq{font-size:1.6rem;text-align:center;margin:8px 0;line-height:1.9}
+.q .a .ex{font-weight:400;color:var(--ink)}
+
+/* 📌 定義卡 */
+.def{border:2px solid var(--ac);border-left-width:9px;background:var(--hi);border-radius:10px;padding:8px 14px;margin:8px 0 12px}
+.def .dh{font-weight:700;color:var(--ac);margin-bottom:2px}
+.def .eq{margin:4px 0 2px}
+/* 數學講義：圖在 1138×620 這類較窄的橫放畫面會縮到約 0.85 倍，圖內字放大到 18px 才不會低於 15px */
+.fig.big.x18 .lbl,.fig.big.x18 .lbl2{font-size:18px}
+
+/* 上下兩排逐欄對齊（COLS） */
+.cols{max-width:30em;margin:6px auto}
+.cols .cr{display:grid;text-align:center}
+.cols .cr{margin-bottom:8px;column-gap:8px}
+.cols .r1{font-size:1rem;white-space:nowrap}
+.hl{color:var(--ac3);font-weight:700}
+.pa{color:var(--sub);font-weight:400;font-size:.85em}
+
+.txt .rd,.rd{color:#d32f2f;font-weight:700}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .txt .rd,:root:not([data-theme=light]) .rd{color:#ff8a80}}
+:root[data-theme=dark] .txt .rd,:root[data-theme=dark] .rd{color:#ff8a80}
+
+/* 全形逗號「，」：微軟正黑體把它放在字格正中間，看起來像乘號「·」。只有這個字改用微軟雅黑（逗號在左下角），其他字不變 */
+@font-face{font-family:"逗號";src:local("Microsoft YaHei"),local("微软雅黑"),local("Noto Sans SC"),local("PingFang SC");unicode-range:U+FF0C}
+body{font-family:"逗號","Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif}
+
+.t.fx{table-layout:fixed}
+.t.fx td,.t.fx th{text-align:center}
+.t.nh td.rl{background:var(--soft);font-weight:700;width:24%}
+
+</style>
+</head>
+<body><nav class="jhs-nav" style="font-family:-apple-system,'Segoe UI','Microsoft JhengHei',sans-serif;font-size:0.85rem;padding:8px 14px;background:#eef1f6;border-bottom:1px solid #d7dde6;color:#2c3e50"><a href="../../index.html" style="color:#3d5a80;text-decoration:none">🏠 回首頁</a>&nbsp;›&nbsp;<a href="index.html" style="color:#3d5a80;text-decoration:none">⚗️ 國2上 理化</a>&nbsp;›&nbsp; 第二次段考 › 第5章 溫度與熱 預習講義</nav>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="top"><span>第5章 預習講義　溫度與熱</span><select id="jump" aria-label="跳到某一頁"></select></div>
+  <div class="bar"><i id="pb"></i></div>
+  <div id="slides"></div>
+</div>
+<div class="inkbar" id="inkbar">
+  <button data-c="pu" class="on"><span class="dot" style="background:#7b1fa2"></span>紫</button><button data-c="pk"><span class="dot" style="background:#e91e63"></span>桃紅</button><button data-c="cy"><span class="dot" style="background:#0097a7"></span>青</button>
+  <button id="inkErase">🧽 橡皮擦</button><button id="inkUndo">↶ 復原</button><button id="inkClear">🗑 清這頁</button><button id="inkSpace">＋ 空白計算區</button>
+  <label><input type="checkbox" id="inkPen"> 只有筆能寫（手指用來捲動）</label>
+</div>
+<div class="qpanel" id="qpanel"><div class="qph"><b>❓ 標記有問題的地方</b><span><button id="qpClear">清除全部</button><button id="qpClose">✕ 關閉</button></span></div><div id="qpList"></div></div>
+<div class="nav"><button id="qpBtn" class="sm">❓<span class="lb"> 問題</span></button><button id="inkBtn" class="sm" aria-pressed="false">✏️<span class="lb"> 手寫</span></button><button id="prev">◀ 上一步</button><button id="next" class="go">下一步 ▶</button></div>
+
+<script>
+(function(){
+/* ===== 數學預習講義共用工具（分數／指數排版、選擇題 mc、表格）===== */
+var UID=0;
+function f1(x){return (Math.round(x*10)/10).toString();}
+function T(x,y,t,cls,anchor){return '<text class="'+(cls||'lbl')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'">'+t+'</text>';}
+function P(b,e){return b+'<sup>'+e+'</sup>';}
+function fr(n,d){return '<span class="fr"><span>'+n+'</span><span>'+d+'</span></span>';}
+function FP(n,d,e,neg){return '<span class="fp">(</span>'+(neg?'−':'')+fr(n,d)+'<span class="fp">)</span>'+(e!==undefined?'<sup>'+e+'</sup>':'');}
+/* 選擇題：選項順序依題目文字固定洗牌（每次開啟順序相同），避免正解總在同一個位置。用 Math.imul 做乘法，h*1103515245 超過 2^53 會失去低位元，洗牌會偏向 */
+function mc(q,o,a,w,exp){
+  var h=7,i,idx=o.map(function(_,k){return k;});
+  for(i=0;i<q.length;i++)h=(h*31+q.charCodeAt(i))>>>0;
+  for(i=idx.length-1;i>0;i--){h=(Math.imul(h,1103515245)+12345)>>>0;var j=(h>>>8)%(i+1),t=idx[i];idx[i]=idx[j];idx[j]=t;}
+  return [q,exp,{o:idx.map(function(k){return o[k];}),w:idx.map(function(k){return w[k];}),a:idx.indexOf(a)}];
+}
+function tbl(head,rows){
+  var h='<table class="t"><tr>'+head.map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(x){return '<td>'+x+'</td>';}).join('')+'</tr>';});
+  return h+'</table>';
+}
+function eq(h){return '<div class="eq">'+h+'</div>';}
+
+var AI='<span class="ai">💡 補充說明</span> ',RE='<span class="ai re">🔁 類題</span> ';
+
+/* 定義卡：單位、名詞的定義要一眼看到（頁面上方，粗框） */
+function DEF(term,body){return '<div class="def"><div class="dh">📌 定義：'+term+'</div>'+body+'</div>';}
+
+/* 多排、逐欄對齊（每欄置中）：COLS(排1, 排2, …)，每排是字串陣列；不要用全形空格對齊，字寬不同會歪。
+   HL(字)＝重點字上色；PA(字)＝括號裡可省略的部分（灰色） */
+function HL(x){return '<b class="hl">'+x+'</b>';}
+function PA(x){return '<span class="pa">('+x+')</span>';}
+function COLS(){var rs=Array.prototype.slice.call(arguments),n=rs[0].length,st=' style="grid-template-columns:repeat('+n+',minmax(2.6em,1fr))"';
+  return '<div class="eq cols">'+rs.map(function(r,k){return '<div class="cr r'+k+'"'+st+'>'+r.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';}).join('')+'</div>';}
+
+/* RD(字)＝字首字母標紅（k、c、m、μ、n） */
+function RD(x){return '<b class="rd">'+x+'</b>';}
+
+/* ===== 第5章 溫度與熱：圖形工具（lib.js 已提供 UID、f1、T、mc、tbl、eq、DEF、HL、AI、RE）===== */
+function mk(id){
+  var c=[['a','var(--ac)'],['b','var(--ac3)'],['c','var(--ac2)'],['d','var(--sub)'],['e','var(--bad)'],['k','currentColor']];
+  return '<defs>'+c.map(function(m){return '<marker id="'+id+m[0]+'" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto-start-reverse"><path d="M0,1 L12,6.5 L0,12 Z" fill="'+m[1]+'"/></marker>';}).join('')+'</defs>';
+}
+var CL={a:'var(--ac)',b:'var(--ac3)',c:'var(--ac2)',d:'var(--sub)',e:'var(--bad)',k:'currentColor'};
+/* 線段：col 顏色代號 a/b/c/d/e/k，m 箭頭代號 */
+function LN(x1,y1,x2,y2,col,w,id,m,dash){
+  return '<line x1="'+f1(x1)+'" y1="'+f1(y1)+'" x2="'+f1(x2)+'" y2="'+f1(y2)+'" stroke="'+(CL[col]||col)+'" stroke-width="'+(w||2.5)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+(m?' marker-end="url(#'+id+m+')"':'')+'/>';
+}
+function PL(pts,col,w,dash,id,m){
+  return '<polyline fill="none" stroke="'+(CL[col]||col)+'" stroke-width="'+(w||3.2)+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+(m?' marker-end="url(#'+id+m+')"':'')+' stroke-linejoin="round" stroke-linecap="round" points="'+pts.map(function(p){return f1(p[0])+','+f1(p[1]);}).join(' ')+'"/>';
+}
+/* 有顏色的字（預設 18px 粗體） */
+function TC(x,y,t,col,anchor,cls){return '<text class="'+(cls||'lbl2')+'" x="'+f1(x)+'" y="'+f1(y)+'" text-anchor="'+(anchor||'start')+'" style="fill:'+(CL[col]||col)+'">'+t+'</text>';}
+function RC(x,y,w,h,fill,op,stroke,rx){return '<rect x="'+f1(x)+'" y="'+f1(y)+'" width="'+f1(w)+'" height="'+f1(h)+'" rx="'+(rx||0)+'" fill="'+(fill||'none')+'"'+(op!==undefined?' fill-opacity="'+op+'"':'')+(stroke?' stroke="'+stroke+'" stroke-width="2"':'')+'/>';}
+function SVG(W,H,aria,cls){return '<svg class="fig big x18'+(cls?' '+cls:'')+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+aria+'">';}
+
+/* 座標圖：o.x=[最小,最大,間隔] o.y=[…] o.xl o.yl 軸名；o.lines=[{p:[[x,y]…],c:'a',t:'甲',at:[x,y],an:'start',dash}]
+   o.noxt／o.noyt 不標刻度數字；o.xt(v)／o.yt(v) 自訂刻度文字；o.extra(X,Y) 額外圖形 */
+function chart(o){
+  var W=o.W||420,H=o.H||320,ml=o.ml||58,mb=o.mb||68,mt=o.mt||40,mr=o.mr||30,pw=W-ml-mr,ph=H-mt-mb,v,
+      X=function(v){return ml+(v-o.x[0])/(o.x[1]-o.x[0])*pw;},
+      Y=function(v){return H-mb-(v-o.y[0])/(o.y[1]-o.y[0])*ph;},
+      id='c'+(++UID),s=SVG(W,H,o.aria||'關係圖')+mk(id);
+  for(v=o.x[0];v<=o.x[1]+1e-9;v+=o.x[2]){
+    if(!o.nogrid)s+=LN(X(v),mt,X(v),H-mb,'var(--line)',1);
+    if(!o.noxt)s+=T(X(v),H-mb+24,o.xt?o.xt(v):v,'lbl2','middle');
+  }
+  for(v=o.y[0];v<=o.y[1]+1e-9;v+=o.y[2]){
+    if(!o.nogrid)s+=LN(ml,Y(v),W-mr,Y(v),'var(--line)',1);
+    if(!o.noyt)s+=T(ml-8,Y(v)+6,o.yt?o.yt(v):v,'lbl2','end');
+  }
+  s+=LN(ml,H-mb,W-mr+14,H-mb,'k',2.5,id,'k')+LN(ml,H-mb,ml,mt-22,'k',2.5,id,'k');
+  s+=T(W-4,H-6,o.xl||'時間','lbl2','end')+T(ml+8,mt-20,o.yl||'溫度','lbl2','start');
+  if(o.extra)s+=o.extra(X,Y,id);
+  (o.lines||[]).forEach(function(l){
+    s+=PL(l.p.map(function(p){return [X(p[0]),Y(p[1])];}),l.c,l.w,l.dash);
+    if(l.t)s+=TC(X(l.at[0]),Y(l.at[1]),l.t,l.c,l.an);
+  });
+  return s+'</svg>';
+}
+
+/* 三個盆子＋兩隻手：感官判斷冷熱 */
+function handsFig(){
+  var id='h'+(++UID),W=460,H=250,s=SVG(W,H,'左右手先泡熱水和冰水，再放進溫水')+mk(id);
+  var b=[[20,'熱水','a'],[175,'溫水','d'],[330,'冰水','b']];
+  b.forEach(function(q){
+    s+='<path d="M'+q[0]+' 130 L'+(q[0]+10)+' 200 L'+(q[0]+100)+' 200 L'+(q[0]+110)+' 130" fill="'+CL[q[2]]+'" fill-opacity=".22" stroke="currentColor" stroke-width="2.5"/>';
+    s+=TC(q[0]+55,235,q[1],q[2],'middle');
+  });
+  s+='<path d="M75 120 Q120 50 205 118" fill="none" stroke="var(--ac)" stroke-width="3" marker-end="url(#'+id+'a)"/>';
+  s+='<path d="M385 120 Q340 50 255 118" fill="none" stroke="var(--ac3)" stroke-width="3" marker-end="url(#'+id+'b)"/>';
+  s+=TC(40,58,'左手','a','start')+TC(420,58,'右手','b','end');
+  s+=TC(230,30,'同一盆溫水','k','middle');
+  s+=TC(150,170,'覺得冷','a','end')+TC(310,170,'覺得熱','b','start');
+  return s+'</svg>';
+}
+
+/* 錐形瓶＋細玻璃管放進水裡 */
+function flaskFig(hot){
+  var id='f'+(++UID),W=420,H=310,s=SVG(W,H,'錐形瓶裝紅色的水，插細玻璃管，放進'+(hot?'熱':'冷')+'水')+mk(id);
+  var wc=hot?'a':'b';
+  s+=RC(40,120,250,170,CL[wc],.15)+'<path d="M40 110 L40 290 L290 290 L290 110" fill="none" stroke="currentColor" stroke-width="2.5"/>';
+  s+='<path d="M150 150 L150 185 L105 270 L235 270 L190 185 L190 150 Z" fill="var(--bad)" fill-opacity=".35" stroke="currentColor" stroke-width="2.5"/>';
+  s+=RC(146,140,48,16,'var(--sub)',.8);
+  s+='<rect x="164" y="30" width="12" height="112" fill="none" stroke="currentColor" stroke-width="2"/>'+RC(166,95,8,47,'var(--bad)',.7);
+  s+=LN(200,95,262,95,'d',1.5)+T(268,101,'紅色水柱','lbl2','start');
+  s+=LN(180,40,262,40,'d',1.5)+T(268,46,'細玻璃管','lbl2','start');
+  s+=LN(194,148,300,148,'d',1.5)+T(305,154,'橡皮塞','lbl2','start');
+  s+=TC(170,235,'水＋紅墨水','k','middle','lbl');
+  s+=TC(255,280,hot?'熱水':'冷水',wc,'middle');
+  return s+'</svg>';
+}
+
+/* 三支溫度計：攝氏、華氏、自製 */
+function scaleFig(){
+  var W=470,H=320,y1=60,y0=250,s=SVG(W,H,'攝氏、華氏、自製溫標對照');
+  var c=[[70,'攝氏 ℃','100','0','C','a'],[230,'華氏 ℉','212','32','F','b'],[390,'自製 °X','B','A','X','c']];
+  s+=LN(20,y1,450,y1,'d',1.6,0,0,'6 5')+LN(20,y0,450,y0,'d',1.6,0,0,'6 5');
+  s+=T(310,y1-8,'水的沸點','lbl2','middle')+T(310,y0-8,'水的熔點','lbl2','middle');
+  s+=LN(20,150,450,150,'e',2,0,0,'3 4');
+  c.forEach(function(q){
+    s+='<rect x="'+(q[0]-9)+'" y="34" width="18" height="236" rx="9" fill="var(--card)" stroke="currentColor" stroke-width="2.2"/><circle cx="'+q[0]+'" cy="280" r="15" fill="var(--bad)" fill-opacity=".6" stroke="currentColor" stroke-width="2.2"/>';
+    s+=RC(q[0]-4,150,8,130,'var(--bad)',.6);
+    s+=TC(q[0]-16,y1+6,q[2],q[5],'end')+TC(q[0]-16,y0+6,q[3],q[5],'end')+TC(q[0]+16,156,q[4],'e','start');
+    s+=TC(q[0],22,q[1],q[5],'middle');
+  });
+  return s+'</svg>';
+}
+
+/* 溫度計可量的範圍（數線） */
+function rangeFig(){
+  var W=470,H=210,X=function(v){return 40+(v+150)/550*400;},s=SVG(W,H,'水銀與酒精溫度計可量的範圍');
+  s+=LN(X(-150),160,X(400),160,'k',2.2);
+  [-100,0,100,200,300,400].forEach(function(v){s+=LN(X(v),154,X(v),166,'k',2)+T(X(v),190,v,'lbl2','middle');});
+  s+=RC(X(-37),50,X(357)-X(-37),30,'var(--ac3)',.55)+TC(X(-37)+6,72,'水銀 −37～357','k','start');
+  s+=RC(X(-114),100,X(78)-X(-114),30,'var(--ac)',.55)+TC(X(-114)+6,122,'酒精 −114～78','k','start');
+  s+=LN(X(-40),30,X(-40),160,'e',2,0,0,'5 4')+TC(X(-40),24,'南極 −40','e','middle');
+  s+=LN(X(100),30,X(100),160,'c',2,0,0,'5 4')+TC(X(100)+6,24,'沸水 100','c','start');
+  return s+'</svg>';
+}
+
+/* ===== 投影片 ===== */
+var DECKS={A:{name:'5-1 溫度',SL:[]},B:{name:'5-2 熱量與比熱',SL:[]},C:{name:'5-3 熱與物質',SL:[]},D:{name:'5-4 熱的傳播',SL:[]},E:{name:'素養・資優',SL:[]}};
+function add(d,o){DECKS[d].SL.push(o);}
+var A=function(o){add('A',o);},B=function(o){add('B',o);},C=function(o){add('C',o);},D=function(o){add('D',o);},E=function(o){add('E',o);};
+
+var LEGEND='<b>頁面上的標記：</b><ul><li>📖 <b>出處</b>：這一頁的內容來自補習班講義或自修（課本）的哪一頁</li><li>✍️ <b>對照講義</b>：講義上的原文，【 】是空格的答案</li><li>'+AI+'：講義和課本<b>都沒有</b>，是額外幫你理解的比喻、口訣或推理</li><li>'+RE+'：題型來自講義，數字是換過的，不是原題</li><li>👂 <b>上課聽這裡</b>：預習時的提醒。老師實際怎麼上，以課堂為準</li><li>📝 <b>作業解答</b>：每個分頁最後是講義「隨堂演練」的詳解，先自己寫，再按「看答案」對答案</li><li>❓ <b>有問題</b>：看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按右上角的「❓」；下方「❓ 問題」會列出全部</li></ul>';
+
+/* 作業解答的一題：題號、題目重點、答案、詳解 */
+function HW(no,q,ans,ex){return ['<b>第 '+no+' 題</b>　'+q,'答：<b>'+ans+'</b><br><span class="ex">'+ex+'</span>'];}
+var KEY='🔑 ',STEP='📐 ',WARN='⚠️ ';
+
+/* ---------- A：5-1 溫度與溫度計 ---------- */
+A({t:'第5章 溫度與熱：先看懂，再去上課',tag:'今天的目標',
+ text:'第 5 章分成四節，上面的分頁一節一個：<ol><li><b>5-1 溫度</b>：溫度計怎麼做、攝氏和華氏怎麼換算</li><li><b>5-2 熱量與比熱</b>：熱量公式 <b>H ＝ m × S × ΔT</b>、熱平衡</li><li><b>5-3 熱與物質</b>：熱脹冷縮、三態變化、吸熱和放熱</li><li><b>5-4 熱的傳播</b>：傳導、對流、輻射</li></ol>最後一個分頁是講義的「科學素養」和「資優演練」。<br>這個分頁對照補習班講義 <b>p.221～230</b>、自修 p.210～216。<br><br>'+LEGEND,
+ note:'5-2 的計算最多，5-1 的「溫標換算」是 5-2 之前的暖身。每一節的最後幾頁是隨堂演練（作業）的詳解。'});
+
+A({t:'溫度：冷熱的程度，手不可靠',tag:'重點',src:'講義 p.221（A. 1～3）、自修 p.210（1 人對冷熱的感覺）',
+ fig:handsFig(),
+ text:'<b>溫度</b>：物體的<b>冷熱程度</b>，符號用 <b>T</b>。<br>用手感覺冷熱<b>不客觀</b>：左手先泡熱水、右手先泡冰水，過幾秒再一起放進同一盆溫水 → 左手覺得<b>冷</b>，右手覺得<b>熱</b>。<br>同一盆水，兩隻手的感覺卻相反，所以要用<b>溫度計</b>來量。',
+ sheet:'講義 p.221：1. 溫度：物體的冷熱程度，常以符號【T】表示。2. 人體感知溫度範圍有限，會造成不客觀的結果。3. 感官的冷熱：左右手分別放入熱水與冰水數秒，再同時放入相同的溫水 → 左手（原熱水）感覺冷、右手（原冰水）感覺熱。',
+ qs:[mc(RE+'甲、乙、丙三桶水。左手先泡丙桶、右手先泡甲桶，五分鐘後兩手一起放進乙桶，結果<b>左手覺得熱、右手覺得冷</b>。哪一桶水溫<b>最低</b>？',['甲','乙','丙','三桶一樣'],2,
+   ['右手從甲桶拿出來，覺得乙桶冷 → 甲比乙熱，甲不會是最低。','左手覺得乙熱，表示左手原本泡的丙比乙冷，乙不是最低。','','手的感覺不同，表示三桶水溫不一樣。'],
+   '左手從丙出來覺得乙「熱」→ 丙比乙冷；右手從甲出來覺得乙「冷」→ 甲比乙熱。所以 甲 &gt; 乙 &gt; 丙，丙最冷。（講義 p.222 精選範例 1 換方向）')],
+ note:'手的感覺看的是「和剛才比」變熱還是變冷，不是水真正幾度。'});
+
+A({t:'溫度計的材料',tag:'重點',src:'講義 p.221（4.(1) 材料、伽利略框）',
+ text:'溫度計利用物質<b>熱脹冷縮</b>（受熱體積變大、冷卻體積變小）來量溫度。<ul><li><b>固體、液體、氣體</b>都可以做溫度計</li><li>選<b>熱脹冷縮均勻</b>的材料（溫度升一樣多，體積變一樣多，刻度才能等距）</li><li><b>氣體溫度計最靈敏</b>：氣體最容易膨脹、收縮</li></ul>西元 1592 年，<b>伽利略</b>用玻璃管內氣體受熱膨脹，做出世界上第一個溫度計。',
+ sheet:'講義 p.221：4. 溫度計 (1) 材料：① 固體、液體、氣體皆可 ② 熱脹冷縮均勻的材料適合 ③ 氣體溫度計最靈敏（氣體易膨脹收縮）。框：西元 1592 年伽利略利用玻璃管內氣體受熱膨脹，以管內氣體體積代表溫度高低，發明世界上第一個溫度計。',
+ qs:[mc(RE+'有關溫度計的敘述，何者<b>錯誤</b>？',['溫度計是利用物質<b>質量</b>熱脹冷縮的性質','固體、液體、氣體都可以做溫度計','氣體溫度計最靈敏','材料要選熱脹冷縮均勻的'],0,
+   ['','這句正確，講義 p.221 第 4.(1) ①。','這句正確，氣體最容易膨脹收縮。','這句正確，刻度才能等距。'],
+   '熱脹冷縮改變的是<b>體積</b>，質量不會變（東西沒有變多或變少）。（講義 p.222 精選範例 2 的陷阱）')],
+ note:'講義 p.221 有三張材料圖：雙金屬片（固體）、試管加細管（液體）、燒瓶加液滴（氣體）。'});
+
+A({t:'常見的溫度計',src:'講義 p.221（4.(2) 表）、自修 p.210（2 溫度計的種類）',
+ text:tbl(['溫度計','原理','說明'],[['固體（雙金屬片）','兩種金屬膨脹程度不同，受熱彎曲','做成自動開關（5-3 會再學）'],['水銀','液體熱脹冷縮','約 −37～357℃'],['酒精','液體熱脹冷縮','約 −114～78℃'],['液晶','液晶<b>顏色</b>隨溫度改變','貼在額頭的體溫貼'],['耳溫槍','感應人體發出的<b>紅外線</b>','不是靠熱脹冷縮']])+'自修補充：<b>體溫計</b>的刻度大約 35～42℃；水銀有毒，環境部從民國 97 年起開始禁用水銀體溫計。',
+ sheet:'講義 p.221：(2) 常見溫度計與原理：固體溫度計—金屬膨脹係數不同→自動開關；水銀—液體體積熱脹冷縮（−37～357℃）；酒精—（−114～78℃）；液晶—液晶顏色隨溫度變化；耳溫槍—紅外線對熱的感應。',
+ qs:[['哪一種溫度計<b>不是</b>利用熱脹冷縮？','液晶溫度計（看顏色）和耳溫槍（感應紅外線）。'],['「耳溫槍是利用物質體積熱脹冷縮」對嗎？','不對，耳溫槍是感應人體發出的紅外線。（隨堂演練 26 第 4、8 題就考這個）']]});
+
+A({t:'液體溫度計能量的範圍：熔點～沸點',tag:'重點',src:'講義 p.221（4.(3)）、p.223（精選範例 3、類題 1）',
+ fig:rangeFig(),
+ text:'液體溫度計裡的液體，必須一直是<b>液體</b>才能用：<ul><li>低於<b>熔點</b> → 結冰（凝固），不會動了</li><li>高於<b>沸點</b> → 沸騰變成氣體，溫度計會破</li></ul>所以能量的範圍在<b>熔點和沸點之間</b>。<br>例：南極 −40℃ 比水銀的熔點還低 → 要用<b>酒精</b>溫度計；量沸水 100℃ 比酒精的沸點 78℃ 高 → 要用<b>水銀</b>溫度計。',
+ sheet:'講義 p.221：(3) 液體溫度計的測量範圍：熔點和沸點之間。',
+ qs:[mc(RE+'要量一杯水從 −15℃ 加熱到 110℃（加壓下）的溫度變化，應選哪一種液體做溫度計？'+tbl(['液體','熔點(℃)','沸點(℃)'],[['甲','−10','200'],['乙','−20','130'],['丙','−40','90'],['丁','−30','105']]),['甲','乙','丙','丁'],1,
+   ['熔點 −10℃ 比 −15℃ 高，量到 −15℃ 時甲已經凝固。','','沸點 90℃ 比 110℃ 低，丙會沸騰。','沸點 105℃ 比 110℃ 低，丁會沸騰。'],
+   '要同時滿足：熔點 &lt; −15℃、沸點 &gt; 110℃。只有乙（−20℃、130℃）兩個條件都符合。（講義 p.223 精選範例 3 換數字）')],
+ note:'看題目時先寫下「最低要量到幾度、最高要量到幾度」，再一個一個比熔點和沸點。'});
+
+A({t:'體溫計和量氣溫',src:'講義 p.221（4.(4)、(5)）、p.223 類題 1、2；自修 p.211（你知道嗎）',
+ text:'<b>體溫計</b>：靠近底部的玻璃管<b>特別細、稍微彎曲</b> → 離開身體後溫度下降，水銀也<b>不會退回去</b>，方便看讀數。所以用之前要先<b>甩一甩</b>，把水銀甩回底部。<br><br><b>量氣溫</b>：<ul><li>空氣流通、<b>陽光不直射</b>的地方（陰影處）</li><li>離地 120～200 公分</li><li>手拿<b>頂端</b>，不可碰液囊（手的溫度會傳過去）</li><li>眼睛<b>平視</b>液柱頂端</li></ul>',
+ sheet:'講義 p.221：(4) 體溫計玻璃管接近底部特別狹窄且少許彎曲：量完體溫後溫度雖降，水銀不會退回去，方便觀看。(5) 氣溫測量：空氣流通、陽光不直射，離地 120～200 公分、手不能觸碰液囊、眼睛平視液柱頂端。',
+ qs:[['大太陽下要在操場量氣溫，最好怎麼做？','一手拿溫度計的頂端，一手撐傘遮陽。（講義 p.223 類題 2；放地上、在陽光下曬都不對）'],['護士量體溫前先甩溫度計，目的是什麼？','把細管裡的水銀甩回底部，上一次的讀數才不會留著。（隨堂演練 26 第 9 題）'],['自修提醒：溫度計可以拿來攪拌嗎？','不行，容易破。也不能直接放進火焰，也不能量超過範圍的溫度。']]});
+
+A({t:'受熱「縮小」的物質也能做溫度計',src:'講義 p.221（4.(6)）；隨堂演練 26 第 11 題',
+ text:'大部分物質是熱脹冷縮。如果有一種物質剛好<b>相反</b>（受熱縮小、冷卻膨脹，例如 0～4℃ 的水），還是可以做溫度計，只是刻度要反過來畫：<b>高溫在下、低溫在上</b>。<br><br>重點是「溫度改變時體積會<b>規律地</b>改變」，脹或縮都可以。',
+ sheet:'講義 p.221：(6) 若物質受熱收縮、冷卻膨脹（0～4℃ 的水）仍可做溫度計材料，刻度和一般相反：高溫在下、低溫在上。',
+ note:'0～4℃ 的水為什麼會「熱縮冷脹」，5-3 會講。'});
+
+A({t:'原理探究實驗：自己做溫度計',tag:'實驗',src:'講義 p.222（5. 原理探究實驗）、自修 p.213（實驗 5·1）',
+ fig:flaskFig(true),
+ text:'<ol><li>錐形瓶<b>裝滿水</b>，滴紅墨水（比較容易看）</li><li>塞上插著<b>細玻璃管</b>的橡皮塞</li><li>放進熱水或冷水，看玻璃管裡的水柱怎麼動</li></ol>玻璃管越<b>細</b>，水面升降越明顯。',
+ sheet:'講義 p.222：5. 原理探究實驗：(1) 錐形瓶裝滿水，加紅墨水便於觀察 (2) 管內塞上附細玻璃管的橡皮塞 → 越【細】，水面升降越明顯。',
+ note:'👂 講到「先微降、後上升」時注意聽，下一頁就是在解釋這個。'});
+
+A({t:'放進熱水：水柱「先微降，後上升」',tag:'重點',src:'講義 p.222（5.(3) 原理解析）、p.223 精選範例 4、p.224 類題 1',
+ fig:chart({x:[0,10,2],y:[0,10,2],noxt:1,noyt:1,xl:'時間',yl:'水柱高度',aria:'放進熱水和冷水時水柱高度的變化',
+  lines:[{p:[[0,5],[0.8,4.3],[2,5],[5,8.6],[7,9.6],[10,9.8]],c:'a',t:'放進熱水',at:[5.4,9.3],an:'end'},
+         {p:[[0,5],[0.8,5.7],[2,5],[5,1.6],[7,0.6],[10,0.4]],c:'b',t:'放進冷水',at:[5.4,2.6],an:'start'}]}),
+ text:'放進<b>熱水</b>：熱先傳到外面的<b>玻璃</b>，玻璃先膨脹、瓶子變大 → 水柱<b>先微降</b>；接著裡面的水受熱膨脹，膨脹得比玻璃多 → 水柱<b>上升</b>。<br>放進<b>冷水</b>：玻璃先收縮 → 水柱<b>先微升</b>；接著水收縮 → 水柱<b>下降</b>。',
+ sheet:'講義 p.222：(3) 原理解析：熱水中 水柱先微降後升；冷水中 先微升後降；因為【玻璃】先膨脹／先收縮。',
+ qs:[mc(RE+'裝滿 30℃ 紅色水的錐形瓶（插細玻璃管）放進 0℃ 的冰水，玻璃管的水面剛開始會怎樣？',['一直上升','一直下降','先稍微上升，然後下降','先稍微下降，然後上升'],2,
+   ['水最後會變冷收縮，不會一直上升。','忽略了玻璃會先收縮。','','這是放進「熱水」的情形。'],
+   '冰水先讓玻璃收縮 → 瓶子變小 → 水被擠上去（先微升）；之後水也變冷收縮 → 水面下降。（隨堂演練 26 第 7 題換數字）')]});
+
+A({t:'玻璃管越細，升得越多',src:'講義 p.222（5.(2)）、p.224 類題 2；隨堂演練 26 第 5、6 題',
+ text:'同樣的錐形瓶、同樣的水，溫度升高時水膨脹的<b>體積一樣</b>。<br>體積一樣，管子越<b>細</b>（截面積越小），水柱就要升得越<b>高</b>。<br>'+AI+'就像同一杯水倒進細的量筒和粗的量筒，細的那支水位比較高。<br><br>細管升降明顯 → 比較容易看出小小的溫度變化，做溫度計比較<b>準確（靈敏）</b>。',
+ sheet:'講義 p.224 類題 2：甲、乙相同錐形瓶，甲玻璃管較細，20℃ 時水面等高……（D）甲管較細，可測 110℃ 水最後高度 → 錯誤的敘述。',
+ qs:[['兩個相同的裝置，A 管的管徑比 B 管大，從 20℃ 一起放進 60℃ 的水，最後誰的水柱高？','B 管（較細）比較高。膨脹的體積一樣，細管升得多。'],['講義 p.224 類題 2 的 (D)「可測 110℃ 水最後高度」為什麼錯？','在一大氣壓下，水到 100℃ 就沸騰，不會有 110℃ 的水。']]});
+
+A({t:'溫標：攝氏和華氏',tag:'重點',src:'講義 p.227（B. 溫標 1～3）、自修 p.211（3 溫度高低的表示方法）',
+ fig:scaleFig(),
+ text:'溫標的做法：在一大氣壓下，用<b>水的熔點（冰點）和沸點</b>當兩個標準點，中間<b>平均分格</b>。'+tbl(['','攝氏 ℃','華氏 ℉'],[['水的沸點','<b>100</b>','<b>212</b>'],['水的熔點','<b>0</b>','<b>32</b>'],['中間分成','100 格','180 格'],['哪裡用','國際通用','美國等少數國家']])+'溫標的原理：<b>溫度差</b>和液柱的<b>高度差</b>成正比。',
+ sheet:'講義 p.227：1. 溫標製作原理：利用「溫度差」和液柱的「高度差」成正比。2. 以一大氣壓下，水的熔點與沸點為訂定溫度的標準。3. 表：水的沸點 攝氏【100】、華氏【212】、自製 B°X；水的熔點 攝氏【0】、華氏【32】、自製 A°X；刻度：100 格每格 1℃、180 格每格 1℉、(B−A) 格每格 1°X。',
+ note:'自修 p.211：攝氏是紀念瑞典的攝爾修斯，華氏是紀念德國的華倫海。自修還提到科學上用的克氏溫標（K ＝ 273 ＋ ℃），標明是課外補充。'});
+
+A({t:'溫標換算：用比例',tag:'超重要',src:'講義 p.227（4. 溫標換算法、公式 (1)～(3)、精選範例 1）、自修 p.212（4 常見溫標的換算）',
+ text:'三支溫度計插在同一杯水裡，紅線在三支上的「<b>位置比例</b>」一樣：'+eq(fr('C − 0','100 − 0')+' ＝ '+fr('F − 32','212 − 32')+' ＝ '+fr('X − A','B − A'))+'整理成公式：'+eq('℉ ＝ '+fr(9,5)+' × ℃ ＋ 32')+eq('℃ ＝ '+fr(5,9)+' × (℉ − 32)')+'溫度「<b>變化</b>」1℃ ＝ 1.8℉（100 格對 180 格）。',
+ sheet:'講義 p.227：4. 溫標換算法：(1) 利用比例法求得 (2) 溫度「變化」：1℃＝1.8℉。公式 (1) (C−0)/(100−0)＝(F−32)/(212−32)＝(X−A)/(B−A) (2) ℉＝9/5×℃＋32 (3) ℃＝5/9×(℉−32)。',
+ qs:[[RE+'美國天氣預報說今天 77℉，是攝氏幾度？','① ℃ ＝ 5/9 × (℉ − 32)<br>② ＝ 5/9 × (77 − 32)<br>③ ＝ 5/9 × 45 ＝ 25<br>答：25℃。（講義 p.227 精選範例 1 換數字）'],[RE+'35℃ 是華氏幾度？','① ℉ ＝ 9/5 × ℃ ＋ 32<br>② ＝ 9/5 × 35 ＋ 32<br>③ ＝ 63 ＋ 32 ＝ 95<br>答：95℉。'],['氣溫從 20℃ 升到 30℃，華氏升高了幾度？','溫度「變化」10℃ × 1.8 ＝ 18℉。（變化量不用加 32）']],
+ note:AI+'加不加 32 的判斷：問「現在幾度」要加減 32；問「升高（變化）幾度」不加 32，直接 × 1.8。'});
+
+A({t:'溫標換算機',tag:'💡 互動',src:'自己做的互動頁，用講義 p.227 的公式計算',
+ text:'拉動拉桿改變攝氏溫度（往右＝溫度升高）：<div style="margin:10px 0"><input type="range" id="cvR" min="-40" max="110" step="1" value="25" style="width:100%"></div><div id="cvO" class="q" style="font-size:1.3rem"></div>試試看：拉到 <b>−40</b>、<b>0</b>、<b>37</b>、<b>100</b>，華氏各是多少？',
+ init:function(){var r=document.getElementById('cvR'),o=document.getElementById('cvO');if(!r)return;
+  function u(){var c=+r.value,f=c*9/5+32;o.innerHTML='攝氏 <b>'+c+'</b> ℃　＝　華氏 <b>'+f1(f)+'</b> ℉<br><span style="font-size:1rem">算式：9/5 × ('+c+') ＋ 32 ＝ '+f1(c*9/5)+' ＋ 32 ＝ '+f1(f)+(c===-40?'<br>👀 −40 度時，攝氏和華氏的數字一樣！':'')+'</span>';}
+  r.oninput=u;u();},
+ note:'人的正常體溫 37℃ ＝ 98.6℉（自修 p.211 的例子）。'});
+
+A({t:'攝氏＝華氏？自製溫標',src:'講義 p.228（類題 1、精選範例 2）',
+ text:'<b>攝氏和華氏數字相等</b>：設都是 x，'+eq('x ＝ '+fr(9,5)+'x ＋ 32')+'① 兩邊同乘 5：5x ＝ 9x ＋ 160<br>② 移項：−4x ＝ 160<br>③ x ＝ −40<br>所以 <b>−40℃ ＝ −40℉</b>。<br><br><b>自製溫標</b>也一樣用比例：（讀數 − 冰點）÷（沸點 − 冰點）＝ 位置比例。',
+ sheet:'講義 p.228 類題 1：攝氏與華氏在哪一溫度數值相等？→【−40】。',
+ qs:[[RE+'某溫標把冰點定為 −50°S、沸點定為 150°S。量一杯水是 10°S，這杯水是攝氏幾度？','① 冰點到沸點共 150 − (−50) ＝ 200 格<br>② 10°S 在冰點上面 10 − (−50) ＝ 60 格<br>③ 位置比例 ＝ 60 ÷ 200 ＝ 0.3<br>④ 攝氏 ＝ 0.3 × 100 ＝ 30<br>答：30℃。（講義 p.228 精選範例 2 換數字）']]});
+
+A({t:'刻度不準的溫度計、自己畫刻度',tag:'重點',src:'講義 p.228（類題 1、2）；隨堂演練 27 第 5、6 題',
+ text:'不管刻度準不準、單位是什麼，<b>位置比例一樣</b>就能算：'+eq(fr('讀數 − 冰水讀數','沸水讀數 − 冰水讀數')+' ＝ '+fr('實際℃ − 0','100 − 0'))+'高度也可以：'+eq(fr('高度 − 低溫的高度','高溫的高度 − 低溫的高度')+' ＝ '+fr('溫度 − 低溫','高溫 − 低溫')),
+ qs:[[RE+'一支不準的溫度計，放進冰水讀 5℃，放進沸水讀 95℃。量一杯水讀 32℃，實際是幾度？','① 冰水到沸水：95 − 5 ＝ 90 格<br>② 32℃ 在冰水上面：32 − 5 ＝ 27 格<br>③ 比例 ＝ 27 ÷ 90 ＝ 0.3<br>④ 實際 ＝ 0.3 × 100 ＝ 30<br>答：30℃。（講義 p.228 類題 1 換數字）'],[RE+'自製溫度計 10℃ 時水柱高 2 cm，60℃ 時高 7 cm。放進某杯水時高 5 cm，水溫幾度？','① 7 − 2 ＝ 5 cm 對應 60 − 10 ＝ 50℃ → 每 1 cm 是 10℃<br>② 5 cm 比 2 cm 高 3 cm → 多 3 × 10 ＝ 30℃<br>③ 10 ＋ 30 ＝ 40<br>答：40℃。（隨堂演練 27 第 6 題換數字）']],
+ note:'👂 講義 p.228 類題 2 是兩杯裝置一起比，用的也是「每 1 cm 代表幾度」，上課注意聽怎麼列式。'});
+
+A({t:'小結：5-1 你應該帶走的',tag:'完成',src:'整理講義 p.221～228',
+ text:'<ul><li>溫度：冷熱程度；手感不客觀，要用溫度計</li><li>溫度計靠<b>熱脹冷縮</b>（液晶看顏色、耳溫槍看紅外線例外）；氣體最靈敏</li><li>液體溫度計只能量 <b>熔點～沸點</b></li><li>自製溫度計放進熱水：水柱<b>先微降、後上升</b>（因為外面的玻璃先受熱膨脹）；玻璃管越細，水柱升得越多</li><li>℉ ＝ 9/5 × ℃ ＋ 32；℃ ＝ 5/9 × (℉ − 32)；−40℃ ＝ −40℉</li><li>溫度「變化」1℃ ＝ 1.8℉</li><li>不準的溫度計、自製溫標：用<b>位置比例</b></li></ul>接下來是隨堂演練 26、27 的詳解。'});
+
+/* 作業：隨堂演練 26 */
+A({t:'📝 隨堂演練 26（1～4）',tag:'作業解答',src:'講義 p.225 隨堂演練 26 第 1～4 題',
+ qs:[HW(1,'水銀熔點 −38.83℃、沸點 356.73℃，不適合測量：甲 熔融的鐵 1535℃、乙 液態氧 −182.97℃、丙 辦公室室溫、丁 南極 −17～−50℃','(C) 甲乙丁',KEY+'液體溫度計只能量熔點～沸點之間。<br>'+STEP+'① 甲 1535 &gt; 356.73 → 水銀會沸騰，不適合<br>② 乙 −182.97 &lt; −38.83 → 水銀會凝固，不適合<br>③ 丙 室溫約 20～30℃ 在範圍內，適合<br>④ 丁 最低 −50 &lt; −38.83，不適合<br>⑤ 不適合的是甲、乙、丁。'),
+  HW(2,'物體冷熱的程度稱為？','(D) 溫度',KEY+'溫度＝冷熱程度；熱量是傳遞的能量，兩個不一樣。'),
+  HW(3,'測量氣溫的正確操作？','(B) 手持溫度計頂端，站在陰影處',KEY+'手不能碰液囊（手溫會傳過去）、陽光不能直射（會量到太陽照射的熱）。'),
+  HW(4,'何者<b>錯誤</b>？','(C) 耳溫槍是利用物質體積熱脹冷縮',KEY+'耳溫槍是感應人體發出的<b>紅外線</b>，不是熱脹冷縮。其他三句都對。')]});
+
+A({t:'📝 隨堂演練 26（5～8）',tag:'作業解答',src:'講義 p.225～226 隨堂演練 26 第 5～8 題',
+ qs:[HW(5,'規格相同的錐形瓶，管口徑 Ra &gt; Rb，從 25℃ 放進 50℃ 熱水，最後水柱高低？','(C) ha &lt; hb',KEY+'水膨脹的體積一樣，管子越細升越高。<br>'+STEP+'① Ra &gt; Rb，a 管較粗、b 管較細<br>② 細管升得高 → hb 較大<br>③ 所以 ha &lt; hb。'),
+  HW(6,'R甲 &gt; R乙，一起放進 70℃ 水中，H甲、H乙？','(C) H乙較大','和第 5 題一樣：乙管較細，水柱較高。'),
+  HW(7,'25℃ 紅墨水錐形瓶放進 5℃ 冰水，水位？','(C) 先上升少許，然後下降',KEY+'玻璃先遇冷收縮 → 瓶子變小 → 水被擠上去；之後水也變冷收縮 → 下降。'),
+  HW(8,'利用紅外線輻射測體溫的是？','(D) 耳溫槍','水銀、固體溫度計靠熱脹冷縮；液晶靠顏色。')]});
+
+A({t:'📝 隨堂演練 26（9～11）',tag:'作業解答',src:'講義 p.226 隨堂演練 26 第 9～11 題',
+ qs:[HW(9,'護士量體溫前先甩水銀溫度計，目的？','(B) 把玻璃管中的水銀甩下去',KEY+'體溫計底部特別細，水銀上升後不會自己退回去，所以要甩回底部。'),
+  HW(10,'零下 42℃ 的南極要用哪一種溫度計？（表：水銀 熔點 −38.87℃；酒精 熔點 −114.1℃、沸點 78.5℃）','(B) 酒精',STEP+'① −42 &lt; −38.87 → 水銀會凝固，不能用<br>② −114.1 &lt; −42 &lt; 78.5 → 酒精還是液體，可以用。<br>'+WARN+'講義表格印的水銀沸點是「256.58℃」，應該是 356.58℃ 印錯（講義 p.223 類題 1 印的是 356.58）。這題只用到熔點，不影響答案。'),
+  HW(11,'某物質受熱體積變小、冷卻膨脹，能做溫度計嗎？','(C) 可以，但刻度畫法和一般相反','講義 p.221 第 4.(6) 點：只要體積隨溫度規律改變就能用，高溫刻度畫在下面。')]});
+
+/* 作業：隨堂演練 27 */
+A({t:'📝 隨堂演練 27（1～5）',tag:'作業解答',src:'講義 p.229 隨堂演練 27 第 1～5 題（講義題號沒有第 2 題）',
+ qs:[HW(1,'J 氏溫標：水的凝固點 10°J、沸點 90°J。室溫 25℃ 是幾 °J？','(B) 30',STEP+'① J 氏：冰點到沸點 90 − 10 ＝ 80 格；攝氏 100 格<br>② 25℃ 的位置比例 ＝ 25 ÷ 100 ＝ 0.25<br>③ 0.25 × 80 ＝ 20 格<br>④ 從冰點往上：10 ＋ 20 ＝ 30°J。'),
+  HW(3,'何者<b>錯誤</b>？','(C) 兩者都把水的凝固點定為 0 度','華氏的凝固點是 <b>32℉</b>，不是 0。(D) 數值相等時是 −40 是對的。'),
+  HW(4,'甲 30℃、乙 96℉，誰的溫度高？','(B) 乙',STEP+'① 把乙換成攝氏：5/9 × (96 − 32)<br>② ＝ 5/9 × 64 ≈ 35.6℃<br>③ 35.6℃ &gt; 30℃，乙比較高。'),
+  HW(5,'不準的溫度計：冰水讀 −3℃、沸水讀 97℃，量某液體讀 19℃，實際幾度？','(A) 22℃',STEP+'① 冰水到沸水：97 − (−3) ＝ 100 格<br>② 19℃ 在冰水上面：19 − (−3) ＝ 22 格<br>③ 比例 22 ÷ 100，實際 ＝ 22/100 × 100 ＝ 22℃。')]});
+
+A({t:'📝 隨堂演練 27（6～9）',tag:'作業解答',src:'講義 p.230 隨堂演練 27 第 6～9 題（第 7 題講義沒印題號）',
+ qs:[HW(6,'錐形瓶溫度計：20℃ 時水柱高出瓶塞 1 cm，80℃ 時 6 cm；放進某水中 4 cm，水溫？','(C) 56℃',STEP+'① 6 − 1 ＝ 5 cm 對應 80 − 20 ＝ 60℃ → 每 1 cm 是 12℃<br>② 4 cm 比 1 cm 高 3 cm → 多 3 × 12 ＝ 36℃<br>③ 20 ＋ 36 ＝ 56℃。'),
+  HW(7,'20℃ 時 2 cm、104℉ 時 4 cm；水柱 7 cm 時溫度？','(A) 158℉',STEP+'① 先把 104℉ 換成攝氏：5/9 × (104 − 32) ＝ 5/9 × 72 ＝ 40℃<br>② 4 − 2 ＝ 2 cm 對應 40 − 20 ＝ 20℃ → 每 1 cm 是 10℃<br>③ 7 cm 比 2 cm 高 5 cm → 20 ＋ 5 × 10 ＝ 70℃<br>④ 選項有 ℉ 也有 ℃，70℃ 換成華氏：9/5 × 70 ＋ 32 ＝ 126 ＋ 32 ＝ 158℉<br>⑤ 選項 (C) 48℃、(D) 56℃ 都不是 70℃，所以答 (A)。<br>'+WARN+'單位不同時，先全部換成攝氏再算。'),
+  HW(8,'冰塊處刻度 A、沸水處刻度 B，A、B 相距 16 cm；液面在 A 上方 4 cm，溫度？','(D) 25℃',STEP+'① 位置比例 ＝ 4 ÷ 16 ＝ 0.25<br>② 0.25 × 100 ＝ 25℃。'),
+  HW(9,'體溫 104℉ 有沒有發燒（超過 38℃）？','(C) 有，40℃',STEP+'① 5/9 × (104 − 32) ＝ 5/9 × 72 ＝ 40℃<br>② 40 &gt; 38，有發燒。')]});
+
+/* ---------- B：5-2 熱量與比熱 ---------- */
+function heatFlowFig(){
+  var id='q'+(++UID),W=460,H=230,s=SVG(W,H,'熱由高溫的物體傳到低溫的物體')+mk(id);
+  s+=RC(30,60,130,100,'var(--ac)',.28,'currentColor',10)+TC(95,120,'80℃','a','middle');
+  s+=RC(270,40,160,140,'var(--ac3)',.22,'currentColor',10)+TC(350,120,'20℃','b','middle');
+  s+=T(95,186,'甲：小杯','lbl2','middle')+T(350,206,'乙：大桶','lbl2','middle');
+  s+=LN(168,110,258,110,'e',4,id,'e')+TC(213,98,'熱','e','middle');
+  s+=TC(230,24,'熱從溫度高的傳到溫度低的','k','middle');
+  return s+'</svg>';
+}
+function breezeFig(){
+  var id='w'+(++UID),W=540,H=270,s=SVG(W,H,'白天吹海風、晚上吹陸風')+mk(id);
+  [[0,1],[280,0]].forEach(function(q){
+    var x=q[0],day=q[1],hot=day?'陸（較暖）':'海（較暖）';
+    s+=RC(x,205,130,60,'var(--ac3)',.3)+'<polygon points="'+(x+130)+',195 '+(x+260)+',195 '+(x+260)+',265 '+(x+130)+',265" fill="var(--ac)" fill-opacity=".25"/>';
+    s+=T(x+65,245,day?'海（較冷）':'海（較暖）','lbl2','middle')+T(x+195,245,day?'陸（較暖）':'陸（較冷）','lbl2','middle');
+    s+=TC(x+10,26,day?'☀ 白天':'☾ 晚上',day?'a':'b','start');
+    var up=day?x+195:x+65,dn=day?x+65:x+195;
+    s+=LN(up,178,up,95,'e',3,id,'e')+LN(up,80,dn,80,'d',3,id,'d')+LN(dn,95,dn,178,'b',3,id,'b')+LN(dn,190,up,190,'b',3.5,id,'b');
+    s+=TC((up+dn)/2,183,day?'海風':'陸風','b','middle')+T(up+(day?-8:8),130,'熱空氣上升','lbl',day?'end':'start');
+  });
+  return s+'</svg>';
+}
+
+B({t:'5-2 熱量與比熱：先看懂，再去上課',tag:'今天的目標',
+ text:'這一節回答三個問題：<ol><li><b>熱量和溫度有什麼不一樣？</b></li><li><b>為什麼有的東西容易熱、有的不容易？</b>（比熱）</li><li><b>熱量怎麼算？冷熱混合後幾度？</b>（H ＝ m × S × ΔT、熱平衡）</li></ol>對照補習班講義 <b>p.231～252</b>、自修 p.217～227。中間有一頁「冷熱水混合實驗室」可以自己調數字試試看。<br><br>'+LEGEND,
+ note:'這一節計算最多。每一題都用同一個公式 H ＝ m × S × ΔT，只是問的東西不一樣。'});
+
+B({t:'熱量：從高溫傳到低溫的能量',tag:'重點',src:'講義 p.231（A. 1、2）、自修 p.217（1 熱與溫度）',
+ fig:heatFlowFig(),
+ text:'<b>熱量</b>：能量的一種，在<b>溫度不同</b>的物體之間傳遞；傳過去的熱有多少，就是熱量。<br><b>熱平衡</b>：熱由<b>高溫</b>處傳到<b>低溫</b>處，最後兩邊<b>溫度相同</b>就停止。<br>看的是<b>溫度</b>高低，不是誰「比較大、含的熱比較多」。上圖的大桶水雖然很多，熱還是從 80℃ 的小杯傳過去。',
+ sheet:'講義 p.231：1. 熱量：能的一種形式，在溫度不同的物體間傳遞，傳遞熱的多少就是熱量。2. 熱平衡：熱能由【高溫】處傳到【低溫】處，最後達到溫度相同 → 非含熱量高的物體傳向含熱量低的物體。',
+ qs:[mc(RE+'甲：20 g、90℃ 的鐵塊；乙：2000 g、30℃ 的水。兩者接觸後，熱量怎麼傳？',['乙傳給甲，因為乙的質量大','乙傳給甲，因為乙的體積大','甲傳給乙，因為甲的密度大','甲傳給乙，因為甲的溫度高'],3,
+   ['質量大不代表熱會從它傳出去。','體積大也不是理由。','方向對，但原因錯：看溫度，不看密度。',''],
+   '熱只看溫度：90℃ 的甲 → 30℃ 的乙。（講義 p.232 類題 1 換數字）')]});
+
+B({t:'吸了熱，溫度不一定會升高',src:'講義 p.231（A. 3、虛線框）、p.231 精選範例 1',
+ text:'一般來說，物體<b>吸熱溫度上升、放熱溫度下降</b>。<br>但是<b>狀態改變</b>的時候（例如冰正在融化），吸熱溫度<b>不變</b>：<ul><li>0℃ 的冰吸熱 → 熔化成 0℃ 的水</li><li>100℃ 的水吸熱 → 汽化成 100℃ 的水蒸氣</li><li>0℃ 的水放熱 → 凝固成 0℃ 的冰</li><li>100℃ 的水蒸氣放熱 → 凝結成 100℃ 的水</li></ul>另外，「不同物體」的溫度高低，<b>不能</b>代表它們含的熱量多少。',
+ sheet:'講義 p.231：3. 物體吸熱後溫度上升，放熱後溫度下降 →「不同物體」冷熱程度不代表所含熱量的多寡。虛線框：三態變化時溫度不變 (1) 0℃ 冰吸熱融化為 0℃ 水 (2) 100℃ 水吸熱汽化為 100℃ 水氣 (3) 0℃ 水放熱凝固為 0℃ 冰 (4) 100℃ 水氣放熱凝結為 100℃ 水。',
+ qs:[mc('有關熱與溫度，何者<b>正確</b>？',['熱量一定由含熱量高的物體傳向含熱量低的物體','溫度越高的物體，含的熱量一定越多','同一個物體溫度升高，表示它可能吸收了熱量','達到熱平衡時，兩個物體含的熱量一樣多'],2,
+   ['熱是由溫度高傳到溫度低。','不同物體不能用溫度比熱量。','','熱平衡是「溫度」一樣，不是熱量一樣。'],
+   '同一個物體溫度升高，通常是吸了熱。（講義 p.231 精選範例 1、隨堂演練 28 第 6 題）')],
+ note:'三態變化（熔化、汽化…）在 5-3 會詳細講，這裡先記住「狀態在變時，溫度不變」。'});
+
+B({t:'熱量的單位：卡',tag:'重點',src:'講義 p.231（4、5）、自修 p.217（3 熱量的單位）',
+ text:DEF('1 卡（cal）','<b>1 公克</b>的水，溫度升高（或降低）<b>1℃</b> 所吸收（或放出）的熱量。')+'1 大卡（kcal）＝ 1000 卡 ＝ 1 仟卡；食品標示的「大卡」就是這個。'+tbl(['水','溫度變化','熱量'],[['1 g','20 → 21℃','吸 <b>1</b> 卡'],['1 g','25 → 30℃','吸 <b>5</b> 卡'],['10 g','35 → 30℃','放 <b>50</b> 卡']])+'我們只能量出熱量的「<b>變化量</b>」，<b>不能</b>說一個物體「含有」多少熱量。',
+ sheet:'講義 p.231：4. 熱量單位 (1) 1 卡 cal：質量 1 公克的水，溫度上升／下降 1℃ 所需吸收／放出的熱量 (2) 大卡 kcal (3) 1 大卡＝1000 卡＝1 仟卡。5. (1) 1 克水 20→21℃ 吸【1】卡 (2) 1 克水 25→30℃ 吸【5】卡 (3) 10 克水 35→30℃ 放【50】卡 → 只能測出熱量的「變化量」，無法測出物體所含的熱量。',
+ qs:[[RE+'3 g 的水從 20℃ 升到 25℃，吸收多少卡？','3 × (25 − 20) ＝ 3 × 5 ＝ 15 卡。'],[RE+'20 g 的水從 50℃ 降到 45℃，放出多少卡？','20 × (50 − 45) ＝ 20 × 5 ＝ 100 卡。'],mc('「1 g、4℃ 的水」何者正確？',['含有 4 卡的熱量','比 1 g、0℃ 的水多 4 卡的熱量','所含熱量是 0 卡','含有 4 大卡的熱量'],1,
+   ['不能說物體「含有」多少熱量。','','不能說含有多少熱量，0 卡也一樣不能說。','單位和說法都錯。'],
+   '能說的只有「變化量」：0℃ 升到 4℃ 要吸 1 × 4 ＝ 4 卡，所以多 4 卡。（隨堂演練 28 第 1 題、講義 p.232 類題 1 丙）')]});
+
+B({t:'食物的熱量',src:'講義 p.232（類題 2）、自修 p.218（例：奶粉）',
+ text:'食物標示的熱量是「大卡（仟卡）」：1 大卡可以讓 <b>1 公斤（1000 g）</b>的水升高 1℃。<br>自修的例子：100 公克奶粉約 415 大卡 → 能讓 <b>415 公斤</b>的水升高 1℃。<br><br>講義的算法：每 1 g 蛋白質、醣類約 4 大卡，每 1 g 脂肪約 9 大卡，加起來就是總熱量。',
+ qs:[[RE+'100 g 洋芋片含蛋白質 5 g、脂肪 10 g、醣類 70 g（蛋白質、醣類每 g 4 大卡，脂肪每 g 9 大卡）。總熱量能讓多少公斤的水升高 1℃？','① 蛋白質 5 × 4 ＝ 20 大卡<br>② 脂肪 10 × 9 ＝ 90 大卡<br>③ 醣類 70 × 4 ＝ 280 大卡<br>④ 合計 20 ＋ 90 ＋ 280 ＝ 390 大卡 ＝ 390000 卡<br>⑤ 390000 卡讓 390000 g 的水升 1℃<br>⑥ 390000 g ＝ 390 kg<br>答：390 公斤。（講義 p.232 類題 2 換數字）'],['「1 g 的水溫度上升 1000℃ 需要 1 大卡」對嗎？','不對。水到 100℃ 就沸騰變成水蒸氣，不可能以液體升高 1000℃。（講義 p.232 類題 1 乙）']]});
+
+B({t:'比熱：1 g 升高 1℃ 要多少熱',tag:'重點',src:'講義 p.233（B. 1、2、4）、自修 p.218（4 比熱與物質熱量的關係）',
+ text:DEF('比熱（S）','使<b>質量 1 g</b> 的物質，溫度<b>上升 1℃</b> 所需要的熱量。單位：<b>卡／（克・℃）</b>，寫成 cal/(g・℃)。')+tbl(['物質','比熱','物質','比熱'],[['水','<b>1.0</b>','冰','0.55'],['水蒸氣','0.48','鋁','0.217'],['玻璃','0.2','砂','0.18'],['鐵','0.107','銅','0.093']])+'水的比熱特別大。冰、水、水蒸氣是同一種物質，但<b>狀態不同，比熱不同</b>。',
+ sheet:'講義 p.233：1. 比熱：使質量 1 克的物質溫度上升 1℃ 所需的熱量 2. 單位 卡／克℃ 4. 表：水 1.0、砂 0.18、鋁 0.217、水氣 0.48、冰 0.55、玻璃 0.2。',
+ note:'鐵、銅是自修 p.218 表上的數字；自修寫「沙 約 0.2」，講義寫 0.18，題目會給數字，照題目用。'});
+
+B({t:'比熱大：難升難降',tag:'重點',src:'講義 p.233（B. 3 特性）、p.234 類題 2',
+ text:'<ul><li>同質量、吸一樣多的熱：比熱<b>大</b>的溫度<b>難升</b>（也<b>難降</b>）；比熱<b>小</b>的<b>易升易降</b></li><li>同一種物質、同一種狀態，比熱都<b>一樣</b>，和質量、體積<b>無關</b>（大塊鐵、小塊鐵比熱一樣）</li></ul>'+AI+'比熱像「升溫要付的熱量價錢」：比熱大，每升 1℃ 要付的熱比較多，所以同樣的熱只能升一點點。',
+ sheet:'講義 p.233：3. 特性 (1) 同質量不同物質，比熱大者溫度難升難降；小者易升易降 (2) 不論體積質量，同狀態同一物質比熱相同。',
+ qs:[['同一種物質的兩個物體，體積大的那個比熱怎樣？','比熱不變（一樣）。（講義 p.234 類題 2）'],['冰和水是同一種物質，比熱一樣嗎？','不一樣，冰 0.55、水 1.0。狀態不同比熱就不同。']]});
+
+B({t:'生活中的比熱：海風和陸風',tag:'重點',src:'講義 p.233（5. 生活實例）、p.234 類題 1、自修 p.219',
+ fig:breezeFig(),
+ text:'<ul><li>糖炒栗子加<b>砂</b>：砂比熱小，容易熱，熱也傳得均勻</li><li>用<b>水</b>冷卻汽車引擎、做熱水袋：水比熱大</li><li>沿海（台灣四周是海）比內陸溫差小：海水比熱大</li><li>白天：砂（陸地）升溫快，陸地熱空氣上升，海上冷空氣吹過來 → <b>海風</b><br>晚上：陸地降溫快，海面比較暖 → <b>陸風</b></li></ul>',
+ sheet:'講義 p.233：5. 生活實例 (1) 糖炒栗子加砂：砂比熱小易升高溫，熱均勻傳遞 (2) 水比熱大可冷卻引擎 (3) 沿海氣溫變化比內陸小 (4) 同質量水和砂，砂比熱小吸同熱量後溫度變化大：白天沙灘較海水熱 → 吹海風；晚上沙灘較海水冷 → 吹陸風。',
+ note:'風的名字看「從哪裡吹來」：從海吹向陸地叫海風。'});
+
+B({t:'從表格找比熱最小的',src:'講義 p.234（精選範例 3）',
+ text:'同質量、同熱源（每分鐘給的熱一樣），比熱越小 → 溫度升得越<b>快</b>。',
+ qs:[mc(RE+'各 50 g、20℃ 的甲、乙、丙，用同一個熱源加熱，溫度如下表。誰的比熱<b>最小</b>？'+tbl(['時間(分)','0','1','2','3'],[['甲(℃)','20','28','36','44'],['乙(℃)','20','25','30','35'],['丙(℃)','20','32','44','56']]),['甲','乙','丙','一樣'],2,
+   ['甲每分鐘升 8℃，不是最快。','乙每分鐘只升 5℃，升得最慢 → 比熱最大。','','升溫速度不同，比熱不同。'],
+   '每分鐘升溫：甲 8℃、乙 5℃、丙 12℃。丙升最快 → 比熱最小。（講義 p.234 精選範例 3 換數字）')]});
+
+B({t:'熱量公式 H ＝ m × S × ΔT',tag:'超重要',src:'講義 p.237（C. 2）、p.238（精選範例 4、高中銜接框）、自修 p.218（第 4、5 點、例 1、2）',
+ text:DEF('熱量公式',eq('H ＝ m × S × ΔT')+'H 熱量（卡）、m 質量（g）、S 比熱、ΔT 溫度變化（℃）＝ 末溫 − 初溫（取大減小）')+'例（自修 p.218）：500 g 的水從 20℃ 升到 80℃<br>① H ＝ m × S × ΔT<br>② ＝ 500 × 1 × (80 − 20)<br>③ ＝ 500 × 1 × 60 ＝ 30000 卡',
+ qs:[[RE+'20 g 的鐵塊吸收 80 卡，鐵的比熱 0.1 cal/(g・℃)，溫度上升幾度？','① H ＝ m × S × ΔT<br>② 80 ＝ 20 × 0.1 × ΔT<br>③ 80 ＝ 2 × ΔT<br>④ ΔT ＝ 80 ÷ 2 ＝ 40<br>答：上升 40℃。（講義 p.238 精選範例 4 換數字）'],[RE+'熱量 30 卡讓 50 g 的某物質升高 1℃，比熱是多少？','① 30 ＝ 50 × S × 1<br>② S ＝ 30 ÷ 50 ＝ 0.6<br>答：0.6 cal/(g・℃)。（自修 p.218 例 2 換數字）']],
+ note:'講義 p.238 的高中銜接框：ΔH 有正負，吸熱為正、放熱為負。國中只要「取大減小」算溫度變化就好。'});
+
+B({t:'同一個熱源：加熱時間 ∝ 熱量',tag:'超重要',src:'講義 p.237（C. 熱量變化公式 2.(1)～(5)）',
+ text:'用<b>同一個穩定熱源</b>加熱，每分鐘給的熱一樣：'+eq('H ＝ m × S × ΔT ＝ h × t')+'（h ＝ 每分鐘給的熱，t ＝ 加熱時間）'+tbl(['條件','結論'],[['同一物質、同質量','加熱越久，ΔH 越多、ΔT 越大（都和 t 成<b>正比</b>）'],['同一物質、吸一樣多的熱','質量大的升溫少：ΔT 和 m 成<b>反比</b>'],['同一物質、升一樣多的溫度','質量大的吸熱多：ΔH 和 m 成<b>正比</b>'],['同質量、升一樣多的溫度','比熱大的吸熱多：ΔH 和 S 成<b>正比</b>'],['同質量、加熱一樣久','比熱小的升溫多：ΔT 和 S 成<b>反比</b>']]),
+ sheet:'講義 p.237：2. ΔH ＝ m × S × ΔT ＝ 同一穩定熱源(h) × 加熱時間(t)。(1) 時間越長吸熱越【多】，溫度變化越【大】；ΔH 與 t 成【正】比；ΔT 與 t 成【正】比 (2) 質量大者溫度上升較【少】；ΔT 與 m 成【反】比 (3) 質量大的吸熱較【多】；ΔH 與 m 成【正】比 (4) 比熱大者吸熱較【多】；ΔH 與 S 成【正】比 (5) 比熱小者溫度上升較【多】；ΔT 與 S 成【反】比。',
+ note:'👂 講義 p.237 第 1 點「關係式」是空格，上課抄下來。'+AI+'記法：「加熱時間就是熱量」，同一個火爐，煮 2 分鐘的熱量就是 1 分鐘的 2 倍。'});
+
+B({t:'看圖：同物質、不同質量',tag:'重點',src:'講義 p.237（2.(2)(3) 圖）、p.239（精選範例 5、類題 1、2）',
+ fig:chart({x:[0,8,2],y:[0,60,10],xl:'加熱時間(分)',yl:'溫度(℃)',aria:'甲乙兩杯水的溫度和時間',
+  lines:[{p:[[0,20],[6,50]],c:'a',t:'甲',at:[6.15,50],an:'start'},{p:[[0,20],[6,30]],c:'b',t:'乙',at:[6.15,30],an:'start'}],
+  extra:function(X,Y){return LN(X(6),Y(0),X(6),Y(50),'d',1.6,0,0,'5 4');}}),
+ text:'同一個熱源、同樣加熱 6 分鐘 → 吸的熱一樣多。<br>甲升 50 − 20 ＝ <b>30℃</b>，乙升 30 − 20 ＝ <b>10℃</b>。<br>同物質、吸熱一樣：ΔT 和 m 成反比 →<br>m甲 : m乙 ＝ 1/30 : 1/10 ＝ <b>1 : 3</b>。<br>線越<b>陡</b> → 升溫越快 → 質量越<b>小</b>。',
+ qs:[[RE+'甲、乙兩杯水用相同的火加熱，4 分鐘時甲升高 8℃、乙升高 24℃。甲的質量是乙的幾倍？','① 同熱源同時間 → 吸熱一樣<br>② 同物質，ΔT 和 m 成反比<br>③ m甲 : m乙 ＝ 1/8 : 1/24 ＝ 3 : 1<br>答：甲是乙的 3 倍。（講義 p.239 精選範例 5 換數字）'],['20℃ 的 200 g 和 100 g 的水用相同的火加熱，畫「溫度—時間圖」，兩條線的起點和陡度？','起點都在 20℃（不是原點）；100 g 的線比較陡。（講義 p.239 類題 1，90 基測）']]});
+
+B({t:'看圖：不同物質、同質量',tag:'重點',src:'講義 p.240（精選範例 6、類題 1、2）',
+ fig:chart({x:[0,6,1],y:[0,90,10],xl:'加熱時間(分)',yl:'溫度(℃)',aria:'同質量的油和水的溫度和時間',
+  lines:[{p:[[0,20],[6,80]],c:'a',t:'油',at:[5.2,82],an:'end'},{p:[[0,20],[6,50]],c:'b',t:'水',at:[5.4,42],an:'start'}]}),
+ text:'同質量的油和水、同一個熱源加熱 6 分鐘：油升 <b>60℃</b>，水升 <b>30℃</b>。<br>同質量、吸熱一樣：ΔT 和 S 成反比 → S油 : S水 ＝ 30 : 60 ＝ <b>1 : 2</b>，水的比熱 1 → 油是 0.5。',
+ qs:[mc(RE+'用相同熱源加熱同質量的油和水（上圖）。何者<b>正確</b>？',['升高相同溫度時，水吸收的熱比油多','水升溫比油慢，是因為水吸熱比較多','油升溫快，是因為油吸熱比較多','加熱時間相同，溫度變化也相同'],0,
+   ['','加熱時間一樣，吸的熱就一樣多；水升得慢是因為比熱大。','同上，吸熱一樣多。','圖上油升 60℃、水升 30℃，不一樣。'],
+   '例如都升 30℃：水要 6 分鐘，油只要 3 分鐘 → 水吸的熱是油的 2 倍。（講義 p.240 精選範例 6）')],
+ note:'⚠️ 最常錯：以為「升溫快＝吸熱多」。同一個熱源、同樣時間，吸熱一定一樣多。'});
+
+B({t:'算加熱時間',src:'講義 p.240（精選範例 7）、p.241（類題 1）',
+ text:'步驟：先用 H ＝ m × S × ΔT 算出要多少熱，再除以「每分鐘真正給到的熱」。<br>有散失時：每分鐘給 1000 卡、散失 20% → 真正被吸收的只有 1000 × 80% ＝ 800 卡。',
+ qs:[[RE+'500 g、20℃ 的水要燒到沸騰（100℃），瓦斯爐每分鐘提供 1000 卡（不計散失），要幾分鐘？','① 要的熱 H ＝ m × S × ΔT ＝ 500 × 1 × (100 − 20)<br>② ＝ 500 × 1 × 80 ＝ 40000 卡<br>③ 時間 ＝ 40000 ÷ 1000 ＝ 40<br>答：40 分鐘。（講義 p.240 精選範例 7 換數字）'],[RE+'瓦斯爐每分鐘 1500 卡，20% 散失到空氣中。2000 g、比熱 0.9 的湯從 25℃ 加熱到 85℃，要幾分鐘？','① 要的熱 ＝ 2000 × 0.9 × (85 − 25) ＝ 2000 × 0.9 × 60 ＝ 108000 卡<br>② 每分鐘真正吸收：1500 × (1 − 20%) ＝ 1500 × 0.8 ＝ 1200 卡<br>③ 時間 ＝ 108000 ÷ 1200 ＝ 90<br>答：90 分鐘。（講義 p.241 類題 1 換數字）']]});
+
+B({t:'比例題：設數字最快',src:'講義 p.241（精選範例 8、類題 1、3）、p.242（精選範例 9）',
+ text:'題目只給「比」的時候，從 H ＝ m × S × ΔT 移項：'+eq('S ＝ '+fr('H','m × ΔT'))+'熱量一樣時，S 和「m × ΔT」成反比。'+AI+'不習慣比例的話，直接設數字：熱量都設 60 卡，質量照比例設 1 g、2 g，代進去算。',
+ qs:[[RE+'A、B 質量比 1 : 2，吸收相同的熱量後，升高的溫度比 3 : 1。比熱比 S<sub>A</sub> : S<sub>B</sub>？','① 設熱量都是 6 卡，m<sub>A</sub> ＝ 1、m<sub>B</sub> ＝ 2，ΔT<sub>A</sub> ＝ 3、ΔT<sub>B</sub> ＝ 1<br>② S<sub>A</sub> ＝ 6 ÷ (1 × 3) ＝ 2<br>③ S<sub>B</sub> ＝ 6 ÷ (2 × 1) ＝ 3<br>④ S<sub>A</sub> : S<sub>B</sub> ＝ 2 : 3<br>答：2 : 3。（講義 p.242 精選範例 9 的算法）'],[RE+'同一熱源加熱甲、乙兩杯水，同樣時間內上升的溫度比 2 : 5。甲 250 g，乙幾 g？','① 同熱源同時間 → 吸熱一樣；同物質 → m 和 ΔT 成反比<br>② m甲 : m乙 ＝ 5 : 2<br>③ 250 : m乙 ＝ 5 : 2 → m乙 ＝ 250 × 2 ÷ 5 ＝ 100<br>答：100 g。（講義 p.241 類題 1 換數字）']]});
+
+B({t:'📌補充：熱容量（高中銜接）',tag:'📌 補充',src:'講義 p.243（高中銜接框）、p.242（精選範例 10）',
+ text:'<b>熱容量</b>：整個物體升高 1℃ 需要的熱量 ＝ <b>m × S</b>。<ul><li>比熱只和<b>材質</b>有關</li><li>熱容量和<b>材質、質量</b>都有關</li></ul>同一個熱源加熱時，<b>m × S 一樣</b>的兩個東西，溫度—時間圖的線會<b>重疊</b>。',
+ sheet:'講義 p.243 高中銜接：熱容量 C：物體每升高或下降 1℃ 所需吸收或放出的熱量；ΔH＝C×ΔT → C＝m×S；熱容量和質量與材質有關，比熱僅和材質有關。',
+ qs:[[RE+'同一熱源加熱：100 g 的水、200 g 比熱 0.5 的液體、50 g 比熱 0.6 的油。哪兩條溫度—時間圖的線會重疊？','① 水：100 × 1 ＝ 100<br>② 液體：200 × 0.5 ＝ 100<br>③ 油：50 × 0.6 ＝ 30<br>m × S 一樣的是水和液體 → 這兩條重疊；油升溫最快，線最陡。（講義 p.242 精選範例 10 換數字）']]});
+
+B({t:'熱平衡：最後溫度一樣',tag:'重點',src:'講義 p.244（D. 1）',
+ fig:chart({x:[0,10,2],y:[0,70,10],xl:'時間(分)',yl:'溫度(℃)',aria:'熱水放熱、冷水吸熱，最後溫度相同',
+  lines:[{p:[[0,60],[1,52],[2,47],[3,44],[4,42.2],[6,40.6],[10,40]],c:'a',t:'放熱：溫度下降',at:[1.4,60],an:'start'},
+         {p:[[0,20],[1,28],[2,33],[3,36],[4,37.8],[6,39.4],[10,40]],c:'b',t:'吸熱：溫度上升',at:[1.4,20],an:'start'}]}),
+ text:'<ul><li>熱由高溫傳到低溫，直到<b>溫度相等</b>（熱平衡）</li><li>平衡溫度一定在<b>最高溫和最低溫之間</b></li><li>高溫放的熱 ＝ 低溫吸的熱 ＋ 散失到外面的熱</li></ul>',
+ sheet:'講義 p.244：1. 熱平衡 (1) 熱由高溫處傳到低溫處，直到【溫度】相等，而達成「熱平衡」→ 不是由熱量多處傳到熱量少處 (2) 平衡溫度必介於最高溫與最低溫之間 (3) 放熱＝吸熱＋(散熱) →「ΔH放＝ΔH吸＋(ΔH散)」。'});
+
+B({t:'冷熱混合：放熱＝吸熱',tag:'超重要',src:'講義 p.244（D. 2 冷熱混合）、p.244～245（精選範例 11、類題 1、2）、自修 p.218（例 3）',
+ text:'不計散失時，高溫物體<b>放出</b>的熱 ＝ 低溫物體<b>吸收</b>的熱。設平衡溫度 T：'+eq('m<sub>1</sub> × S<sub>1</sub> × (T<sub>1</sub> − T) ＝ m<sub>2</sub> × S<sub>2</sub> × (T − T<sub>2</sub>)')+'（T<sub>1</sub> 是高溫、T<sub>2</sub> 是低溫，都用「大減小」）',
+ sheet:'講義 p.244：2. 冷熱混合 (1) 若熱量不散失，高溫物體放出的熱量＝低溫物體吸收的熱量 (2) 設平衡溫度 T℃ → T1 &gt; T &gt; T2 (3) m1×S1×(T1−T)＝m2×S2×(T−T2)。',
+ qs:[[RE+'80℃ 的熱水 40 g 和 20℃ 的冷水混合，最後 50℃（不計散失）。冷水幾 g？','① 熱水放熱 ＝ 40 × 1 × (80 − 50) ＝ 1200 卡<br>② 冷水吸熱 ＝ m × 1 × (50 − 20) ＝ 30m<br>③ 放熱 ＝ 吸熱：30m ＝ 1200<br>④ m ＝ 40<br>答：40 g。（講義 p.244 類題 1 換數字）'],[RE+'30℃、200 g 的 A 液體和 70℃、100 g 的水混合，最後 46℃。A 的比熱？','① 水放熱 ＝ 100 × 1 × (70 − 46) ＝ 2400 卡<br>② A 吸熱 ＝ 200 × S × (46 − 30) ＝ 3200 × S<br>③ 3200 × S ＝ 2400<br>④ S ＝ 0.75<br>答：0.75 cal/(g・℃)。（講義 p.245 類題 2 換數字）']]});
+
+B({t:'有散失時：放熱＝吸熱＋散熱',src:'講義 p.245（精選範例 12、類題 1）',
+ text:'實際上杯子、空氣也會吸走一些熱，所以：'+eq('散失的熱 ＝ 放出的熱 − 吸收的熱'),
+ qs:[[RE+'50 g、20℃ 的冷水和 100 g、80℃ 的熱水混合，最後 55℃。(1) 熱水放熱？(2) 冷水吸熱？(3) 散失多少？','(1) 100 × 1 × (80 − 55) ＝ 100 × 25 ＝ 2500 卡<br>(2) 50 × 1 × (55 − 20) ＝ 50 × 35 ＝ 1750 卡<br>(3) 2500 − 1750 ＝ 750 卡<br>（講義 p.245 精選範例 12 換數字）'],[RE+'200℃、100 g 的銅塊（比熱 0.09）放進 20℃、300 g 的水，平衡 25℃。散失多少卡？','① 銅放熱 ＝ 100 × 0.09 × (200 − 25) ＝ 9 × 175 ＝ 1575 卡<br>② 水吸熱 ＝ 300 × 1 × (25 − 20) ＝ 1500 卡<br>③ 散失 ＝ 1575 − 1500 ＝ 75 卡<br>（講義 p.245 類題 1 換數字）']]});
+
+B({t:'金屬球放進沸水',src:'講義 p.245（精選範例 13）、p.246（類題 1）',
+ text:'同質量、同初溫的鉛、鐵、鋁球放進沸水一直加熱，最後都會到 100℃。'+tbl(['問題','看什麼','答案'],[['剛放進去誰升溫最快？','比熱<b>最小</b>','鉛'],['到 100℃ 時誰吸熱最多？','ΔT 一樣，比熱<b>最大</b>吸最多','鋁'],['拿出來放進等量冷水，誰讓水最熱？','放熱最多的 ＝ 比熱<b>最大</b>','鋁']]),
+ qs:[mc(RE+'各 20 g、25℃ 的鉛（0.031）、鐵（0.113）、鋁（0.217）球放進沸水加熱到 100℃，再分別放進等量的 20℃ 冷水。哪一杯水的平衡溫度<b>最低</b>？',['放鉛球的','放鐵球的','放鋁球的','三杯一樣'],0,
+   ['','鐵的比熱在中間。','鋁比熱最大，放熱最多，水最熱。','比熱不同，放的熱不同。'],
+   '三顆球都從 100℃ 降下來，比熱最小的鉛帶的熱最少 → 水升溫最少。（講義 p.245 精選範例 13 換金屬）')]});
+
+B({t:'冷熱水混合實驗室',tag:'💡 互動',src:'自己做的互動頁，用講義 p.244 的冷熱混合公式計算（不計散失）',
+ text:'<div style="display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center"><span style="color:var(--ac)"><b>熱水質量</b></span><input type="range" id="mxA" min="10" max="200" step="10" value="100"><b id="mxAv"></b><span style="color:var(--ac)"><b>熱水溫度</b></span><input type="range" id="mxB" min="40" max="100" step="5" value="80"><b id="mxBv"></b><span style="color:var(--ac3)"><b>冷水質量</b></span><input type="range" id="mxC" min="10" max="200" step="10" value="100"><b id="mxCv"></b><span style="color:var(--ac3)"><b>冷水溫度</b></span><input type="range" id="mxD" min="0" max="35" step="5" value="20"><b id="mxDv"></b></div><div id="mxO" class="q"></div>試試看：兩杯一樣多時，平衡溫度剛好在正中間嗎？',
+ init:function(){var g=function(i){return document.getElementById(i);};if(!g('mxA'))return;
+  function u(){var a=+g('mxA').value,b=+g('mxB').value,c=+g('mxC').value,d=+g('mxD').value,t=(a*b+c*d)/(a+c);
+   g('mxAv').textContent=a+' g';g('mxBv').textContent=b+'℃';g('mxCv').textContent=c+' g';g('mxDv').textContent=d+'℃';
+   g('mxO').innerHTML='平衡溫度 T ＝ <b>'+f1(t)+'℃</b><br><span style="font-size:1rem">熱水放熱 '+a+' × 1 × ('+b+' − T) ＝ 冷水吸熱 '+c+' × 1 × (T − '+d+')<br>熱水放出 '+f1(a*(b-t))+' 卡，冷水吸收 '+f1(c*(t-d))+' 卡，一樣多</span>';}
+  ['mxA','mxB','mxC','mxD'].forEach(function(i){g(i).oninput=u;});u();},
+ note:'這頁只算「水和水」混合（比熱都是 1）。不同物質混合時，還要乘上各自的比熱。'});
+
+B({t:'小結：5-2 你應該帶走的',tag:'完成',src:'整理講義 p.231～246',
+ text:'<ul><li>熱由<b>溫度</b>高傳到低，直到溫度相同（熱平衡）</li><li>1 卡：1 g 水升 1℃；1 大卡 ＝ 1000 卡；只能說熱量「變化」</li><li>比熱 S：1 g 物質升高 1℃ 要吸收的熱；水的比熱是 1；物質的比熱越大 → 這個物質的溫度越難升高、也越難降低</li><li><b>H ＝ m × S × ΔT</b>；用同一個熱源時：H ＝ 每分鐘給的熱 × 加熱時間</li><li>用同一個熱源加熱同樣的時間 → 兩個物體吸的熱一樣多；在「溫度—時間」圖上，線越陡 → 這個物體的 m × S 越小</li><li>混合：放熱 ＝ 吸熱（＋散失）；平衡溫度在兩者之間</li></ul>接下來是隨堂演練 28、29 的詳解。'});
+
+/* 作業：隨堂演練 28 */
+B({t:'📝 隨堂演練 28（1～6）',tag:'作業解答',src:'講義 p.235 隨堂演練 28 第 1～6 題',
+ qs:[HW(1,'1 g、4℃ 的水所含熱量？','(D) 比 0℃、1 g 的水多 4 卡',KEY+'不能說物體「含有」幾卡。<br>'+STEP+'0℃ 升到 4℃：1 × 1 × 4 ＝ 4 卡，所以多 4 卡。'),
+  HW(2,'熱水袋、汽車用水冷卻引擎，是利用水的什麼性質？','(B) 比熱較大','比熱大：吸很多熱溫度才升一點（冷卻），放很多熱溫度才降一點（保溫）。'),
+  HW(3,'量體溫時，人體把熱傳給體溫計，原因？','(C) 人體溫度較高','熱只看溫度高低，不看質量或體積。'),
+  HW(4,'比熱的定義？','(D) 使 1 公克的物質上升或下降 1℃ 所需吸收或放出的熱量','注意是「1 公克」「1℃」，而且是那種物質，不一定是水。'),
+  HW(5,'有關熱平衡何者正確？','(D) 熱由高溫往低溫傳，最後溫度相同','熱平衡是「溫度」相同，不是熱量相同。'),
+  HW(6,'有關熱與溫度何者正確？','(C) 同一物體溫度增加，表示可能吸收了熱量','和講義 p.231 精選範例 1 同一題。其他選項錯在：熱由「溫度高」傳到低；溫度高不代表含熱多；熱平衡是溫度相同。')]});
+
+B({t:'📝 隨堂演練 28（7～11）',tag:'作業解答',src:'講義 p.236 隨堂演練 28 第 7～11 題',
+ qs:[HW(7,'糖炒栗子要加砂，原因？','(D) 砂的比熱小，溫度容易上升','比熱小 → 吸一點熱就升高很多。'),
+  HW(8,'鐵 0.113、砂 0.19、冰 0.55，同熱源、同質量，升溫由快到慢？','(A) 鐵 &gt; 砂 &gt; 冰',KEY+'同質量、同熱源 → 比熱越小升越快。<br>'+STEP+'比熱：鐵 0.113 &lt; 砂 0.19 &lt; 冰 0.55 → 升溫快慢反過來：鐵 &gt; 砂 &gt; 冰。'),
+  HW(9,'體溫計要夾在腋下 3 分鐘，原因？','(B) 需要時間才能達到熱平衡','熱要慢慢傳到體溫計，溫度一樣了讀數才準。'),
+  HW(10,'室溫下用溫度計量 8 mL 熱水，讀數 95℃。沒放溫度計之前，熱水溫度比 95℃？','(A) 高','溫度計原本是室溫，放進去會吸走熱水的一些熱，熱水變冷一點。水很少（8 mL）時影響更明顯。'),
+  HW(11,'【98 基測】表：水 1.0、冰 0.55、鋁 0.22、銅 0.093、鉛 0.031。哪一句<b>無法</b>從表推論？','(A) 1 g、10℃ 的鉛含 0.31 cal 的熱',KEY+'不能說物體「含」多少熱。<br>(B) 1 × 0.22 × 10 ＝ 2.2 cal ✔；(C) 水 1.0、冰 0.55，同物質不同狀態比熱不同 ✔；(D) 鋁比熱比銅大 → 吸同樣的熱溫度變化較小 ✔。')]});
+
+/* 作業：隨堂演練 29 */
+B({t:'📝 隨堂演練 29（1～4）',tag:'作業解答',src:'講義 p.247 隨堂演練 29 第 1～4 題',
+ qs:[HW(1,'40 g、60 g、80 g 同溫的冷水，用同一個電爐各加熱 5 分鐘，哪一杯溫度最高？','(A) 40 g','同熱源同時間 → 吸熱一樣；同物質 → 質量最小的升溫最多。'),
+  HW(2,'【94 基測】甲放熱 H甲、乙吸熱 H乙、散失到空氣 H丙，關係？','(D) H乙 ＋ H丙 ＝ H甲','放出的熱 ＝ 吸收的熱 ＋ 散失的熱。'),
+  HW(3,'【99 基測】甲 800 g 吸 800 cal 升 10℃；乙 400 g 吸 1200 cal 升 30℃。S甲 : S乙？','(A) 1 : 1',STEP+'① S ＝ H ÷ (m × ΔT)<br>② S甲 ＝ 800 ÷ (800 × 10) ＝ 800 ÷ 8000 ＝ 0.1<br>③ S乙 ＝ 1200 ÷ (400 × 30) ＝ 1200 ÷ 12000 ＝ 0.1<br>④ 0.1 : 0.1 ＝ 1 : 1。'),
+  HW(4,'熱水和冷水混合，熱水的熱量變化 500 卡。冷水的熱量變化<b>最不可能</b>是？','(A) 600 卡',KEY+'冷水吸的熱 ＝ 熱水放的熱 − 散失，最多 500 卡（沒有散失時），不可能比 500 卡多。')]});
+
+B({t:'📝 隨堂演練 29（5～8）',tag:'作業解答',src:'講義 p.247～248 隨堂演練 29 第 5～8 題',
+ qs:[HW(5,'同熱源加熱質量 M1、M2 的水，「溫度變化—加熱時間」圖中 M1 的線較陡。','(B) M2 &gt; M1',KEY+'橫軸是時間、縱軸是溫度變化：線越陡 → 同樣時間升越多 → 質量越小。M1 陡 → M1 小。'),
+  HW(6,'同上，但圖的橫軸改成「溫度變化」、縱軸是「加熱時間」，M1 的線較陡。','(A) M1 &gt; M2',KEY+'軸對調了！現在線越陡 → 升 1℃ 要加熱越久 → 質量越大。M1 陡 → M1 大。<br>'+WARN+'看圖題先看兩個軸各是什麼。'),
+  HW(7,'100℃、500 g 的沙子放進 100 g、20℃ 的水，平衡 60℃。沙的比熱？','(A) 0.2',STEP+'① 沙放熱 ＝ 500 × S × (100 − 60) ＝ 20000 × S<br>② 水吸熱 ＝ 100 × 1 × (60 − 20) ＝ 4000<br>③ 20000 × S ＝ 4000<br>④ S ＝ 0.2。'),
+  HW(8,'100 g 的水加熱，0、2、4、6、8、10 分鐘的溫度是 20、22、25、27、30、33℃。第 2～6 分鐘吸熱多少？','(A) 500 卡',STEP+'① 第 2 分鐘 22℃、第 6 分鐘 27℃ → ΔT ＝ 27 − 22 ＝ 5℃<br>② H ＝ 100 × 1 × 5 ＝ 500 卡。')]});
+
+B({t:'📝 隨堂演練 29（9～12）',tag:'作業解答',src:'講義 p.248 隨堂演練 29 第 9～12 題',
+ qs:[HW(9,'1 g 脂肪燃燒放出 9 大卡。燒 2 g 脂肪，熱全被 900 mL、20℃ 的水吸收，水溫變多少？','(B) 40℃',STEP+'① 熱量 ＝ 2 × 9 ＝ 18 大卡 ＝ 18000 卡<br>② 900 mL 的水 ＝ 900 g<br>③ ΔT ＝ H ÷ (m × S) ＝ 18000 ÷ (900 × 1) ＝ 20℃<br>④ 末溫 ＝ 20 ＋ 20 ＝ 40℃。'),
+  HW(10,'要泡 45℃ 的水：25℃ 的水 50 g，要加 65℃ 的熱水幾 g？','(A) 50 g',STEP+'① 熱水放熱 ＝ m × 1 × (65 − 45) ＝ 20m<br>② 冷水吸熱 ＝ 50 × 1 × (45 − 25) ＝ 1000<br>③ 20m ＝ 1000 → m ＝ 50。'),
+  HW(11,'裝 2000 cc 開水的保溫瓶，圖上 0 小時 95℃，10 小時後約 30℃。10 小時內散失多少卡？','(D) 130000 卡',STEP+'① 2000 cc 的水 ＝ 2000 g<br>② ΔT ＝ 95 − 30 ＝ 65℃<br>③ H ＝ 2000 × 1 × 65 ＝ 130000 卡。<br>（圖上 10 小時的點對到 30℃，請對照講義的圖確認）'),
+  HW(12,'四杯水加熱到沸騰（100℃），誰吸熱最多？(A) 2 kg、20℃ (B) 3 kg、30℃ (C) 1 kg、10℃ (D) 4 kg、50℃','(B)',STEP+'用「公斤 × 升高的度數」比較（單位千卡）：<br>(A) 2 × 80 ＝ 160<br>(B) 3 × 70 ＝ 210<br>(C) 1 × 90 ＝ 90<br>(D) 4 × 50 ＝ 200<br>最多是 (B)。')]});
+
+B({t:'📝 隨堂演練 29（13～17）',tag:'作業解答',src:'講義 p.248～249 隨堂演練 29 第 13～17 題',
+ qs:[HW(13,'50 g 的水從 25℃ 升到 50℃，吸熱？','(D) 1250 卡','50 × 1 × (50 − 25) ＝ 50 × 25 ＝ 1250 卡。'),
+  HW(14,'10℃、2.4 公升的水吸收 4800 卡，溫度變成？','(B) 12℃',STEP+'① 2.4 公升 ＝ 2400 mL ＝ 2400 g<br>② ΔT ＝ 4800 ÷ (2400 × 1) ＝ 2℃<br>③ 10 ＋ 2 ＝ 12℃。<br>'+WARN+'公升要先換成公克。'),
+  HW(15,'圖：都從 20℃ 開始，20 分鐘時 M1 到 100℃、M2 到 60℃。何者正確？','(D) M1 是 M2 的 0.5 倍',STEP+'① 20 分鐘：M1 升 100 − 20 ＝ 80℃，M2 升 60 − 20 ＝ 40℃<br>② 同熱源同時間 → ΔT 和 m 成反比 → M1 : M2 ＝ 1/80 : 1/40 ＝ 1 : 2<br>③ M1 是 M2 的 0.5 倍。<br>(A) M2 加熱 10 分鐘只升 20℃，不是 40℃；(B) 升 10℃ M1 比較快；(C) 同時間吸熱一樣。'),
+  HW(16,'同質量的甲、乙、丙，比熱 0.2、0.5、1.0，升高相同溫度需要的熱量由多到少？','(D) 丙 &gt; 乙 &gt; 甲','同質量、同 ΔT → H 和 S 成正比，比熱大的要最多熱。'),
+  HW(17,'50 g 的水（比熱 1）和 100 g 的油（比熱 0.6），20℃ 開始同熱源加熱，「溫度變化—時間」圖？','(B) 都從原點出發，水的線比較陡',STEP+'① 縱軸是「溫度變化」→ 一開始都是 0，從原點出發<br>② m × S：水 50 × 1 ＝ 50，油 100 × 0.6 ＝ 60<br>③ m × S 越小升溫越快 → 水比較陡。')]});
+
+B({t:'📝 隨堂演練 29（18～22）',tag:'作業解答',src:'講義 p.249～250 隨堂演練 29 第 18～22 題',
+ qs:[HW(18,'同質量的甲（比熱 0.2）、乙（0.55）放進水中煮到沸騰，溫度—時間圖？','(D) 甲的線較陡，最後都有水平段',KEY+'比熱小的升得快 → 甲陡；兩者最後都到沸水的 100℃，就不再升高 → 有水平段。'),
+  HW(19,'100℃、200 g 的鐵塊放進 20℃、200 g 的水，溫度—時間圖？','(C) 鐵下降、水上升，最後在同一溫度變成水平','熱平衡：高溫的降、低溫的升，最後溫度相同。'),
+  HW(20,'【98 基測】各 100 g：甲 20℃／0.2、乙 30℃／0.3、丙 40℃／0.4、丁 50℃／0.5，同熱源加熱，哪兩個同時到 80℃？','(B) 乙和丁',STEP+'算到 80℃ 要的熱（同熱源，熱一樣就同時到）：<br>甲 100 × 0.2 × 60 ＝ 1200<br>乙 100 × 0.3 × 50 ＝ 1500<br>丙 100 × 0.4 × 40 ＝ 1600<br>丁 100 × 0.5 × 30 ＝ 1500<br>乙、丁都是 1500 卡。'),
+  HW(21,'【96 基測】甲熱源加熱丙（20 g、比熱 1），乙熱源加熱丁（60 g、比熱 0.5）。圖：都從 20℃ 開始，丙 2 分鐘到 30℃，丁 6 分鐘到 30℃。甲、乙熱源每分鐘供熱比？','(B) 2 : 1',STEP+'① 丙吸熱 ＝ 20 × 1 × 10 ＝ 200 卡，用 2 分鐘 → 每分鐘 100 卡<br>② 丁吸熱 ＝ 60 × 0.5 × 10 ＝ 300 卡，用 6 分鐘 → 每分鐘 50 卡<br>③ 100 : 50 ＝ 2 : 1。'),
+  HW(22,'【100 北聯】甲 100 g、乙 100 g、丙 200 g，同熱源加熱。圖：甲 50 秒升 10℃，乙比甲慢，丙 100 秒升 10℃。比熱關係？','(C) S甲 ＝ S丙 &lt; S乙',STEP+'① 升 10℃：甲要 50 秒、丙要 100 秒 → 丙吸的熱是甲的 2 倍<br>② 丙的質量也是甲的 2 倍 → 每 1 g 吸的熱一樣 → S甲 ＝ S丙<br>③ 乙和甲同質量，但乙升得慢 → 乙比熱比較大。')]});
+
+B({t:'📝 隨堂演練 29（23～26）',tag:'作業解答',src:'講義 p.251 隨堂演練 29 第 23～26 題',
+ qs:[HW(23,'【106 會考】三塊鋁吸收相同熱量，初溫 −10℃、10℃、30℃，末溫都是 50℃。質量比？','(C) 2 : 3 : 6',STEP+'① ΔT：60℃、40℃、20℃<br>② 同物質、同熱量 → m 和 ΔT 成反比<br>③ m 比 ＝ 1/60 : 1/40 : 1/20<br>④ 同乘 120：2 : 3 : 6。'),
+  HW(24,'【107 會考】三杯水混合後平衡 50℃，混合前溫度最可能是？','(B) 20℃、90℃、95℃','平衡溫度一定在最低溫和最高溫之間，要有比 50℃ 低、也有比 50℃ 高的水。'),
+  HW(25,'【110 會考】同材質：甲 100 g 升 20℃ 要 120 秒；乙 300 g 升 10℃ 要 X 秒（同熱源）。X？','(C) 180',STEP+'① 熱量比 ＝ (m × ΔT) 比：甲 100 × 20 ＝ 2000，乙 300 × 10 ＝ 3000<br>② 同熱源，時間和熱量成正比：X ＝ 120 × 3000 ÷ 2000 ＝ 180 秒。'),
+  HW(26,'【111 會考】20℃ 的水分成甲、乙，M甲 : M乙 ＝ 3 : 2，同熱源加熱。「上升溫度—時間」圖？','(B) 10 分鐘時乙上升 30℃、甲上升 20℃',STEP+'① 同時間吸熱一樣 → ΔT 和 m 成反比<br>② ΔT甲 : ΔT乙 ＝ 2 : 3<br>③ 只有 (B) 甲 20、乙 30 是 2 : 3。')]});
+
+B({t:'📝 隨堂演練 29 題組 1',tag:'作業解答',src:'講義 p.252 隨堂演練 29 二、題組 1',
+ fig:chart({x:[0,10,2],y:[0,80,20],xl:'加熱時間(分)',yl:'溫度(℃)',aria:'甲乙丙三物質的溫度和時間',
+  lines:[{p:[[0,20],[6,80]],c:'a',t:'甲',at:[6.15,80],an:'start'},{p:[[0,20],[10,70]],c:'b',t:'乙',at:[9.2,74],an:'end'},{p:[[0,20],[10,45]],c:'c',t:'丙',at:[9.2,52],an:'end'}]}),
+ text:'各 50 g、20℃，同一熱源。圖照講義重畫：每分鐘升溫 甲 10℃、乙 5℃、丙 2.5℃。',
+ qs:[HW('1-(1)','誰的比熱最小？','(A) 甲','同質量同熱源，升最快的比熱最小。'),
+  HW('1-(2)','都升到 50℃，誰吸熱最多？','(C) 丙','同質量、同 ΔT → 比熱最大的吸最多。丙升最慢 → 比熱最大。'),
+  HW('1-(3)','50℃ 的三者放在空氣中，誰最先降到 30℃？','(A) 甲','比熱最小的易升也<b>易降</b>。'),
+  HW('1-(4)','甲是水，熱源每分鐘供熱？','(B) 500 卡','甲每分鐘升 10℃：50 × 1 × 10 ＝ 500 卡。'),
+  HW('1-(5)','丙是水，乙的比熱？','(C) 0.5',STEP+'① 丙是水，每分鐘升 2.5℃ → 熱源每分鐘 50 × 1 × 2.5 ＝ 125 卡<br>② 乙每分鐘升 5℃：50 × S × 5 ＝ 125<br>③ 250 × S ＝ 125 → S ＝ 0.5。')]});
+
+B({t:'📝 隨堂演練 29 題組 2',tag:'作業解答',src:'講義 p.252 隨堂演練 29 二、題組 2（103 會考）',
+ text:tbl(['','甲','乙','丙','丁'],[['材質','鐵','鐵','鋁','鋁'],['初溫(℃)','80','60','80','60'],['質量(g)','100','200','100','200'],['比熱','0.113','0.113','0.217','0.217']])+'放在 20℃ 的室溫中，最後都降到 20℃。',
+ qs:[HW('2-(1)','誰散失的熱最多？','(D) 丁',STEP+'H ＝ m × S × ΔT：<br>甲 100 × 0.113 × 60 ＝ 678<br>乙 200 × 0.113 × 40 ＝ 904<br>丙 100 × 0.217 × 60 ＝ 1302<br>丁 200 × 0.217 × 40 ＝ 1736 → 丁最多。'),
+  HW('2-(2)','降到 20℃ 後的體積？','(D) V甲 &lt; V乙，V丙 &lt; V丁','溫度都是 20℃，同材質時質量大的體積大：乙是甲的 2 倍質量、丁是丙的 2 倍質量。鐵和鋁密度不同，不能直接比甲和丙。')]});
+
+/* ---------- C：5-3 熱對物質的影響 ---------- */
+function lakeFig(){
+  var W=500,H=290,s=SVG(W,H,'冬天和夏天湖水各層的溫度');
+  [[0,'冬天','氣溫 −10℃',['0℃','1℃','2℃','3℃','4℃'],'b'],[260,'夏天','氣溫 35℃',['25℃','20℃','15℃','10℃','4℃'],'a']].forEach(function(q){
+    var x=q[0];
+    s+=TC(x+10,24,q[1],q[4],'start')+T(x+230,24,q[2],'lbl2','end');
+    s+=RC(x+10,50,230,225,'var(--ac3)',.18,'currentColor');
+    if(q[1]==='冬天')s+=RC(x+10,50,230,22,'var(--sub)',.35)+T(x+20,67,'冰','lbl2','start');
+    q[3].forEach(function(t,k){var y=(q[1]==='冬天'?96:82)+k*(q[1]==='冬天'?40:42);s+=T(x+225,y,t,'lbl2','end')+LN(x+20,y-6,x+150,y-6,'d',1,0,0,'4 5');});
+    s+=TC(x+20,265,'湖底約 4℃','k','start');
+  });
+  return s+'</svg>';
+}
+function bimetalFig(){
+  var W=460,H=250,s=SVG(W,H,'雙金屬片受熱彎曲');
+  s+=RC(20,30,24,50,'var(--sub)',.8)+RC(44,40,360,12,'var(--ac)',.85)+RC(44,52,360,12,'var(--ac3)',.85);
+  s+=TC(410,44,'鋁','a','start')+TC(410,80,'銅','b','start')+T(230,104,'加熱前：平的','lbl2','middle');
+  s+=RC(20,140,24,50,'var(--sub)',.8);
+  s+='<path d="M44 160 Q230 150 392 222" fill="none" stroke="var(--ac)" stroke-width="12"/><path d="M44 172 Q226 162 386 233" fill="none" stroke="var(--ac3)" stroke-width="12"/>';
+  s+=TC(450,162,'鋁在外側（膨脹多）','a','end')+TC(150,215,'彎向銅','b','middle');
+  return s+'</svg>';
+}
+function stateTri(){
+  var id='s'+(++UID),W=460,H=330,s=SVG(W,H,'三態變化與吸熱放熱')+mk(id),
+      P={固:[230,62],液:[78,272],氣:[382,272]},r=36;
+  function ar(a,b,lab,col,off,lo){
+    var x1=P[a][0],y1=P[a][1],x2=P[b][0],y2=P[b][1],dx=x2-x1,dy=y2-y1,l=Math.sqrt(dx*dx+dy*dy),ux=dx/l,uy=dy/l,nx=-uy*off,ny=ux*off;
+    var o=LN(x1+ux*(r+6)+nx,y1+uy*(r+6)+ny,x2-ux*(r+8)+nx,y2-uy*(r+8)+ny,col,3,id,col);
+    var mx=(x1+x2)/2+nx*lo,my=(y1+y2)/2+ny*lo+6;
+    return o+TC(mx,my,lab,col,'middle');
+  }
+  s+=ar('固','液','熔化','a',-9,4)+ar('液','固','凝固','b',-9,4);
+  s+=ar('液','氣','汽化','a',-9,3.4)+ar('氣','液','凝結','b',-9,3.4);
+  s+=ar('氣','固','凝華','b',-9,4)+ar('固','氣','昇華','a',-9,4);
+  ['固','液','氣'].forEach(function(k){s+='<circle cx="'+P[k][0]+'" cy="'+P[k][1]+'" r="'+r+'" fill="var(--soft)" stroke="currentColor" stroke-width="2.5"/>'+T(P[k][0],P[k][1]+7,k+'體','lbl2','middle');});
+  s+=TC(10,22,'橘色：吸熱','a','start')+TC(450,22,'藍色：放熱','b','end');
+  return s+'</svg>';
+}
+
+C({t:'5-3 熱對物質的影響：先看懂，再去上課',tag:'今天的目標',
+ text:'這一節回答三個問題：<ol><li><b>受熱後體積怎麼變？</b>（熱脹冷縮、水的例外、雙金屬片）</li><li><b>哪些變化會吸熱、哪些會放熱？</b></li><li><b>冰怎麼變成水、再變成水蒸氣？</b>（三態變化、熔點、沸點）</li></ol>對照補習班講義 <b>p.253～265</b>、自修 p.228～243。<br><br>'+LEGEND});
+
+C({t:'熱脹冷縮，和水的例外',tag:'重點',src:'講義 p.253（A. 1 與圖）、自修 p.228～229（1 溫度對物體體積的影響）',
+ fig:chart({x:[0,14,2],y:[0,10,2],noyt:1,xl:'溫度(℃)',yl:'體積',aria:'水的體積隨溫度變化，4℃ 時最小',
+  lines:[{p:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(function(t){return [t,2+0.06*(t-4)*(t-4)];}),c:'b'}],
+  extra:function(X,Y){return LN(X(4),Y(2),X(4),Y(0),'e',2,0,0,'5 4')+'<circle cx="'+f1(X(4))+'" cy="'+f1(Y(2))+'" r="6" fill="var(--bad)"/>'+TC(X(4)+10,Y(1.2),'4℃：體積最小、密度最大','e','start')+TC(X(0.3),Y(4.6),'熱縮冷脹','b','start')+TC(X(13.6),Y(9.2),'熱脹冷縮','b','end');}}),
+ text:'大部分物質<b>受熱體積膨脹、冷卻體積收縮</b>，叫做<b>熱脹冷縮</b>。<br>例外：<b>水在 0～4℃</b> 是<b>熱縮冷脹</b>。水在 <b>4℃ 時體積最小、密度最大</b>。<br>（質量不變，體積越小 → 密度越大）',
+ sheet:'講義 p.253：1. 大部分的物質，受熱體積會膨脹，冷卻時體積會收縮。此性質稱為「熱脹冷縮」，但有些物質例外，如水在 4℃ 體積最小。圖：熱縮冷脹（降溫時 V 上升，D 下降）；熱脹冷縮（升溫時 V 上升，D 下降）；熱縮冷也脹（V 最小，D 最大）。',
+ qs:[['水從 0℃ 加熱到 30℃，體積怎麼變？','先變小（到 4℃ 最小），再變大。（隨堂演練 30 第 11 題）'],['「水從 0℃ 升到 4℃，體積逐漸膨脹」對嗎？','不對，0～4℃ 是體積逐漸<b>縮小</b>。（隨堂演練 30 第 10 題）']]});
+
+C({t:'氣體最會脹，壓力也會變',src:'講義 p.253（A. 2、3）',
+ text:'熱脹冷縮的程度：<b>氣體 &gt; 液體 &gt; 固體</b>。<br>密閉容器裡的氣體：<ul><li>壓力不變時，溫度升高 → <b>體積膨脹</b></li><li>體積不變時（硬的容器），溫度升高 → 容器內的<b>壓力變大</b></li></ul>'+AI+'所以夏天汽車輪胎不要打太飽，罐裝噴霧也不能放在高溫的車裡。',
+ sheet:'講義 p.253：2. 熱脹冷縮現象：氣體【&gt;】液體【&gt;】固體。3. 氣體的熱脹冷縮：(1) 在密閉容器內，定量的氣體在定壓下，溫度升高時，體積會膨脹 (2) 在密閉容器內，定量的氣體在體積一定下，溫度升高時，容器內的壓力會【變大】。'});
+
+C({t:'湖水結冰，魚還活著',tag:'重點',src:'講義 p.253（A. 4 湖水的恆溫特性與圖）、p.254 精選範例 1、自修 p.246（3 湖水的對流）',
+ fig:lakeFig(),
+ text:'<b>冬天</b>：湖面水降到 4℃ → 密度變大 → <b>下沉</b>；再冷到 4℃ 以下 → 密度變小 → <b>浮在上面</b>，最後表面在 0℃ 結冰，<b>湖底保持約 4℃</b>，魚可以過冬。<br><b>夏天</b>：表面的水受熱、密度變小，留在上面；湖底仍約 4℃。',
+ sheet:'講義 p.253：4. 湖水的恆溫特性 (1) 冬天：① 湖面溫度逐漸降至 4℃ ⇒ 表面湖水「體積變小」、「密度變大」⇒ 下沉 ② 湖面溫度降至 4℃ 以下 ⇒ 低於 4℃ 的湖水體積變大、密度變小 ⇒ 上浮，直到 0℃ 開始結冰，此時湖底的水溫仍保持 4℃ 左右，故水中生物可度過寒冬。(2) 夏天：溫度上升時，表面湖水因受熱造成體積變大、密度變小，所以較熱的水仍留在上層，湖底的水溫仍保持 4℃ 左右。',
+ qs:[mc('「臥冰求鯉」的鯉魚能在厚冰下活著，和水在 4℃ 的哪一種性質有關？',['體積最小、密度最小','體積最大、密度最小','體積最大、密度最大','體積最小、密度最大'],3,
+   ['體積小時，質量不變，密度應該是大的。','4℃ 時體積最小，不是最大。','體積最大時密度會最小，兩個不會同時最大。',''],
+   '4℃ 的水密度最大，沉到湖底，湖底就一直維持約 4℃。（講義 p.254 精選範例 1）')]});
+
+C({t:'雙金屬片：受熱會彎',tag:'重點',src:'講義 p.254（A. 5 與圖、精選範例 2）、自修 p.229',
+ fig:bimetalFig(),
+ text:'兩片<b>膨脹程度不同</b>的金屬黏在一起：<ul><li><b>受熱</b>：膨脹多的變得比較長 → 向膨脹<b>少</b>的一邊彎</li><li><b>遇冷</b>：膨脹多的也縮得多 → 向膨脹<b>多</b>的一邊彎</li></ul>鋁比銅容易脹縮：受熱時彎向銅，遇冷時彎向鋁。用途：<b>自動開關</b>（電熨斗、定溫開關）。',
+ sheet:'講義 p.254：5. 雙金屬片：二膨脹程度不同的金屬片黏貼成片，因金屬片受冷熱會彎曲，可用於開關設計。(1) 遇熱時，金屬片會向脹縮程度【小】的一方彎曲；遇冷時，向脹縮程度【大】的一方彎曲 (2) 膨脹率大者，易脹易縮。圖：鋁片、銅片，鋁的脹縮程度 &gt; 銅。',
+ qs:[[RE+'甲、乙兩種金屬做成雙金屬片，甲在上、乙在下，加熱後向<b>上</b>彎。哪一種比較容易膨脹？','乙。受熱時向膨脹「少」的那一邊彎，向上彎 → 上面的甲膨脹少 → 下面的乙膨脹多。（講義 p.254 精選範例 2 的想法）']],
+ note:AI+'記法：彎成弧形時，外側那一圈比較長 → 外側是膨脹多的金屬。'});
+
+C({t:'金屬球和環、生活應用',src:'講義 p.254（A. 6、7）、自修 p.229～230',
+ text:'金屬球剛好能穿過金屬環：<ul><li>把<b>球</b>加熱 → 球變大 → <b>穿不過去</b></li><li>把<b>環</b>加熱 → 環的<b>洞也變大</b> → 球<b>能</b>穿過</li></ul>應用：<ul><li>鐵軌、橋梁接縫<b>預留空隙</b>（伸縮縫），避免熱脹擠壓變形</li><li>油管做成 <b>U 字形</b>，讓它有空間伸縮</li><li>電線不能繃太緊，冬天冷縮會斷</li><li>瓶蓋打不開 → 用<b>熱水</b>沖金屬瓶蓋，瓶蓋膨脹就鬆了</li></ul>',
+ sheet:'講義 p.254：6. 若金屬球未受熱時，金屬球剛好可穿過金屬環，則：(1) 但當球加熱後，因為膨脹的緣故，遂無法穿過環 (2) 若加熱的對象換成環，球是否能穿過？【能】(3) 環洞的大小是比未加熱前大、小、還是沒變？【大】7. 應用：(1) 溫度計 (2) 雙金屬片製成定溫開關 (3) 鐵軌與橋樑銜接處，常預留空隙 (4) 油管做成 U 字形 (5) 電線不能繃太緊，避免斷裂。',
+ qs:[['五元硬幣中間有小圓孔，把硬幣加熱，小孔直徑怎樣？','變大。整個硬幣（包括洞）一起等比例放大。（隨堂演練 30 第 20 題、31 第 18 題）'],['「玻璃罐的金屬瓶蓋打不開，放在冰水下沖一下就能打開」對嗎？','不對。冰水讓瓶蓋收縮更緊，應該用熱水沖。（隨堂演練 30 第 8 題）']]});
+
+C({t:'化學變化與能量：吸熱、放熱',tag:'重點',src:'講義 p.255（B. 1～3）、自修 p.236（7 吸熱反應與放熱反應）',
+ text:'化學變化常伴隨能量變化，而且一般來說<b>化學變化的能量變化比物理變化大</b>。'+tbl(['','吸熱反應','放熱反應'],[['能量','從外界<b>吸收</b>','<b>放出</b>到外界'],['周圍溫度','<b>下降</b>（變冷）','<b>上升</b>（變熱）']]),
+ sheet:'講義 p.255：1. 在化學變化中常伴隨著能量的變化，且能量變化往往是決定一個化學反應會不會發生的因素。2. 一般而言，化學變化中能量的變化【大於】物理變化中能量的變化。3. 吸收能量，是屬於【吸熱】反應，會使環境溫度【下降】；放出能量，是屬於【放熱】反應，會使環境溫度【上升】。',
+ qs:[['甲杯加氫氧化鈉，水溫升高；乙杯加氯化銨，水溫下降。各是吸熱還是放熱？','甲放熱、乙吸熱。周圍（水）變熱 → 放熱；變冷 → 吸熱。（隨堂演練 30 第 19 題）']]});
+
+C({t:'硫酸銅、氯化亞鈷：加熱會變色',src:'講義 p.255（B. 4、5）、自修 p.236',
+ text:tbl(['','含水（有結晶水）','加熱後（無水）'],[['硫酸銅','<b>藍</b>色晶體','<b>白</b>色粉末'],['氯化亞鈷','<b>粉紅</b>色','<b>藍</b>色']])+'加熱失去水是<b>吸熱</b>；無水的再遇到水會變回原來的顏色，是<b>放熱</b>。<br>用途：<b>氯化亞鈷試紙</b>檢驗有沒有<b>水</b>（藍色遇水變粉紅色）。',
+ sheet:'講義 p.255：4. 硫酸銅晶體受熱 (1) 硫酸銅晶體含有結晶水，呈【藍】色；無水硫酸銅粉末，呈【白】色 (2) 硫酸銅晶體（藍色）＋熱能 ⇌ 無水硫酸銅（白色）＋水。5. 氯化亞鈷晶體受熱 (1) 含結晶水，呈【粉紅】色；無水氯化亞鈷，呈【藍】色 (2) 常用氯化亞鈷試紙檢驗【水】的存在 (3) 含水氯化亞鈷晶體（粉紅色）＋熱能 ⇌ 無水氯化亞鈷（藍色）＋水。',
+ qs:[[RE+'用硫酸銅水溶液寫字、用氯化亞鈷水溶液畫圖，用吹風機吹乾後，字和圖各變什麼顏色？','硫酸銅變成白色（在白紙上看起來像消失了），氯化亞鈷變成藍色。這是化學變化。（隨堂演練 30 題組 1）']],
+ note:'⚠️ 兩個顏色剛好容易記反：硫酸銅「藍 → 白」，氯化亞鈷「粉紅 → 藍」。'});
+
+C({t:'三態變化：哪些吸熱、哪些放熱',tag:'超重要',src:'講義 p.255（B. 6 圖）、自修 p.235（6 物質在不同狀態之間的變化）',
+ fig:stateTri(),
+ text:'往「分子更自由」的方向（固 → 液 → 氣）要<b>吸熱</b>：熔化、汽化、昇華。<br>反方向要<b>放熱</b>：凝固、凝結、凝華。'+AI+'記法：名字有「凝」的都放熱。',
+ sheet:'講義 p.255：6. 物質的三態變化與吸熱、放熱的關係：熔化（吸熱）、凝固（放熱）、汽化（吸熱）、凝結（放熱）、昇華（吸熱）、凝華（放熱）。',
+ qs:[['乾冰放在空氣中直接變成氣體，是什麼變化？吸熱還是放熱？','昇華，吸熱。'],['冬天窗戶上結的霜，是水蒸氣直接變成冰，叫什麼？','凝華，放熱。']]});
+
+C({t:'吸熱與放熱：整理表',src:'講義 p.256（7. 統整、精選範例 3、類題 1）',
+ text:tbl(['吸熱','放熱'],[['周圍溫度下降','周圍溫度上升'],['熔化、汽化（蒸發、沸騰）、昇華','凝固、凝結、凝華'],['酒精塗手臂（蒸發吸熱）覺得涼','燃燒、金屬生鏽'],['雪融化時天氣更冷','酸鹼中和、濃酸或濃鹼加水稀釋'],['硝酸鉀、食鹽溶於水','氫氧化鈣（或氫氧化鈉）溶於水'],['光合作用、電解水、加熱分解','乾電池放電']]),
+ sheet:'講義 p.256：7. 統整：吸熱反應 能量來源 自外界吸收，周圍環境因失去熱能而降低溫度；放熱反應 能量來源 物質本身具有的能量，周圍環境常因熱能而使溫度上升。',
+ qs:[[RE+'下面哪些是吸熱？哪些是物理變化？(甲) 木炭燃燒 (乙) 光合作用 (丙) 加熱碳酸氫鈉 (丁) 電解水 (戊) 乾冰昇華 (己) 鐵生鏽','吸熱：乙、丙、丁、戊。物理變化：只有戊（昇華只是狀態改變，沒有產生新物質）。（講義 p.256 類題 1 換選項）'],mc('「煙火爆炸會發出光和熱」，它和下面哪一個屬於同一類？',['酸鹼中和','光合作用','電解水','冰融化'],0,
+   ['','光合作用是吸收光能，屬於吸熱。','電解水要吸收電能，屬於吸熱。','冰融化要吸熱。'],
+   '煙火爆炸放出能量，和酸鹼中和一樣是放熱反應。（講義 p.256 精選範例 3，109 會考補考）')]});
+
+C({t:'加熱曲線：熔點和沸點',tag:'超重要',src:'講義 p.257（C. 1 三態變化的探討與圖）、自修 p.232～233',
+ fig:chart({x:[0,12,2],y:[-20,120,20],noxt:1,xl:'加熱時間',yl:'溫度(℃)',aria:'冰加熱成水再變成水蒸氣的溫度變化',
+  lines:[{p:[[0,-15],[1,0],[4,0],[7,100],[10.5,100],[12,118]],c:'a'}],
+  extra:function(X,Y){return TC(X(1.2),Y(-16),'固','b','start')+TC(X(2.5),Y(8),'固液共存','c','middle')+TC(X(5.3),Y(50),'液','b','end')+TC(X(8.7),Y(108),'液氣共存','c','middle')+TC(X(12),Y(92),'氣','b','end');}}),
+ text:'<ul><li><b>熔點</b>：固體吸熱開始變成液體的溫度；<b>熔化</b>時一直吸熱，但<b>溫度不變</b></li><li><b>沸點</b>：液體吸熱開始變成氣體的溫度；<b>沸騰</b>時一直吸熱，但<b>溫度不變</b></li></ul>水平的那兩段就是「狀態改變、溫度不變」。<br>反過來冷卻時：凝結點、凝固點，凝結和凝固時一直放熱，溫度也不變。純物質的凝固點 ＝ 熔點、凝結點 ＝ 沸點。',
+ sheet:'講義 p.257：(1) 熔點：物質由「固態吸熱」而開始變為「液態」時的溫度 (2) 熔化：熔化期間仍「繼續吸熱」，但「溫度不變」(3) 沸點：物質由「液態吸熱」而開始變為「氣態」時的溫度 (4) 沸騰：沸騰期間仍「繼續吸熱」，但「溫度不變」。冷卻：凝結點、凝結、凝固點、凝固，期間仍「繼續放熱」，但「溫度不變」。',
+ note:'👂 講義 p.257 有加熱、冷卻兩張圖，上課對照每一段是什麼狀態。'});
+
+C({t:'狀態變 ↔ 溫度不變',tag:'重點',src:'講義 p.257（C. 2）、p.259（精選範例 5、類題 1）',
+ text:'物質吸熱或放熱後，只會發生其中一種：<ul><li>狀態<b>改變</b>，溫度<b>不變</b></li><li>溫度<b>改變</b>，狀態<b>不變</b></li></ul>一大氣壓下，<b>冰水混合</b>（冰還沒融完）時，溫度一定是 <b>0℃</b>。',
+ sheet:'講義 p.257：2. 物質吸收或放出熱量後，可能：狀態【改變】，溫度【不變】；溫度【改變】，狀態【不變】。',
+ qs:[[RE+'一杯冰塊還沒完全融化的冰水放在 6℃ 的冰箱冷藏室很久，冰塊還在。水溫幾度？','0℃。冰水共存，溫度就是 0℃。（講義 p.259 類題 1 換數字）'],['一大氣壓下，甲：杯中全結冰；乙：水和大量冰塊；丙：水和少量冰塊；丁：只有水。哪一杯可能是 4℃？','丁。乙、丙有冰也有水，都是 0℃；甲全是冰，0℃ 以下。（講義 p.259 精選範例 5，109 會考）']]});
+
+C({t:'蒸發和沸騰；壓力影響沸點',tag:'重點',src:'講義 p.257（C. 3、4）、p.259（精選範例 4、類題 1）、自修 p.234',
+ text:tbl(['','蒸發','沸騰'],[['什麼溫度','<b>任何溫度</b>都會','到<b>沸點</b>才會'],['發生在哪','液體<b>表面</b>','液體<b>內部</b>也會（冒泡）'],['快慢','和緩','劇烈']])+'蒸發變快：液面大、溫度高、空氣乾燥、有風。<br><br>壓力越<b>大</b>，沸點越<b>高</b>；壓力越<b>小</b>，沸點越<b>低</b>。<ul><li>高山上氣壓小，水不到 100℃ 就沸騰，不容易煮熟</li><li>壓力鍋把壓力加大 → 沸點升高 → 容易煮熟</li><li>桶裝瓦斯加壓，把氣體變成液化石油氣</li></ul>',
+ sheet:'講義 p.257：3. 汽化：【蒸發】任何溫度下，表面液體分子和緩 → 氣體分子 (1) 液面大 (2) 溫度高 (3) 乾燥 (4) 有風，蒸發快；【沸騰】在沸點時，內部液體分子急遽 → 氣體分子。4. (1) 環境壓力愈大 ⇒ 沸點愈【高】；愈小 ⇒ 沸點愈【低】。',
+ qs:[['酒精沸點 78.5℃，30℃、50℃ 時會蒸發嗎？','都會。蒸發在任何溫度都會發生。（講義 p.259 精選範例 4、隨堂演練 30 第 2 題）'],['同質量的水 80℃、40℃、60℃、20℃，哪一杯蒸發最快？','80℃，溫度越高蒸發越快。（講義 p.259 類題 1）']]});
+
+C({t:'用熔點、沸點判斷狀態',src:'講義 p.258（精選範例 2、類題 1、高中銜接框）',
+ text:'一大氣壓下：'+tbl(['溫度在哪裡','狀態'],[['低於熔點','固態'],['等於熔點','可能固液共存'],['在熔點和沸點之間','液態'],['等於沸點','可能液氣共存'],['高於沸點','氣態']]),
+ qs:[[RE+'某物質在 −60℃ 是固體、0℃ 是液體、200℃ 是氣體。表中哪一個可能？甲：熔點 −80、沸點 150；乙：熔點 −40、沸點 300；丙：熔點 −50、沸點 180；丁：熔點 10、沸點 250','丙。<br>① −60℃ 是固體 → 熔點要高於 −60：甲（−80）不行<br>② 0℃ 是液體 → 熔點要低於 0、沸點高於 0：丁（10）不行<br>③ 200℃ 是氣體 → 沸點要低於 200：乙（300）不行<br>④ 只剩丙（−50、180）。（講義 p.258 精選範例 2 換數字）']],
+ note:'📌 講義 p.258 高中銜接：冰的熔化熱 80 卡／公克、水的汽化熱 540 卡／公克（融化 1 g 的冰要 80 卡，溫度不變）。'});
+
+C({t:'三態判斷：看吸熱放熱的方向',src:'講義 p.258（精選範例 3）、p.259（類題 1）',
+ text:'三種狀態中：<ul><li><b>氣態</b>變成另外兩種都是<b>放熱</b></li><li><b>固態</b>變成另外兩種都是<b>吸熱</b></li><li>液態在中間：變固態放熱、變氣態吸熱</li></ul>',
+ qs:[mc('甲、乙、丙是三種狀態，箭頭表示放熱：甲 → 乙、甲 → 丙、乙 → 丙都是放熱。甲、乙、丙是？',['甲氣、乙固、丙液','甲氣、乙液、丙固','甲固、乙氣、丙液','甲固、乙液、丙氣'],1,
+   ['乙 → 丙 是固變液，要吸熱，不是放熱。','','固態變氣態要吸熱。','固態變液態要吸熱。'],
+   '甲變成其他兩種都放熱 → 甲是氣態；乙 → 丙 放熱 → 液變固，乙液、丙固。（講義 p.258 精選範例 3，110 會考）')]});
+
+C({t:'看懂冰的加熱曲線',src:'講義 p.260（精選範例 6）',
+ fig:chart({x:[0,20,4],y:[-20,120,20],xl:'時間(分)',yl:'溫度(℃)',aria:'50 克冰的加熱曲線',
+  lines:[{p:[[0,-20],[1,0],[9,0],[19,100],[20,100]],c:'a'}],
+  extra:function(X,Y){return TC(X(1),Y(6),'B','e','end')+TC(X(9),Y(6),'C','e','start')+TC(X(19),Y(106),'D','e','end')+LN(X(19),Y(100),X(19),Y(-20),'d',1.6,0,0,'5 4')+LN(X(1),Y(0),X(1),Y(-20),'d',1.6,0,0,'5 4')+LN(X(9),Y(0),X(9),Y(-20),'d',1.6,0,0,'5 4')+TC(X(1),Y(-14),'1','d','middle','lbl')+TC(X(9),Y(-14),'9','d','middle','lbl')+TC(X(19),Y(-14),'19','d','middle','lbl');}}),
+ text:RE+'50 g、−20℃ 的冰用穩定熱源加熱：第 1 分鐘到 0℃，第 9 分鐘冰全部融化，第 19 分鐘到 100℃。',
+ qs:[['(1) 水從 0℃ 加熱到 100℃（C → D）吸了多少熱？','H ＝ 50 × 1 × (100 − 0) ＝ 5000 卡。'],['(2) 熱源每分鐘提供多少熱？','C → D 用 19 − 9 ＝ 10 分鐘 → 5000 ÷ 10 ＝ 500 卡／分鐘。'],['(3) 加熱 5 分鐘時是什麼狀態？','第 1～9 分鐘在 0℃ 的水平段 → 固液共存。'],['(4) B → C 這段吸了多少熱？','用了 9 − 1 ＝ 8 分鐘 × 500 ＝ 4000 卡（＝ 50 g × 80 卡／g，熔化熱）。']],
+ note:'（講義 p.260 精選範例 6 換數字：原題是 40 g 的冰）'});
+
+C({t:'生活中的凝結：小水珠',src:'講義 p.260（精選範例 7）、p.261（類題 1、2）、自修 p.238',
+ text:'空氣中的<b>水蒸氣</b>碰到<b>比較冷</b>的東西 → 放熱<b>凝結</b>成小水滴。<ul><li>冰水杯：杯子<b>外壁</b>出現水珠（外面空氣的水蒸氣碰到冷杯子）</li><li>熱水杯：杯子<b>內壁、水面以上</b>出現水珠（熱水蒸發的水蒸氣碰到較冷的杯壁）</li><li>戴眼鏡吃熱麵，鏡片起霧；冬天車窗內起霧（車內水氣）</li><li>雲：水滴或冰晶</li><li>冬天吐出的白煙、冰箱冒的白煙、乾冰的白煙 → 都是<b>小水滴</b>（不是水蒸氣，水蒸氣看不見）</li></ul>',
+ qs:[['室溫 25℃，一杯 0℃ 的冰水、一杯 100℃ 的熱水，各在哪裡先出現霧狀小水珠？','冰水杯：外壁；熱水杯：內壁水面以上。（講義 p.260 精選範例 7，96 基測）'],['點香菸冒的白煙和冬天吐的白煙一樣嗎？','不一樣。香菸的白煙是燃燒產生的微粒，其他是水蒸氣凝結的小水滴。（隨堂演練 30 第 16 題）']]});
+
+C({t:'小結：5-3 你應該帶走的',tag:'完成',src:'整理講義 p.253～261',
+ text:'<ul><li>熱脹冷縮的程度：氣體 &gt; 液體 &gt; 固體；水在 <b>4℃ 時體積最小、密度最大</b>，所以冬天湖底約 4℃</li><li>雙金屬片：受熱時彎向膨脹<b>少</b>的那一邊</li><li>金屬環加熱，中間的洞也變<b>大</b>；鐵軌要留縫、電線不能拉太緊</li><li>反應吸熱 → 周圍變冷；反應放熱 → 周圍變熱；名稱有「凝」字的狀態變化（凝固、凝結、凝華）都放熱</li><li>硫酸銅失去水：藍色 → 白色；氯化亞鈷失去水：粉紅色 → 藍色（可以用來檢驗有沒有水）</li><li>熔化、沸騰時一直吸熱，但<b>溫度不變</b>；一大氣壓下冰水共存時是 0℃</li><li>蒸發在任何溫度都會發生；環境壓力越大 → 液體的沸點越高</li></ul>接下來是隨堂演練 30 的詳解。'});
+
+/* 作業：隨堂演練 30 */
+C({t:'📝 隨堂演練 30（1～4）',tag:'作業解答',src:'講義 p.262 隨堂演練 30 第 1～4 題',
+ qs:[HW(1,'水在哪一種狀態變化中會放出熱量？','(B) 大氣中的水氣凝結成雲','凝結放熱。雪融化（熔化）、水蒸發、霧變水蒸氣（汽化）都是吸熱。'),
+  HW(2,'酒精沸點 78.5℃，在 30℃、50℃ 時會蒸發嗎？','(D) 30℃ 與 50℃ 皆會','蒸發在任何溫度都會發生，不用到沸點。'),
+  HW(3,'哪一個圖表示純物質<b>熔化</b>過程的溫度—時間曲線？','(B) 上升 → 水平 → 上升','熔化時一直吸熱但溫度不變 → 中間有水平段。(A) 是突然往上跳，(C) 沒有水平段，(D) 是在降溫。'),
+  HW(4,'相同熱源加熱等質量的甲、乙、丙固體（圖：甲最陡、最先到水平段，乙其次，丙最緩）。固態時比熱最小的是？','(A) 甲','看第一段（固態）的斜率：同質量、同熱源，升溫越快比熱越小。甲最陡 → 比熱最小。')]});
+
+var HW30=[
+ HW(5,'250 g、10℃ 的固體，熱源每分鐘 100 卡。圖：0～10 分 10→40℃、10～40 分 40℃ 不變、40～60 分 40→60℃。何者正確？','講義印的四個選項算出來都對不上，上課請問老師',
+  STEP+'① 固態（0～10 分）：吸熱 100 × 10 ＝ 1000 卡，ΔT ＝ 40 − 10 ＝ 30℃<br>　 S ＝ 1000 ÷ (250 × 30) ＝ 1000 ÷ 7500 ≈ 0.13<br>② 液態（40～60 分）：吸熱 100 × 20 ＝ 2000 卡，ΔT ＝ 60 − 40 ＝ 20℃<br>　 S ＝ 2000 ÷ (250 × 20) ＝ 2000 ÷ 5000 ＝ 0.4<br>③ 選項是：(A) 固態 0.2、(B) 固態 0.4、(C) 液態 0.2、(D) 液態 0.1，沒有一個等於「固態約 0.13」或「液態 0.4」。<br>'+WARN+'最接近的是「液態 0.4」，但 (B) 寫的是「固態」。可能是題目印錯，請上課確認。'),
+ HW(6,'100 g、10℃ 的固體，穩定熱源加熱。圖：0～10 分 10→30℃、10～60 分 30℃ 不變、60～80 分 30→50℃、80 分後 50℃ 不變。何者<b>錯誤</b>？','照講義的圖，(C) 和 (D) 都是錯的；選項應該是照另一張圖出的，原本的答案應為 (D)',
+  STEP+'照講義的圖：<br>① 0～10 分：固態升溫 → (A) 0～9 分固態 ✔<br>② 10～60 分：30℃ 水平段，固液共存 → (B) 10～39 分固液共存 ✔<br>③ 40～59 分還在 30℃ 的水平段，仍是固液共存 → (C)「液態」✘<br>④ 80 分才到 50℃ 的第二個水平段（沸點）→ (D)「第 50 分達沸點」✘<br>'+WARN+'選項的分鐘數（10、40、60）和第 5 題的圖一樣，看起來是照「10 分熔化、40 分熔化完、60 分沸騰」的圖出的；那樣的話 (C) 對、(D) 錯，答案是 (D)。請上課確認。')];
+C({t:'📝 隨堂演練 30（5～6）⚠️ 題目有問題',tag:'作業解答',src:'講義 p.262～263 隨堂演練 30 第 5、6 題',qs:HW30,
+ note:'這兩題的圖和選項對不上，建議上課時問老師。已記錄在進度紀錄。'});
+
+C({t:'📝 隨堂演練 30（7～11）',tag:'作業解答',src:'講義 p.263 隨堂演練 30 第 7～11 題',
+ qs:[HW(7,'皮膚塗酒精後覺得涼涼的，為什麼？','(D) 酒精揮發時會吸收皮膚表面的熱量','蒸發（汽化）吸熱，熱從皮膚被帶走。'),
+  HW(8,'有關熱脹冷縮的例子，何者<b>錯誤</b>？','(B) 玻璃罐打不開，把金屬瓶蓋放在冰水下沖，瓶蓋收縮、內徑增加而打開','冰水讓瓶蓋收縮 → 內徑變<b>小</b>、蓋得更緊。應該用熱水。'),
+  HW(9,'哪一項<b>不屬於</b>溫度對物質體積影響的例子？','(B) 固體溶質在高溫時溶解度較高','溶解度和體積無關。(A) 養樂多冷凍後瓶子變形、(C) 鐵軌空隙、(D) 伸縮縫都是體積變化。'),
+  HW(10,'有關溫度對物質的影響，何者<b>錯誤</b>？','(D) 溫度從 0℃ 上升至 4℃，水的體積逐漸膨脹','0～4℃ 水是熱縮冷脹，升溫時體積<b>縮小</b>。'),
+  HW(11,'水從 0℃ 升到 30℃，體積怎麼變？','(C) 先逐漸減少到最低點，然後再逐漸增加','4℃ 時體積最小。')]});
+
+C({t:'📝 隨堂演練 30（12～15）',tag:'作業解答',src:'講義 p.264 隨堂演練 30 第 12～15 題',
+ qs:[HW(12,'固體的熔化曲線（圖：0～2 分 20→55℃，2～6 分 55℃ 不變，之後上升）。何者正確？','(C) 加熱 8 分鐘後，固體已完全熔化為液體',STEP+'① 2～6 分是水平段（熔化），6 分以後全部變液體 → 8 分時是液體 ✔<br>② (A) 前 4 分鐘：20℃ 到 55℃，升 35℃，不是 40℃<br>③ (B) 共存時間 6 − 2 ＝ 4 分鐘，不是 8 分鐘<br>④ (D) 從 20℃ 到熔點 55℃ 要升 35℃，不是 20℃'),
+  HW(13,'有關蒸發與沸騰，何者正確？','(A) 兩者都是液體汽化的過程','(B) 說反了：沸騰才要特定溫度；(C) 兩者都吸熱；(D) 都是物理變化。'),
+  HW(14,'冰的熔化與水的凝固，何者<b>錯誤</b>？','(C) 冰熔化需要放熱、水凝固需要吸熱','說反了：熔化<b>吸熱</b>、凝固<b>放熱</b>。'),
+  HW(15,'寒冷下雨的冬天，車內玻璃一下子就起霧，原因？','(B) 車內水氣凝結成的小水滴','車內較暖、水氣多，碰到被外面冷空氣冰冷的玻璃 → 凝結在<b>內側</b>。')]});
+
+C({t:'📝 隨堂演練 30（16～19）',tag:'作業解答',src:'講義 p.264 隨堂演練 30 第 16～19 題',
+ qs:[HW(16,'哪一種白煙的成分和其他三種不同？','(D) 點燃香菸時冒出的白煙','其他三種（冬天吐氣、冷凍庫、乾冰）都是水蒸氣遇冷凝結的小水滴；香菸的白煙是燃燒產生的微粒。'),
+  HW(17,'去韓國滑雪，融雪時比下雪時更冷，原因？','(C) 水氣變成雪的過程會放熱，而融雪的過程會吸熱','融雪吸熱，把周圍的熱帶走 → 更冷。'),
+  HW(18,'夏季午後雷陣雨前為什麼特別悶熱？','(D) 空氣中水蒸氣凝結成水滴的過程放熱，加上溼度高，人體不易排汗','凝結放熱；溼度高時汗不容易蒸發，熱散不掉。'),
+  HW(19,'甲杯加氫氧化鈉水溫升高，乙杯加氯化銨水溫下降。兩杯的反應？','(B) 甲放熱、乙吸熱','周圍（水）變熱 → 放熱；變冷 → 吸熱。')]});
+
+C({t:'📝 隨堂演練 30（20～23）',tag:'作業解答',src:'講義 p.265 隨堂演練 30 第 20～23 題',
+ qs:[HW(20,'五元日幣中間有小圓孔，加熱後孔的直徑？','(A) 變大','整個硬幣等比例膨脹，洞也一起變大（像金屬環加熱，洞變大）。'),
+  HW(21,'【100 北聯】純乙酸液體從 25℃ 逐漸冷卻，杯內慢慢出現固體，而且沉到杯底。何者正確？','(C) 凝固點（熔點）小於 25℃，固態密度大於液態',STEP+'① 25℃ 時還是液體，冷下來才出現固體 → 凝固點比 25℃ 低<br>② 固體沉到杯底 → 固體密度比液體大（和冰浮在水上相反）'),
+  HW(22,'【109 會考補考】固體放進空茶壺，蓋上蓋子一段時間後變成氣體；把氣體倒向蠟燭，火焰熄滅。最可能是？','(B) 乾冰昇華','固體直接變氣體 ＝ 昇華；二氧化碳不助燃，所以火會熄。冰塊不會直接變成氣體。'),
+  HW(23,'A、B、C 三種金屬：AB 複合棒加熱後彎向 B，BC 複合棒加熱後也彎向 B。AC 複合棒加熱後會彎向哪一個？','(C) 不一定',STEP+'① 受熱彎向膨脹少的一邊<br>② AB 彎向 B → A 比 B 容易膨脹<br>③ BC 彎向 B → C 比 B 容易膨脹<br>④ 只知道 A、C 都比 B 大，A 和 C 誰大不知道 → 不一定。')]});
+
+C({t:'📝 隨堂演練 30 題組',tag:'作業解答',src:'講義 p.265 隨堂演練 30 二、題組 1',
+ text:'小宋在白色圖畫紙上，用硫酸銅水溶液畫「青天」、用氯化亞鈷水溶液畫「滿地紅」，再用吹風機吹乾。',
+ qs:[HW('1-(1)','吹乾後顏色怎麼變？','(B)「青天」消失了；「滿地紅」變藍色',STEP+'① 硫酸銅失去水 → 白色（在白紙上看起來消失）<br>② 氯化亞鈷失去水 → 粉紅色變藍色'),
+  HW('1-(2)','國旗顏色改變，屬於什麼變化？','化學變化','失去結晶水，變成另一種物質（無水硫酸銅、無水氯化亞鈷），顏色也不同。')]});
+
+/* ---------- D：5-4 熱的傳播 ---------- */
+function convFig(){
+  var id='v'+(++UID),W=420,H=310,s=SVG(W,H,'燒杯底部加熱，水形成對流')+mk(id);
+  s+=RC(60,70,300,180,'var(--ac3)',.14)+'<path d="M60 50 L60 250 L360 250 L360 50" fill="none" stroke="currentColor" stroke-width="2.5"/>';
+  s+='<path d="M210 232 L210 100 Q210 86 196 86 L104 86 Q88 86 88 102 L88 214 Q88 230 104 230 L180 230" fill="none" stroke="var(--ac3)" stroke-width="3" marker-end="url(#'+id+'b)"/>';
+  s+='<path d="M210 100 Q210 86 224 86 L316 86 Q332 86 332 102 L332 214 Q332 230 316 230 L240 230" fill="none" stroke="var(--ac3)" stroke-width="3" marker-end="url(#'+id+'b)"/>';
+  s+=LN(210,236,210,104,'e',4,id,'e');
+  s+='<path d="M195 290 Q190 268 210 254 Q230 268 225 290 Z" fill="var(--ac)" fill-opacity=".8"/>';
+  s+=TC(222,160,'熱水上升','e','start')+TC(96,160,'冷水','b','start')+TC(96,184,'下沉','b','start')+TC(250,300,'底部加熱','a','start');
+  return s+'</svg>';
+}
+function radFig(){
+  var id='r'+(++UID),W=440,H=280,s=SVG(W,H,'火焰上方和旁邊的手怎麼得到熱')+mk(id);
+  s+='<path d="M170 250 Q160 200 200 160 Q205 195 220 190 Q235 170 228 145 Q270 190 250 250 Z" fill="var(--ac)" fill-opacity=".75"/>';
+  s+=RC(150,250,120,14,'var(--sub)',.8);
+  s+=LN(195,140,195,70,'e',3,id,'e')+LN(225,140,225,70,'e',3,id,'e');
+  s+=TC(210,50,'手在上方：熱空氣上升（對流）＋輻射','k','middle');
+  s+='<path d="M270 200 q12 -10 24 0 t24 0 t24 0 t24 0" fill="none" stroke="var(--ac2)" stroke-width="3" marker-end="url(#'+id+'c)"/>';
+  s+=TC(430,180,'手在旁邊','c','end')+TC(430,232,'只有輻射','c','end');
+  return s+'</svg>';
+}
+function thermosFig(){
+  var W=460,H=320,s=SVG(W,H,'保溫瓶的構造');
+  s+=RC(70,80,160,225,'var(--sub)',.15,'currentColor',14)+RC(90,100,120,190,'var(--card)',1,'var(--ac2)',10);
+  s+=RC(96,106,108,178,'var(--ac3)',.15,'var(--ac3)',8);
+  s+=RC(118,52,64,52,'var(--ac)',.6,'currentColor',6);
+  s+=LN(182,72,262,60,'d',1.5)+TC(268,66,'軟木塞：防止對流','a','start');
+  s+=LN(220,170,262,140,'d',1.5)+TC(268,146,'真空夾層：','k','start')+TC(268,170,'防止傳導和對流','k','start');
+  s+=LN(204,240,262,232,'d',1.5)+TC(268,238,'鍍銀：防止輻射','c','start');
+  s+=T(150,210,'熱水','lbl2','middle');
+  return s+'</svg>';
+}
+
+D({t:'5-4 熱的傳播：先看懂，再去上課',tag:'今天的目標',
+ text:'熱從高溫傳到低溫，有三種方式：<ol><li><b>傳導</b>：一個接一個「碰」過去（固體）</li><li><b>對流</b>：熱的液體、氣體自己流動（流體）</li><li><b>輻射</b>：不用任何東西，直接射過來（太陽）</li></ol>對照補習班講義 <b>p.266～271</b>、自修 p.244～253。<br><br>'+LEGEND});
+
+D({t:'傳導：靠接觸，一個傳一個',tag:'重點',src:'講義 p.266（A. 1）、p.267（精選範例 1、類題 1）、自修 p.244～245（2 傳導）',
+ text:'<b>傳導</b>：熱經由物體之間的<b>接觸</b>，從高溫傳到低溫；<b>固體</b>主要靠傳導。'+tbl(['傳熱快慢','例子'],[['固體 &gt; 液體 &gt; 氣體','棉被蓬鬆有很多空氣，空氣不易傳熱 → 保暖'],['金屬 &gt; 非金屬','鍋子用金屬，把手用木頭、塑膠'],['最好是<b>銀</b>，其次是<b>銅</b>','']])+'室溫下，金屬摸起來比木頭冰 → 不是金屬比較冷，是金屬<b>導熱快</b>，把手的熱很快帶走。<br>⚠️ 比熱小只代表溫度易升易降，<b>不一定</b>導熱快。',
+ sheet:'講義 p.266：1.【傳導】：固體的主要傳熱方式 (1) 熱經由物體之間的「接觸」，由溫度高的地方，經由物體傳遞到溫度低的地方的現象 (2) 比熱小的物質，溫度易升易降，但不一定導熱快 (3) 傳導快慢：① 固體＞液體＞氣體 ② 金屬＞非金屬 ③ 熱傳導效果最好的物質是銀，其次是銅。(4) ① 金屬可用來當做鍋子的材料，而木頭、塑膠等，則用來當做把手的材料 ② 室溫下，相同溫度的金屬摸起來比木頭冷，就是由於金屬導熱較快 ③ 棉被蓬鬆充滿了空氣，而空氣導熱率是較低的，所以容易保暖。',
+ qs:[mc('甲拿銅棒、乙拿木棒，模仿古人鑽木取火（外形、大小相同）。何者正確？',['甲能鑽出火，因為銅比熱小、溫度升得快','甲能鑽出火，因為銅導熱快，熱容易傳給木材','乙能鑽出火，因為木棒質量小','乙能鑽出火，因為木棒不易導熱，熱集中在摩擦處'],3,
+   ['銅導熱快，摩擦產生的熱很快傳走，摩擦處熱不起來。','熱被銅棒自己傳走了，反而集中不起來。','和質量無關。',''],
+   '木棒不易導熱，摩擦的熱留在接觸點，溫度才能升到木材燃燒。（講義 p.267 精選範例 1，96 基測）'),
+  ['冬天室溫下摸金屬門把、木桌、保麗龍，冷的感覺由強到弱。可以推論什麼？','熱傳導能力：金屬門把 &gt; 木桌 &gt; 保麗龍。三者溫度其實一樣（都是室溫）。（講義 p.267 類題 1，98 基測）']]});
+
+D({t:'對流：熱的往上，冷的往下',tag:'重點',src:'講義 p.266（A. 2 與圖）、自修 p.245～246（3 對流）',
+ fig:convFig(),
+ text:'<b>對流</b>：<b>液體、氣體</b>（流體）的主要傳熱方式，靠上下<b>循環流動</b>。<br>燒水時，壺底的水受熱 → 體積變大、<b>密度變小 → 上升</b>；周圍的冷水下來補位，一直循環，整壺水就熱了。<br>應用：<ul><li><b>電暖器</b>裝在<b>低</b>處：熱空氣往上升</li><li><b>冷氣機</b>裝在<b>高</b>處：冷空氣往下沉</li><li>熱氣球、天燈：熱空氣上升</li><li>煙囪做得高：對流旺盛，廢氣容易排出</li></ul>',
+ sheet:'講義 p.266：2.【對流】：流體的主要傳熱方式 (1) 在液體或氣體，以上下循環運動的方式來傳遞熱量 (2) 燒水時，水壺底部水受熱而體積變大、密度變小而上升，周圍的冷水就會填補底部上升的熱水所占的空間，如此反覆進行就可以把熱傳開 (3) ① 電熱器裝在地面，熱空氣上升，使得房間迅速溫暖 ② 冷氣機裝在高處，冷空氣下沉，冷房效果較好 ③ 熱氣球、天燈都是利用空氣的對流使其升空。',
+ qs:[['兩支相同的試管裝等量的水，左邊從<b>底部</b>加熱、右邊從<b>上方</b>加熱。哪一支的水整支比較快熱？','底部加熱的。熱水往上升，形成對流，整支都熱；上方加熱時熱水留在上面，下面只能靠水的傳導（水傳熱很慢），底部幾乎不熱。（講義 p.267 類題 1、隨堂演練 31 第 4 題）']]});
+
+D({t:'對流的方向題',src:'講義 p.267（精選範例 2）、p.268（類題 2）',
+ text:'判斷方法：<b>哪裡變熱 → 密度變小 → 往上；哪裡變冷 → 密度變大 → 往下</b>。<br>試管裝冰、放在溫水裡：試管旁邊的水被冰冷卻 → 往<b>下沉</b> → 沿杯底流開 → 從杯壁升上來 → 再流回試管旁。<br><br>⚠️ 0～4℃ 的水剛好相反：受熱密度變<b>大</b>（往下），冷卻密度變<b>小</b>（往上）。',
+ qs:[[RE+'一個方形水管裝滿 20℃ 的水，在右邊管子加熱。水會順時針還是逆時針流？','右邊的水變熱、密度變小 → 往上流；左邊的冷水往下補 → 右邊往上、上面往左、左邊往下，是<b>逆時針</b>。'],['同上，但水是 2℃（0～4℃ 之間），在右邊加熱呢？','2℃ 的水受熱密度變<b>大</b> → 右邊往下流 → 變成<b>順時針</b>。（講義 p.268 類題 2 就是考這個）']],
+ note:'👂 講義 p.267 精選範例 2 有三張流向圖，上課注意看箭頭從試管底下往哪裡走。'});
+
+D({t:'輻射：不需要介質',tag:'重點',src:'講義 p.266（A. 3）、p.268（精選範例 3、類題 1、2）、自修 p.247（4 輻射）',
+ fig:radFig(),
+ text:'<b>輻射</b>：不需要任何介質，直接傳熱；在<b>真空</b>中只能靠輻射（太陽的熱這樣傳到地球）。<ul><li><b>深色</b>（黑色）物體容易<b>吸收</b>輻射熱；<b>淺色</b>（白色、銀色）容易<b>反射</b></li><li><b>粗糙</b>的表面容易吸收；<b>光滑</b>的表面不容易吸收</li></ul>例：烤箱內壁用光亮金屬反射輻射；撐傘擋輻射；夏天穿淺色衣服；儲氣槽漆銀白色。',
+ sheet:'講義 p.266：3.【輻射】：不需任何介質幫助，而能直接傳播熱量 (1)【深】色物質易吸收、【淺】色物質易反射輻射熱 (2)【粗糙】的表面容易、【光滑】的表面不易吸收輻射熱 (3) ① 太陽的熱是藉輻射的方式傳到地球來 ② 烤箱內壁為光亮金屬，可反射輻射 ③ 撐傘可隔絕一些輻射 ④ 站在火焰旁邊感覺熱。',
+ qs:[mc(RE+'兩個相同的玻璃瓶裝一樣的空氣，中間用細管相通，管內有一段色水柱。把<b>左邊</b>的瓶子塗黑，一起放在太陽下曬。水柱怎麼動？',['不動','向右移動','向左移動','無法判斷'],1,
+   ['塗黑的瓶子吸熱比較多，兩邊溫度不同。','','左瓶空氣膨脹會把水柱往右推，不是往左。','可以判斷。'],
+   '黑色吸收較多輻射熱 → 左瓶空氣溫度較高、膨脹 → 把水柱往右推。（講義 p.268 精選範例 3 換方向，原題塗黑右邊）'),
+  ['錫箔紙一面光亮、一面粗糙，用烤箱烤鴨要怎麼包？','粗糙面朝外，比較容易吸收輻射熱。（講義 p.268 類題 2）'],['陽傘要防曬，怎麼塗顏色最好？','傘外塗銀色（反射陽光），傘內塗黑色（吸收地面反射上來的輻射）。（講義 p.268 類題 1）']],
+ note:'講義空格 (1) 只寫「色物質」，填「深」「淺」或「黑」「白」都可以，上課以老師說的為準。'});
+
+D({t:'保溫瓶：三種都擋',tag:'重點',src:'講義 p.267（4. 保溫瓶與圖）、p.268（精選範例 4）、自修 p.248（5 阻斷或減少熱傳播）',
+ fig:thermosFig(),
+ text:'<ul><li>瓶口<b>軟木塞</b>：防止熱的<b>對流</b>（熱空氣跑出去）</li><li>兩層玻璃中間<b>抽成真空</b>：沒有介質，防止<b>傳導和對流</b></li><li>玻璃內面<b>鍍銀</b>：反射，防止熱的<b>輻射</b></li></ul>燜燒鍋的道理一樣。',
+ sheet:'講義 p.267：4. 保溫瓶、燜燒鍋的保溫原理：(1) 瓶口的軟木塞，防止熱的【對流】(2) 兩層玻璃瓶之間抽成真空，防止熱的【傳導】和【對流】(3) 玻璃瓶內面鍍銀，防止熱的【輻射】。',
+ qs:[mc('燜燒鍋的設計，何者正確？',['內壁做成光滑鏡面，是為了防止輻射造成的熱散失','外鍋蓋用塑膠，是為了防止對流','真空夾層只能防止傳導','蓋上外鍋蓋是為了防止輻射'],0,
+   ['','塑膠不容易導熱，是防止<b>傳導</b>。','真空可以防止傳導<b>和</b>對流。','蓋子密封是防止<b>對流</b>（熱空氣跑出去）。'],
+   '光滑鏡面反射輻射熱。（講義 p.268 精選範例 4 的想法，原題用甲乙丙代表三種方式）')]});
+
+D({t:'小結：5-4 你應該帶走的',tag:'完成',src:'整理講義 p.266～268',
+ text:tbl(['','傳導','對流','輻射'],[['需要介質嗎','要','要','<b>不用</b>'],['主要在','固體','液體、氣體','真空也行'],['怎麼傳','接觸','流體上下循環','直接射出'],['例子','鍋子、金屬門把','電暖器放低、冷氣放高','太陽、黑色吸熱']])+'保溫瓶：軟木塞擋對流、真空擋傳導和對流、鍍銀擋輻射。<br>接下來是隨堂演練 31 的詳解。'});
+
+/* 作業：隨堂演練 31 */
+D({t:'📝 隨堂演練 31（1～6）',tag:'作業解答',src:'講義 p.269 隨堂演練 31 第 1～6 題（第 6 題講義沒印題號）',
+ qs:[HW(1,'盒子上方有甲、乙、丙三個開口，蠟燭在乙的正下方燃燒。新鮮冷空氣<b>不可能</b>從哪一個開口進入？','(B) 乙','蠟燭上方的熱空氣往上升，從乙跑出去；冷空氣從兩旁的甲、丙進來。'),
+  HW(2,'甲（U 形管，左端 A、右端 C）和乙（環形管，B 在左、D 在右）裝等量的水，都在右下方加熱。哪一點溫度最低？','(A) A 點','乙是環形，熱水可以一直循環（對流），整圈都會熱。甲的熱水只往右邊 C 那端上升，左邊 A 那端的水沒有循環，只能靠水的傳導，最冷。'),
+  HW(3,'三人處理一樣的冰塊：放太陽下、放教室、用棉被包起來放教室。誰的冰融得最慢？','(C) 志偉（用棉被包）','棉被裡有很多空氣，不容易傳熱，外面的熱進不去。'),
+  HW(4,'甲：手拿試管上端、在底部加熱；乙：手拿試管底部、在上端加熱。試管內水的熱傳播方式主要是？','(B) 甲對流、乙傳導','底部加熱，熱水上升形成對流；上端加熱，熱水留在上面，往下只能靠傳導。'),
+  HW(5,'有關三種熱傳播方式，何者正確？','(C) 輻射：不需仰賴外界環境（介質）的傳熱方式','(A)(B) 錯在「唯一」：固體主要靠傳導、流體主要靠對流，但不是唯一。'),
+  HW(6,'有關「熱」，何者正確？','(B) 熱可以經由介質傳播，也可以不經由介質傳播','(A) 熱是能量，不是物質；(C) 溫度計量的是溫度，不是熱量；(D) 熱由溫度高傳到低，不是看質量。')]});
+
+D({t:'📝 隨堂演練 31（7～11）',tag:'作業解答',src:'講義 p.270 隨堂演練 31 第 7～11 題',
+ qs:[HW(7,'兩顆一樣的冰塊分別包白色和黑色棉布，放在大太陽的柏油路上，何者正確？','(C) 包黑色棉布的冰塊融化較快，因為黑色較易吸收輻射熱','白色反射輻射熱，黑色吸收多。'),
+  HW(8,'有關熱的傳播，何者正確？','(B) 加高煙囪可讓燃燒效果較佳，這是熱的對流作用','(A) 熱看溫度，不是熱量多少；(C) 銅棒較熱是因為銅導熱快，不是比熱小；(D) 燈下覺得熱主要是輻射。'),
+  HW(9,'夏天中午沙灘非常燙，海水只稍微溫熱，理由？','(A) 海水的比熱大於沙','同樣曬太陽（吸的熱差不多），比熱大的海水溫度升得少。'),
+  HW(10,'夏天夜晚，電風扇怎麼裝最容易讓全室涼快？','(A) 裝在下面窗口，朝內吹','晚上外面空氣比較涼，從下面把涼空氣吹進來；室內的熱空氣會往上升，從上面跑出去，形成對流。'),
+  HW(11,'有關「熱」，何者正確？','(D) 質量相同但比熱不同的兩物質，吸收相等的熱量，比熱小者溫度上升較多',STEP+'(A) 熱由「溫度」高傳到低，不是看比熱<br>(B) 熱也可以不靠介質（輻射）<br>(C) 質量不同，平衡溫度不會剛好在 20 和 80 正中間的 50℃<br>(D) ΔT ＝ H ÷ (m × S)，S 小 → ΔT 大 ✔')]});
+
+D({t:'📝 隨堂演練 31（12～16）',tag:'作業解答',src:'講義 p.270～271 隨堂演練 31 第 12～16 題',
+ qs:[HW(12,'有關熱的傳播方式，哪一項<b>錯誤</b>？','(B) 輻射必須經由介質傳播','輻射<b>不需要</b>介質，在真空中也可以。'),
+  HW(13,'燜燒鍋的設計與保溫原理配對，何者<b>錯誤</b>？','(A) 塑膠材質的外鍋蓋—減少熱以輻射的方式逸散','塑膠不易導熱，減少的是<b>傳導</b>。'),
+  HW(14,'瓦斯公司的儲氣槽外層通常漆成什麼顏色？目的？','(D) 銀白色；減少吸收輻射熱，避免儲氣槽溫度過高而爆炸','淺色反射輻射熱（自修 p.247 例 2）。'),
+  HW(15,'粗細相同的鐵棒、銅棒、玻璃棒一端靠在一起加熱，另一端用蠟油黏火柴棒。火柴掉下的順序？（比熱：玻璃 &gt; 鐵 &gt; 銅）','(D) 銅棒 → 鐵棒 → 玻璃棒','看<b>導熱快慢</b>：銅 &gt; 鐵 &gt; 玻璃（金屬 &gt; 非金屬，銅僅次於銀）。<br>'+WARN+'題目給的比熱是陷阱，比熱小不一定導熱快。'),
+  HW(16,'焚化爐、煉油廠的煙囪總是做得很高，原因？','(B) 熱對流較為旺盛，廢氣較不易積存','煙囪越高，裡外的空氣溫度差造成的上升氣流越強。')]});
+
+D({t:'📝 隨堂演練 31（17～21）',tag:'作業解答',src:'講義 p.271 隨堂演練 31 第 17～21 題',
+ qs:[HW(17,'熱水爐：甲是冷水入口、乙是熱水出口、丙是受熱部分，正確位置？','(B) 甲在下方側邊、乙在上方、丙在底部','底部加熱，熱水上升從<b>上方</b>出口流出；冷水從<b>下方</b>進來補充（對流）。'),
+  HW(18,'五元日幣中間的小圓孔，加熱後直徑？','(A) 變大','和隨堂演練 30 第 20 題一樣：洞跟著一起膨脹。'),
+  HW(19,'【97 基測】有關熱的傳播，何者正確？','(C) 在真空中，熱只能以輻射方式傳播','真空沒有介質，不能傳導也不能對流。空氣中三種方式都可能。'),
+  HW(20,'【102 基測】熱咖啡紙杯外面套厚紙板，主要是減少哪一種熱傳播？','(A) 傳導','手碰到杯子是「接觸」，厚紙板不易傳熱。'),
+  HW(21,'【105 會考】同溫、同材質、同體積的金屬球，甲漆白色、乙漆黑色，曬太陽 20 分鐘後乙比甲高 3℃。主要原因？','(D) 黑色金屬球較易吸收輻射熱','顏色不會改變比熱。')]});
+
+/* ---------- E：科學素養、資優演練 ---------- */
+E({t:'科學素養、資優演練',tag:'作業解答',
+ text:'這個分頁是講義 <b>p.272～274</b> 的詳解：<ul><li>CH5 科學素養（3 大題，有 107、108 會考題）</li><li>CH5 資優演練（3 題，講義 p.274 頁底印有答案：(1) C (2) 32 (3) C）</li></ul>一樣先自己寫，再按「看答案」。'});
+
+E({t:'📝 素養 1：酷熱指數（107 會考）',tag:'作業解答',src:'講義 p.272 CH5 科學素養第 1 題',
+ text:'題目的表：橫列是氣溫 27～40℃，直行是溼度 40～100%，格子裡是體感溫度，顏色分「警告、嚴重警告、危險、極度危險」四級。<br>（講義的表氣溫那一列印成「…34、36、37…」，34 後面應該是 35，不影響作答）',
+ qs:[HW('1-(1)','根據附表，何者正確？','(C) 當氣溫為 30℃ 且溼度超過 50% 時，體感溫度都會比當時的氣溫高',STEP+'① 查 30℃ 那一行：溼度 55% 是 32、60% 是 33……100% 是 44，都比 30 高 ✔<br>② (A) 溼度 40%、氣溫 28℃ 時體感只有 27℃，比氣溫低 ✘<br>③ (B) 溼度 100%、氣溫 27℃ 時體感 31℃，只是「警告」等級 ✘<br>④ (D) 31℃、溼度很高時體感約 45～49℃，表上是「危險」，還不到「極度危險」✘'),
+  HW('1-(2)','文中「水分會蒸發並從人體帶走熱量」，何者正確？','(B) 為吸熱的變化，水分子內的原子不會重新排列','蒸發（汽化）吸熱；只是狀態改變（物理變化），水分子本身沒變。')]});
+
+E({t:'📝 素養 2：觀察水的熱傳播',tag:'作業解答',src:'講義 p.273 CH5 科學素養第 2 題',
+ text:'兩個錐形瓶裝滿水（滴紅墨水），各插一高一低兩支玻璃管：<ul><li>甲燒杯：錐形瓶裡是 <b>80℃</b>，燒杯裡是 25℃ 的水</li><li>乙燒杯：錐形瓶裡是 <b>25℃</b>，燒杯裡是 80℃ 的水</li></ul>',
+ qs:[HW('2-(1)','哪一個燒杯的水會被染紅？','(A) 甲燒杯','甲：瓶內的紅水比較熱、密度小 → 從高的管子往上流出，燒杯裡的冷水從低管流進去。乙：瓶內的紅水比較冷、密度大，留在瓶子裡不會跑出來。'),
+  HW('2-(2)','為什麼要兩支一高一低的玻璃管？','(C) 達到良好的循環','一支讓熱水出去、一支讓冷水進來，才能形成對流。'),
+  HW('2-(3)','水中熱量的傳播主要靠？','(B) 對流','液體主要靠對流。')]});
+
+E({t:'📝 素養 3：太陽能碟式集熱器（108 會考）',tag:'作業解答',src:'講義 p.273 CH5 科學素養第 3 題',
+ text:'拋物面反射器把陽光反射到接收器；接收器是不鏽鋼管，外面罩一層玻璃，中間是真空。',
+ qs:[HW('3-(1)','入射光線經反射器照到接收器，法線是哪一條虛線？','(A) L<sub>1</sub>',KEY+'法線（4-2 學過）要平分「入射線和反射線」的夾角，而且和反射面垂直。<br>'+STEP+'① 入射光從上面往下射到反射器<br>② 反射光往左上射到接收器<br>③ 兩條光線中間、和反射面垂直的那條是 L<sub>1</sub>。<br>（請對照講義的圖）'),
+  HW('3-(2)','玻璃外殼和不鏽鋼管之間的真空設計，主要減少哪幾種熱散失？','(A) 傳導、對流','真空沒有介質，熱不能傳導、也不能對流；輻射在真空中還是可以傳。')]});
+
+E({t:'📝 資優演練 1～3',tag:'作業解答',src:'講義 p.274 CH5 資優演練（頁底答案：(1) C (2) 32 (3) C）',
+ qs:[HW(1,'90 g、60℃ 的水放進甲、乙兩塊金屬（都是 50 g、10℃），乙的比熱是甲的 2 倍，平衡 40℃。乙的比熱？','(C) 0.8',STEP+'① 水放熱 ＝ 90 × 1 × (60 − 40) ＝ 1800 卡<br>② 設甲比熱 S，乙是 2S<br>③ 甲吸熱 ＝ 50 × S × (40 − 10) ＝ 1500S<br>④ 乙吸熱 ＝ 50 × 2S × 30 ＝ 3000S<br>⑤ 1500S ＋ 3000S ＝ 1800 → 4500S ＝ 1800 → S ＝ 0.4<br>⑥ 乙 ＝ 2 × 0.4 ＝ 0.8'),
+  HW(2,'甲杯 20 g、55℃，乙杯 30 g、30℃，丙杯 50 g、24℃ 混合（無散失），最後幾度？','32℃',STEP+'① 都是水，比熱相同；設最後 T℃<br>② 總熱量不變：20 × 55 ＋ 30 × 30 ＋ 50 × 24 ＝ (20 ＋ 30 ＋ 50) × T<br>③ 1100 ＋ 900 ＋ 1200 ＝ 100 × T<br>④ 3200 ＝ 100T → T ＝ 32<br>'+AI+'這是「加權平均」：每杯溫度乘上自己的質量，加起來除以總質量。'),
+  HW(3,'甲杯 200 g 水；乙杯 200 g 水加 100 g 鋁塊，相同熱源加熱並攪拌。表：甲每分鐘升 2.4℃（25.0 → 27.4 → 29.8…），乙每分鐘升 2.0℃（25.0 → 27.0 → 29.0…）。鋁的比熱？','(C) 0.4',STEP+'① 甲：熱源每分鐘給 200 × 1 × 2.4 ＝ 480 卡<br>② 乙：同一熱源，每分鐘也是 480 卡，水和鋁一起升 2.0℃<br>③ 200 × 1 × 2.0 ＋ 100 × S × 2.0 ＝ 480<br>④ 400 ＋ 200S ＝ 480 → 200S ＝ 80 → S ＝ 0.4')]});
+
+/* ===== 播放 ===== */
+var deck='A',cur=0,QM={};
+function pageMarked(d,n){var p=d+n;for(var k in QM)if(k===p||k.indexOf(p+':')===0)return true;return false;}
+function el(i){return document.getElementById(i);}
+var h='';
+Object.keys(DECKS).forEach(function(k){
+  DECKS[k].SL.forEach(function(s,i){
+    h+='<section class="slide" id="s'+k+i+'"><span class="tag'+(s.tag&&/^(📌|💡)/.test(s.tag)?' sup':'')+'">'+(s.tag||('步驟 '+(i+1)))+'</span><h1>'+s.t+'</h1><button class="mk" data-k="'+k+i+'">❓ 這頁有問題</button>'+(s.src?'<div class="src">📖 出處：'+s.src+'</div>':'');
+    /* 橫放平板：有圖的頁圖在左、文字在右；沒圖但有文字＋想一想：文字在左、想一想在右（見 CSS .sbody.two） */
+    var tq=!s.fig&&s.qs&&s.text;
+    h+='<div class="sbody'+(s.fig?' two':(tq?' two tq':''))+'">';
+    if(s.fig)h+='<div class="sfig">'+s.fig+'</div>';
+    else if(tq)h+='<div class="sfig"><div class="txt">'+s.text+'</div>'+(s.sheet?'<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>':'')+'</div>';
+    h+='<div class="stxt">';
+    if(s.text&&!tq)h+='<div class="txt">'+s.text+'</div>';
+    if(s.sheet&&!tq)h+='<div class="sheet">✍️ <b>對照講義</b>：'+s.sheet+'</div>';
+    if(s.qs){h+='<div class="qs'+(s.qs.length>2&&!s.fig&&!tq?' qgrid':'')+'">';s.qs.forEach(function(q,qi){h+='<div class="q" id="q'+k+i+'_'+qi+'"><button class="mk mq" data-k="'+k+i+':'+qi+'">❓</button><div class="p">'+(q[2]?'觀念釐清：':'想一想：')+q[0]+'</div>'+(q[2]?'<div class="mc">'+q[2].o.map(function(o,oi){return '<button class="mo" data-i="'+oi+'"><b>'+'ABCDE'.charAt(oi)+'.</b> '+o+'</button>';}).join('')+'</div><div class="mcf" aria-live="polite"></div><details><summary>直接看正解</summary><div class="a">✅ 答：'+'ABCDE'.charAt(q[2].a)+'. '+q[2].o[q[2].a]+'<br><span class="ex">'+q[1]+'</span></div></details>':'<details><summary>看答案</summary><div class="a">'+q[1]+'</div></details>')+'</div>';});h+='</div>';}
+    if(s.note)h+='<div class="note"><details><summary>👂 上課聽這裡</summary>'+s.note+'</details></div>';
+    h+='</div></div></section>';
+  });
+});
+el('slides').innerHTML=h;
+Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s){if(s.init)s.init();});});
+if(Object.keys(DECKS).length<2)el('tabs').style.display='none';
+el('tabs').innerHTML=Object.keys(DECKS).map(function(k){return '<button data-d="'+k+'">'+DECKS[k].name+'</button>';}).join('');
+function curId(){return 's'+deck+cur;}
+function go(d,i){
+  deck=d;var SL=DECKS[d].SL;cur=Math.max(0,Math.min(SL.length-1,i));
+  Object.keys(DECKS).forEach(function(k){DECKS[k].SL.forEach(function(s,n){el('s'+k+n).classList.toggle('cur',k===d&&n===cur);});});
+  Array.prototype.forEach.call(el('tabs').children,function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});
+  el('jump').innerHTML=SL.map(function(s,n){return '<option value="'+n+'">'+(pageMarked(d,n)?'❓ ':'')+(n+1)+'. '+s.t.replace(/<[^>]+>/g,'')+'</option>';}).join('');
+  el('jump').value=String(cur);
+  el('pb').style.width=((cur+1)/SL.length*100)+'%';
+  el('prev').disabled=cur===0;
+  el('next').textContent=cur===SL.length-1?'完成 ✓':'下一步 ▶';
+  try{history.replaceState(null,'','#'+d+(cur+1));}catch(e){}
+  window.scrollTo(0,0);
+  if(INK.cv[curId()])canvasFor(curId());
+}
+
+/* ===== 手寫層 =====
+   每一頁各自一張透明畫布，筆跡存成向量（換頁再回來還在，重新整理才會消失）。
+   「只有筆能寫」：觸控筆（或滑鼠）寫字，手指照常捲動、按「看答案」。 */
+var INK={on:false,color:'pu',erase:false,penOnly:true,strokes:{},cv:{}};
+try{var pp=localStorage.getItem('handout_ink_pen_only');if(pp!==null)INK.penOnly=(pp==='1');}catch(e){}
+/* 手寫顏色刻意避開圖形用的橘、綠、藍、磚紅、深灰 */
+var INKC={pu:['#7b1fa2','#ce93d8'],pk:['#e91e63','#f48fb1'],cy:['#0097a7','#4dd0e1']};
+function inkColor(c){var dk=false;try{dk=matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';}catch(e){}return (INKC[c]||INKC.pu)[dk?1:0];}
+function canvasFor(id){
+  var sec=el(id),cv=INK.cv[id];
+  if(!cv){cv=document.createElement('canvas');cv.className='ink-cv';sec.appendChild(cv);INK.cv[id]=cv;}
+  if(!INK.strokes[id])INK.strokes[id]=[];
+  var w=sec.clientWidth,hh=sec.clientHeight,r=window.devicePixelRatio||1;
+  if(w&&hh&&(cv._w!==w||cv._h!==hh||cv._r!==r)){cv._w=w;cv._h=hh;cv._r=r;cv.width=Math.round(w*r);cv.height=Math.round(hh*r);cv.style.width=w+'px';cv.style.height=hh+'px';redraw(id);}
+  return cv;
+}
+function seg(ctx,s,a,b){ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+function redraw(id){
+  var cv=INK.cv[id];if(!cv||!cv._w)return;var ctx=cv.getContext('2d'),r=cv._r||1;
+  ctx.setTransform(r,0,0,r,0,0);ctx.clearRect(0,0,cv._w,cv._h);
+  (INK.strokes[id]||[]).forEach(function(s){
+    if(s.p.length===1){seg(ctx,s,s.p[0],[s.p[0][0]+0.1,s.p[0][1]]);return;}
+    ctx.strokeStyle=inkColor(s.c);ctx.lineWidth=s.w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(s.p[0][0],s.p[0][1]);
+    for(var k=1;k<s.p.length;k++)ctx.lineTo(s.p[k][0],s.p[k][1]);ctx.stroke();
+  });
+}
+function eraseAt(x,y){
+  function near(p,q){var vx=q[0]-p[0],vy=q[1]-p[1],L=vx*vx+vy*vy,t=L?Math.max(0,Math.min(1,((x-p[0])*vx+(y-p[1])*vy)/L)):0,dx=p[0]+t*vx-x,dy=p[1]+t*vy-y;return dx*dx+dy*dy<196;}
+  var id=curId(),a=INK.strokes[id]||[],keep=a.filter(function(s){for(var k=0;k<s.p.length;k++)if(near(s.p[k],s.p[Math.min(k+1,s.p.length-1)]))return false;return true;});
+  if(keep.length!==a.length){INK.strokes[id]=keep;redraw(id);}
+}
+var drawing=null,finger=null;
+function pos(e){var rc=INK.cv[curId()].getBoundingClientRect();return [Math.round((e.clientX-rc.left)*10)/10,Math.round((e.clientY-rc.top)*10)/10];}
+el('slides').addEventListener('pointerdown',function(e){
+  if(!INK.on)return;
+  var penLike=(e.pointerType==='pen'||e.pointerType==='mouse');
+  if(!penLike&&INK.penOnly){finger={id:e.pointerId,y:e.clientY};return;}
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();var id=curId();canvasFor(id);
+  var p=pos(e),er=INK.erase||(e.buttons&32)===32;
+  drawing={id:e.pointerId,erase:er,sec:id};
+  try{el('slides').setPointerCapture(e.pointerId);}catch(_){}
+  if(er){eraseAt(p[0],p[1]);return;}
+  drawing.s={c:INK.color,w:e.pointerType==='pen'?3:4,p:[p]};INK.strokes[id].push(drawing.s);redraw(id);
+});
+el('slides').addEventListener('pointermove',function(e){
+  if(finger&&e.pointerId===finger.id){window.scrollBy(0,finger.y-e.clientY);finger.y=e.clientY;return;}
+  if(!drawing||e.pointerId!==drawing.id)return;
+  e.preventDefault();
+  var evs=(e.getCoalescedEvents&&e.getCoalescedEvents().length)?e.getCoalescedEvents():[e],ctx=INK.cv[drawing.sec].getContext('2d');
+  evs.forEach(function(ev){
+    var p=pos(ev);
+    if(drawing.erase){eraseAt(p[0],p[1]);return;}
+    var pts=drawing.s.p,last=pts[pts.length-1];
+    if(Math.abs(p[0]-last[0])+Math.abs(p[1]-last[1])<1)return;
+    pts.push(p);seg(ctx,drawing.s,last,p);
+  });
+});
+function endInk(e){if(finger&&e.pointerId===finger.id)finger=null;if(drawing&&e.pointerId===drawing.id)drawing=null;}
+el('slides').addEventListener('pointerup',endInk);
+el('slides').addEventListener('pointercancel',endInk);
+function setInk(on){
+  INK.on=on;document.body.classList.toggle('ink',on);
+  el('inkBtn').classList.toggle('inkon',on);el('inkBtn').setAttribute('aria-pressed',on?'true':'false');
+  el('inkBtn').innerHTML=on?'✏️<span class="lb"> 手寫中</span>':'✏️<span class="lb"> 手寫</span>';
+  if(on)canvasFor(curId());
+}
+function markTool(){
+  el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.classList.toggle('on',!INK.erase&&b.dataset.c===INK.color);});
+  el('inkErase').classList.toggle('on',INK.erase);
+}
+el('inkBtn').onclick=function(){setInk(!INK.on);if(INK.on)setQP(false);};
+el('inkbar').querySelectorAll('button[data-c]').forEach(function(b){b.onclick=function(){INK.color=b.dataset.c;INK.erase=false;markTool();};});
+el('inkErase').onclick=function(){INK.erase=!INK.erase;markTool();};
+el('inkUndo').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length){a.pop();redraw(id);}};
+el('inkClear').onclick=function(){var id=curId(),a=INK.strokes[id];if(a&&a.length&&confirm('清除這一頁的手寫？')){INK.strokes[id]=[];redraw(id);}};
+el('inkSpace').onclick=function(){var sec=el(curId()),pb=parseInt(sec.style.paddingBottom||'18',10);sec.style.paddingBottom=(pb+320)+'px';canvasFor(curId());window.scrollBy(0,320);};
+el('inkPen').checked=INK.penOnly;
+el('inkPen').onchange=function(){INK.penOnly=el('inkPen').checked;try{localStorage.setItem('handout_ink_pen_only',INK.penOnly?'1':'0');}catch(e){}};
+window.addEventListener('resize',function(){if(INK.cv[curId()])canvasFor(curId());});
+el('slides').addEventListener('toggle',function(){if(INK.cv[curId()])canvasFor(curId());},true);
+
+/* ===== ❓ 標記有問題的頁、題 =====
+   點頁面上的「❓ 這頁有問題」或想一想右上角的「❓」標記；下方「❓ 問題」列出全部，點了直接跳過去。
+   存在這台裝置的瀏覽器（localStorage），重新整理還在。 */
+var QKEY='handout_marks_'+document.title;
+try{QM=JSON.parse(localStorage.getItem(QKEY)||'{}')||{};}catch(e){QM={};}
+function saveQM(){try{localStorage.setItem(QKEY,JSON.stringify(QM));}catch(e){}}
+function plain(x){return String(x).replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim();}
+function cut(x,n){return x.length>n?x.slice(0,n)+'…':x;}
+function mkParse(k){return k.match(/^([A-Z])(\d+)(?::(\d+))?$/);}
+function paintMarks(){
+  el('slides').querySelectorAll('.mk').forEach(function(b){var on=!!QM[b.dataset.k];b.classList.toggle('on',on);if(!b.classList.contains('mq'))b.textContent=on?'❗ 已標記有問題':'❓ 這頁有問題';b.setAttribute('aria-pressed',on?'true':'false');});
+  var n=Object.keys(QM).length;el('qpBtn').innerHTML='❓<span class="lb"> 問題</span>'+(n?'（'+n+'）':'');
+  var SL=DECKS[deck].SL;Array.prototype.forEach.call(el('jump').options,function(o,i){o.textContent=(pageMarked(deck,i)?'❓ ':'')+(i+1)+'. '+plain(SL[i].t);});
+  var multi=Object.keys(DECKS).length>1,keys=Object.keys(QM).filter(mkParse).sort(function(a,b){var pa=mkParse(a),pb=mkParse(b);if(pa[1]!==pb[1])return pa[1]<pb[1]?-1:1;return (+pa[2]-pb[2])||((pa[3]===undefined?-1:+pa[3])-(pb[3]===undefined?-1:+pb[3]));});
+  var out='',lastPage='';
+  keys.forEach(function(k){
+    var m=mkParse(k);if(!DECKS[m[1]])return;var s=DECKS[m[1]].SL[+m[2]];if(!s)return;
+    var head=(multi?DECKS[m[1]].name.split('｜')[0]+'　':'')+'第 '+(+m[2]+1)+' 頁　'+cut(plain(s.t),22);
+    if(m[3]===undefined){out+='<a data-go="'+k+'">📄 '+head+'</a>';lastPage=m[1]+m[2];}
+    else{var q=s.qs&&s.qs[+m[3]];if(!q)return;if(lastPage!==m[1]+m[2])out+='<a data-go="'+m[1]+m[2]+'">📄 '+head+'</a>';lastPage=m[1]+m[2];out+='<a class="sub" data-go="'+k+'">└ 想一想：'+cut(plain(q[0]),30)+'</a>';}
+  });
+  el('qpList').innerHTML=out||'<div class="empty">還沒有標記。看不懂的頁按標題旁的「❓ 這頁有問題」，看不懂的題目按想一想右上角的「❓」。</div>';
+}
+function setQP(on){document.body.classList.toggle('qp',on);el('qpBtn').classList.toggle('qon',on);if(on&&INK.on)setInk(false);}
+el('slides').addEventListener('click',function(e){var b=e.target.closest('.mk');if(!b)return;e.preventDefault();var k=b.dataset.k;if(QM[k])delete QM[k];else QM[k]=1;saveQM();paintMarks();});
+/* 選擇題：點選項 → 立刻顯示對錯；答錯的題自動標 ❓ */
+el('slides').addEventListener('click',function(e){
+  var b=e.target.closest('.mo');if(!b)return;
+  var box=b.closest('.q'),m=box.id.match(/^q([A-Z])(\d+)_(\d+)$/);if(!m)return;
+  var q=DECKS[m[1]].SL[+m[2]].qs[+m[3]],i=+b.dataset.i,mc=q[2],ok=(i===mc.a),f=box.querySelector('.mcf');
+  Array.prototype.forEach.call(box.querySelectorAll('.mo'),function(x){x.classList.remove('ok','no');});
+  b.classList.add(ok?'ok':'no');
+  if(ok){f.className='mcf good';f.innerHTML='✅ 答對了！'+q[1];}
+  else{f.className='mcf bad';f.innerHTML='❌ '+mc.w[i]+'<br><span class="try">再選選看，或按下面「直接看正解」。</span>';var k=m[1]+m[2]+':'+m[3];if(!QM[k]){QM[k]=1;saveQM();paintMarks();}}
+});
+el('qpBtn').onclick=function(){setQP(!document.body.classList.contains('qp'));};
+el('qpClose').onclick=function(){setQP(false);};
+el('qpClear').onclick=function(){if(Object.keys(QM).length&&confirm('清除全部的「有問題」標記？')){QM={};saveQM();paintMarks();}};
+el('qpList').onclick=function(e){var a=e.target.closest('a[data-go]');if(!a)return;var m=mkParse(a.dataset.go);go(m[1],+m[2]);setQP(false);
+  if(m[3]!==undefined){var q=el('q'+m[1]+m[2]+'_'+m[3]);if(q){q.scrollIntoView({block:'center'});q.classList.add('flash');setTimeout(function(){q.classList.remove('flash');},1600);}}};
+
+el('tabs').onclick=function(e){var b=e.target.closest('button');if(b)go(b.getAttribute('data-d'),0);};
+el('prev').onclick=function(){go(deck,cur-1);};
+el('next').onclick=function(){if(cur<DECKS[deck].SL.length-1)go(deck,cur+1);};
+el('jump').onchange=function(){go(deck,Number(el('jump').value));};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(deck,cur+1);else if(e.key==='ArrowLeft')go(deck,cur-1);});
+var m=(location.hash||'').match(/^#([AB])(\d+)$/);
+go(m?m[1]:'A',m?parseInt(m[2],10)-1:0);
+paintMarks();
+})();
+</script>
+</body>
+</html>
